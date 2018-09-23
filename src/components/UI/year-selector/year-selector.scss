@@ -1,0 +1,48 @@
+@import "../../../assets/scss/variables.scss";
+.year-selector {
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  max-height: 0;
+  top: 70px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  text-align: center;
+  -webkit-transition: max-height 0.20s ease-in;
+  -moz-transition: max-height 0.20s ease-in;
+  -o-transition: max-height 0.20s ease-in;
+  transition: max-height 0.20s ease-in;
+  &.shown {
+    max-height: 500px;
+  }
+  .year-selector-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $background-color;
+    width: 500px;
+    padding: 15px 30px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+}
+
+.rc-slider {
+  z-index: 1000;
+}
+
+.rc-slider-tooltip {
+  z-index: 9999;
+}
+
+.current-year {
+  color: $white-color;
+  font-size: 18px;
+  margin-bottom: 10px;
+  .year {
+    margin-left: 5px;
+    color: $primary-color;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}

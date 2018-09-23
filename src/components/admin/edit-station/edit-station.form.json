@@ -1,0 +1,33 @@
+{
+  "name": {
+    "elementType": "input",
+    "propertyType": "string",
+    "elementConfig": {
+      "type": "text",
+      "placeholder": "Station name"
+    },
+    "validation": {
+      "required": true
+    }
+  },
+  "year": {
+    "elementType": "input",
+    "propertyType": "number",
+    "elementConfig": {
+      "type": "number",
+      "placeholder": "Year"
+    },
+    "validation": {
+      "required": false,
+      "minLength": 4,
+      "maxLength": 4
+    }
+  },
+  "searchButton": {
+    "elementType": "button",
+    "elementConfig": {
+      "type": "submit",
+      "text": "Edit station"
+    }
+  }
+}

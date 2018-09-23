@@ -1,0 +1,57 @@
+{
+  "stationName": {
+    "elementType": "input",
+    "propertyType": "string",
+    "elementConfig": {
+      "type": "text",
+      "placeholder": "Station name"
+    },
+    "validation": {
+      "required": true
+    }
+  },
+  "otherField": {
+    "elementType": "input",
+    "propertyType": "string",
+    "elementConfig": {
+      "type": "text",
+      "placeholder": "Other field"
+    },
+    "validation": {
+      "required": false,
+      "minLength": 3,
+      "maxLength": 5
+    }
+  },
+  "line": {
+    "elementType": "select",
+    "propertyType": "string",
+    "elementConfig": {
+      "label": "Line",
+      "placeholder": "Select a line",
+      "options": {
+        "key": "_id",
+        "label": "name",
+        "value": "_id"
+      },
+      "noneLabel": "None",
+      "custom": {
+        "selected": "SelectedLine",
+        "dropdown": "DropdownLine"
+      },
+      "enableSearch": "true",
+      "remote": {
+        "model": "line",
+        "propertyName": "name",
+        "minChars": 0
+      }
+    }
+  },
+  "searchButton": {
+    "elementType": "button",
+    "elementConfig": {
+      "type": "submit",
+      "text": "Search"
+    }
+  }
+}

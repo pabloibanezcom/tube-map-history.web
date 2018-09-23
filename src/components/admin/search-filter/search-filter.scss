@@ -1,0 +1,11 @@
+@import "../../../assets/scss/variables.scss";
+.search-filter {
+  .panel-primary {
+    .panel-heading {
+      background-color: $primary-color;
+      .panel-title {
+        color: $secondary-color;
+      }
+    }
+  }
+}

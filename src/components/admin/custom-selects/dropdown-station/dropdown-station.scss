@@ -1,0 +1,13 @@
+.dropdown-station-item {
+  .station-year {
+    margin-left: 15px;
+    font-size: 12px;
+    color: $secondary-color;
+    font-weight: bold;
+  }
+  &.active {
+    .station-year {
+      color: $primary-color;
+    }
+  }
+}
