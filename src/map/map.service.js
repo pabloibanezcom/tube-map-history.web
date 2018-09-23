@@ -18,7 +18,6 @@ export const updateMap = (map, stations, connections, currentYear, previousYear)
     return;
   }
   if (currentYear > previousYear) {
-    debugger
     addStations(map, stations, currentYear, previousYear);
     addConnections(map, connections, currentYear, previousYear);
     return;
@@ -38,7 +37,7 @@ const addStations = (map, stations, yearTo = 2018, yearFrom = 1800) => {
           year: s.year
         },
         map: map,
-        icon: require('../assets/img/markers/picadilly_dot2.png'),
+        icon: getStationMarker(s),
         title: s.name
       });
       marker.addListener('click', () => { alert(`${s.name} - ${s.year}`); });
@@ -85,4 +84,13 @@ const removeConnections = (connectionLines, yearTo = 2018, yearFrom = 1800) => {
 
 const convertPointArrayToMapPoint = (coordinates) => {
   return new gmaps.LatLng(coordinates[1], coordinates[0]);
+}
+
+const getStationMarker = (station) => {
+  return new gmaps.MarkerImage(require(`../assets/img/markers/${station.markerIcon}.png`),
+    new gmaps.Size(64, 64),
+    new gmaps.Point(0, 0),
+    new gmaps.Point(5, 5),
+    new gmaps.Size(10, 10)
+  );
 }

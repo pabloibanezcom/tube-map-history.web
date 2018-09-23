@@ -32,7 +32,7 @@ class Select extends React.Component {
   render() {
     return (
       <div className="form-group">
-        <label className="control-label">Station to</label>
+        <label className="control-label">{this.props.config.label}</label>
         <div className={`dropdown bootstrap-select form-control ${this.state.expanded ? 'show' : ''}`}>
           <button type="button" className="btn dropdown-toggle btn-light" data-toggle="dropdown" onClick={this.showDropdown}
             title="Ea nam qui vel consequatur" aria-expanded={this.state.expanded ? false : true}>
