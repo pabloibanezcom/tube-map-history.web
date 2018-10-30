@@ -24,7 +24,9 @@ const yearSelector = (props) => {
   };
 
   const handleChange = (value) => {
-    props.onYearChange(value);
+    if (props.year !== value) {
+      props.onYearChange(value);
+    }
   }
 
   return (

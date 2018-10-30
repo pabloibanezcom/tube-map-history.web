@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
-import thunk from 'redux-thunk';
+import createSagaMiddleware from "redux-saga";
 import App from './App';
 import './index.scss';
 import registerServiceWorker from './registerServiceWorker';
 import { adminReducer, mainReducer } from './store/reducers';
+import { watchAll } from './store/sagas';
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
@@ -16,9 +17,13 @@ const rootReducer = combineReducers({
   admin: adminReducer
 });
 
+const sagaMiddleware = createSagaMiddleware();
+
 const store = createStore(rootReducer, composeEnhancers(
-  applyMiddleware(thunk)
+  applyMiddleware(sagaMiddleware)
 ));
+
+sagaMiddleware.run(watchAll);
 
 const app = (
   <Provider store={store}>

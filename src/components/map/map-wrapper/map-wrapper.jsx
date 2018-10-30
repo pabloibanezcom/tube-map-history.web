@@ -1,5 +1,6 @@
 import React from 'react';
 import { initMap, updateMap } from '../../../map/map.service';
+import Overlay from '../../UI/overlay/overlay';
 
 class MapWrapper extends React.Component {
 
@@ -13,6 +14,7 @@ class MapWrapper extends React.Component {
     }
     return (
       <div>
+        <Overlay show={this.props.overlay} />
         <div id="map-container"></div>
       </div>
     )

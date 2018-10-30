@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import onClickOutside from "react-onclickoutside";
-import { search } from '../../../../http/admin';
+import { search } from '../../../../http/operations';
 import { getDynamicComponent } from '../../../dynamic-components/dynamic-components';
 
 class SelectDropdown extends React.Component {

@@ -15,3 +15,7 @@ export const applyTypeToValue = (value, type) => {
       return value;
   }
 }
+
+export const transformDistance = (value) => {
+  return value ? `${value.toLocaleString()} m` : '';
+}

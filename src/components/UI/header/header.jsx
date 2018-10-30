@@ -44,7 +44,7 @@ const header = (props) => {
             <i className="zmdi zmdi-search"></i>
           </label>
         </form>
-        <a href="" onClick={e => { e.preventDefault() }} className="btn-ms-menu btn-circle btn-circle-primary ms-toggle-left animated zoomInDown animation-delay-10">
+        <a href="" onClick={e => { e.preventDefault(); props.onToggleSideBar(); }} className="btn-ms-menu btn-circle btn-circle-primary ms-toggle-left animated zoomInDown animation-delay-10">
           <i className="zmdi zmdi-menu"></i>
         </a>
       </div>

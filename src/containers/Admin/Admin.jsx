@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import SearchFilter from '../../components/admin/search-filter/search-filter';
 import StationsList from '../../components/admin/stations-list/stations-list';
 import Header from '../../components/UI/header/header';
-import * as actions from '../../store/actions/index';
+import * as actions from '../../store/actions/admin';
 import * as adminMenu from './adminMenu';
 
 class Admin extends React.Component {
@@ -89,10 +89,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSearchStations: (searchParams) => dispatch(actions.searchStations(searchParams)),
-    onSearchConnections: (searchParams) => dispatch(actions.searchConnections(searchParams)),
-    onEditStation: (station) => dispatch(actions.editStation(station)),
-    onAddConnection: (connection) => dispatch(actions.addConnection(connection))
+    onSearchStations: (searchParams) => dispatch(actions.searchStationsStart(searchParams)),
+    onEditStation: (station) => dispatch(actions.editStationStart(station)),
+    onAddConnection: (connection) => dispatch(actions.addConnectionStart(connection))
   }
 };
 

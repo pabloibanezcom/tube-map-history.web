@@ -1,0 +1,7 @@
+{
+  "loadLines": {
+    "sort": "order",
+    "select": "name shortName colour fontColour",
+    "populate": ""
+  }
+}

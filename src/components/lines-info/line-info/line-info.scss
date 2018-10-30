@@ -1,0 +1,25 @@
+.line-info {
+  padding: 15px 20px;
+  text-align: center;
+  .close {
+    i {
+      color: #fff;
+      opacity: none;
+    }
+  }
+  .line-name {
+    border-bottom: 5px solid transparent;
+    padding-bottom: 10px;
+  }
+  .basic-info {
+    >div {
+      display: inline-block;
+      padding: 0 10px;
+      font-size: 16px;
+      .value {
+        margin-left: 10px;
+        color: $primary-color;
+      }
+    }
+  }
+}
