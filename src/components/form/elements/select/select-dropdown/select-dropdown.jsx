@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import onClickOutside from "react-onclickoutside";
-import { search } from '../../../../http/operations';
-import { getDynamicComponent } from '../../../dynamic-components/dynamic-components';
+import { search } from '../../../../../http/operations';
+import { getDynamicComponent } from '../../../../dynamic-components/dynamic-components';
 
 class SelectDropdown extends React.Component {
 
@@ -62,12 +62,15 @@ class SelectDropdown extends React.Component {
   }
 
   generateOptions() {
-    const noneOption = this.props.config.noneLabel ?
-      [{ [this.props.config.options.key]: 'none', [this.props.config.options.label]: this.props.config.noneLabel }] : [];
     return [
-      ...noneOption,
+      ...this.getNoneOption(),
       ...this.props.options
     ];
+  }
+
+  getNoneOption() {
+    return this.props.config.noneLabel ?
+      [{ [this.props.config.options.key]: 'none', [this.props.config.options.label]: this.props.config.noneLabel }] : [];
   }
 
   filter(str) {
@@ -91,7 +94,13 @@ class SelectDropdown extends React.Component {
   filterRemote(value) {
     if (value.length >= this.props.config.remote.minChars) {
       search(this.props.config.remote.model, { [this.props.config.remote.propertyName]: value })
-        .then(res => this.setState({ filteredOptions: res.data, activeIndex: 0 }))
+        .then(res => {
+          const filteredOptions = [
+            ...this.getNoneOption(),
+            ...res.data
+          ];
+          this.setState({ filteredOptions: filteredOptions, activeIndex: 0 })
+        })
         .catch(err => console.log(err));
     } else {
       this.setState({ filteredOptions: [], activeIndex: 0 });
@@ -107,6 +116,7 @@ class SelectDropdown extends React.Component {
       }));
     }
     this.props.onSelectOption(opt[this.props.config.options.key] === 'none' ? null : opt);
+    this.filter('');
   }
 
   render() {

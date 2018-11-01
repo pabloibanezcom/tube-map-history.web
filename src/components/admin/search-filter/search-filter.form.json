@@ -1,5 +1,5 @@
 {
-  "stationName": {
+  "name": {
     "elementType": "input",
     "propertyType": "string",
     "elementConfig": {
@@ -10,22 +10,24 @@
       "required": true
     }
   },
-  "otherField": {
-    "elementType": "input",
-    "propertyType": "string",
+  "year": {
+    "elementType": "range",
+    "propertyType": "object",
     "elementConfig": {
-      "type": "text",
-      "placeholder": "Other field"
-    },
-    "validation": {
-      "required": false,
-      "minLength": 3,
-      "maxLength": 5
+      "enabled": false,
+      "toggleType": "secondary",
+      "label": "Year",
+      "min": 1853,
+      "max": 2018,
+      "value": [
+        1853,
+        2018
+      ]
     }
   },
   "line": {
     "elementType": "select",
-    "propertyType": "string",
+    "propertyType": "object",
     "elementConfig": {
       "label": "Line",
       "placeholder": "Select a line",

@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDynamicComponent } from '../../dynamic-components/dynamic-components';
+import { getDynamicComponent } from '../../../dynamic-components/dynamic-components';
 import SelectDropdown from './select-dropdown/select-dropdown';
 
 class Select extends React.Component {

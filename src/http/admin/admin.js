@@ -1,4 +1,5 @@
-import { add, search, update } from '../operations';
+import axios from '../axios';
+import { add, update } from '../operations';
 
 const searchStationsParams = require('./defaultParams/searchStations.json');
 
@@ -11,5 +12,9 @@ export const editStation = (station) => {
 }
 
 export const searchStations = (searchParams) => {
-  return search('station', { ...searchParams, populate: searchStationsParams.populate });
+  return axios.post('station', {
+    filter: searchParams,
+    limit: searchStationsParams.limit,
+    populate: searchStationsParams.populate
+  });
 }

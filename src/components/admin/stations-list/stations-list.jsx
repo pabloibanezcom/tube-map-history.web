@@ -21,10 +21,8 @@ class StationsList extends React.Component {
   }
 
   showStation(stationId) {
-    if (stationId === this.state.activeStation) {
-      this.setState({ activeStation: null });
-    }
-    this.setState({ activeStation: stationId });
+    const activeStation = stationId === this.state.activeStation ? null : stationId;
+    this.setState({ activeStation: activeStation });
   }
 
   editStation(station) {

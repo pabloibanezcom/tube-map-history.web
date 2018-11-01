@@ -1,4 +1,6 @@
-@import "./select//select-dropdown/select-dropdown.scss";
+@import "./elements/range/range.scss";
+@import "./elements/select/select-dropdown/select-dropdown.scss";
+@import "./elements/toggle/toggle.scss";
 .dropdown {
   .dropdown-menu {
     top: -2px;

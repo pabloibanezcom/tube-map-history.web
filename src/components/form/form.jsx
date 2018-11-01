@@ -1,8 +1,9 @@
 import React from 'react';
-import { applyTypeToValue, updateObject } from '../../shared/utility';
-import Button from './button/button';
-import Input from './input/input';
-import Select from './select/select';
+import { applyTypeToValue, getDefaultValue, updateObject } from '../../shared/utility';
+import Button from './elements/button/button';
+import Input from './elements/input/input';
+import Range from './elements/range/range';
+import Select from './elements/select/select';
 
 class Form extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class Form extends React.Component {
     Object.keys(this.props.formElements).map(fEl => {
       if (this.props.formElements[fEl].elementType !== 'button') {
         formData[fEl] = {
-          value: this.props.obj && this.props.obj[fEl] ? this.props.obj[fEl] : '',
+          value: this.props.obj && this.props.obj[fEl] ? this.props.obj[fEl] : getDefaultValue(this.props.formElements[fEl].propertyType),
           valid: true,
           touched: null
         }
@@ -29,6 +30,8 @@ class Form extends React.Component {
     });
     return formData;
   }
+
+  getDefault
 
   onHandleChange(value, formElementName) {
     const updatedFormElement = updateObject(this.state.formData[formElementName], {
@@ -73,6 +76,12 @@ class Form extends React.Component {
           case 'select':
             formElementHtml = <Select
               options={this.props[this.props.formElements[fEl].options]}
+              config={this.props.formElements[fEl].elementConfig}
+              onChange={(evt) => this.onHandleChange(evt, fEl)}
+            />
+            break;
+          case 'range':
+            formElementHtml = <Range
               config={this.props.formElements[fEl].elementConfig}
               onChange={(evt) => this.onHandleChange(evt, fEl)}
             />

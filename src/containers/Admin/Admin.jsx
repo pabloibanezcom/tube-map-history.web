@@ -24,8 +24,7 @@ class Admin extends React.Component {
   componentDidMount() {
     this.tabWidth = this.tabSet.current.offsetWidth / adminMenu.tabs.length;
     this.props.onSearchStations();
-    // this.setActiveTab(this.tabSet.current.children[0].id, 0)
-    // console.log(this.tabSet);
+    this.setActiveTab({ id: 'stations' }, 0)
   }
 
   AddConnection(connection) {

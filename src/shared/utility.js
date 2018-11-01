@@ -5,7 +5,21 @@ export const updateObject = (oldObject, updatedProperties) => {
   };
 };
 
+export const getDefaultValue = (type) => {
+  switch (type) {
+    case 'string':
+      return '';
+    case 'number':
+      return 0;
+    default:
+      return null;
+  }
+}
+
 export const applyTypeToValue = (value, type) => {
+  if (value === null || value === undefined) {
+    return value;
+  }
   switch (type) {
     case 'string':
       return String(value);
