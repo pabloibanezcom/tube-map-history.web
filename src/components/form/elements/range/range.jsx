@@ -42,7 +42,7 @@ class Range extends React.Component {
     if (!value) {
       this.handleChange(null);
     } else {
-      this.handleChange([this.state.min, this.state.max]);
+      this.handleChange(this.props.config.value);
     }
     this.setState({ show: value });
   }
