@@ -7,13 +7,14 @@ const generateIcons = () => {
     icons.faCoins,
     icons.faEnvelope,
     icons.faExchangeAlt,
+    icons.faKey,
     icons.faMapMarkerAlt,
     icons.faMarker,
     icons.faMinus,
     icons.faPlus,
     icons.faRoute,
     icons.faSubway,
-    icons.faKey
+    icons.faTimes
   );
 }
 

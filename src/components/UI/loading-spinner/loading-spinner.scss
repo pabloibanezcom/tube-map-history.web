@@ -1,0 +1,35 @@
+.loading-spinner {
+  position: fixed;
+  height: 100%;
+  z-index: 100;
+  width: 100%;
+  .ls-background {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0.7;
+  }
+  .ls-spinner {
+    $spinner-height: 6;
+    $spinner-width: 150;
+    position: fixed;
+    width: $spinner-width + px;
+    height: $spinner-height + px;
+    top: 50%;
+    left: 50%;
+    margin-top: ($spinner-height * -0.5) + px;
+    margin-left: ($spinner-width * -0.5) + px;
+    background-color: rgba($secondary-color, .2);
+    background-clip: padding-box;
+    overflow: hidden;
+    >div {
+      width: $spinner-width + px;
+      height: $spinner-height + px;
+      >div {
+        height: $spinner-height + px;
+        background-color: $primary-color;
+      }
+    }
+  }
+}

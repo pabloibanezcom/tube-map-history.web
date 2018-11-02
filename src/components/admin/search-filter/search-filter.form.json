@@ -4,7 +4,10 @@
     "propertyType": "string",
     "elementConfig": {
       "type": "text",
-      "placeholder": "Station name"
+      "label": "Name",
+      "floating": false,
+      "placeholder": "Type a station name...",
+      "clearable": true
     },
     "validation": {
       "required": true
@@ -15,7 +18,7 @@
     "propertyType": "object",
     "elementConfig": {
       "enabled": false,
-      "toggleType": "secondary",
+      "toggleType": "primary",
       "label": "Year",
       "min": 1853,
       "max": 2018,

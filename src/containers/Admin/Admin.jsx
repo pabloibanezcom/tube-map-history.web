@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import SearchFilter from '../../components/admin/search-filter/search-filter';
 import StationsList from '../../components/admin/stations-list/stations-list';
 import Header from '../../components/UI/header/header';
+import LoadingSpinner from '../../components/UI/loading-spinner/loading-spinner';
 import * as actions from '../../store/actions/admin';
 import * as adminMenu from './adminMenu';
 
@@ -37,6 +38,7 @@ class Admin extends React.Component {
 
   render() {
     return <div>
+      {this.props.loading ? <LoadingSpinner /> : null}
       <Header />
       <div className="container">
         <h1 className="right-line mb-4">Admin</h1>

@@ -66,10 +66,8 @@ class Form extends React.Component {
         switch (this.props.formElements[fEl].elementType) {
           case 'input':
             formElementHtml = <Input
-              type={this.props.formElements[fEl].elementConfig.type}
-              placeholder={this.props.formElements[fEl].elementConfig.placeholder}
+              config={this.props.formElements[fEl].elementConfig}
               value={this.state.formData[fEl].value}
-              disabled={this.props.formElements[fEl].elementConfig.disabled}
               onChange={(evt) => this.onHandleChange(evt, fEl)}
             />;
             break;

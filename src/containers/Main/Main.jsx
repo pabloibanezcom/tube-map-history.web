@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import MapWrapper from '../../components/map/map-wrapper/map-wrapper';
 import Sidebar from '../../components/side-bar/side-bar';
 import Header from '../../components/UI/header/header';
+import LoadingSpinner from '../../components/UI/loading-spinner/loading-spinner';
 import YearSelector from '../../components/UI/year-selector/year-selector';
 import * as actions from '../../store/actions/main';
 
@@ -43,6 +44,7 @@ class Main extends React.Component {
 
   render() {
     return <div>
+      {this.props.loading ? <LoadingSpinner /> : null}
       {this.props.year ? <YearSelector
         year={this.props.year}
         showYearSelector={this.state.showYearSelector}

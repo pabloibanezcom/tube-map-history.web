@@ -1,3 +1,4 @@
+@import "./elements/input/input.scss";
 @import "./elements/range/range.scss";
 @import "./elements/select/select-dropdown/select-dropdown.scss";
 @import "./elements/toggle/toggle.scss";
@@ -23,5 +24,10 @@
   margin-top: 20px;
   &.label-floating {
     margin-top: 35px;
+  }
+  .control-label {
+    font-size: 14px !important;
+    color: $secondary-color !important;
+    font-weight: 500 !important;
   }
 }

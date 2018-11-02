@@ -7,7 +7,7 @@ const toggle = (props) => {
   }
 
   return <div className={`togglebutton ${props.styleType === 'secondary' ? 'secondary' : 'primary'}`} >
-    <label> {props.label} <input type="checkbox" defaultChecked={props.value} onChange={handleChange} /><span className="toggle"></span></label>
+    <label className="control-label"> {props.label} <input type="checkbox" defaultChecked={props.value} onChange={handleChange} /><span className="toggle"></span></label>
   </div>
 }
 
