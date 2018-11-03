@@ -8,7 +8,7 @@ const pagination = (props) => {
   }
 
   return <div className="custom-pagination">
-    <nav aria-label="Page navigation">
+    <nav className="navigation" aria-label="Page navigation">
       <ReactPaginate
         pageCount={props.pagination.pages}
         pageRangeDisplayed={4}

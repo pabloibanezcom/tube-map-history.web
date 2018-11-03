@@ -4,9 +4,8 @@ import * as actionTypes from '../actions/admin/actionTypes';
 const initialState = {
   stations: [],
   connections: [],
-  pagination: {
-    size: 10
-  },
+  pagination: null,
+  searchParams: null,
   loading: false
 };
 
@@ -17,6 +16,13 @@ const startLoading = (state) => {
 const stopLoading = (state) => {
   return updateObject(state, { loading: false });
 };
+
+const searchStationsStart = (state, action) => {
+  return updateObject(state, {
+    searchParams: updateObject(state.searchParams, { stations: action.searchParams }),
+    loading: true
+  });
+}
 
 const searchStationsSuccess = (state, action) => {
   return updateObject(state, {
@@ -35,7 +41,7 @@ const searchConnectionsSuccess = (state, action) => {
 
 export const adminReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.SEARCH_STATIONS_START: return startLoading(state);
+    case actionTypes.SEARCH_STATIONS_START: return searchStationsStart(state, action);
     case actionTypes.SEARCH_STATIONS_SUCCESS: return searchStationsSuccess(state, action);
     case actionTypes.SEARCH_STATIONS_FAIL: return stopLoading(state);
     case actionTypes.SEARCH_CONNECTIONS_START: return startLoading(state);

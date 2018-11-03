@@ -10,6 +10,9 @@ import Pagination from '../../components/UI/pagination/pagination';
 import * as actions from '../../store/actions/admin';
 import * as adminMenu from './adminMenu';
 
+const defaultPagination = require('./defaultPagination.json');
+const defaultStationsSearchParams = require('./defaultStationsSearchParams.json');
+
 class Admin extends React.Component {
 
   constructor(props) {
@@ -19,15 +22,14 @@ class Admin extends React.Component {
       activeTab: {
         id: 'null'
       },
-      searchParams: null,
       tabIndicatorStyle: null
     };
   }
 
   componentDidMount() {
     this.tabWidth = this.tabSet.current.offsetWidth / adminMenu.tabs.length;
-    this.props.onSearchStations();
-    this.setActiveTab({ id: 'stations' }, 0)
+    this.setActiveTab({ id: 'stations' }, 0);
+    this.props.onSearchStations(defaultStationsSearchParams, defaultPagination);
   }
 
   AddConnection(connection) {
@@ -39,12 +41,11 @@ class Admin extends React.Component {
   }
 
   changePage = (page) => {
-    this.props.onSearchStations(this.state.searchParams, { ...this.props.pagination, page: page });
+    this.props.onSearchStations(this.props.searchParams[this.state.activeTab.id], { ...this.props.pagination, page: page });
   }
 
   searchStations = (searchParams) => {
-    this.setState({ searchParams: searchParams });
-    this.props.onSearchStations(searchParams, this.props.pagination);
+    this.props.onSearchStations(searchParams, defaultPagination);
   }
 
   render() {
@@ -75,10 +76,10 @@ class Admin extends React.Component {
                     }
                     {this.state.activeTab.id === 'lines' && <h2>Lines</h2>}
                     {this.state.activeTab.id === 'connections' && <h2>Connections</h2>}
-                    <Pagination
+                    {this.props.pagination ? <Pagination
                       pagination={this.props.pagination}
                       onPageChange={this.changePage}
-                    />
+                    /> : null}
                   </div>
                 </div>
               </div>
@@ -100,6 +101,7 @@ const mapStateToProps = state => {
     stations: state.admin.stations,
     connections: state.admin.connections,
     pagination: state.admin.pagination,
+    searchParams: state.admin.searchParams,
     loading: state.admin.loading
   };
 };
