@@ -1,4 +1,8 @@
 .custom-pagination {
+  text-align: center;
+  .navigation {
+    display: inline-block;
+  }
   .pagination {
     .page-item {
       &.selected {

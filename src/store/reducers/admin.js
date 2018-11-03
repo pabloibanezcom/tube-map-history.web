@@ -5,8 +5,6 @@ const initialState = {
   stations: [],
   connections: [],
   pagination: {
-    page: 1,
-    pages: 7,
     size: 10
   },
   loading: false
