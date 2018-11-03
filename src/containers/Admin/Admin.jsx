@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
+import ResultsSummary from '../../components/admin/results-summary/results-summary';
 import SearchFilter from '../../components/admin/search-filter/search-filter';
 import StationsList from '../../components/admin/stations-list/stations-list';
 import Header from '../../components/UI/header/header';
@@ -9,9 +10,8 @@ import LoadingSpinner from '../../components/UI/loading-spinner/loading-spinner'
 import Pagination from '../../components/UI/pagination/pagination';
 import * as actions from '../../store/actions/admin';
 import * as adminMenu from './adminMenu';
-
-const defaultPagination = require('./defaultPagination.json');
-const defaultStationsSearchParams = require('./defaultStationsSearchParams.json');
+import * as defaultPagination from './defaultPagination';
+import * as defaultStationsSearchParams from './defaultStationsSearchParams';
 
 class Admin extends React.Component {
 
@@ -49,7 +49,7 @@ class Admin extends React.Component {
   }
 
   render() {
-    return <div>
+    return <div className="admin-container">
       {this.props.loading ? <LoadingSpinner /> : null}
       <Header />
       <div className="container">
@@ -62,7 +62,11 @@ class Admin extends React.Component {
                   onClick={() => this.setActiveTab(t, i)}><FontAwesomeIcon icon={t.icon} /> <span className="d-none d-sm-inline">{t.label}</span></a></li>)}
                 <span className="ms-tabs-indicator" style={this.state.tabIndicatorStyle}></span>
               </ul>
-              <div className="card-body">
+              <div className="card-body results-wrapper">
+                {this.props.pagination ? <ResultsSummary
+                  numberElements={this.props.pagination.total}
+                  label={this.state.activeTab.id}
+                /> : null}
                 <div className="tab-content">
                   <div role="tabpanel" className="tab-pane fade active show">
                     {this.state.activeTab.id === 'stations' &&

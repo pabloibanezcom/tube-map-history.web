@@ -1,0 +1,13 @@
+.results-summary {
+  padding-left: 10px;
+  padding-bottom: 10px;
+  .amount {
+    color: $primary-color;
+    font-weight: 500;
+    margin-right: 10px;
+  }
+  .label {
+    color: $secondary-color;
+    font-size: 18px;
+  }
+}
