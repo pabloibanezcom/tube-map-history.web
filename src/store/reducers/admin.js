@@ -4,6 +4,11 @@ import * as actionTypes from '../actions/admin/actionTypes';
 const initialState = {
   stations: [],
   connections: [],
+  pagination: {
+    page: 1,
+    pages: 7,
+    size: 10
+  },
   loading: false
 };
 
@@ -18,6 +23,7 @@ const stopLoading = (state) => {
 const searchStationsSuccess = (state, action) => {
   return updateObject(state, {
     stations: action.stations,
+    pagination: action.pagination,
     loading: false
   });
 };

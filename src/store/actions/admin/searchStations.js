@@ -1,9 +1,10 @@
 import * as actionTypes from './actionTypes';
 
-export const searchStationsSuccess = (stations) => {
+export const searchStationsSuccess = (data) => {
   return {
     type: actionTypes.SEARCH_STATIONS_SUCCESS,
-    stations: stations
+    stations: data.elements,
+    pagination: data.pagination
   };
 };
 
@@ -14,9 +15,10 @@ export const searchStationsFail = (error) => {
   };
 };
 
-export const searchStationsStart = (searchParams) => {
+export const searchStationsStart = (searchParams, pagination) => {
   return {
     type: actionTypes.SEARCH_STATIONS_START,
-    searchParams: searchParams
+    searchParams: searchParams,
+    pagination: pagination
   };
 };

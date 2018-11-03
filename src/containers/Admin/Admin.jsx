@@ -6,6 +6,7 @@ import SearchFilter from '../../components/admin/search-filter/search-filter';
 import StationsList from '../../components/admin/stations-list/stations-list';
 import Header from '../../components/UI/header/header';
 import LoadingSpinner from '../../components/UI/loading-spinner/loading-spinner';
+import Pagination from '../../components/UI/pagination/pagination';
 import * as actions from '../../store/actions/admin';
 import * as adminMenu from './adminMenu';
 
@@ -18,8 +19,9 @@ class Admin extends React.Component {
       activeTab: {
         id: 'null'
       },
+      searchParams: null,
       tabIndicatorStyle: null
-    }
+    };
   }
 
   componentDidMount() {
@@ -34,6 +36,15 @@ class Admin extends React.Component {
 
   setActiveTab = (tab, index) => {
     this.setState({ activeTab: tab, tabIndicatorStyle: { width: `${this.tabWidth}px`, left: index * this.tabWidth } });
+  }
+
+  changePage = (page) => {
+    this.props.onSearchStations(this.state.searchParams, { ...this.props.pagination, page: page });
+  }
+
+  searchStations = (searchParams) => {
+    this.setState({ searchParams: searchParams });
+    this.props.onSearchStations(searchParams, this.props.pagination);
   }
 
   render() {
@@ -64,6 +75,10 @@ class Admin extends React.Component {
                     }
                     {this.state.activeTab.id === 'lines' && <h2>Lines</h2>}
                     {this.state.activeTab.id === 'connections' && <h2>Connections</h2>}
+                    <Pagination
+                      pagination={this.props.pagination}
+                      onPageChange={this.changePage}
+                    />
                   </div>
                 </div>
               </div>
@@ -71,7 +86,7 @@ class Admin extends React.Component {
           </div>
           <div className="col-md-3">
             <SearchFilter
-              onSearch={this.props.onSearchStations}
+              onSearch={this.searchStations}
             />
           </div>
         </div>
@@ -84,13 +99,14 @@ const mapStateToProps = state => {
   return {
     stations: state.admin.stations,
     connections: state.admin.connections,
+    pagination: state.admin.pagination,
     loading: state.admin.loading
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSearchStations: (searchParams) => dispatch(actions.searchStationsStart(searchParams)),
+    onSearchStations: (searchParams, pagination) => dispatch(actions.searchStationsStart(searchParams, pagination)),
     onEditStation: (station) => dispatch(actions.editStationStart(station)),
     onAddConnection: (connection) => dispatch(actions.addConnectionStart(connection))
   }
