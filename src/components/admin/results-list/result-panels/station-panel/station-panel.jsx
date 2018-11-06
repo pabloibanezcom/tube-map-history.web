@@ -6,15 +6,15 @@ const stationPanel = (props) => {
   return <div className="station-panel">
     <div className="row">
       <div className="col-lg-6">
-        <div className="station-name">{props.station.name}</div>
+        <div className="station-name">{props.result.name}</div>
         <div className="station-element station-year">
           <span className="station-element-label"><FontAwesomeIcon icon={'calendar-alt'} />Year:</span>
-          <span className="station-element-value">{props.station.year}</span>
+          <span className="station-element-value">{props.result.year}</span>
         </div>
-        {props.station.geometry.coordinates ?
+        {props.result.geometry.coordinates ?
           <div className="station-element station-coordenates">
             <span className="station-element-label"><FontAwesomeIcon icon={'map-marker-alt'} />Coordenates:</span>
-            <span className="station-element-value">{props.station.geometry.coordinates[0]} N  {props.station.geometry.coordinates[1]} W</span>
+            <span className="station-element-value">{props.result.geometry.coordinates[0]} N  {props.result.geometry.coordinates[1]} W</span>
           </div>
           : null}
         <div className="station-element station-farezones">
@@ -22,22 +22,22 @@ const stationPanel = (props) => {
           <span className="station-element-value">2 & 3</span>
         </div>
         <div className="station-buttons">
-          <button type="button" className="btn btn-raised btn-secondary" onClick={() => props.onEditStation(props.station)}>Edit<div className="ripple-container"></div></button>
-          <button type="button" className="btn btn-danger">Delete</button>
+          <button type="button" className="btn btn-raised btn-secondary" onClick={() => props.onShowDialog('EDIT_STATION', props.result)}>Edit<div className="ripple-container"></div></button>
+          <button type="button" className="btn btn-danger" onClick={() => props.onShowDialog('DELETE_STATION', props.result)}>Delete</button>
         </div>
       </div>
       <div className="col-lg-6">
         <div className="connections">
           <div className="connections-header"><FontAwesomeIcon icon={'exchange-alt'} />Connections</div>
           <div>
-            {props.station.connections && props.station.connections.map((con, i) => {
+            {props.result.connections && props.result.connections.map((con, i) => {
               return <ConnectionInfo key={i}
-                stationId={props.station._id}
+                stationId={props.result._id}
                 connection={con} />
             })}
           </div>
           <div className="connections-buttons">
-            <button type="button" className="btn btn-raised btn-secondary" onClick={() => props.onAddConnection(props.station)}>Add connection<div className="ripple-container"></div></button>
+            <button type="button" className="btn btn-raised btn-secondary" onClick={() => props.onShowDialog('ADD_CONNECTION_TO_STATION', null, { stationFrom: props.result })}>Add connection<div className="ripple-container"></div></button>
           </div>
         </div>
       </div>

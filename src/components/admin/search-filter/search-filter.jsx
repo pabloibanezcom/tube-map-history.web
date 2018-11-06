@@ -1,39 +1,33 @@
 import React from 'react';
 import Form from '../../form/form';
-import * as formElements from './search-filter.form.json';
 
-class SearchFilter extends React.Component {
+const formFilters = {
+  stations: require('./form-filters/stations.json'),
+  lines: require('./form-filters/lines.json'),
+  connections: require('./form-filters/connections.json'),
+};
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      stationName: '',
-      testFilterName: 'Test'
-    }
-    this.handleValidSubmit = this.handleValidSubmit.bind(this);
+const searchFilter = (props) => {
+
+  const handleValidSubmit = (formData) => {
+    props.onSearch(null, formData);
   }
 
-  handleValidSubmit(formData) {
-    this.props.onSearch(formData);
-  }
-
-  render() {
-    return <div className="search-filter">
-      <div className="panel panel-primary">
-        <div className="panel-heading">
-          <h3 className="panel-title">
-            <i className="fa fa-search"></i> Search panel</h3>
-        </div>
-        <div className="panel-body">
-          <Form
-            formElements={formElements}
-            onValidSubmit={this.handleValidSubmit}
-            {...this.props}
-          />
-        </div>
+  return <div className="search-filter">
+    <div className="panel panel-primary">
+      <div className="panel-heading">
+        <h3 className="panel-title">
+          <i className="fa fa-search"></i> Search panel</h3>
+      </div>
+      <div className="panel-body">
+        <Form
+          formElements={formFilters[props.activeTab]}
+          onValidSubmit={handleValidSubmit}
+          {...props}
+        />
       </div>
     </div>
-  }
+  </div>
 }
 
-export default SearchFilter;
+export default searchFilter;

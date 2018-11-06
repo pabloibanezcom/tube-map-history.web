@@ -1,0 +1,23 @@
+{
+  "name": {
+    "elementType": "input",
+    "propertyType": "string",
+    "elementConfig": {
+      "type": "text",
+      "label": "Name",
+      "floating": false,
+      "placeholder": "Type a line name...",
+      "clearable": true
+    },
+    "validation": {
+      "required": true
+    }
+  },
+  "searchButton": {
+    "elementType": "button",
+    "elementConfig": {
+      "type": "submit",
+      "text": "Search"
+    }
+  }
+}

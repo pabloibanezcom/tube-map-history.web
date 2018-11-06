@@ -3,7 +3,7 @@ import * as actionTypes from './actionTypes';
 export const searchStationsSuccess = (data) => {
   return {
     type: actionTypes.SEARCH_STATIONS_SUCCESS,
-    stations: data.elements,
+    results: data.elements,
     pagination: data.pagination
   };
 };

@@ -1,0 +1,18 @@
+@import "./result-panels/station-panel/station-panel.scss";
+.result-header {
+  img {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+  }
+  .name {
+    font-weight: 500;
+  }
+  .extra-info-labels {
+    float: right;
+    margin-right: 50px;
+    .line-badge {
+      margin-left: 10px;
+    }
+  }
+}

@@ -12,10 +12,11 @@ export const editStation = (station) => {
   return update('station', station);
 }
 
-export const searchStations = (searchParams, pagination) => {
-  return axios.post('station', {
+export const search = (model, searchParams, pagination) => {
+  return axios.post(`${model}/search`, {
     filter: searchParams,
     populate: searchStationsParams.populate,
     pagination: pagination || defaultPagination
   });
 }
+

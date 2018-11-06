@@ -1,0 +1,14 @@
+{
+  "EDIT_STATION": {
+    "action": "onEditStation",
+    "title": "Edit station"
+  },
+  "DELETE_STATION": {
+    "action": "onDeleteStation",
+    "title": "Delete station"
+  },
+  "ADD_CONNECTION_TO_STATION": {
+    "action": "onAddConnection",
+    "title": "Add connection"
+  }
+}

@@ -35,7 +35,7 @@ const header = (props) => {
             <i className="zmdi zmdi-share"></i>
           </a>
         </div>
-        <a href="" onClick={e => { e.preventDefault(); props.onToggleYearSelector(); }} className="btn-circle btn-circle-primary no-focus animated zoomInDown animation-delay-8" data-toggle="modal" data-target="#ms-account-modal">
+        <a href="" onClick={e => { e.preventDefault(); props.onToggleYearSelector(); }} className="toggle-year-link btn-circle btn-circle-primary no-focus animated zoomInDown animation-delay-8" data-toggle="modal" >
           <i className="zmdi zmdi-calendar"></i>
         </a>
         <form className="search-form animated zoomInDown animation-delay-9">

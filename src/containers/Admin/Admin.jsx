@@ -2,16 +2,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
+import ActionDialog from '../../components/admin/action-dialog/action-dialog';
+import ResultsList from '../../components/admin/results-list/results-list';
 import ResultsSummary from '../../components/admin/results-summary/results-summary';
 import SearchFilter from '../../components/admin/search-filter/search-filter';
-import StationsList from '../../components/admin/stations-list/stations-list';
 import Header from '../../components/UI/header/header';
 import LoadingSpinner from '../../components/UI/loading-spinner/loading-spinner';
 import Pagination from '../../components/UI/pagination/pagination';
 import * as actions from '../../store/actions/admin';
 import * as adminMenu from './adminMenu';
 import * as defaultPagination from './defaultPagination';
-import * as defaultStationsSearchParams from './defaultStationsSearchParams';
+import * as defaultSearchParams from './defaultPagination';
 
 class Admin extends React.Component {
 
@@ -19,33 +20,54 @@ class Admin extends React.Component {
     super(props);
     this.tabSet = React.createRef();
     this.state = {
-      activeTab: {
-        id: 'null'
-      },
-      tabIndicatorStyle: null
+      tabs: adminMenu.tabs,
+      activeTab: null,
+      tabIndicatorStyle: null,
+      tabWidth: null,
+      actionDialog: null
     };
   }
 
   componentDidMount() {
-    this.tabWidth = this.tabSet.current.offsetWidth / adminMenu.tabs.length;
-    this.setActiveTab({ id: 'stations' }, 0);
-    this.props.onSearchStations(defaultStationsSearchParams, defaultPagination);
+    this.setActiveTab(adminMenu.tabs[0]);
+  }
+
+  setActiveTab = (tab) => {
+    const tabIndex = this.state.tabs.findIndex(t => t.id === tab.id);
+    const tabWith = this.tabSet.current.offsetWidth / this.state.tabs.length;
+    this.setState({ activeTab: tab, tabIndicatorStyle: { width: `${tabWith}px`, left: tabIndex * tabWith } });
+    this.search(tab.id);
+  }
+
+  search = (tabId, searchParams, pagination) => {
+    const activeTabId = tabId || this.state.activeTab.id;
+    const _pagination = pagination || defaultPagination;
+    let _searchParams;
+    if (searchParams) {
+      _searchParams = searchParams;
+    } else if (this.props.searchParams && this.props.searchParams[activeTabId]) {
+      _searchParams = this.props.searchParams[activeTabId];
+    } else {
+      _searchParams = defaultSearchParams[activeTabId];
+    }
+    this.props.onSearch[activeTabId](_searchParams, _pagination);
+  }
+
+  changePage = (page) => {
+    this.search(null, null, { ...this.props.pagination, page: page });
+  }
+
+  showDialog = (action, element, otherData) => {
+    this.setState({ actionDialog: { action: action, element: element, otherData: otherData } });
+  }
+
+  dialogSuccess = (action, element) => {
+    this.props[action](element);
+    this.setState({ actionDialog: null });
   }
 
   AddConnection(connection) {
     this.props.onAddConnection(connection);
-  }
-
-  setActiveTab = (tab, index) => {
-    this.setState({ activeTab: tab, tabIndicatorStyle: { width: `${this.tabWidth}px`, left: index * this.tabWidth } });
-  }
-
-  changePage = (page) => {
-    this.props.onSearchStations(this.props.searchParams[this.state.activeTab.id], { ...this.props.pagination, page: page });
-  }
-
-  searchStations = (searchParams) => {
-    this.props.onSearchStations(searchParams, defaultPagination);
   }
 
   render() {
@@ -69,17 +91,11 @@ class Admin extends React.Component {
                 /> : null}
                 <div className="tab-content">
                   <div role="tabpanel" className="tab-pane fade active show">
-                    {this.state.activeTab.id === 'stations' &&
-                      <StationsList
-                        stations={this.props.stations}
-                        lines={this.props.allLines}
-                        onEditStation={this.props.onEditStation}
-                        onAddConnection={this.props.onAddConnection}
-                        onSelectFilteredStations={this.props.onSelectFilteredStations}
-                      />
-                    }
-                    {this.state.activeTab.id === 'lines' && <h2>Lines</h2>}
-                    {this.state.activeTab.id === 'connections' && <h2>Connections</h2>}
+                    {this.props.currentResulsType ? <ResultsList
+                      currentResulsType={this.props.currentResulsType}
+                      results={this.props.results}
+                      onShowDialog={this.showDialog}
+                    /> : null}
                     {this.props.pagination ? <Pagination
                       pagination={this.props.pagination}
                       onPageChange={this.changePage}
@@ -90,20 +106,29 @@ class Admin extends React.Component {
             </div>
           </div>
           <div className="col-md-3">
-            <SearchFilter
-              onSearch={this.searchStations}
-            />
+            {this.state.activeTab ? <SearchFilter
+              activeTab={this.state.activeTab.id}
+              onSearch={this.search}
+            /> : null}
           </div>
         </div>
       </div>
+      {this.state.actionDialog ?
+        <ActionDialog
+          action={this.state.actionDialog.action}
+          element={this.state.actionDialog.element}
+          otherData={this.state.actionDialog.otherData}
+          onSuccess={this.dialogSuccess}
+          onClose={() => this.showDialog(null)} />
+        : null}
     </div>
   }
 }
 
 const mapStateToProps = state => {
   return {
-    stations: state.admin.stations,
-    connections: state.admin.connections,
+    results: state.admin.results,
+    currentResulsType: state.admin.currentResulsType,
     pagination: state.admin.pagination,
     searchParams: state.admin.searchParams,
     loading: state.admin.loading
@@ -112,7 +137,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSearchStations: (searchParams, pagination) => dispatch(actions.searchStationsStart(searchParams, pagination)),
+    onSearch: {
+      stations: (searchParams, pagination) => dispatch(actions.searchStationsStart(searchParams, pagination)),
+      lines: (searchParams, pagination) => dispatch(actions.searchLinesStart(searchParams, pagination)),
+      connections: (searchParams, pagination) => dispatch(actions.searchConnectionsStart(searchParams, pagination))
+    },
     onEditStation: (station) => dispatch(actions.editStationStart(station)),
     onAddConnection: (connection) => dispatch(actions.addConnectionStart(connection))
   }

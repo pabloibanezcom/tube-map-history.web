@@ -6,15 +6,15 @@ export const getDynamicComponent = (componentName) => {
 
 const DYNAMIC_COMPONENTS = {
   SelectedLine: asyncComponent(() => {
-    return import('../admin/custom-selects/selected-line/selected-line');
+    return import('../UI/custom-selects/selected-line/selected-line');
   }),
   DropdownLine: asyncComponent(() => {
-    return import('../admin/custom-selects/dropdown-line/dropdown-line');
+    return import('../UI/custom-selects/dropdown-line/dropdown-line');
   }),
   SelectedStation: asyncComponent(() => {
-    return import('../admin/custom-selects/selected-station/selected-station');
+    return import('../UI/custom-selects/selected-station/selected-station');
   }),
   DropdownStation: asyncComponent(() => {
-    return import('../admin/custom-selects/dropdown-station/dropdown-station');
+    return import('../UI/custom-selects/dropdown-station/dropdown-station');
   })
 }
