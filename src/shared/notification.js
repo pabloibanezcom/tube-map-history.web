@@ -1,8 +1,7 @@
 import Snackbar from 'node-snackbar/dist/snackbar';
 
 const sharedConfig = {
-  pos: 'bottom-right',
-  duration: 50000
+  pos: 'bottom-right'
 }
 
 export const info = (text) => {

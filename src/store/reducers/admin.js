@@ -18,10 +18,13 @@ const stopLoading = (state) => {
 };
 
 const searchStart = (state, action, model) => {
-  return updateObject(state, {
-    searchParams: updateObject(state.searchParams, { [model]: action.searchParams }),
+  const updatedProperties = {
     loading: true
-  });
+  }
+  if (action.searchParams) {
+    updatedProperties.searchParams = updateObject(state.searchParams, { [model]: action.searchParams })
+  }
+  return updateObject(state, updatedProperties);
 }
 
 const searchSuccess = (state, action, model) => {
