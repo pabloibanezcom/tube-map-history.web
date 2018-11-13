@@ -62,7 +62,8 @@
     "propertyType": "number",
     "elementConfig": {
       "type": "number",
-      "placeholder": "Year"
+      "placeholder": "Year",
+      "label": "Year"
     },
     "validation": {
       "required": false,
