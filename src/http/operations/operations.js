@@ -16,6 +16,10 @@ export const update = (model, element) => {
   return axios.put(`${model}/${element._id}`, element)
 }
 
+export const deleteOp = (model, element) => {
+  return axios.delete(`${model}/${element._id}`)
+}
+
 const transformSearchParams = (model, searchParams) => {
   const result = {
     filter: searchParams.filter || {},

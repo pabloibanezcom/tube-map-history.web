@@ -146,7 +146,7 @@ const mapDispatchToProps = dispatch => {
     },
     onEditStation: (station) => dispatch(actions.editStationStart(station)),
     onAddConnection: (connection) => dispatch(actions.addConnectionStart(connection)),
-    onDeleteConnection: (connection) => console.log('Delete connection', connection)
+    onDeleteConnection: (connection) => dispatch(actions.deleteConnectionStart(connection))
   }
 };
 

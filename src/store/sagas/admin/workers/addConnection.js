@@ -1,12 +1,16 @@
 import { put } from "redux-saga/effects";
 import { addConnection } from "../../../../http/admin";
+import { error, info } from '../../../../shared/notification';
 import * as actions from "../../../actions/admin";
 
 export function* addConnectionSagaStart(action) {
   try {
     const response = yield addConnection(action.connection);
     yield put(actions.addConnectionSuccess(response.data));
-  } catch (error) {
-    yield put(actions.addConnectionFail(error));
+    yield put(actions.searchStationsStart());
+    info(`Connection added successfully!`);
+  } catch (err) {
+    yield put(actions.addConnectionFail(err));
+    error(`Connection could not be added!!`);
   }
 }

@@ -1,6 +1,6 @@
 import { put } from "redux-saga/effects";
 import { editStation } from "../../../../http/admin";
-import { info } from '../../../../shared/notification';
+import { error, info } from '../../../../shared/notification';
 import * as actions from "../../../actions/admin";
 
 export function* editStationSagaStart(action) {
@@ -10,8 +10,8 @@ export function* editStationSagaStart(action) {
     yield put(actions.searchStationsStart());
     info(`${action.station.name} - Station updated successfully!`);
   }
-  catch (error) {
-    yield put(actions.editStationFail(error));
+  catch (err) {
+    yield put(actions.editStationFail(err));
     error(`${action.station.name} - Station could not be updated!!`);
   }
 }

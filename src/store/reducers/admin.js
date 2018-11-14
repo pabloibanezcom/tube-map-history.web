@@ -53,6 +53,9 @@ export const adminReducer = (state = initialState, action) => {
     case actionTypes.ADD_CONNECTION_START: return startLoading(state);
     case actionTypes.ADD_CONNECTION_SUCCESS: return stopLoading(state);
     case actionTypes.ADD_CONNECTION_FAIL: return stopLoading(state);
+    case actionTypes.DELETE_CONNECTION_START: return startLoading(state);
+    case actionTypes.DELETE_CONNECTION_SUCCESS: return stopLoading(state);
+    case actionTypes.DELETE_CONNECTION_FAIL: return stopLoading(state);
     default: return state;
   }
 };
