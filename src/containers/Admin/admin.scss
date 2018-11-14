@@ -5,6 +5,9 @@
       background-color: $primary-color;
     }
   }
+  >.container {
+    padding-bottom: 40px;
+  }
   .nav-tabs-transparent {
     border-bottom: none;
   }

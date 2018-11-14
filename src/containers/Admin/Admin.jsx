@@ -6,6 +6,7 @@ import ActionDialog from '../../components/admin/action-dialog/action-dialog';
 import ResultsList from '../../components/admin/results-list/results-list';
 import ResultsSummary from '../../components/admin/results-summary/results-summary';
 import SearchFilter from '../../components/admin/search-filter/search-filter';
+import Footer from '../../components/UI/footer/footer';
 import Header from '../../components/UI/header/header';
 import LoadingSpinner from '../../components/UI/loading-spinner/loading-spinner';
 import Pagination from '../../components/UI/pagination/pagination';
@@ -113,6 +114,7 @@ class Admin extends React.Component {
           </div>
         </div>
       </div>
+      <Footer />
       {this.state.actionDialog ?
         <ActionDialog
           action={this.state.actionDialog.action}
