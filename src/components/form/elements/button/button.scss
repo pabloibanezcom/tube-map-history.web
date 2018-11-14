@@ -1,9 +1,7 @@
 .btn {
   font-size: 14px;
   &.btn-primary {
-    background-color: $primary-color !important;
-    border-color: $secondary-color !important;
-    color: $primary-alt-color !important;
+    color: $primary-color !important;
     &.btn-raised {
       background-color: $primary-color !important;
       border-color: $secondary-color !important;
@@ -14,10 +12,11 @@
     }
   }
   &.btn-secondary {
-    background-color: $secondary-color !important;
-    border-color: $primary-color !important;
+    color: $secondary-color !important;
     &.btn-raised {
-      color: $white-color !important;
+      background-color: $secondary-color !important;
+      border-color: $primary-color !important;
+      color: $secondary-alt-color !important;
     }
     &:hover {
       background-color: darken($secondary-color, 5%) !important;

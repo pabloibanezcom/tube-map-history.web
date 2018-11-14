@@ -29,11 +29,12 @@ const stationPanel = (props) => {
       <div className="col-lg-6">
         <div className="connections">
           <div className="connections-header"><FontAwesomeIcon icon={'exchange-alt'} />Connections</div>
-          <div>
+          <div className="connections-list">
             {props.result.connections && props.result.connections.map((con, i) => {
               return <ConnectionInfo key={i}
                 stationId={props.result._id}
-                connection={con} />
+                connection={con}
+                position={con.stations[0]._id === props.result._id ? 'right' : 'left'} />
             })}
           </div>
           <div className="connections-buttons">
