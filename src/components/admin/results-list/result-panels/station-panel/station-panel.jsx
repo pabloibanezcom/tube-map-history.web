@@ -34,7 +34,8 @@ const stationPanel = (props) => {
               return <ConnectionInfo key={i}
                 stationId={props.result._id}
                 connection={con}
-                position={con.stations[0]._id === props.result._id ? 'right' : 'left'} />
+                position={con.stations[0]._id === props.result._id ? 'right' : 'left'}
+                onShowDialog={props.onShowDialog} />
             })}
           </div>
           <div className="connections-buttons">

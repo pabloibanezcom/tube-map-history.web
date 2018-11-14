@@ -1,0 +1,17 @@
+@import "./element-info/delete-connection-info/delete-connection-info.scss";
+.delete-content {
+  .delete-question {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .delete-buttons {
+    text-align: right;
+    margin-top: 20px;
+    .btn-danger {
+      margin-right: 15px;
+    }
+  }
+}

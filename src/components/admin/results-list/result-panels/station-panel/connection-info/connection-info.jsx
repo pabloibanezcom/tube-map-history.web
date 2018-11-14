@@ -16,7 +16,7 @@ const connectionInfo = (props) => {
     <div className="connection-line-name">{props.connection.line.name}</div>
     <div className={`connection-buttons ${props.position}`}>
       <button type="button" className="btn btn-xs btn-raised btn-secondary">Edit</button>
-      <button type="button" className="btn btn-xs btn-danger">Delete</button>
+      <button type="button" className="btn btn-xs btn-danger" onClick={() => props.onShowDialog('DELETE_CONNECTION', props.connection)}>Delete</button>
     </div>
     <div className="clearfix"></div>
   </div>

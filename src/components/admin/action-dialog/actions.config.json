@@ -4,11 +4,17 @@
     "title": "Edit station"
   },
   "DELETE_STATION": {
+    "type": "DELETE",
     "action": "onDeleteStation",
     "title": "Delete station"
   },
   "ADD_CONNECTION_TO_STATION": {
     "action": "onAddConnection",
     "title": "Add connection"
+  },
+  "DELETE_CONNECTION": {
+    "type": "DELETE",
+    "action": "onDeleteConnection",
+    "title": "Delete connection"
   }
 }

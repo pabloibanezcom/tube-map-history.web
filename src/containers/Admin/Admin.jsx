@@ -145,7 +145,8 @@ const mapDispatchToProps = dispatch => {
       connections: (searchParams, pagination) => dispatch(actions.searchConnectionsStart(searchParams, pagination))
     },
     onEditStation: (station) => dispatch(actions.editStationStart(station)),
-    onAddConnection: (connection) => dispatch(actions.addConnectionStart(connection))
+    onAddConnection: (connection) => dispatch(actions.addConnectionStart(connection)),
+    onDeleteConnection: (connection) => console.log('Delete connection', connection)
   }
 };
 
