@@ -27,6 +27,7 @@
     "elementType": "button",
     "elementConfig": {
       "type": "submit",
+      "style": "secondary",
       "text": "Edit station"
     }
   }

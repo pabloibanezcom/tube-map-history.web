@@ -1,17 +1,25 @@
- $primary-color: #e6c300;
- $secondary-color: #002541;
- $white-color: #fff;
- $warning-color: #eb8c00;
- $danger-color: #f44336;
- $background-color: $secondary-color;
- @font-face {
-   font-family: 'Johnston100';
-   src: url('./assets/fonts/Johnston100-Regular.eot');
-   src: url('./assets/fonts/Johnston100-Regular.eot?#iefix') format('embedded-opentype'), url('./assets/fonts/Johnston100-Regular.woff') format('woff'), url('./assets/fonts/Johnston100-Regular.ttf') format('truetype'), url('./assets/fonts/Johnston100-Regular.svg#fontname') format('svg');
- }
+$white-color: #fffffc;
+$primary-color: #e6c300;
+$primary-alt-color: #002541;
+$secondary-color: #002c41;
+$secondary-alt-color: $white-color;
+$warning-color: #eb8c00;
+$danger-color: #f44336;
+/* Panel colors */
 
- @font-face {
-   font-family: 'Johnston100-light';
-   src: url('./assets/fonts/Johnston100-Light.eot');
-   src: url('./assets/fonts/Johnston100-Light.eot?#iefix') format('embedded-opentype'), url('./assets/fonts/Johnston100-Light.woff') format('woff'), url('./assets/fonts/Johnston100-Light.ttf') format('truetype'), url('./assets/fonts/Johnston100-Light.svg#fontname') format('svg');
- }
+$panel-primary-color: #102029;
+$panel-secondary-color: #254151;
+/* Background colors */
+
+$background-color: $secondary-color;
+@font-face {
+  font-family: 'Johnston100';
+  src: url('./assets/fonts/Johnston100-Regular.eot');
+  src: url('./assets/fonts/Johnston100-Regular.eot?#iefix') format('embedded-opentype'), url('./assets/fonts/Johnston100-Regular.woff') format('woff'), url('./assets/fonts/Johnston100-Regular.ttf') format('truetype'), url('./assets/fonts/Johnston100-Regular.svg#fontname') format('svg');
+}
+
+@font-face {
+  font-family: 'Johnston100-light';
+  src: url('./assets/fonts/Johnston100-Light.eot');
+  src: url('./assets/fonts/Johnston100-Light.eot?#iefix') format('embedded-opentype'), url('./assets/fonts/Johnston100-Light.woff') format('woff'), url('./assets/fonts/Johnston100-Light.ttf') format('truetype'), url('./assets/fonts/Johnston100-Light.svg#fontname') format('svg');
+}

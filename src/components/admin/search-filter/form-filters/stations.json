@@ -71,6 +71,7 @@
     "elementType": "button",
     "elementConfig": {
       "type": "submit",
+      "style": "primary",
       "text": "Search"
     }
   }

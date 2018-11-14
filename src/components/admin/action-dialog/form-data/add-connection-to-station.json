@@ -75,6 +75,7 @@
     "elementType": "button",
     "elementConfig": {
       "type": "submit",
+      "style": "secondary",
       "text": "Add connection"
     }
   }

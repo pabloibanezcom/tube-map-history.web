@@ -1,5 +1,15 @@
 .admin-container {
+  h1 {
+    color: $secondary-color;
+    &:after {
+      background-color: $primary-color;
+    }
+  }
+  .nav-tabs-transparent {
+    border-bottom: none;
+  }
   .results-wrapper {
-    padding: 0 2rem;
+    padding: 0;
+    background-color: $panel-secondary-color;
   }
 }

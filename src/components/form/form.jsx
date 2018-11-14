@@ -87,6 +87,7 @@ class Form extends React.Component {
           case 'button':
             formElementHtml = <Button
               text={this.props.formElements[fEl].elementConfig.text}
+              type={this.props.formElements[fEl].elementConfig.style || 'primary'}
               style={{ marginTop: '50px' }}
             />;
             break;

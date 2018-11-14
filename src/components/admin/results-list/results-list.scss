@@ -1,18 +1,27 @@
 @import "./result-panels/station-panel/station-panel.scss";
-.result-header {
-  img {
-    width: 18px;
-    height: 18px;
-    margin-right: 10px;
+.results-list {
+  .card {
+    margin-bottom: 0;
+    .card-header {
+      background-color: $panel-primary-color;
+      border-bottom: 1px solid $panel-secondary-color;
+      a {
+        color: $white-color !important;
+      }
+    }
   }
-  .name {
-    font-weight: 500;
-  }
-  .extra-info-labels {
-    float: right;
-    margin-right: 50px;
-    .line-badge {
-      margin-left: 10px;
+  .result-header {
+    img {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+    }
+    .extra-info-labels {
+      float: right;
+      margin-right: 50px;
+      .line-badge {
+        margin-left: 10px;
+      }
     }
   }
 }

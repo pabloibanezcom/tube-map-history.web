@@ -10,15 +10,24 @@
       &:hover {
         background-color: $primary-color;
         color: $secondary-color;
+        .card-code-title {
+          a {
+            color: $secondary-color !important;
+          }
+        }
       }
+    }
+    .card-collapse {
+      background-color: $panel-secondary-color;
+      color: $white-color;
     }
     &.active {
       .card-header {
-        background-color: $secondary-color;
-        color: $white-color;
+        background-color: $primary-color;
+        color: $secondary-color;
         .card-code-title {
           a {
-            color: $white-color;
+            color: $secondary-color !important;
           }
         }
       }

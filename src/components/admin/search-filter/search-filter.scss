@@ -3,12 +3,26 @@
     .panel-heading {
       background-color: $primary-color;
       .panel-title {
-        color: $secondary-color;
+        color: $primary-alt-color;
         font-weight: 500;
       }
     }
     .panel-body {
-      background-color: $white-color;
+      background-color: $panel-secondary-color;
+      color: $white-color;
+      .form-group {
+        .control-label {
+          color: $white-color !important;
+        }
+        .form-control {
+          color: $white-color;
+        }
+        .dropdown {
+          .btn {
+            color: $white-color;
+          }
+        }
+      }
     }
   }
 }
