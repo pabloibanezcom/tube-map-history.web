@@ -1,5 +1,5 @@
 import React from 'react';
-import { initMap, updateMap } from '../../../map/map.service';
+import { initMap, updateMap } from '../../../map/map.google.service';
 import Overlay from '../../UI/overlay/overlay';
 
 class MapWrapper extends React.Component {
