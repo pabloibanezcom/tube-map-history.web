@@ -4,6 +4,8 @@ import Overlay from '../../components/UI/overlay/overlay';
 import { initMap, restoreMapState, updateMap, zoomToPoint } from '../../map/map.google.service';
 import * as actions from '../../store/actions/main';
 
+const showMapAnimations = (process.env.REACT_APP_MAP_ANIMATIONS === 'true');
+
 class MapWrapper extends React.Component {
 
   componentDidMount() {
@@ -11,14 +13,15 @@ class MapWrapper extends React.Component {
   }
 
   showStation = (station) => {
-    this.props.onStationSelected(station, zoomToPoint(this.map, station.geometry.coordinates));
+    const mapState = showMapAnimations ? zoomToPoint(this.map, station.geometry.coordinates) : null;
+    this.props.onStationSelected(station, mapState);
   }
 
   render() {
     if (!this.props.loading && this.map && this.props.stations && this.props.connections) {
       updateMap(this.map, this.props.stations, this.props.connections, this.props.year, this.props.previousYear, this.showStation);
     }
-    if (!this.props.sideBarMode && this.props.mapState) {
+    if (process.env.REACT_APP_MAP_ANIMATIONS && !this.props.sideBarMode && this.props.mapState) {
       restoreMapState(this.map, this.props.mapState);
       this.props.onClearMapState();
     }
