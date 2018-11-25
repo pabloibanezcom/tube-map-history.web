@@ -1,7 +1,6 @@
 @import "./admin/action-dialog/action-dialog.scss";
 @import "./admin/search-filter/search-filter.scss";
 @import "./admin/results-summary/results-summary.scss";
-@import "./map/map-wrapper/map-wrapper.scss";
 @import "./form/form.scss";
 @import "./UI/custom-selects/custom-selects.scss";
 @import "./UI/collapse/collapse.scss";
@@ -12,6 +11,6 @@
 @import "./UI/overlay/overlay.scss";
 @import "./UI/pagination/pagination.scss";
 @import "./UI/year-selector/year-selector.scss";
-@import "./side-bar/side-bar.scss";
-@import "./lines-info/line-info/line-info.scss";
+@import "./side-info/lines-info/line-info/line-info.scss";
+@import "./side-info/station-info/station-info.scss";
 @import "./admin/results-list/results-list.scss";

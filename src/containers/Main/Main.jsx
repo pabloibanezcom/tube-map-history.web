@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
-import MapWrapper from '../../components/map/map-wrapper/map-wrapper';
-import Sidebar from '../../components/side-bar/side-bar';
 import Header from '../../components/UI/header/header';
 import LoadingSpinner from '../../components/UI/loading-spinner/loading-spinner';
 import YearSelector from '../../components/UI/year-selector/year-selector';
 import * as actions from '../../store/actions/main';
+import MapWrapper from '../MapWrapper/MapWrapper';
+import Sidebar from '../SideBar/SideBar';
 
 class Main extends React.Component {
 
@@ -14,10 +14,9 @@ class Main extends React.Component {
     super(props);
     this.state = {
       showYearSelector: true,
-      showSidebar: false
+      sideBarMode: null,
+      sideBarData: null
     };
-    this.toggleYearSelector = this.toggleYearSelector.bind(this);
-    this.toggleSideBar = this.toggleSideBar.bind(this);
   }
 
   componentDidMount() {
@@ -25,21 +24,31 @@ class Main extends React.Component {
     this.props.onInit(year);
   }
 
-  yearChange(year) {
+  yearChange = (year) => {
     this.props.history.push("/" + year);
     this.props.onYearChange(year, this.props.year, this.props.maxYearLoaded);
   }
 
-  toggleYearSelector() {
+  selectStation = (station) => {
+    this.setState({ sideBarMode: 'station', sideBarData: { station: station } });
+  }
+
+  closeSideBar = () => {
+    this.setState({ sideBarMode: null, sideBarData: null });
+  }
+
+  toggleYearSelector = () => {
     this.setState(prevState => ({
       showYearSelector: !prevState.showYearSelector
     }));
   }
 
-  toggleSideBar() {
-    this.setState(prevState => ({
-      showSidebar: !prevState.showSidebar
-    }));
+  toggleSideBar = () => {
+    if (this.state.sideBarMode) {
+      this.closeSideBar();
+    } else {
+      this.setState({ sideBarMode: 'lines' });
+    }
   }
 
   render() {
@@ -54,20 +63,8 @@ class Main extends React.Component {
         onToggleYearSelector={() => { this.toggleYearSelector() }}
         onToggleSideBar={() => { this.toggleSideBar() }}
       />
-      <Sidebar
-        lines={this.props.lines}
-        selectedLine={this.props.selectedLine}
-        show={this.state.showSidebar}
-        onClose={this.toggleSideBar}
-        onLineSelected={this.props.onLoadLineDetails} />
-      <MapWrapper
-        overlay={this.state.showSidebar}
-        year={this.props.year}
-        previousYear={this.props.previousYear}
-        map={this.map}
-        stations={this.props.stations}
-        connections={this.props.connections}
-      />
+      <Sidebar />
+      <MapWrapper />
     </div>
   }
 }

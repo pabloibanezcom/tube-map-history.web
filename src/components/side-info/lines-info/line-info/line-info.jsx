@@ -1,5 +1,5 @@
 import React from 'react';
-import { transformDistance } from '../../../shared/utility';
+import { transformDistance } from '../../../../shared/utility';
 
 const lineInfo = (props) => {
   return <div className="line-info">

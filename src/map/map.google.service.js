@@ -6,9 +6,9 @@ export const initMap = (selector) => {
   return new gmaps.Map(document.getElementById(selector), mapConfig);
 }
 
-export const updateMap = (map, stations, connections, currentYear, previousYear) => {
+export const updateMap = (map, stations, connections, currentYear, previousYear, onStationClick) => {
   if (!previousYear) {
-    addStations(map, stations, currentYear);
+    addStations(map, stations, onStationClick, currentYear);
     addConnections(map, connections, currentYear);
     return;
   }
@@ -18,13 +18,28 @@ export const updateMap = (map, stations, connections, currentYear, previousYear)
     return;
   }
   if (currentYear > previousYear) {
-    addStations(map, stations, currentYear, previousYear);
+    addStations(map, stations, onStationClick, currentYear, previousYear);
     addConnections(map, connections, currentYear, previousYear);
     return;
   }
 }
 
-const addStations = (map, stations, yearTo = 2018, yearFrom = 1800) => {
+export const restoreMapState = (map, mapState) => {
+  map.panTo(mapState.center);
+  map.setZoom(mapState.zoom);
+}
+
+export const zoomToPoint = (map, point) => {
+  const previousState = {
+    center: map.getCenter(),
+    zoom: map.getZoom()
+  };
+  map.panTo({ lat: point[1], lng: point[0] });
+  map.setZoom(15);
+  return previousState;
+}
+
+const addStations = (map, stations, onStationClick, yearTo = 2018, yearFrom = 1800) => {
   if (!map.stations) {
     map.stations = [];
   }
@@ -40,7 +55,7 @@ const addStations = (map, stations, yearTo = 2018, yearFrom = 1800) => {
         icon: getStationMarker(s),
         title: s.name
       });
-      marker.addListener('click', () => { alert(`${s.name} - ${s.year}`); });
+      marker.addListener('click', () => { onStationClick(s) });
       return marker;
     }));
 }
