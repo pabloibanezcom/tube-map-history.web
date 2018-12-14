@@ -1,17 +1,11 @@
 $white-color: #fffffc;
-$primary-color: #e6c300;
-$primary-alt-color: #002541;
-$secondary-color: #002c41;
-$secondary-alt-color: $white-color;
 $warning-color: #eb8c00;
 $danger-color: #f44336;
 /* Panel colors */
 
-$panel-primary-color: #102029;
-$panel-secondary-color: #254151;
-/* Background colors */
-
-$background-color: $secondary-color;
+$font-primary: 'Roboto',
+sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 @font-face {
   font-family: 'Johnston100';
   src: url('./assets/fonts/Johnston100-Regular.eot');

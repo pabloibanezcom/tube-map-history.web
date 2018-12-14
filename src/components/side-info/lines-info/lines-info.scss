@@ -1,0 +1,25 @@
+.lines-info {
+  text-align: center;
+  padding: 20px;
+  .lines-list {
+    margin-top: 20px;
+    border: 1px solid $panel-secondary-color !important;
+    a {
+      height: 38px;
+      padding: 6px 20px !important;
+      font-size: 14px !important;
+      background-color: $panel-primary-color !important;
+      border-bottom: 1px solid $panel-secondary-color !important;
+      color: $white-color;
+      border-left: 5px solid transparent;
+      &:hover {
+        background-color: $primary-color !important;
+        font-weight: bold !important;
+      }
+    }
+    .line-basic-info {
+      padding: 20px;
+      background-color: $panel-secondary-color;
+    }
+  }
+}

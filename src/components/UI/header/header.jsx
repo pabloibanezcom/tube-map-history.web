@@ -10,6 +10,7 @@ const header = (props) => {
           <h1 className="animated fadeInRight animation-delay-6">Tube History
             <span> Map</span>
           </h1>
+          <div className="current-year">Year <span className="year">{props.year}</span></div>
         </a>
       </div>
       <div className="header-right">
@@ -44,10 +45,16 @@ const header = (props) => {
             <i className="zmdi zmdi-search"></i>
           </label>
         </form>
-        <a href="" onClick={e => { e.preventDefault(); props.onToggleSideBar(); }} className="btn-ms-menu btn-circle btn-circle-primary ms-toggle-left animated zoomInDown animation-delay-10">
-          <i className="zmdi zmdi-menu"></i>
+        <a href="" className="btn-ms-menu btn-circle btn-circle-primary ms-toggle-left animated zoomInDown animation-delay-10">
+          <i className="zmdi zmdi-account"></i>
         </a>
       </div>
+    </div>
+    <div className={`current-year ${props.showYear ? 'shown' : null}`}>
+      Year <span className="year">{props.year}</span>
+      {/* <div className="current-year-wrapper">
+        
+      </div> */}
     </div>
   </header>
 }

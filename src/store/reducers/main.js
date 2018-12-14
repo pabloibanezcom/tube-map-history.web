@@ -5,6 +5,7 @@ const initialState = {
   year: null,
   previousYear: null,
   maxYearLoaded: null,
+  cityInfo: null,
   lines: [],
   stations: [],
   connections: [],
@@ -28,6 +29,7 @@ const loadInitSuccess = (state, action) => {
     {
       year: action.year,
       maxYearLoaded: action.year,
+      cityInfo: action.data.cityInfo,
       lines: action.data.lines,
       stations: action.data.stations,
       connections: action.data.connections
@@ -57,18 +59,17 @@ const loadLineDetailsSuccess = (state, action) => {
     });
 };
 
-const setMapState = (state, action) => {
-  return updateObject(state,
+const getStationDetailsSuccess = (state, action) => {
+  return updateObject(stopLoading(state),
     {
-      mapState: action.mapState
+      sideBarMode: 'station',
+      selectedStation: action.station
     });
 }
 
-const setSelectedStation = (state, action) => {
+const setMapState = (state, action) => {
   return updateObject(state,
     {
-      sideBarMode: 'station',
-      selectedStation: action.selectedStation,
       mapState: action.mapState
     });
 }
@@ -91,8 +92,10 @@ export const mainReducer = (state = initialState, action) => {
     case actionTypes.LOAD_LINE_DETAILS_START: return startLoading(state, action);
     case actionTypes.LOAD_LINE_DETAILS_SUCCESS: return loadLineDetailsSuccess(state, action);
     case actionTypes.LOAD_LINE_DETAILS_FAIL: return stopLoading(state, action);
+    case actionTypes.GET_STATION_DETAILS_START: return startLoading(state, action);
+    case actionTypes.GET_STATION_DETAILS_SUCCESS: return getStationDetailsSuccess(state, action);
+    case actionTypes.GET_STATION_DETAILS_FAIL: return stopLoading(state, action);
     case actionTypes.SET_MAP_STATE: return setMapState(state, action);
-    case actionTypes.SET_SELECTED_STATION: return setSelectedStation(state, action);
     case actionTypes.SET_SIDE_BAR_MODE: return setSideBarMode(state, action);
     default: return state;
   }

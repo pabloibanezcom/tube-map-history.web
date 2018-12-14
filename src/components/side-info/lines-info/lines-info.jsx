@@ -1,11 +1,14 @@
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-// import LineInfo from './line-info/line-info';
 
 class LinesInfo extends React.Component {
 
   state = {
-    showLines: false
+    selectedLineId: null
+  }
+
+  showLineInfo(line) {
+    this.setState((prevState) => { return { selectedLineId: prevState.selectedLineId !== line._id ? line._id : null } });
   }
 
   selectLine(line) {
@@ -17,20 +20,26 @@ class LinesInfo extends React.Component {
   }
 
   render() {
-    return <div>Lines info</div>
-    // return <ul className={`side-bar-menu ${this.props.show ? 'shown' : ''}`}>
-    //   <a className="collapsed" onClick={() => this.toggleElement('showLines')}>
-    //     <FontAwesomeIcon icon={'route'} /><span>Lines</span>
-    //     <span className="pull-right"><FontAwesomeIcon className="rotate" icon={this.state.showLines ? 'minus' : 'plus'} /></span>
-    //   </a>
-    //   {!this.props.selectedLine ? this.props.lines.map(line => {
-    //     return <li key={line._id} className="side-bar-menu-element line" style={{ borderLeftColor: line.colour }}>
-    //       <a onClick={() => this.selectLine(line)}>{line.name}</a>
-    //     </li>
-    //   }) : <LineInfo
-    //       line={this.props.selectedLine}
-    //       closeLine={() => this.closeLine()} />}
-    // </ul>
+    return <div className="lines-info">
+      <a href="javascript:void(0)" className="back-link-top" onClick={() => this.props.onModeSelected('main')}><i className="zmdi zmdi-arrow-left"></i>All London info</a>
+      <div className="side-info-title">Lines</div>
+      <div className="lines-list list-group">
+        {this.props.lines.map(l => {
+          return <React.Fragment key={l._id}>
+            <a href="javascript:void(0)" onClick={() => this.showLineInfo(l)} className={`list-group-item list-group-item-action withripple ${this.state.selectedLineId === l._id ? 'selected' : ''}`} style={{ borderLeftColor: l.colour }}>
+              {l.name}</a>
+            {this.state.selectedLineId === l._id ?
+              <div className="line-basic-info">
+                <div className="line-year-start">
+                  <div className="line-year-start-label">Opened in</div>
+                  <div className="line-year-start-value">1906</div>
+                </div>
+              </div>
+              : null}
+          </React.Fragment>
+        })}
+      </div>
+    </div>
   }
 }
 

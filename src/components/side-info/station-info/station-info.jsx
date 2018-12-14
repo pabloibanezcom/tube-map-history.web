@@ -1,5 +1,6 @@
 import React from 'react';
 import tubeLogo from '../../../assets/img/icons/tube_alt.png';
+import StationConnections from './station-connections/station-connections';
 
 const stationInfo = (props) => {
   return <div className="station-info">
@@ -11,6 +12,10 @@ const stationInfo = (props) => {
         <div className="station-year-rating">27th oldest of 359</div>
       </div>
     </div>
+    <StationConnections
+      connections={props.station.connections}
+      onStationSelected={props.onStationSelected}
+    />
   </div>
 }
 

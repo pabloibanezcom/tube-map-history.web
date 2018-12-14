@@ -1,0 +1,29 @@
+.city-info-card {
+  width: 100%;
+  border: 1px solid $white-color;
+  border-radius: 4px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.29);
+  border-bottom: 2px solid $primary-color;
+  a {
+    text-align: center;
+    padding: 10px 10px;
+    &:hover {
+      .counter {
+        color: $primary-alt-color;
+      }
+    }
+    .info-icon {
+      svg {
+        font-size: 26px;
+        margin-right: 0;
+        margin-top: 5px;
+      }
+    }
+    .counter {
+      color: $primary-color;
+      font-weight: 500;
+      font-size: 20px;
+      margin-top: 12px;
+    }
+  }
+}

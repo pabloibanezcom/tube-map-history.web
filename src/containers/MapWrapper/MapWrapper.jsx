@@ -48,7 +48,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onStationSelected: (station, mapState) => dispatch(actions.setSelectedStation(station, mapState)),
+    onStationSelected: (station) => dispatch(actions.getStationDetailsStart(station._id)),
     onClearMapState: () => dispatch(actions.setMapState(null))
   }
 };

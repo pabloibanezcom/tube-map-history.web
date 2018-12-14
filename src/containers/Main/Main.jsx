@@ -13,9 +13,7 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showYearSelector: true,
-      sideBarMode: null,
-      sideBarData: null
+      showYearSelector: true
     };
   }
 
@@ -29,10 +27,6 @@ class Main extends React.Component {
     this.props.onYearChange(year, this.props.year, this.props.maxYearLoaded);
   }
 
-  selectStation = (station) => {
-    this.setState({ sideBarMode: 'station', sideBarData: { station: station } });
-  }
-
   closeSideBar = () => {
     this.setState({ sideBarMode: null, sideBarData: null });
   }
@@ -41,14 +35,6 @@ class Main extends React.Component {
     this.setState(prevState => ({
       showYearSelector: !prevState.showYearSelector
     }));
-  }
-
-  toggleSideBar = () => {
-    if (this.state.sideBarMode) {
-      this.closeSideBar();
-    } else {
-      this.setState({ sideBarMode: 'lines' });
-    }
   }
 
   render() {
@@ -61,7 +47,8 @@ class Main extends React.Component {
       /> : null}
       <Header
         onToggleYearSelector={() => { this.toggleYearSelector() }}
-        onToggleSideBar={() => { this.toggleSideBar() }}
+        showYear={!this.state.showYearSelector}
+        year={this.props.year}
       />
       <Sidebar />
       <MapWrapper />
@@ -78,6 +65,7 @@ const mapStateToProps = state => {
     selectedLine: state.main.selectedLine,
     stations: state.main.stations,
     connections: state.main.connections,
+    sideBarMode: state.main.sideBarMode,
     loading: state.main.loading
   };
 };
