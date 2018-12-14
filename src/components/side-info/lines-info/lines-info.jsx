@@ -21,12 +21,12 @@ class LinesInfo extends React.Component {
 
   render() {
     return <div className="lines-info">
-      <a href="javascript:void(0)" className="back-link-top" onClick={() => this.props.onModeSelected('main')}><i className="zmdi zmdi-arrow-left"></i>All London info</a>
+      <a href="" className="back-link-top" onClick={() => this.props.onModeSelected('main')}><i className="zmdi zmdi-arrow-left"></i>All London info</a>
       <div className="side-info-title">Lines</div>
       <div className="lines-list list-group">
         {this.props.lines.map(l => {
           return <React.Fragment key={l._id}>
-            <a href="javascript:void(0)" onClick={() => this.showLineInfo(l)} className={`list-group-item list-group-item-action withripple ${this.state.selectedLineId === l._id ? 'selected' : ''}`} style={{ borderLeftColor: l.colour }}>
+            <a href="" onClick={() => this.showLineInfo(l)} className={`list-group-item list-group-item-action withripple ${this.state.selectedLineId === l._id ? 'selected' : ''}`} style={{ borderLeftColor: l.colour }}>
               {l.name}</a>
             {this.state.selectedLineId === l._id ?
               <div className="line-basic-info">
