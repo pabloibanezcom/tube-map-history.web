@@ -40,14 +40,15 @@ const cityInfo = (props) => {
     <hr />
     <div className="city-basic-info mt-20">
       <div className="row">
-        {buildCityInfoElements(props.cityInfo).map(ciEl =>
+        {props.cityInfo && props.sideBarState.open ? buildCityInfoElements(props.cityInfo).map(ciEl =>
           <div key={ciEl.label} className="col-lg-6 mt-20">
             <CityInfoCard
               infoElement={ciEl}
+              initiate={props.sideBarState.initiate}
               onModeSelected={props.onModeSelected}
             />
           </div>
-        )}
+        ) : null}
       </div>
     </div>
 

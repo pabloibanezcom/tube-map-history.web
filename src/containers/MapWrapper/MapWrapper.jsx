@@ -21,13 +21,13 @@ class MapWrapper extends React.Component {
     if (!this.props.loading && this.map && this.props.stations && this.props.connections) {
       updateMap(this.map, this.props.stations, this.props.connections, this.props.year, this.props.previousYear, this.showStation);
     }
-    if (process.env.REACT_APP_MAP_ANIMATIONS && !this.props.sideBarMode && this.props.mapState) {
+    if (process.env.REACT_APP_MAP_ANIMATIONS && !this.props.sideBarState.open && this.props.mapState) {
       restoreMapState(this.map, this.props.mapState);
       this.props.onClearMapState();
     }
     return (
       <div>
-        <Overlay show={this.props.sideBarMode} />
+        <Overlay show={this.props.sideBarState.open} />
         <div id="map-container"></div>
       </div>
     )
@@ -41,7 +41,7 @@ const mapStateToProps = state => {
     stations: state.main.stations,
     connections: state.main.connections,
     selectedStation: state.main.selectedStation,
-    sideBarMode: state.main.sideBarMode,
+    sideBarState: state.main.sideBarState,
     mapState: state.main.mapState
   };
 };

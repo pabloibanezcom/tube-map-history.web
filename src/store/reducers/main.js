@@ -12,7 +12,11 @@ const initialState = {
   selectedLine: null,
   selectedStation: null,
   mapState: null,
-  sideBarMode: null,
+  sideBarState: {
+    open: false,
+    mode: 'main',
+    initiate: false
+  },
   loading: false
 };
 
@@ -52,17 +56,20 @@ const changeYearSuccess = (state, action) => {
   );
 };
 
-const loadLineDetailsSuccess = (state, action) => {
+const getLineDetailsSuccess = (state, action) => {
+  const sideBarState = { ...state.sideBarState, mode: 'line', open: true };
   return updateObject(stopLoading(state),
     {
+      sideBarState: sideBarState,
       selectedLine: action.selectedLine
     });
 };
 
 const getStationDetailsSuccess = (state, action) => {
+  const sideBarState = { ...state.sideBarState, mode: 'station', open: true };
   return updateObject(stopLoading(state),
     {
-      sideBarMode: 'station',
+      sideBarState: sideBarState,
       selectedStation: action.station
     });
 }
@@ -74,10 +81,10 @@ const setMapState = (state, action) => {
     });
 }
 
-const setSideBarMode = (state, action) => {
+const setSideBarState = (state, action) => {
   return updateObject(state,
     {
-      sideBarMode: action.sideBarMode
+      sideBarState: action.sideBarState
     });
 }
 
@@ -89,14 +96,14 @@ export const mainReducer = (state = initialState, action) => {
     case actionTypes.CHANGE_YEAR_START: return startLoading(state, action);
     case actionTypes.CHANGE_YEAR_SUCCESS: return changeYearSuccess(state, action);
     case actionTypes.CHANGE_YEAR_FAIL: return stopLoading(state, action);
-    case actionTypes.LOAD_LINE_DETAILS_START: return startLoading(state, action);
-    case actionTypes.LOAD_LINE_DETAILS_SUCCESS: return loadLineDetailsSuccess(state, action);
-    case actionTypes.LOAD_LINE_DETAILS_FAIL: return stopLoading(state, action);
+    case actionTypes.GET_LINE_DETAILS_START: return startLoading(state, action);
+    case actionTypes.GET_LINE_DETAILS_SUCCESS: return getLineDetailsSuccess(state, action);
+    case actionTypes.GET_LINE_DETAILS_FAIL: return stopLoading(state, action);
     case actionTypes.GET_STATION_DETAILS_START: return startLoading(state, action);
     case actionTypes.GET_STATION_DETAILS_SUCCESS: return getStationDetailsSuccess(state, action);
     case actionTypes.GET_STATION_DETAILS_FAIL: return stopLoading(state, action);
     case actionTypes.SET_MAP_STATE: return setMapState(state, action);
-    case actionTypes.SET_SIDE_BAR_MODE: return setSideBarMode(state, action);
+    case actionTypes.SET_SIDE_BAR_STATE: return setSideBarState(state, action);
     default: return state;
   }
 };

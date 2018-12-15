@@ -73,8 +73,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onInit: (year) => dispatch(actions.loadInitStart(year)),
-    onYearChange: (year, previousYear, maxYearLoaded) => dispatch(actions.changeYearStart(year, previousYear, maxYearLoaded)),
-    onLoadLineDetails: (lineId) => dispatch(actions.loadLineDetailsStart(lineId))
+    onYearChange: (year, previousYear, maxYearLoaded) => dispatch(actions.changeYearStart(year, previousYear, maxYearLoaded))
   }
 };
 

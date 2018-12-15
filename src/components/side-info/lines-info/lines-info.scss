@@ -1,7 +1,16 @@
-@import "./line-info/line-info.scss";
 .lines-info {
   text-align: center;
   padding: 20px;
+  .info-element {
+    .info-element-label {
+      font-size: 12px;
+    }
+    .info-element-value {
+      color: $primary-color;
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
   .lines-list {
     margin-top: 20px;
     border: 1px solid $panel-secondary-color !important;

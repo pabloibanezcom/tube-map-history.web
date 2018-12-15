@@ -60,12 +60,12 @@
       }
     }
   }
-  .side-bar-close {
+  .side-bar-close,
+  .side-bar-back {
     position: absolute;
     width: 30px;
     height: 30px;
     left: -30px;
-    top: 95px;
     background-color: $primary-color;
     color: $primary-alt-color !important;
     line-height: 30px;
@@ -73,6 +73,18 @@
     border-radius: 4px 0 0 4px;
     text-align: center;
     box-shadow: 0 0 15px 0 $secondary-color;
+  }
+  .side-bar-close {
+    top: 95px;
+  }
+  .side-bar-back {
+    top: 135px;
+    z-index: -1;
+    left: 0;
+    &.shown {
+      z-index: 10;
+      left: -30px;
+    }
   }
   .back-link-top {
     margin-bottom: 30px;

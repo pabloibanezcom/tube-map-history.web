@@ -1,15 +1,14 @@
 import axios from '../axios';
-import * as httpBodies from './main.json';
 
 export const getCityInfo = () => {
   return axios.get('city/1');
 }
 
-export const loadLines = () => {
-  return axios.post('line', httpBodies.loadLines);
+export const getLines = () => {
+  return axios.get('line/all');
 }
 
-export const loadLine = (lineId) => {
+export const getLine = (lineId) => {
   return axios.get(`line/${lineId}`);
 }
 

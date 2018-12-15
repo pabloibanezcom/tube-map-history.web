@@ -1,0 +1,22 @@
+[
+  {
+    "mode": "main",
+    "prev": null,
+    "prevLabel": null
+  },
+  {
+    "mode": "lines",
+    "prev": "main",
+    "prevLabel": "Back to city info"
+  },
+  {
+    "mode": "line",
+    "prev": "lines",
+    "prevLabel": "Back to all lines"
+  },
+  {
+    "mode": "station",
+    "prev": "main",
+    "prevLabel": "Back to city info"
+  }
+]
