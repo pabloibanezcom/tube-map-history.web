@@ -1,4 +1,5 @@
 .line-info {
+  text-align: center;
   .back-link-container {
     padding: 10px 20px;
   }
@@ -8,7 +9,6 @@
   }
   .line-name {
     font-size: 20px;
-    border-top: 3px solid $primary-color;
     border-bottom: 3px solid $primary-color;
     background-color: $panel-primary-color;
     font-weight: 500;

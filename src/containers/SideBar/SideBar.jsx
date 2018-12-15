@@ -26,6 +26,7 @@ class SideBar extends React.Component {
       case 'line':
         return <LineInfo
           line={this.props.selectedLine}
+          year={this.props.year}
         />
       case 'station':
         return <StationInfo
@@ -56,7 +57,7 @@ class SideBar extends React.Component {
   render() {
     return (
       <div className={`side-bar ${this.props.sideBarState.open ? 'open' : ''}`}>
-        <a className="side-bar-close" data-tip={this.props.sideBarState.open ? 'close menu' : 'open menu'} data-for='open-tooltip' onClick={this.props.sideBarState.open ? this.close : this.open}>
+        <a className="side-bar-close" data-tip={this.props.sideBarState.open ? 'Close menu' : 'open menu'} data-for='open-tooltip' onClick={this.props.sideBarState.open ? this.close : this.open}>
           {this.props.sideBarState.open ? <i className="zmdi zmdi-close"></i> : <i className="zmdi zmdi-menu"></i>}
         </a>
         <a className={`side-bar-back ${this.props.sideBarState.open && getPrevSideBarMode(this.props.sideBarState.mode) ? 'shown' : ''}`} onClick={this.goBack}
@@ -79,6 +80,7 @@ class SideBar extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    year: state.main.year,
     sideBarState: state.main.sideBarState,
     selectedStation: state.main.selectedStation,
     selectedLine: state.main.selectedLine,

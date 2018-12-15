@@ -1,0 +1,8 @@
+.button-group {
+  .btn {
+    font-weight: bold;
+    &:hover {
+      color: $secondary-color !important;
+    }
+  }
+}
