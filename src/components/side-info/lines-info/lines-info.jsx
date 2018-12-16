@@ -22,7 +22,7 @@ class LinesInfo extends React.Component {
       <div className="lines-list list-group">
         {this.props.lines.map(l => {
           return <React.Fragment key={l._id}>
-            <a href="javascript:void(0);" onClick={() => this.showLineInfo(l)} className={`list-group-item list-group-item-action withripple ${this.state.selectedLineId === l._id ? 'selected' : ''}`} style={{ borderLeftColor: l.colour }}>
+            <a onClick={() => this.showLineInfo(l)} className={`list-group-item list-group-item-action withripple ${this.state.selectedLineId === l._id ? 'selected' : ''}`} style={{ borderLeftColor: l.colour }}>
               {l.name}</a>
             {this.state.selectedLineId === l._id ?
               <div className="line-basic-info">
