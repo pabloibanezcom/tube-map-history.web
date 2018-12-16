@@ -27,6 +27,7 @@ class SideBar extends React.Component {
         return <LineInfo
           line={this.props.selectedLine}
           year={this.props.year}
+          onStationSelected={this.props.onStationSelected}
         />
       case 'station':
         return <StationInfo

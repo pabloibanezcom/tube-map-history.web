@@ -44,6 +44,7 @@
     "react": "^16.4.2",
     "react-adsense": "0.0.6",
     "react-countup": "^4.0.0",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dev-utils": "^5.0.2",
     "react-dom": "^16.4.2",
     "react-onclickoutside": "^6.7.1",

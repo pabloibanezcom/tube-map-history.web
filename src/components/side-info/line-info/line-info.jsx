@@ -20,6 +20,7 @@ const lineInfo = (props) => {
     </div>
     <LineConnections
       line={props.line}
+      onStationSelected={props.onStationSelected}
     />
   </div>
 }

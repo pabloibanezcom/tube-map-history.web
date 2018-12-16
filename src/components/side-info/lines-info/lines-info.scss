@@ -28,8 +28,10 @@
       }
     }
     .line-basic-info {
-      padding: 20px;
       background-color: $panel-secondary-color;
+      >div {
+        padding: 20px;
+      }
     }
   }
 }
