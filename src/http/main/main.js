@@ -12,7 +12,7 @@ export const getLine = (lineId) => {
   return axios.get(`line/${lineId}`);
 }
 
-export const loadStations = (townId, yearTo, yearFrom) => {
+export const getStations = (townId, yearTo, yearFrom) => {
   const yearFromUrl = yearFrom ? `/${yearFrom}` : '';
   return axios.get(`${townId}/station/year/${yearTo}${yearFromUrl}`);
 }
@@ -21,7 +21,7 @@ export const getStation = (stationId) => {
   return axios.get(`station/${stationId}`);
 }
 
-export const loadConnections = (townId, yearTo, yearFrom) => {
+export const getConnections = (townId, yearTo, yearFrom) => {
   const yearFromUrl = yearFrom ? `/${yearFrom}` : '';
   return axios.get(`${townId}/connection/year/${yearTo}${yearFromUrl}`);
 }

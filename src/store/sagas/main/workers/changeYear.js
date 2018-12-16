@@ -1,5 +1,5 @@
 import { put } from "redux-saga/effects";
-import { loadConnections, loadStations } from "../../../../http/main";
+import { getConnections, getStations } from "../../../../http/main";
 import * as actions from "../../../actions/main";
 
 export function* changeYearSagaStart(action) {
@@ -7,8 +7,8 @@ export function* changeYearSagaStart(action) {
   try {
     let data = null;
     if (loadStationYears) {
-      const stationsResponse = yield loadStations(action.year, action.maxYearLoaded);
-      const connectionsResponse = yield loadConnections(action.year, action.maxYearLoaded);
+      const stationsResponse = yield getStations(action.year, action.maxYearLoaded);
+      const connectionsResponse = yield getConnections(action.year, action.maxYearLoaded);
       data = {
         stations: stationsResponse.data,
         connections: connectionsResponse.data

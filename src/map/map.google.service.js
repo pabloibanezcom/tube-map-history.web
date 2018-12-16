@@ -15,7 +15,6 @@ export const initMap = (selector, town) => {
 }
 
 export const updateMap = (map, town, stations, connections, currentYear, previousYear, onStationClick) => {
-  debugger
   if (!previousYear) {
     addStations(map, town, stations, onStationClick, currentYear);
     addConnections(map, town, connections, currentYear);
