@@ -5,7 +5,7 @@ const initialState = {
   year: null,
   previousYear: null,
   maxYearLoaded: null,
-  cityInfo: null,
+  town: null,
   lines: [],
   stations: [],
   connections: [],
@@ -33,7 +33,7 @@ const loadInitSuccess = (state, action) => {
     {
       year: action.year,
       maxYearLoaded: action.year,
-      cityInfo: action.data.cityInfo,
+      town: action.data.town,
       lines: action.data.lines,
       stations: action.data.stations,
       connections: action.data.connections

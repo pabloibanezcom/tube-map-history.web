@@ -15,9 +15,10 @@ export const loadInitFail = (error) => {
   };
 };
 
-export const loadInitStart = (year) => {
+export const loadInitStart = (town, year) => {
   return {
     type: actionTypes.LOAD_INIT_START,
+    town: town,
     year: year
   };
 };

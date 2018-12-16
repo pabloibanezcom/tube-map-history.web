@@ -18,12 +18,13 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
+    const town = this.props.match.params.town;
     const year = parseInt(this.props.match.params.year, 10);
-    this.props.onInit(year);
+    this.props.onInit(town, year);
   }
 
   yearChange = (year) => {
-    this.props.history.push("/" + year);
+    this.props.history.push(`/${this.props.town.url}/${year}`);
     this.props.onYearChange(year, this.props.year, this.props.maxYearLoaded);
   }
 
@@ -58,6 +59,7 @@ class Main extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    town: state.main.town,
     year: state.main.year,
     previousYear: state.main.previousYear,
     maxYearLoaded: state.main.maxYearLoaded,
@@ -72,7 +74,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInit: (year) => dispatch(actions.loadInitStart(year)),
+    onInit: (town, year) => dispatch(actions.loadInitStart(town, year)),
     onYearChange: (year, previousYear, maxYearLoaded) => dispatch(actions.changeYearStart(year, previousYear, maxYearLoaded))
   }
 };

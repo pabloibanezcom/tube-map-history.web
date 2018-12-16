@@ -8,8 +8,11 @@ const showMapAnimations = (process.env.REACT_APP_MAP_ANIMATIONS === 'true');
 
 class MapWrapper extends React.Component {
 
-  componentDidMount() {
-    this.map = initMap('map-container');
+  componentDidUpdate(prevProps) {
+    if (prevProps.town !== this.props.town) {
+      this.map = initMap('map-container', this.props.town);
+      updateMap(this.map, this.props.town, this.props.stations, this.props.connections, this.props.year, this.props.previousYear, this.showStation);
+    }
   }
 
   showStation = (station) => {
@@ -19,7 +22,7 @@ class MapWrapper extends React.Component {
 
   render() {
     if (!this.props.loading && this.map && this.props.stations && this.props.connections) {
-      updateMap(this.map, this.props.stations, this.props.connections, this.props.year, this.props.previousYear, this.showStation);
+      updateMap(this.map, this.props.town, this.props.stations, this.props.connections, this.props.year, this.props.previousYear, this.showStation);
     }
     if (process.env.REACT_APP_MAP_ANIMATIONS && !this.props.sideBarState.open && this.props.mapState) {
       restoreMapState(this.map, this.props.mapState);
@@ -36,6 +39,7 @@ class MapWrapper extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    town: state.main.town,
     year: state.main.year,
     previousYear: state.main.previousYear,
     stations: state.main.stations,

@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ReactTooltip from 'react-tooltip';
-import CityInfo from '../../components/side-info/city-info/city-info';
 import LineInfo from '../../components/side-info/line-info/line-info';
 import LinesInfo from '../../components/side-info/lines-info/lines-info';
 import StationInfo from '../../components/side-info/station-info/station-info';
+import TownInfo from '../../components/side-info/town-info/town-info';
 import * as actions from '../../store/actions/main';
 import { getPrevSideBarMode, getPrevSideBarModeLabel } from './util';
 
@@ -13,8 +13,8 @@ class SideBar extends React.Component {
   renderContent = (mode) => {
     switch (mode) {
       case 'main':
-        return <CityInfo
-          cityInfo={this.props.cityInfo}
+        return <TownInfo
+          townInfo={this.props.town}
           sideBarState={this.props.sideBarState}
           onModeSelected={this.changeMode}
         />
@@ -84,7 +84,7 @@ const mapStateToProps = state => {
     sideBarState: state.main.sideBarState,
     selectedStation: state.main.selectedStation,
     selectedLine: state.main.selectedLine,
-    cityInfo: state.main.cityInfo,
+    town: state.main.town,
     lines: state.main.lines
   };
 };

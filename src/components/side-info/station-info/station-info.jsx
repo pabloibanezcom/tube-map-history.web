@@ -4,7 +4,7 @@ import StationConnections from './station-connections/station-connections';
 
 const stationInfo = (props) => {
   return <div className="station-info">
-    <div className="station-name"><img className="station-logo" alt="" src={tubeLogo} />{props.station.name} Station</div>
+    <div className="station-name"><img className="station-logo" alt="" src={tubeLogo} />{props.station.name}</div>
     <div className="station-year">
       <div className="station-year-label">Year</div>
       <div className="float-right">

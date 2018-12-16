@@ -21,8 +21,8 @@ class App extends Component {
     let routes = (
       <Switch>
         <Route path="/admin" component={asyncAdmin} />
-        <Route path="/:year" exact component={asyncMain} />
-        <Redirect to={`/${defaultYear}`} />
+        <Route path="/:town/:year" exact component={asyncMain} />
+        <Redirect to={`/london/${defaultYear}`} />
       </Switch>
     );
 

@@ -2,14 +2,23 @@ const gmaps = window.google.maps;
 const mapConfig = require('./config/map.config.json');
 const connectionConfig = require('./config/connection.config.json');
 
-export const initMap = (selector) => {
-  return new gmaps.Map(document.getElementById(selector), mapConfig);
+export const initMap = (selector, town) => {
+  return new gmaps.Map(document.getElementById(selector),
+    {
+      ...mapConfig,
+      center: {
+        lat: town.center.coordinates[0],
+        lng: town.center.coordinates[1]
+      },
+      zoom: town.zoom
+    });
 }
 
-export const updateMap = (map, stations, connections, currentYear, previousYear, onStationClick) => {
+export const updateMap = (map, town, stations, connections, currentYear, previousYear, onStationClick) => {
+  debugger
   if (!previousYear) {
-    addStations(map, stations, onStationClick, currentYear);
-    addConnections(map, connections, currentYear);
+    addStations(map, town, stations, onStationClick, currentYear);
+    addConnections(map, town, connections, currentYear);
     return;
   }
   if (currentYear < previousYear) {
@@ -18,8 +27,8 @@ export const updateMap = (map, stations, connections, currentYear, previousYear,
     return;
   }
   if (currentYear > previousYear) {
-    addStations(map, stations, onStationClick, currentYear, previousYear);
-    addConnections(map, connections, currentYear, previousYear);
+    addStations(map, town, stations, onStationClick, currentYear, previousYear);
+    addConnections(map, town, connections, currentYear, previousYear);
     return;
   }
 }
@@ -39,7 +48,7 @@ export const zoomToPoint = (map, point) => {
   return previousState;
 }
 
-const addStations = (map, stations, onStationClick, yearTo = 2018, yearFrom = 1800) => {
+const addStations = (map, town, stations, onStationClick, yearTo = 2018, yearFrom = 1800) => {
   if (!map.stations) {
     map.stations = [];
   }
@@ -52,7 +61,7 @@ const addStations = (map, stations, onStationClick, yearTo = 2018, yearFrom = 18
           year: s.year
         },
         map: map,
-        icon: getStationMarker(s),
+        icon: getStationMarker(town, s),
         title: s.name
       });
       marker.addListener('click', () => { onStationClick(s) });
@@ -60,7 +69,7 @@ const addStations = (map, stations, onStationClick, yearTo = 2018, yearFrom = 18
     }));
 }
 
-const addConnections = (map, connections, yearTo = 2018, yearFrom = 1800) => {
+const addConnections = (map, town, connections, yearTo = 2018, yearFrom = 1800) => {
   if (!map.connections) {
     map.connections = [];
   }
@@ -101,8 +110,8 @@ const convertPointArrayToMapPoint = (coordinates) => {
   return new gmaps.LatLng(coordinates[1], coordinates[0]);
 }
 
-const getStationMarker = (station) => {
-  return new gmaps.MarkerImage(require(`../assets/img/markers/${station.markerIcon}.png`),
+const getStationMarker = (town, station) => {
+  return new gmaps.MarkerImage(require(`../assets/img/markers/${town.name.toLowerCase()}/${station.markerIcon}.png`),
     new gmaps.Size(64, 64),
     new gmaps.Point(0, 0),
     new gmaps.Point(5, 5),

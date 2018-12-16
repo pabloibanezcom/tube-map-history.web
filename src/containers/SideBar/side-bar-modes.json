@@ -7,7 +7,7 @@
   {
     "mode": "lines",
     "prev": "main",
-    "prevLabel": "Back to city info"
+    "prevLabel": "Back to town info"
   },
   {
     "mode": "line",
@@ -17,6 +17,6 @@
   {
     "mode": "station",
     "prev": "main",
-    "prevLabel": "Back to city info"
+    "prevLabel": "Back to town info"
   }
 ]
