@@ -1,0 +1,35 @@
+{
+  "zoom": 12,
+  "center": {
+    "lat": 51.5099695,
+    "lng": -0.1371599
+  },
+  "disableDefaultUI": true,
+  "styles": [
+    {
+      "featureType": "poi",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "transit",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "road.highway",
+      "elementType": "labels",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    }
+  ]
+}

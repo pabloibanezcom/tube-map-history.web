@@ -1,0 +1,51 @@
+@import "./variables.scss";
+.primary {
+  color: $primary-color !important;
+}
+
+.secondary {
+  color: $secondary-color !important;
+}
+
+.ms-header.ms-header-dark {
+  background-color: $background-color;
+}
+
+.ms-logo {
+  background-color: $primary-color;
+  color: $secondary-color;
+}
+
+.rc-slider-track {
+  background-color: lighten($primary-color, 25%);
+}
+
+.rc-slider-handle {
+  border-color: $primary-color;
+  &:active,
+  &:hover,
+  &:focus {
+    border-color: $primary-color;
+  }
+}
+
+.btn-circle.btn-circle-primary:before,
+.ms-header.ms-header-dark .btn-circle-primary:before,
+.ms-header.ms-header-dark .search-form label:before {
+  background-color: $primary-color;
+}
+
+.ms-header.ms-header-dark .btn-circle-primary:hover,
+.ms-header.ms-header-dark .btn-circle-primary:focus,
+.ms-header.ms-header-dark .search-form label:hover {
+  color: $secondary-color;
+}
+
+.form-group.is-focused .form-control {
+  background-image: linear-gradient($primary-color, $primary-color), linear-gradient(#d2d2d2, #d2d2d2);
+}
+
+.form-control,
+.form-group .form-control {
+  background-image: linear-gradient($primary-color, $primary-color), linear-gradient(#d2d2d2, #d2d2d2);
+}

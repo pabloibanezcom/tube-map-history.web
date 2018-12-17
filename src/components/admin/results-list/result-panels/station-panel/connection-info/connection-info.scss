@@ -1,0 +1,41 @@
+.connection-info {
+  padding: 5px 15px;
+  .connection-station-name {
+    &.right {
+      float: right;
+      margin-left: 10px;
+    }
+    &.left {
+      float: left;
+      margin-right: 10px;
+    }
+    img {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+    }
+  }
+  .connection-line {
+    overflow: hidden;
+    height: 5px;
+    margin-top: 10px;
+  }
+  .connection-line-name {
+    text-align: center;
+    opacity: 0.4;
+    margin-top: -12px;
+    font-size: 12px;
+  }
+  .connection-buttons {
+    &.left {
+      float: left;
+    }
+    &.right {
+      float: right;
+    }
+    .btn {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@import "./line-connections/line-connections.scss";
+.line-info {
+  text-align: center;
+  .back-link-container {
+    padding: 10px 20px;
+  }
+  >div {
+    text-align: center;
+    padding-left: 10x;
+    padding-right: 10px;
+  }
+  .line-name {
+    padding: 20px 10px;
+    font-size: 20px;
+    border-bottom: 3px solid $primary-color;
+    background-color: $panel-primary-color;
+    font-weight: 500;
+    .line-logo {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+  }
+  .line-info-year {
+    padding: 10px 10px;
+  }
+}

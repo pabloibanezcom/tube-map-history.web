@@ -1,0 +1,49 @@
+@import "./connection-info/connection-info.scss";
+.station-panel {
+  padding: 10px;
+  .station-name {
+    padding: 3px;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: $white-color;
+    border-bottom: 3px solid $primary-color;
+    margin-bottom: 20px;
+  }
+  .station-element {
+    margin-bottom: 10px;
+    .station-element-label {
+      color: $white-color;
+      font-weight: 500;
+    }
+    .station-element-value {
+      margin-left: 10px;
+      color: $primary-color;
+      font-weight: 500;
+      font-size: 16px;
+    }
+  }
+  .station-buttons {
+    button {
+      margin-left: 5px;
+    }
+  }
+  .connections {
+    .connections-header {
+      padding: 3px 10px;
+      background-color: $primary-color;
+      color: $primary-alt-color;
+      font-size: 16px;
+      font-weight: 500;
+      border-bottom: 3px solid $secondary-color;
+      margin-bottom: 15px;
+    }
+    .connections-list {
+      min-height: 100px;
+      margin-bottom: 20px;
+    }
+    .connections-buttons {
+      float: right;
+    }
+  }
+}

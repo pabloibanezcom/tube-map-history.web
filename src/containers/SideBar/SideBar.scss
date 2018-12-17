@@ -1,0 +1,108 @@
+.side-bar {
+  position: fixed;
+  top: 70px;
+  bottom: 0;
+  right: -300px;
+  z-index: 3000;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  &.open {
+    right: 0px;
+  }
+  .side-bar-container {
+    overflow-y: auto !important;
+    overflow: hidden;
+    color: $white-color;
+    background-color: $secondary-color;
+    width: 300px;
+    height: 100%;
+    box-shadow: 0 6px 10px 0rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .2);
+    .side-bar-menu {
+      list-style-type: none;
+      padding: 0;
+      max-height: 0;
+      display: block;
+      overflow: hidden;
+      transition: 0.5s;
+      &.shown {
+        max-height: 800px;
+      }
+      .side-bar-menu-element {
+        &.line {
+          border-left: 10px solid transparent;
+        }
+        a {
+          display: block;
+          padding: 12px 20px;
+          font-size: 16px;
+          font-weight: 400;
+          border-bottom: 1px solid $primary-color;
+          &:hover {
+            background-color: $primary-color;
+            color: $secondary-color;
+          }
+          &.selected {
+            background-color: $primary-color !important;
+            color: $secondary-color;
+            font-weight: bold;
+          }
+          .rotate {
+            &::before {
+              top: -16px;
+            }
+            &::after {
+              top: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .side-bar-close,
+  .side-bar-back {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: -30px;
+    background-color: $primary-color;
+    color: $primary-alt-color !important;
+    line-height: 30px;
+    font-size: 18px;
+    border-radius: 4px 0 0 4px;
+    text-align: center;
+    box-shadow: 0 0 15px 0 $secondary-color;
+  }
+  .side-bar-close {
+    top: 95px;
+  }
+  .side-bar-back {
+    top: 135px;
+    z-index: -1;
+    left: 0;
+    &.shown {
+      z-index: 10;
+      left: -30px;
+    }
+  }
+  .back-link-top {
+    margin-bottom: 30px;
+    color: $primary-color;
+    text-align: left;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    border-bottom: none !important;
+    padding: 0 !important;
+    &:hover {
+      color: inherit !important;
+      background-color: inherit !important;
+    }
+    i {
+      margin-right: 5px;
+    }
+  }
+  .side-info-title {
+    font-size: 22px;
+  }
+}

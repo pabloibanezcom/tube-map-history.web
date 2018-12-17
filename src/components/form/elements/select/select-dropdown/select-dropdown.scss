@@ -1,0 +1,10 @@
+.select-dropdown {
+  .dropdown-menu {
+    .dropdown-item {
+      &.active {
+        background-color: $secondary-color;
+        color: $secondary-alt-color;
+      }
+    }
+  }
+}

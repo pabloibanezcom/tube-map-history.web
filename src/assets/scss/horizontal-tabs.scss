@@ -1,0 +1,25 @@
+@import "./variables.scss";
+.horizontal-tab {
+  .nav-tabs {
+    background-color: $secondary-color;
+    .active {
+      svg {
+        transform: rotate(360deg);
+      }
+    }
+    .nav-link {
+      span,
+      svg {
+        color: $white-color;
+      }
+      svg {
+        transition: transform cubic-bezier(0, 0, .2, 1) .5s;
+      }
+    }
+  }
+  .ms-tabs-indicator {
+    background-color: $primary-color !important;
+    bottom: 0 !important;
+    height: 4px !important;
+  }
+}

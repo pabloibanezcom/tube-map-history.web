@@ -1,0 +1,19 @@
+{
+  "tabs": [
+    {
+      "id": "stations",
+      "label": "Stations",
+      "icon": "subway"
+    },
+    {
+      "id": "lines",
+      "label": "Lines",
+      "icon": "route"
+    },
+    {
+      "id": "connections",
+      "label": "Connections",
+      "icon": "exchange-alt"
+    }
+  ]
+}

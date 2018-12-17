@@ -1,0 +1,35 @@
+@import "./station-connections/station-connections.scss";
+.station-info {
+  >div {
+    text-align: center;
+    padding: 20px 10px;
+  }
+  .station-name {
+    font-size: 20px;
+    border-bottom: 3px solid $primary-color;
+    background-color: $panel-primary-color;
+    font-weight: 500;
+    .station-logo {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+  }
+  .station-year {
+    padding: 30px 60px;
+    .station-year-label {
+      float: left;
+      color: $white-color;
+      font-size: 18px;
+    }
+    .station-year-value {
+      color: $primary-color;
+      font-size: 24px;
+      font-weight: 500;
+    }
+    .station-year-rating {
+      font-size: 12px;
+      font-style: italic;
+    }
+  }
+}

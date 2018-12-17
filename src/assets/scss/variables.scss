@@ -1,0 +1,19 @@
+$white-color: #fffffc;
+$warning-color: #eb8c00;
+$danger-color: #f44336;
+/* Panel colors */
+
+$font-primary: 'Roboto',
+sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@font-face {
+  font-family: 'Johnston100';
+  src: url('./assets/fonts/Johnston100-Regular.eot');
+  src: url('./assets/fonts/Johnston100-Regular.eot?#iefix') format('embedded-opentype'), url('./assets/fonts/Johnston100-Regular.woff') format('woff'), url('./assets/fonts/Johnston100-Regular.ttf') format('truetype'), url('./assets/fonts/Johnston100-Regular.svg#fontname') format('svg');
+}
+
+@font-face {
+  font-family: 'Johnston100-light';
+  src: url('./assets/fonts/Johnston100-Light.eot');
+  src: url('./assets/fonts/Johnston100-Light.eot?#iefix') format('embedded-opentype'), url('./assets/fonts/Johnston100-Light.woff') format('woff'), url('./assets/fonts/Johnston100-Light.ttf') format('truetype'), url('./assets/fonts/Johnston100-Light.svg#fontname') format('svg');
+}

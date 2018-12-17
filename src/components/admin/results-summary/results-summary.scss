@@ -1,0 +1,12 @@
+.results-summary {
+  padding-left: 20px;
+  .amount {
+    color: $primary-color;
+    font-weight: 500;
+    margin-right: 10px;
+  }
+  .label {
+    color: $white-color;
+    font-size: 18px;
+  }
+}

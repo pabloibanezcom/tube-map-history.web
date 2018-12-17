@@ -1,0 +1,82 @@
+{
+  "stationFrom": {
+    "elementType": "input",
+    "propertyType": "string",
+    "elementConfig": {
+      "type": "text",
+      "placeholder": "Station from",
+      "disabled": true
+    },
+    "validation": {
+      "required": true
+    }
+  },
+  "stationTo": {
+    "elementType": "select",
+    "propertyType": "string",
+    "elementConfig": {
+      "label": "Station to",
+      "placeholder": "Select a station",
+      "options": {
+        "key": "_id",
+        "label": "name",
+        "value": "_id"
+      },
+      "custom": {
+        "selected": "SelectedStation",
+        "dropdown": "DropdownStation"
+      },
+      "enableSearch": "true",
+      "remote": {
+        "model": "station",
+        "propertyName": "name",
+        "minChars": 3
+      }
+    }
+  },
+  "line": {
+    "elementType": "select",
+    "propertyType": "string",
+    "elementConfig": {
+      "label": "Line",
+      "placeholder": "Select a line",
+      "options": {
+        "key": "_id",
+        "label": "name",
+        "value": "_id"
+      },
+      "custom": {
+        "selected": "SelectedLine",
+        "dropdown": "DropdownLine"
+      },
+      "enableSearch": "true",
+      "remote": {
+        "model": "line",
+        "propertyName": "name",
+        "minChars": 0
+      }
+    }
+  },
+  "year": {
+    "elementType": "input",
+    "propertyType": "number",
+    "elementConfig": {
+      "type": "number",
+      "placeholder": "Year",
+      "label": "Year"
+    },
+    "validation": {
+      "required": false,
+      "minLength": 4,
+      "maxLength": 4
+    }
+  },
+  "searchButton": {
+    "elementType": "button",
+    "elementConfig": {
+      "type": "submit",
+      "style": "secondary",
+      "text": "Add connection"
+    }
+  }
+}

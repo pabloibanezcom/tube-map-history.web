@@ -1,0 +1,28 @@
+.ms-header {
+  box-shadow: 0 3px 3px rgba(0, 0, 0, .29);
+  border-bottom: 2px solid $primary-color;
+  .current-year {
+    position: absolute;
+    display: block;
+    overflow: hidden;
+    max-height: 0;
+    top: 25px;
+    width: 200px;
+    left: 0;
+    right: 0;
+    z-index: 105;
+    text-align: center;
+    -webkit-transition: max-height 0.5s;
+    -moz-transition: max-height 0.5s;
+    -o-transition: max-height 0.5s;
+    transition: max-height 0.5s;
+    &.shown {
+      max-height: 120px;
+    }
+    .current-year-wrapper {
+      margin-left: auto;
+      margin-right: auto;
+      width: 200px;
+    }
+  }
+}

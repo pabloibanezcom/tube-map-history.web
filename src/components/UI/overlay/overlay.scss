@@ -1,0 +1,11 @@
+.overlay {
+  position: fixed;
+  height: 100%;
+  width: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.9);
+  &.shown {
+    width: 100%;
+    opacity: 0.6;
+  }
+}

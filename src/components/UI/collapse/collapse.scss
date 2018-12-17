@@ -1,0 +1,51 @@
+@import "../../../assets/scss/variables.scss";
+.card {
+  &.card-default {
+    .card-header {
+      .card-code-title {
+        a {
+          color: #000;
+        }
+      }
+      &:hover {
+        background-color: $primary-color;
+        color: $secondary-color;
+        .card-code-title {
+          a {
+            color: $secondary-color !important;
+          }
+        }
+      }
+    }
+    .card-collapse {
+      background-color: $panel-secondary-color;
+      color: $white-color;
+    }
+    &.active {
+      .card-header {
+        background-color: $primary-color;
+        color: $secondary-color;
+        .card-code-title {
+          a {
+            color: $secondary-color !important;
+          }
+        }
+      }
+    }
+  }
+  &.card-primary {
+    .card-header {
+      background-color: $primary-color;
+      color: $secondary-color;
+    }
+  }
+  &.card-secondary {
+    .card-header {
+      background-color: $secondary-color;
+      color: $white-color;
+    }
+  }
+  .card-collapse {
+    padding: 15px 20px;
+  }
+}
