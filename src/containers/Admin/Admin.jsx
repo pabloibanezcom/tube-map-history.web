@@ -74,7 +74,7 @@ class Admin extends React.Component {
   render() {
     return <div className="admin-container">
       {this.props.loading ? <LoadingSpinner /> : null}
-      <Header />
+      <Header optionsName="admin" />
       <div className="container">
         <h1 className="right-line mb-4">Admin</h1>
         <div className="row">

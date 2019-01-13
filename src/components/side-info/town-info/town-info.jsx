@@ -6,7 +6,7 @@ const buildTownInfoElements = (townInfo) => {
     {
       label: 'Open year',
       value: townInfo.year,
-      counterStart: 2018,
+      counterStart: 2019,
       icon: 'calendar-alt',
       mode: 'year'
     },

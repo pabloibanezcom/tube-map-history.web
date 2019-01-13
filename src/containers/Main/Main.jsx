@@ -47,6 +47,7 @@ class Main extends React.Component {
         onYearChange={(year) => { this.yearChange(year) }}
       /> : null}
       <Header
+        optionsName="main"
         onToggleYearSelector={() => { this.toggleYearSelector() }}
         showYear={!this.state.showYearSelector}
         year={this.props.year}

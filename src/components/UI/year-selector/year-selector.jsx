@@ -33,7 +33,7 @@ const yearSelector = (props) => {
     <div className={`year-selector ${props.showYearSelector ? 'shown' : 'hidden'}`}>
       <div className="year-selector-wrapper">
         <div className="current-year">Year <span className="year">{props.year}</span></div>
-        <Slider min={1853} max={2018} defaultValue={props.year} handle={handle} onAfterChange={(val) => handleChange(val)} />
+        <Slider min={1853} max={2019} defaultValue={props.year} handle={handle} onAfterChange={(val) => handleChange(val)} />
       </div>
     </div>
   )

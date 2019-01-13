@@ -7,6 +7,10 @@ generateIcons();
 
 const defaultYear = process.env.REACT_APP_DEFAULT_YEAR;
 
+const asyncTowns = asyncComponent(() => {
+  return import('./containers/Towns/Towns');
+});
+
 const asyncMain = asyncComponent(() => {
   return import('./containers/Main/Main');
 });
@@ -21,6 +25,7 @@ class App extends Component {
     let routes = (
       <Switch>
         <Route path="/admin" component={asyncAdmin} />
+        <Route path="/towns" component={asyncTowns} />
         <Route path="/:town/:year" exact component={asyncMain} />
         <Redirect to={`/london/${defaultYear}`} />
       </Switch>

@@ -47,7 +47,7 @@ export const zoomToPoint = (map, point) => {
   return previousState;
 }
 
-const addStations = (map, town, stations, onStationClick, yearTo = 2018, yearFrom = 1800) => {
+const addStations = (map, town, stations, onStationClick, yearTo = 2019, yearFrom = 1800) => {
   if (!map.stations) {
     map.stations = [];
   }
@@ -68,7 +68,7 @@ const addStations = (map, town, stations, onStationClick, yearTo = 2018, yearFro
     }));
 }
 
-const addConnections = (map, town, connections, yearTo = 2018, yearFrom = 1800) => {
+const addConnections = (map, town, connections, yearTo = 2019, yearFrom = 1800) => {
   if (!map.connections) {
     map.connections = [];
   }
@@ -87,7 +87,7 @@ const addConnections = (map, town, connections, yearTo = 2018, yearFrom = 1800) 
     }));
 }
 
-const removeStations = (stationMarkers, yearTo = 2018, yearFrom = 1800) => {
+const removeStations = (stationMarkers, yearTo = 2019, yearFrom = 1800) => {
   if (stationMarkers) {
     stationMarkers.filter(sm => sm.data.year > yearFrom && sm.data.year <= yearTo)
       .map(s => {
@@ -96,7 +96,7 @@ const removeStations = (stationMarkers, yearTo = 2018, yearFrom = 1800) => {
   }
 }
 
-const removeConnections = (connectionLines, yearTo = 2018, yearFrom = 1800) => {
+const removeConnections = (connectionLines, yearTo = 2019, yearFrom = 1800) => {
   if (connectionLines) {
     connectionLines.filter(cl => cl.data.year > yearFrom && cl.data.year <= yearTo)
       .map(c => {

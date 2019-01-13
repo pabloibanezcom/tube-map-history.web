@@ -55,5 +55,12 @@ export const groupBy = (arr, groupProperty, itemsProperty, sort) => {
     });
     return sort ? result.sort((a, b) => a[groupProperty] - b[groupProperty]) : result;
   }
-
 }
+
+export const sortBy = (arr, property) => {
+  return !property ? arr.sort((a, b) => a[property] - b[property]) : arr;
+}
+
+export const splitByRows = (arr, size) => arr.reduce((chunks, el, i) => (i % size
+  ? chunks[chunks.length - 1].push(el)
+  : chunks.push([el])) && chunks, [])

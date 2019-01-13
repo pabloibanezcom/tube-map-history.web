@@ -1,6 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import * as headerOptions from './headerOptions.json';
 
 const header = (props) => {
+
+  const options = props.options || headerOptions[props.optionsName];
+
   return <header className="ms-header ms-header-dark">
     <div className="container container-full">
       <div className="ms-title">
@@ -14,7 +19,7 @@ const header = (props) => {
         </a>
       </div>
       <div className="header-right">
-        <div className="share-menu">
+        {options.showShareMenu ? <div className="share-menu">
           <ul className="share-menu-list">
             <li className="animated fadeInRight animation-delay-3">
               <a href="" onClick={e => { e.preventDefault() }} className="btn-circle btn-google">
@@ -35,19 +40,22 @@ const header = (props) => {
           <a href="" onClick={e => { e.preventDefault() }} className="btn-circle btn-circle-primary animated zoomInDown animation-delay-7">
             <i className="zmdi zmdi-share"></i>
           </a>
-        </div>
-        <a href="" onClick={e => { e.preventDefault(); props.onToggleYearSelector(); }} className="toggle-year-link btn-circle btn-circle-primary no-focus animated zoomInDown animation-delay-8" data-toggle="modal" >
+        </div> : null}
+        {options.showYear ? <a href="" onClick={e => { e.preventDefault(); props.onToggleYearSelector(); }} className="toggle-year-link btn-circle btn-circle-primary no-focus animated zoomInDown animation-delay-8" data-toggle="modal" >
           <i className="zmdi zmdi-calendar"></i>
-        </a>
-        <form className="search-form animated zoomInDown animation-delay-9">
+        </a> : null}
+        {options.showSearch ? <form className="search-form animated zoomInDown animation-delay-9">
           <input id="search-box" type="text" className="search-input" placeholder="Search..." name="q" />
           <label htmlFor="search-box">
             <i className="zmdi zmdi-search"></i>
           </label>
-        </form>
-        <a href="" className="btn-ms-menu btn-circle btn-circle-primary ms-toggle-left animated zoomInDown animation-delay-10">
+        </form> : null}
+        {options.showTowns ? <Link to="/towns" className="btn-ms-menu btn-circle btn-circle-primary ms-toggle-left animated zoomInDown animation-delay-10">
+          <i className="fa fa-globe"></i>
+        </Link> : null}
+        {options.showUser ? <a href="" className="btn-ms-menu btn-circle btn-circle-primary ms-toggle-left animated zoomInDown animation-delay-10">
           <i className="zmdi zmdi-account"></i>
-        </a>
+        </a> : null}
       </div>
     </div>
     <div className={`current-year ${props.showYear ? 'shown' : null}`}>

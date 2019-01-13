@@ -21,10 +21,10 @@
       "toggleType": "primary",
       "label": "Year",
       "min": 1853,
-      "max": 2018,
+      "max": 2019,
       "value": [
         1853,
-        2018
+        2019
       ]
     }
   },
