@@ -7,8 +7,8 @@ export function* changeYearSagaStart(action) {
   try {
     let data = null;
     if (loadStationYears) {
-      const stationsResponse = yield getStations(action.year, action.maxYearLoaded);
-      const connectionsResponse = yield getConnections(action.year, action.maxYearLoaded);
+      const stationsResponse = yield getStations(action.townId, action.year, action.maxYearLoaded);
+      const connectionsResponse = yield getConnections(action.townId, action.year, action.maxYearLoaded);
       data = {
         stations: stationsResponse.data,
         connections: connectionsResponse.data

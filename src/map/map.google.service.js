@@ -1,3 +1,4 @@
+import styles from './styles/styles';
 const gmaps = window.google.maps;
 const mapConfig = require('./config/map.config.json');
 const connectionConfig = require('./config/connection.config.json');
@@ -15,6 +16,7 @@ export const initMap = (selector, town) => {
 }
 
 export const updateMap = (map, town, stations, connections, currentYear, previousYear, onStationClick) => {
+  applyYearStyle(map, currentYear);
   if (!previousYear) {
     addStations(map, town, stations, onStationClick, currentYear);
     addConnections(map, town, connections, currentYear);
@@ -149,4 +151,26 @@ const setConnectionNumber = (connections) => {
     paths[`${c.stations[0].name}-${c.stations[1].name}`] = c.connectionNumber;
     return c;
   }).sort((a, b) => b.connectionNumber - a.connectionNumber);
+}
+
+const applyYearStyle = (map, year) => {
+
+  let setMapTypeId = null;
+
+  const getYearStyleForYear = (year) => {
+    for (const key in styles) {
+      if (key.split('_')[1] <= year && key.split('_')[2] >= year) {
+        setMapTypeId = key;
+        return new gmaps.StyledMapType(mapConfig.styles.concat(styles[key]), { name: key });
+      }
+    }
+    return null;
+  }
+
+  const styledMapType = getYearStyleForYear(year);
+
+  if (styledMapType) {
+    map.mapTypes.set(setMapTypeId, styledMapType);
+    map.setMapTypeId(setMapTypeId);
+  }
 }

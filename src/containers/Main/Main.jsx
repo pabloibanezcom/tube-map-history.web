@@ -25,7 +25,7 @@ class Main extends React.Component {
 
   yearChange = (year) => {
     this.props.history.push(`/${this.props.town.url}/${year}`);
-    this.props.onYearChange(year, this.props.year, this.props.maxYearLoaded);
+    this.props.onYearChange(this.props.town._id, year, this.props.year, this.props.maxYearLoaded);
   }
 
   closeSideBar = () => {
@@ -76,7 +76,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onInit: (town, year) => dispatch(actions.loadInitStart(town, year)),
-    onYearChange: (year, previousYear, maxYearLoaded) => dispatch(actions.changeYearStart(year, previousYear, maxYearLoaded))
+    onYearChange: (townId, year, previousYear, maxYearLoaded) => dispatch(actions.changeYearStart(townId, year, previousYear, maxYearLoaded))
   }
 };
 
