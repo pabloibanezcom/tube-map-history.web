@@ -72,8 +72,24 @@ const addConnections = (map, town, connections, yearTo = 2019, yearFrom = 1800) 
   if (!map.connections) {
     map.connections = [];
   }
-  map.connections = map.connections.concat(connections
-    .filter(c => c.year > yearFrom && c.year <= yearTo)
+
+  const groupedConnections = setConnectionNumber(connections
+    .filter(c => c.year > yearFrom && c.year <= yearTo));
+
+  const getStrokeRatio = (connectionNumber) => {
+    switch (connectionNumber) {
+      case 1:
+        return 1;
+      case 2:
+        return 2;
+      case 3:
+        return 4;
+      default:
+        return 1;
+    }
+  }
+
+  map.connections = map.connections.concat(groupedConnections
     .map(c => {
       return new gmaps.Polyline({
         ...connectionConfig,
@@ -82,7 +98,8 @@ const addConnections = (map, town, connections, yearTo = 2019, yearFrom = 1800) 
         },
         map: map,
         path: c.stations.map(s => convertPointArrayToMapPoint(s.geometry.coordinates)),
-        strokeColor: c.line.colour
+        strokeColor: c.line.colour,
+        strokeWeight: connectionConfig.strokeWeight * getStrokeRatio(c.connectionNumber)
       })
     }));
 }
@@ -116,4 +133,20 @@ const getStationMarker = (town, station) => {
     new gmaps.Point(5, 5),
     new gmaps.Size(10, 10)
   );
+}
+
+const setConnectionNumber = (connections) => {
+
+  const paths = {};
+
+  return connections.map(c => {
+    if (paths[`${c.stations[0].name}-${c.stations[1].name}`]) {
+      // Exists already a path for it
+      c.connectionNumber = paths[`${c.stations[0].name}-${c.stations[1].name}`] + 1;
+    } else {
+      c.connectionNumber = 1;
+    }
+    paths[`${c.stations[0].name}-${c.stations[1].name}`] = c.connectionNumber;
+    return c;
+  }).sort((a, b) => b.connectionNumber - a.connectionNumber);
 }
