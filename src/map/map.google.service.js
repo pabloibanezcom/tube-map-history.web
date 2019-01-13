@@ -1,9 +1,10 @@
+
 import styles from './styles/styles';
 const gmaps = window.google.maps;
 const mapConfig = require('./config/map.config.json');
 const connectionConfig = require('./config/connection.config.json');
 
-export const initMap = (selector, town) => {
+export const initMap = (selector, town, mode) => {
   return new gmaps.Map(document.getElementById(selector),
     {
       ...mapConfig,
@@ -15,8 +16,8 @@ export const initMap = (selector, town) => {
     });
 }
 
-export const updateMap = (map, town, stations, connections, currentYear, previousYear, onStationClick) => {
-  applyYearStyle(map, currentYear);
+export const updateMap = (map, town, mode, stations, connections, currentYear, previousYear, onStationClick) => {
+  applyYearStyle(map, currentYear, mode);
   if (!previousYear) {
     addStations(map, town, stations, onStationClick, currentYear);
     addConnections(map, town, connections, currentYear);
@@ -153,15 +154,16 @@ const setConnectionNumber = (connections) => {
   }).sort((a, b) => b.connectionNumber - a.connectionNumber);
 }
 
-const applyYearStyle = (map, year) => {
+const applyYearStyle = (map, year, mode) => {
 
   let setMapTypeId = null;
+  const defaultStyle = mode === 'print' ? styles['default_style'].concat(styles['print']) : styles['default_style'];
 
   const getYearStyleForYear = (year) => {
     for (const key in styles) {
       if (key.split('_')[1] <= year && key.split('_')[2] >= year) {
         setMapTypeId = key;
-        return new gmaps.StyledMapType(mapConfig.styles.concat(styles[key]), { name: key });
+        return new gmaps.StyledMapType(defaultStyle.concat(styles[key]), { name: key });
       }
     }
     return null;

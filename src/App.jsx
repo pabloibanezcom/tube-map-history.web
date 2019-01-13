@@ -15,6 +15,10 @@ const asyncMain = asyncComponent(() => {
   return import('./containers/Main/Main');
 });
 
+const asyncPrintPreview = asyncComponent(() => {
+  return import('./containers/PrintPreview/PrintPreview');
+});
+
 const asyncAdmin = asyncComponent(() => {
   return import('./containers/Admin/Admin');
 });
@@ -27,6 +31,7 @@ class App extends Component {
         <Route path="/admin" component={asyncAdmin} />
         <Route path="/towns" component={asyncTowns} />
         <Route path="/:town/:year" exact component={asyncMain} />
+        <Route path="/:town/:year/print" exact component={asyncPrintPreview} />
         <Redirect to={`/london/${defaultYear}`} />
       </Switch>
     );

@@ -44,6 +44,9 @@ const header = (props) => {
         {options.showYear ? <a href="" onClick={e => { e.preventDefault(); props.onToggleYearSelector(); }} className="toggle-year-link btn-circle btn-circle-primary no-focus animated zoomInDown animation-delay-8" data-toggle="modal" >
           <i className="zmdi zmdi-calendar"></i>
         </a> : null}
+        {options.showPrint && props.town ? <Link to={`/${props.town.url}/${props.year}/print`} target="_blank" className="toggle-year-link btn-circle btn-circle-primary no-focus animated zoomInDown animation-delay-8" data-toggle="modal" >
+          <i className="fa fa-picture-o"></i>
+        </Link> : null}
         {options.showSearch ? <form className="search-form animated zoomInDown animation-delay-9">
           <input id="search-box" type="text" className="search-input" placeholder="Search..." name="q" />
           <label htmlFor="search-box">

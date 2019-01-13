@@ -2,6 +2,7 @@
   "admin": {
     "showShareMenu": false,
     "showYear": false,
+    "showPrint": false,
     "showSearch": false,
     "showTowns": false,
     "showUser": true
@@ -9,6 +10,7 @@
   "main": {
     "showShareMenu": true,
     "showYear": true,
+    "showPrint": true,
     "showSearch": true,
     "showTowns": true,
     "showUser": true
@@ -16,6 +18,15 @@
   "towns": {
     "showShareMenu": false,
     "showYear": false,
+    "showPrint": false,
+    "showSearch": false,
+    "showTowns": false,
+    "showUser": true
+  },
+  "print": {
+    "showShareMenu": false,
+    "showYear": false,
+    "showPrint": false,
     "showSearch": false,
     "showTowns": false,
     "showUser": true

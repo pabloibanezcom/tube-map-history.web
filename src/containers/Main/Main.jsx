@@ -8,12 +8,14 @@ import * as actions from '../../store/actions/main';
 import MapWrapper from '../MapWrapper/MapWrapper';
 import Sidebar from '../SideBar/SideBar';
 
+
 class Main extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      showYearSelector: true
+      showYearSelector: true,
+      printMode: false
     };
   }
 
@@ -50,10 +52,11 @@ class Main extends React.Component {
         optionsName="main"
         onToggleYearSelector={() => { this.toggleYearSelector() }}
         showYear={!this.state.showYearSelector}
+        town={this.props.town}
         year={this.props.year}
       />
       <Sidebar />
-      <MapWrapper />
+      <MapWrapper mode="main" />
     </div>
   }
 }
