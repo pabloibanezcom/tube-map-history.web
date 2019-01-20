@@ -30,14 +30,30 @@ class Admin extends React.Component {
   }
 
   componentDidMount() {
+    this.props.loadTownData(this.props.match.params.town);
     this.setActiveTab(adminMenu.tabs[0]);
+  }
+
+  getCurrentTown = () => {
+    return this.props.town ? this.props.town._id : this.props.match.params.town
   }
 
   setActiveTab = (tab) => {
     const tabIndex = this.state.tabs.findIndex(t => t.id === tab.id);
     const tabWith = this.tabSet.current.offsetWidth / this.state.tabs.length;
     this.setState({ activeTab: tab, tabIndicatorStyle: { width: `${tabWith}px`, left: tabIndex * tabWith } });
-    this.search(tab.id);
+    this.loadPanel(tab);
+    this.search(tab.id, this.props.searchParams, this.props.pagination)
+  }
+
+  loadPanel = (panel) => {
+    switch (panel.id) {
+      case 'stations':
+        this.props.loadStationsPanel(this.getCurrentTown());
+        break;
+      default:
+        break;
+    }
   }
 
   search = (tabId, searchParams, pagination) => {
@@ -51,7 +67,7 @@ class Admin extends React.Component {
     } else {
       _searchParams = defaultSearchParams[activeTabId];
     }
-    this.props.onSearch[activeTabId](_searchParams, _pagination);
+    this.props.onSearch[activeTabId](this.getCurrentTown(), _searchParams, _pagination);
   }
 
   changePage = (page) => {
@@ -63,7 +79,7 @@ class Admin extends React.Component {
   }
 
   dialogSuccess = (action, element) => {
-    this.props[action](element);
+    this.props[action](this.getCurrentTown(), element);
     this.setState({ actionDialog: null });
   }
 
@@ -89,11 +105,13 @@ class Admin extends React.Component {
                 {this.props.pagination ? <ResultsSummary
                   numberElements={this.props.pagination.total}
                   label={this.state.activeTab.id}
+                  onShowDialog={this.showDialog}
                 /> : null}
                 <div className="tab-content">
                   <div role="tabpanel" className="tab-pane fade active show">
                     {this.props.currentResulsType ? <ResultsList
                       currentResulsType={this.props.currentResulsType}
+                      town={this.props.town}
                       results={this.props.results}
                       onShowDialog={this.showDialog}
                     /> : null}
@@ -109,6 +127,8 @@ class Admin extends React.Component {
           <div className="col-md-3">
             {this.state.activeTab ? <SearchFilter
               activeTab={this.state.activeTab.id}
+              town={this.props.town}
+              lines={this.props.lines}
               onSearch={this.search}
             /> : null}
           </div>
@@ -130,6 +150,8 @@ class Admin extends React.Component {
 const mapStateToProps = state => {
   return {
     results: state.admin.results,
+    town: state.admin.town,
+    lines: state.admin.lines,
     currentResulsType: state.admin.currentResulsType,
     pagination: state.admin.pagination,
     searchParams: state.admin.searchParams,
@@ -139,12 +161,15 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    loadTownData: (town) => dispatch(actions.loadTownDataStart(town)),
+    loadStationsPanel: (townId) => dispatch(actions.loadStationsPanelStart(townId)),
     onSearch: {
-      stations: (searchParams, pagination) => dispatch(actions.searchStationsStart(searchParams, pagination)),
+      stations: (town, searchParams, pagination) => dispatch(actions.searchStationsStart(town, searchParams, pagination)),
       lines: (searchParams, pagination) => dispatch(actions.searchLinesStart(searchParams, pagination)),
       connections: (searchParams, pagination) => dispatch(actions.searchConnectionsStart(searchParams, pagination))
     },
-    onEditStation: (station) => dispatch(actions.editStationStart(station)),
+    onAddStation: (town, station) => dispatch(actions.addStationStart(town, station)),
+    onUpdateStation: (town, station) => dispatch(actions.updateStationStart(town, station)),
     onAddConnection: (connection) => dispatch(actions.addConnectionStart(connection)),
     onDeleteConnection: (connection) => dispatch(actions.deleteConnectionStart(connection))
   }

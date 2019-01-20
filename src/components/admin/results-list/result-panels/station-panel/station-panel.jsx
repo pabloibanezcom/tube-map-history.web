@@ -14,13 +14,16 @@ const stationPanel = (props) => {
         {props.result.geometry.coordinates ?
           <div className="station-element station-coordenates">
             <span className="station-element-label"><FontAwesomeIcon icon={'map-marker-alt'} />Coordenates:</span>
-            <span className="station-element-value">{props.result.geometry.coordinates[0]} N  {props.result.geometry.coordinates[1]} W</span>
+            <span className="station-element-value">
+              {Number.parseFloat(props.result.geometry.coordinates[0]).toFixed(4)}° N
+              | {Number.parseFloat(props.result.geometry.coordinates[1]).toFixed(4)}° W
+            </span>
           </div>
           : null}
-        <div className="station-element station-farezones">
+        {/* <div className="station-element station-farezones">
           <span className="station-element-label"><FontAwesomeIcon icon={'coins'} />Farezones:</span>
           <span className="station-element-value">2 & 3</span>
-        </div>
+        </div> */}
         <div className="station-buttons">
           <button type="button" className="btn btn-raised btn-secondary" onClick={() => props.onShowDialog('EDIT_STATION', props.result)}>Edit<div className="ripple-container"></div></button>
           <button type="button" className="btn btn-danger" onClick={() => props.onShowDialog('DELETE_STATION', props.result)}>Delete</button>
@@ -34,6 +37,7 @@ const stationPanel = (props) => {
               return <ConnectionInfo key={i}
                 stationId={props.result._id}
                 connection={con}
+                town={props.town}
                 position={con.stations[0]._id === props.result._id ? 'right' : 'left'}
                 onShowDialog={props.onShowDialog} />
             })}

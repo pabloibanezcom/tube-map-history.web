@@ -46,6 +46,7 @@
   "line": {
     "elementType": "select",
     "propertyType": "object",
+    "options": "lines",
     "elementConfig": {
       "label": "Line",
       "placeholder": "Select a line",
@@ -59,12 +60,7 @@
         "selected": "SelectedLine",
         "dropdown": "DropdownLine"
       },
-      "enableSearch": "true",
-      "remote": {
-        "model": "line",
-        "propertyName": "name",
-        "minChars": 0
-      }
+      "enableSearch": "true"
     }
   },
   "searchButton": {

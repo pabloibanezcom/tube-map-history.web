@@ -10,7 +10,7 @@ export const getDefaultValue = (type) => {
     case 'string':
       return '';
     case 'number':
-      return 0;
+      return '';
     default:
       return null;
   }

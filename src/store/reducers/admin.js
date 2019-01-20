@@ -2,6 +2,8 @@ import { updateObject } from '../../shared/utility';
 import * as actionTypes from '../actions/admin/actionTypes';
 
 const initialState = {
+  town: null,
+  lines: [],
   results: [],
   currentResulsType: null,
   pagination: null,
@@ -36,26 +38,40 @@ const searchSuccess = (state, action, model) => {
   });
 };
 
+const loadTownSuccess = (state, action) => {
+  return {
+    ...state,
+    loading: false,
+    town: action.townData
+  }
+}
+
+const loadStationsPanelSuccess = (state, action) => {
+  return {
+    ...state,
+    loading: false,
+    lines: action.data.lines
+  }
+}
+
+const checkActionType = (action, type) => {
+  return action.endsWith(type);
+}
+
 export const adminReducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.LOAD_TOWN_DATA_SUCCESS: return loadTownSuccess(state, action);
+    case actionTypes.LOAD_STATIONS_PANEL_SUCCESS: return loadStationsPanelSuccess(state, action);
     case actionTypes.SEARCH_LINES_START: return searchStart(state, action, 'lines');
     case actionTypes.SEARCH_LINES_SUCCESS: return searchSuccess(state, action, 'lines');
-    case actionTypes.SEARCH_LINES_FAIL: return stopLoading(state);
     case actionTypes.SEARCH_STATIONS_START: return searchStart(state, action, 'stations');
     case actionTypes.SEARCH_STATIONS_SUCCESS: return searchSuccess(state, action, 'stations');
-    case actionTypes.SEARCH_STATIONS_FAIL: return stopLoading(state);
     case actionTypes.SEARCH_CONNECTIONS_START: return searchStart(state, action, 'connections');
     case actionTypes.SEARCH_CONNECTIONS_SUCCESS: return searchSuccess(state, action, 'connections');
-    case actionTypes.SEARCH_CONNECTIONS_FAIL: return stopLoading(state);
-    case actionTypes.EDIT_STATION_START: return startLoading(state);
-    case actionTypes.EDIT_STATION_SUCCESS: return stopLoading(state);
-    case actionTypes.EDIT_STATION_FAIL: return stopLoading(state);
-    case actionTypes.ADD_CONNECTION_START: return startLoading(state);
-    case actionTypes.ADD_CONNECTION_SUCCESS: return stopLoading(state);
-    case actionTypes.ADD_CONNECTION_FAIL: return stopLoading(state);
-    case actionTypes.DELETE_CONNECTION_START: return startLoading(state);
-    case actionTypes.DELETE_CONNECTION_SUCCESS: return stopLoading(state);
-    case actionTypes.DELETE_CONNECTION_FAIL: return stopLoading(state);
+    // Default ones
+    case checkActionType(action.type, 'START'): return startLoading(state);
+    case checkActionType(action.type, 'SUCCESS'): return stopLoading(state);
+    case checkActionType(action.type, 'FAIL'): return stopLoading(state);
     default: return state;
   }
 };

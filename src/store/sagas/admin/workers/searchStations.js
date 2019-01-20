@@ -1,5 +1,5 @@
 import { put, select } from "redux-saga/effects";
-import { search } from "../../../../http/admin";
+import Api from '../../../../http/api';
 import * as actions from "../../../actions/admin";
 
 export function* searchStationsSagaStart(action) {
@@ -11,7 +11,7 @@ export function* searchStationsSagaStart(action) {
       searchParams = searchParams || (state.admin.searchParams ? state.admin.searchParams.stations : null);
       pagination = pagination || state.admin.pagination;
     }
-    const response = yield search('station', searchParams, pagination);
+    const response = yield Api.station.searchStations(action.town, searchParams, pagination);
     yield put(actions.searchStationsSuccess(response.data));
   } catch (error) {
     yield put(actions.searchStationsFail(error));

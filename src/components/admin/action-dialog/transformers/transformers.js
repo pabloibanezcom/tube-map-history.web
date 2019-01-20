@@ -1,3 +1,6 @@
+const addStationFromForm = (formData, element, otherData) => {
+  return { ...formData };
+}
 
 const editStationFromForm = (formData, element, otherData) => {
   return { _id: element._id, ...formData };
@@ -21,10 +24,12 @@ const addConnectionToStationFromForm = (formData, element, otherData) => {
 
 const transformers = {
   toForm: {
+    ADD_STATION: null,
     EDIT_STATION: null,
     ADD_CONNECTION_TO_STATION: addConnectionToStationToForm
   },
   fromForm: {
+    ADD_STATION: addStationFromForm,
     EDIT_STATION: editStationFromForm,
     ADD_CONNECTION_TO_STATION: addConnectionToStationFromForm
   }

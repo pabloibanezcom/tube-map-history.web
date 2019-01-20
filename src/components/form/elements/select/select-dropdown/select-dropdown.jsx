@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import onClickOutside from "react-onclickoutside";
-import { search } from '../../../../../http/operations';
 import { getDynamicComponent } from '../../../../dynamic-components/dynamic-components';
 
 class SelectDropdown extends React.Component {
@@ -9,14 +8,12 @@ class SelectDropdown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      options: this.generateOptions(),
-      filteredOptions: this.generateOptions(),
+      options: [],
+      filteredOptions: [],
       activeIndex: null,
       searchStr: ''
     }
     this.customDropdown = getDynamicComponent(this.props.config.custom.dropdown);
-    this.handleOnKeyDown = this.handleOnKeyDown.bind(this);
-    this.generateOptions = this.generateOptions.bind(this);
     this.filter = this.filter.bind(this);
     this.select = this.select.bind(this);
   }
@@ -29,6 +26,10 @@ class SelectDropdown extends React.Component {
     if (nextProps.expanded) {
       this.searchInput && this.searchInput.focus();
     }
+    if (nextProps.options) {
+      const options = this.generateOptions(nextProps.options);
+      this.setState({ options: options, filteredOptions: options });
+    }
     return true;
   }
 
@@ -36,7 +37,7 @@ class SelectDropdown extends React.Component {
     this.props.onClose();
   }
 
-  handleOnKeyDown(evt) {
+  handleOnKeyDown = (evt) => {
     switch (evt.key) {
       case 'ArrowDown':
         if (this.state.activeIndex < this.state.filteredOptions.length - 1) {
@@ -61,14 +62,14 @@ class SelectDropdown extends React.Component {
     }
   }
 
-  generateOptions() {
+  generateOptions = (options) => {
     return [
       ...this.getNoneOption(),
-      ...this.props.options
+      ...options
     ];
   }
 
-  getNoneOption() {
+  getNoneOption = () => {
     return this.props.config.noneLabel ?
       [{ [this.props.config.options.key]: 'none', [this.props.config.options.label]: this.props.config.noneLabel }] : [];
   }
@@ -92,19 +93,20 @@ class SelectDropdown extends React.Component {
   }
 
   filterRemote(value) {
-    if (value.length >= this.props.config.remote.minChars) {
-      search(this.props.config.remote.model, { [this.props.config.remote.propertyName]: value })
-        .then(res => {
-          const filteredOptions = [
-            ...this.getNoneOption(),
-            ...res.data
-          ];
-          this.setState({ filteredOptions: filteredOptions, activeIndex: 0 })
-        })
-        .catch(err => console.log(err));
-    } else {
-      this.setState({ filteredOptions: [], activeIndex: 0 });
-    }
+    // if (value.length >= this.props.config.remote.minChars) {
+    //   search(this.props.config.remote.model, { [this.props.config.remote.propertyName]: value })
+    //     .then(res => {
+    //       const filteredOptions = [
+    //         ...this.getNoneOption(),
+    //         ...res.data
+    //       ];
+    //       this.setState({ filteredOptions: filteredOptions, activeIndex: 0 })
+    //     })
+    //     .catch(err => console.log(err));
+    // } else {
+    //   this.setState({ filteredOptions: [], activeIndex: 0 });
+    // }
+    this.props.onInputChange(value);
     this.setState({ searchStr: value });
   }
 
@@ -120,6 +122,7 @@ class SelectDropdown extends React.Component {
   }
 
   render() {
+
     return <div className={`select-dropdown dropdown-menu ${this.props.expanded ? 'show' : ''}`} x-placement="bottom-start" tabIndex="0" >
       {this.props.config.enableSearch ?
         <div className="bs-searchbox">
@@ -130,7 +133,7 @@ class SelectDropdown extends React.Component {
       <div className="inner show" role="listbox" aria-expanded={this.props.expanded ? true : false} tabIndex="-1">
         <ul className="dropdown-menu inner show">
           {this.state.filteredOptions && this.state.filteredOptions.map((opt, index) => {
-            return <li key={opt[this.props.config.options.key]} className="">
+            return <li key={index} className="">
               {this.customDropdown ? <this.customDropdown option={opt} activeIndex={this.state.activeIndex} index={index} onSelectOption={(opt) => this.select(opt)} /> :
                 <a role="option" onClick={() => this.select(opt)} className={`dropdown-item ${this.state.activeIndex === index ? 'active' : ''}`} aria-disabled="false" aria-selected="true">
                   <span className="text">{opt[this.props.config.options.label]}</span>

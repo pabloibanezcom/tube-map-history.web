@@ -1,6 +1,10 @@
 {
+  "ADD_STATION": {
+    "action": "onAddStation",
+    "title": "Add station"
+  },
   "EDIT_STATION": {
-    "action": "onEditStation",
+    "action": "onUpdateStation",
     "title": "Edit station"
   },
   "DELETE_STATION": {

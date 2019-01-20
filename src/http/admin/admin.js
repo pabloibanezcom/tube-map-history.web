@@ -4,6 +4,10 @@ import { add, deleteOp, update } from '../operations';
 const defaultPagination = require('./defaultParams/pagination.json');
 const searchStationsParams = require('./defaultParams/searchStations.json');
 
+export const getLines = (townId) => {
+  return axios.get(`${townId}/lines`);
+}
+
 export const addConnection = (connection) => {
   return add('connection', connection);
 }

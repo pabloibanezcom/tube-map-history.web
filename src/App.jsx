@@ -28,7 +28,7 @@ class App extends Component {
 
     let routes = (
       <Switch>
-        <Route path="/admin" component={asyncAdmin} />
+        <Route path="/admin/:town" component={asyncAdmin} />
         <Route path="/towns" component={asyncTowns} />
         <Route path="/:town/:year" exact component={asyncMain} />
         <Route path="/:town/:year/print" exact component={asyncPrintPreview} />

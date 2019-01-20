@@ -2,6 +2,7 @@ import React from 'react';
 import { applyTypeToValue, getDefaultValue, updateObject } from '../../shared/utility';
 import Button from './elements/button/button';
 import Input from './elements/input/input';
+import PlaceSearch from './elements/place-search/place-search';
 import Range from './elements/range/range';
 import Select from './elements/select/select';
 
@@ -30,8 +31,6 @@ class Form extends React.Component {
     });
     return formData;
   }
-
-  getDefault
 
   onHandleChange(value, formElementName) {
     const updatedFormElement = updateObject(this.state.formData[formElementName], {
@@ -84,6 +83,12 @@ class Form extends React.Component {
               onChange={(evt) => this.onHandleChange(evt, fEl)}
             />
             break;
+          case 'place-search':
+            formElementHtml = <PlaceSearch
+              onChange={(val) => this.onHandleChange(val, fEl)}
+              value={this.state.formData[fEl].value}
+            />;
+            break;
           case 'button':
             formElementHtml = <Button
               text={this.props.formElements[fEl].elementConfig.text}
@@ -91,6 +96,7 @@ class Form extends React.Component {
               style={{ marginTop: '50px' }}
             />;
             break;
+
           default:
             break;
         }

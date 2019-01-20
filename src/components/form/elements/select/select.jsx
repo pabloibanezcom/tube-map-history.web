@@ -40,7 +40,7 @@ class Select extends React.Component {
               <div className="filter-option">
                 <div className="filter-option-inner">
                   <div className="filter-option-inner-inner">
-                    {this.state.selectedOption ? this.state.selectedOption[this.props.config.label] : 'Select a line'}
+                    {this.state.selectedOption ? this.state.selectedOption[this.props.config.label] : this.props.config.placeholder}
                   </div>
                 </div>
               </div>}

@@ -6,7 +6,6 @@ import LineConnections from './line-connections/line-connections';
 const lineInfo = (props) => {
 
   const handleAction = (option) => {
-    console.log(option);
   }
 
   return <div className="line-info">

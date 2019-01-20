@@ -16,5 +16,11 @@ const DYNAMIC_COMPONENTS = {
   }),
   DropdownStation: asyncComponent(() => {
     return import('../UI/custom-selects/dropdown-station/dropdown-station');
+  }),
+  SelectedPlaceSuggestion: asyncComponent(() => {
+    return import('../UI/custom-selects/selected-place-suggestion/selected-place-suggestion');
+  }),
+  DropdownPlaceSuggestion: asyncComponent(() => {
+    return import('../UI/custom-selects/dropdown-place-suggestion/dropdown-place-suggestion');
   })
 }

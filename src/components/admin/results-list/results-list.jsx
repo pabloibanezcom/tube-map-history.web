@@ -21,7 +21,7 @@ class ResultsList extends React.Component {
   createHeader = (result) => {
     switch (this.props.currentResulsType) {
       case 'stations':
-        return <StationHeader result={result} />
+        return <StationHeader result={result} town={this.props.town} />
       case 'lines':
         return <LineHeader result={result} />
       default:
@@ -32,7 +32,7 @@ class ResultsList extends React.Component {
   createContent = (result) => {
     switch (this.props.currentResulsType) {
       case 'stations':
-        return <StationPanel result={result} onShowDialog={this.props.onShowDialog} />
+        return <StationPanel result={result} town={this.props.town} onShowDialog={this.props.onShowDialog} />
       default:
         return null;
     }

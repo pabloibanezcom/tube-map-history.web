@@ -1,5 +1,5 @@
 import React from 'react';
-import tubeLogo from '../../../../../../assets/img/icons/tube_alt.png';
+import TownLogo from '../../../../../towns/town-logo/town-logo';
 
 const connectionInfo = (props) => {
   const style = {
@@ -8,7 +8,7 @@ const connectionInfo = (props) => {
   }
   return <div className="connection-info">
     <div className={`connection-station-name ${props.position}`}>
-      <img alt="" src={tubeLogo} />
+      <TownLogo town={props.town} />
       {props.connection.stations.find(s => s._id !== props.stationId).name}
     </div>
     <div className="connection-line" style={style}></div>

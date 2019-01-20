@@ -1,10 +1,10 @@
 import React from 'react';
-import tubeLogo from '../../../../../assets/img/icons/tube_alt.png';
+import TownLogo from '../../../../towns/town-logo/town-logo';
 
 const stationPanel = (props) => {
 
   return <div className="result-header station-header">
-    <img alt="" src={tubeLogo} />
+    <TownLogo town={props.town} />
     <span className="name">{props.result.name}</span>
     <div className="extra-info-labels">
       {getUniqueLines(props.result.connections)

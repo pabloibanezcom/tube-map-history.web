@@ -78,7 +78,6 @@ class Towns extends React.Component {
   sortBy = 'year';
 
   render() {
-    console.log(sortBy(towns, this.sortBy));
     return <div>
       <Header optionsName="towns" />
       <div className="towns-container">

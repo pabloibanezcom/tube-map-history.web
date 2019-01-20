@@ -16,6 +16,28 @@ export const initMap = (selector, town, mode) => {
     });
 }
 
+export const initMapForPlaceSearch = (selector, place, onGeometryChange) => {
+  const map = new gmaps.Map(document.getElementById(selector),
+    {
+      center: place.geometry.location,
+      zoom: 15
+    });
+  const marker = new gmaps.Marker({
+    disableDefaultUI: true,
+    fullscreenControl: false,
+    position: place.geometry.location,
+    map: map,
+    icon: new gmaps.MarkerImage(require(`../assets/img/markers/default_station.png`)),
+    title: place.name
+  });
+  map.addListener('click', function (event) {
+    marker.setPosition(event.latLng);
+    onGeometryChange(event.latLng);
+  });
+  map.markers = [marker];
+  return (map);
+}
+
 export const updateMap = (map, town, mode, stations, connections, currentYear, previousYear, onStationClick) => {
   applyYearStyle(map, currentYear, mode);
   if (!previousYear) {
@@ -48,6 +70,14 @@ export const zoomToPoint = (map, point) => {
   map.panTo({ lat: point[1], lng: point[0] });
   map.setZoom(15);
   return previousState;
+}
+
+export const convertPointArrayToMapPoint = (coordinates) => {
+  return new gmaps.LatLng(coordinates[1], coordinates[0]);
+}
+
+export const convertMapPointToPointArray = (point) => {
+  return [point.lng(), point.lat()];
 }
 
 const addStations = (map, town, stations, onStationClick, yearTo = 2019, yearFrom = 1800) => {
@@ -123,10 +153,6 @@ const removeConnections = (connectionLines, yearTo = 2019, yearFrom = 1800) => {
         return c.setMap(null);
       });
   }
-}
-
-const convertPointArrayToMapPoint = (coordinates) => {
-  return new gmaps.LatLng(coordinates[1], coordinates[0]);
 }
 
 const getStationMarker = (town, station) => {

@@ -23,6 +23,14 @@
       "maxLength": 4
     }
   },
+  "geometry": {
+    "elementType": "place-search",
+    "propertyType": "object",
+    "elementConfig": {
+      "label": "Location",
+      "placeholder": "Type a station name..."
+    }
+  },
   "searchButton": {
     "elementType": "button",
     "elementConfig": {
