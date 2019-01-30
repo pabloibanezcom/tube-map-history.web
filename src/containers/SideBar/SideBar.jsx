@@ -32,6 +32,7 @@ class SideBar extends React.Component {
       case 'station':
         return <StationInfo
           station={this.props.selectedStation}
+          town={this.props.town}
           onStationSelected={this.props.onStationSelected}
         />;
       default:

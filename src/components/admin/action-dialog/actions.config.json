@@ -20,5 +20,9 @@
     "type": "DELETE",
     "action": "onDeleteConnection",
     "title": "Delete connection"
+  },
+  "UPLOAD_TOWN_DATA": {
+    "action": "uploadTownData",
+    "title": "Upload town data"
   }
 }

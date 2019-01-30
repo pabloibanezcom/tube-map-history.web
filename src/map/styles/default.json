@@ -17,6 +17,14 @@
   },
   {
     "featureType": "road.highway",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
     "elementType": "labels",
     "stylers": [
       {

@@ -6,6 +6,7 @@ import ActionDialog from '../../components/admin/action-dialog/action-dialog';
 import ResultsList from '../../components/admin/results-list/results-list';
 import ResultsSummary from '../../components/admin/results-summary/results-summary';
 import SearchFilter from '../../components/admin/search-filter/search-filter';
+import TownHeader from '../../components/admin/town-header/town-header';
 import Footer from '../../components/UI/footer/footer';
 import Header from '../../components/UI/header/header';
 import LoadingSpinner from '../../components/UI/loading-spinner/loading-spinner';
@@ -79,6 +80,7 @@ class Admin extends React.Component {
   }
 
   dialogSuccess = (action, element) => {
+    debugger
     this.props[action](this.getCurrentTown(), element);
     this.setState({ actionDialog: null });
   }
@@ -93,6 +95,14 @@ class Admin extends React.Component {
       <Header optionsName="admin" />
       <div className="container">
         <h1 className="right-line mb-4">Admin</h1>
+        <div className="row">
+          <div className="col-md-12">
+            {this.props.town ? <TownHeader
+              town={this.props.town} onDownloadTownData={this.props.downloadTownData}
+              onShowDialog={this.showDialog}
+            /> : null}
+          </div>
+        </div>
         <div className="row">
           <div className="col-md-9">
             <div className="horizontal-tab card">
@@ -171,7 +181,8 @@ const mapDispatchToProps = dispatch => {
     onAddStation: (town, station) => dispatch(actions.addStationStart(town, station)),
     onUpdateStation: (town, station) => dispatch(actions.updateStationStart(town, station)),
     onAddConnection: (connection) => dispatch(actions.addConnectionStart(connection)),
-    onDeleteConnection: (connection) => dispatch(actions.deleteConnectionStart(connection))
+    onDeleteConnection: (connection) => dispatch(actions.deleteConnectionStart(connection)),
+    uploadTownData: (town, file) => dispatch(actions.uploadTownDataStart(town, file))
   }
 };
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import tubeLogo from '../../../assets/img/icons/tube_alt.png';
+import TownLogo from '../../towns/town-logo/town-logo';
 import StationConnections from './station-connections/station-connections';
 
 const stationInfo = (props) => {
   return <div className="station-info">
-    <div className="station-name"><img className="station-logo" alt="" src={tubeLogo} />{props.station.name}</div>
+    <div className="station-name"><TownLogo town={props.town} />{props.station.name}</div>
     <div className="station-year">
       <div className="station-year-label">Year</div>
       <div className="float-right">

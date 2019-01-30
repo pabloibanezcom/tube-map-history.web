@@ -1,0 +1,18 @@
+.town-header {
+  .card {
+    background-color: $secondary-color;
+    padding: 0 20px
+  }
+  .town-name {
+    color: $primary-color;
+    margin-right: 20px;
+    font-size: 22px;
+  }
+  .town-country {
+    color: $white-color;
+    margin-right: 10px;
+  }
+  .town-alias {
+    color: $white-color;
+  }
+}

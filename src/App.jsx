@@ -19,6 +19,10 @@ const asyncPrintPreview = asyncComponent(() => {
   return import('./containers/PrintPreview/PrintPreview');
 });
 
+const asyncLogin = asyncComponent(() => {
+  return import('./containers/Login/Login');
+});
+
 const asyncAdmin = asyncComponent(() => {
   return import('./containers/Admin/Admin');
 });
@@ -28,6 +32,7 @@ class App extends Component {
 
     let routes = (
       <Switch>
+        <Route path="/login" component={asyncLogin} />
         <Route path="/admin/:town" component={asyncAdmin} />
         <Route path="/towns" component={asyncTowns} />
         <Route path="/:town/:year" exact component={asyncMain} />

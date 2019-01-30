@@ -1,6 +1,7 @@
 import React from 'react';
 import { applyTypeToValue, getDefaultValue, updateObject } from '../../shared/utility';
 import Button from './elements/button/button';
+import FileUpload from './elements/file-upload/file-upload';
 import Input from './elements/input/input';
 import PlaceSearch from './elements/place-search/place-search';
 import Range from './elements/range/range';
@@ -79,6 +80,12 @@ class Form extends React.Component {
             break;
           case 'range':
             formElementHtml = <Range
+              config={this.props.formElements[fEl].elementConfig}
+              onChange={(evt) => this.onHandleChange(evt, fEl)}
+            />
+            break;
+          case 'file-upload':
+            formElementHtml = <FileUpload
               config={this.props.formElements[fEl].elementConfig}
               onChange={(evt) => this.onHandleChange(evt, fEl)}
             />

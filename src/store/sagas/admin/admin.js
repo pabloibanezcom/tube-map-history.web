@@ -1,6 +1,6 @@
 import { takeEvery } from "redux-saga/effects";
 import * as actionTypes from "../../actions/admin/actionTypes";
-import { addConnectionSagaStart, addStationSagaStart, deleteConnectionSagaStart, loadStationsPanelSagaStart, loadTownDataSagaStart, searchLinesSagaStart, searchStationsSagaStart, updateStationSagaStart } from './workers';
+import { addConnectionSagaStart, addStationSagaStart, deleteConnectionSagaStart, loadStationsPanelSagaStart, loadTownDataSagaStart, searchLinesSagaStart, searchStationsSagaStart, updateStationSagaStart, uploadTownDataSagaStart } from './workers';
 
 export const adminSagas = [
   takeEvery(actionTypes.LOAD_TOWN_DATA_START, loadTownDataSagaStart),
@@ -10,5 +10,6 @@ export const adminSagas = [
   takeEvery(actionTypes.DELETE_CONNECTION_START, deleteConnectionSagaStart),
   takeEvery(actionTypes.UPDATE_STATION_START, updateStationSagaStart),
   takeEvery(actionTypes.SEARCH_STATIONS_START, searchStationsSagaStart),
-  takeEvery(actionTypes.SEARCH_LINES_START, searchLinesSagaStart)
+  takeEvery(actionTypes.SEARCH_LINES_START, searchLinesSagaStart),
+  takeEvery(actionTypes.UPLOAD_TOWN_DATA_START, uploadTownDataSagaStart)
 ];

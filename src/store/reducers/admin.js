@@ -68,6 +68,9 @@ export const adminReducer = (state = initialState, action) => {
     case actionTypes.SEARCH_STATIONS_SUCCESS: return searchSuccess(state, action, 'stations');
     case actionTypes.SEARCH_CONNECTIONS_START: return searchStart(state, action, 'connections');
     case actionTypes.SEARCH_CONNECTIONS_SUCCESS: return searchSuccess(state, action, 'connections');
+    case actionTypes.UPLOAD_TOWN_DATA_START: return startLoading(state, action);
+    case actionTypes.UPLOAD_TOWN_DATA_SUCCESS: return stopLoading(state, action);
+    case actionTypes.UPLOAD_TOWN_DATA_FAIL: return stopLoading(state, action);
     // Default ones
     case checkActionType(action.type, 'START'): return startLoading(state);
     case checkActionType(action.type, 'SUCCESS'): return stopLoading(state);

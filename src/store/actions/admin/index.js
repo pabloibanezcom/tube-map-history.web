@@ -7,4 +7,5 @@ export * from './searchConnections';
 export * from './searchLines';
 export * from './searchStations';
 export * from './updateStation';
+export * from './uploadTownData';
 

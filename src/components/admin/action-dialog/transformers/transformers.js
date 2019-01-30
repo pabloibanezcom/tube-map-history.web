@@ -6,6 +6,10 @@ const editStationFromForm = (formData, element, otherData) => {
   return { _id: element._id, ...formData };
 }
 
+const uploadTownDataFromForm = (formData, element, otherData) => {
+  return formData.file;
+}
+
 const addConnectionToStationToForm = (element, otherData) => {
   return {
     ...element,
@@ -26,12 +30,14 @@ const transformers = {
   toForm: {
     ADD_STATION: null,
     EDIT_STATION: null,
-    ADD_CONNECTION_TO_STATION: addConnectionToStationToForm
+    ADD_CONNECTION_TO_STATION: addConnectionToStationToForm,
+    UPLOAD_TOWN_DATA: null
   },
   fromForm: {
     ADD_STATION: addStationFromForm,
     EDIT_STATION: editStationFromForm,
-    ADD_CONNECTION_TO_STATION: addConnectionToStationFromForm
+    ADD_CONNECTION_TO_STATION: addConnectionToStationFromForm,
+    UPLOAD_TOWN_DATA: uploadTownDataFromForm
   }
 };
 

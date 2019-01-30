@@ -1,0 +1,20 @@
+{
+  "file": {
+    "elementType": "file-upload",
+    "propertyType": "object",
+    "elementConfig": {
+      "placeholder": "Browse..."
+    },
+    "validation": {
+      "required": true
+    }
+  },
+  "searchButton": {
+    "elementType": "button",
+    "elementConfig": {
+      "type": "submit",
+      "style": "secondary",
+      "text": "Upload data file"
+    }
+  }
+}

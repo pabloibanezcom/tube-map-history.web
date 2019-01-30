@@ -6,4 +6,5 @@ export * from './loadTownData';
 export * from './searchLines';
 export * from './searchStations';
 export * from './updateStation';
+export * from './uploadTownData';
 
