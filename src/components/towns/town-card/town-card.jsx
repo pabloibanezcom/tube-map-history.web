@@ -42,7 +42,7 @@ const townCard = (props) => {
               <div className="town-data-value right">{props.town.stationsAmount}</div>
               <div className="clearfix"></div>
             </div>
-            {/* <button class="btn btn-raised btn-secondary btn-block no-text-transform">View map</button> */}
+            {/* <button className="btn btn-raised btn-secondary btn-block no-text-transform">View map</button> */}
           </div>
 
         </div>

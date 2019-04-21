@@ -1,4 +1,5 @@
 @import "./variables.scss";
+
 .primary {
   color: $primary-color !important;
 }
@@ -22,6 +23,7 @@
 
 .rc-slider-handle {
   border-color: $primary-color;
+
   &:active,
   &:hover,
   &:focus {
@@ -42,10 +44,10 @@
 }
 
 .form-group.is-focused .form-control {
-  background-image: linear-gradient($primary-color, $primary-color), linear-gradient(#d2d2d2, #d2d2d2);
+  background-image: linear-gradient($primary-color, $primary-color), linear-gradient($grey-gradient-color, $grey-gradient-color);
 }
 
 .form-control,
 .form-group .form-control {
-  background-image: linear-gradient($primary-color, $primary-color), linear-gradient(#d2d2d2, #d2d2d2);
+  background-image: linear-gradient($primary-color, $primary-color), linear-gradient($grey-gradient-color, $grey-gradient-color);
 }

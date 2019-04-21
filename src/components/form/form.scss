@@ -5,9 +5,11 @@
 @import "./elements/select/select-dropdown/select-dropdown.scss";
 @import "./elements/file-upload//file-upload.scss";
 @import "./elements/toggle/toggle.scss";
+
 .dropdown {
   .dropdown-menu {
     top: -2px;
+
     .bs-searchbox {
       input {
         box-shadow: none;
@@ -18,6 +20,7 @@
       }
     }
   }
+
   .btn {
     text-transform: none;
   }
@@ -25,12 +28,34 @@
 
 .form-group {
   margin-top: 20px;
+
   &.label-floating {
     margin-top: 35px;
   }
+
   .control-label {
     font-size: 14px !important;
     color: $secondary-color !important;
     font-weight: 500 !important;
+  }
+}
+
+.form-dark {
+  input {
+    color: $white-color;
+
+    &:focus {
+      color: $white-color;
+    }
+  }
+}
+
+.form-light {
+  input {
+    color: $black-color;
+
+    &:focus {
+      color: $black-color;
+    }
   }
 }

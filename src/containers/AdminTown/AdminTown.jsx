@@ -12,17 +12,17 @@ import Header from '../../components/UI/header/header';
 import LoadingSpinner from '../../components/UI/loading-spinner/loading-spinner';
 import Pagination from '../../components/UI/pagination/pagination';
 import * as actions from '../../store/actions/admin';
-import * as adminMenu from './adminMenu';
+import * as adminTownMenu from './adminTownMenu';
 import * as defaultPagination from './defaultPagination';
 import * as defaultSearchParams from './defaultPagination';
 
-class Admin extends React.Component {
+class AdminTown extends React.Component {
 
   constructor(props) {
     super(props);
     this.tabSet = React.createRef();
     this.state = {
-      tabs: adminMenu.tabs,
+      tabs: adminTownMenu.tabs,
       activeTab: null,
       tabIndicatorStyle: null,
       tabWidth: null,
@@ -32,7 +32,7 @@ class Admin extends React.Component {
 
   componentDidMount() {
     this.props.loadTownData(this.props.match.params.town);
-    this.setActiveTab(adminMenu.tabs[0]);
+    this.setActiveTab(adminTownMenu.tabs[0]);
   }
 
   getCurrentTown = () => {
@@ -90,7 +90,7 @@ class Admin extends React.Component {
   }
 
   render() {
-    return <div className="admin-container">
+    return <div className="admin-town-container">
       {this.props.loading ? <LoadingSpinner /> : null}
       <Header optionsName="admin" />
       <div className="container">
@@ -106,8 +106,8 @@ class Admin extends React.Component {
         <div className="row">
           <div className="col-md-9">
             <div className="horizontal-tab card">
-              <ul ref={this.tabSet} className={`nav nav-tabs nav-tabs-transparent indicator-dark nav-tabs-full nav-tabs-${adminMenu.tabs.length}`} role="tablist">
-                {adminMenu.tabs.map((t, i) => <li key={t.id} className="nav-item"><a className={`nav-link withoutripple ${this.state.activeTab && this.state.activeTab.id === t.id ? 'active show' : ''}`}
+              <ul ref={this.tabSet} className={`nav nav-tabs nav-tabs-transparent indicator-dark nav-tabs-full nav-tabs-${adminTownMenu.tabs.length}`} role="tablist">
+                {adminTownMenu.tabs.map((t, i) => <li key={t.id} className="nav-item"><a className={`nav-link withoutripple ${this.state.activeTab && this.state.activeTab.id === t.id ? 'active show' : ''}`}
                   onClick={() => this.setActiveTab(t, i)}><FontAwesomeIcon icon={t.icon} /> <span className="d-none d-sm-inline">{t.label}</span></a></li>)}
                 <span className="ms-tabs-indicator" style={this.state.tabIndicatorStyle}></span>
               </ul>
@@ -186,4 +186,4 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Admin));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AdminTown));

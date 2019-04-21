@@ -1,0 +1,32 @@
+{
+  "email": {
+    "elementType": "input",
+    "propertyType": "string",
+    "elementConfig": {
+      "type": "email",
+      "placeholder": "Email address"
+    },
+    "validation": {
+      "required": true
+    }
+  },
+  "password": {
+    "elementType": "input",
+    "propertyType": "string",
+    "elementConfig": {
+      "type": "password",
+      "placeholder": "Password"
+    },
+    "validation": {
+      "required": true
+    }
+  },
+  "loginButton": {
+    "elementType": "button",
+    "elementConfig": {
+      "type": "submit",
+      "style": "primary",
+      "text": "Login"
+    }
+  }
+}

@@ -60,13 +60,15 @@ class Form extends React.Component {
   }
 
   render() {
-    return <form onSubmit={this.onSubmit}>
-      {Object.keys(this.props.formElements).map((fEl, i) => {
+    const { formElements, mode } = this.props;
+
+    return <form className={`form-${mode || 'dark'}`} onSubmit={this.onSubmit}>
+      {Object.keys(formElements).map((fEl, i) => {
         let formElementHtml;
-        switch (this.props.formElements[fEl].elementType) {
+        switch (formElements[fEl].elementType) {
           case 'input':
             formElementHtml = <Input
-              config={this.props.formElements[fEl].elementConfig}
+              config={formElements[fEl].elementConfig}
               value={this.state.formData[fEl].value}
               onChange={(evt) => this.onHandleChange(evt, fEl)}
             />;
@@ -74,19 +76,19 @@ class Form extends React.Component {
           case 'select':
             formElementHtml = <Select
               options={this.props[this.props.formElements[fEl].options]}
-              config={this.props.formElements[fEl].elementConfig}
+              config={formElements[fEl].elementConfig}
               onChange={(evt) => this.onHandleChange(evt, fEl)}
             />
             break;
           case 'range':
             formElementHtml = <Range
-              config={this.props.formElements[fEl].elementConfig}
+              config={formElements[fEl].elementConfig}
               onChange={(evt) => this.onHandleChange(evt, fEl)}
             />
             break;
           case 'file-upload':
             formElementHtml = <FileUpload
-              config={this.props.formElements[fEl].elementConfig}
+              config={formElements[fEl].elementConfig}
               onChange={(evt) => this.onHandleChange(evt, fEl)}
             />
             break;
@@ -98,8 +100,8 @@ class Form extends React.Component {
             break;
           case 'button':
             formElementHtml = <Button
-              text={this.props.formElements[fEl].elementConfig.text}
-              type={this.props.formElements[fEl].elementConfig.style || 'primary'}
+              text={formElements[fEl].elementConfig.text}
+              type={formElements[fEl].elementConfig.style || 'primary'}
               style={{ marginTop: '50px' }}
             />;
             break;
