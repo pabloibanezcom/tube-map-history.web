@@ -1,0 +1,15 @@
+.user-picture {
+  background-color: $primary-color;
+  border: solid 5px $secondary-color;
+  transition: none;
+
+  .user-picture-letters {
+    color: $secondary-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 40px;
+    font-weight: 600;
+  }
+}

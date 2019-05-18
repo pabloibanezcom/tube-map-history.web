@@ -2,7 +2,9 @@ import { updateObject } from '../../shared/utility';
 import * as actionTypes from '../actions/admin/actionTypes';
 
 const initialState = {
+  user: null,
   town: null,
+  towns: [],
   lines: [],
   results: [],
   currentResulsType: null,
@@ -17,6 +19,30 @@ const startLoading = (state) => {
 
 const stopLoading = (state) => {
   return updateObject(state, { loading: false });
+};
+
+const getUserSuccess = (state, action) => {
+  return {
+    ...state,
+    loading: false,
+    user: action.user
+  }
+};
+
+const getTownsSuccess = (state, action) => {
+  return {
+    ...state,
+    loading: false,
+    towns: action.towns
+  }
+};
+
+const getTownSuccess = (state, action) => {
+  return {
+    ...state,
+    loading: false,
+    town: action.town
+  }
 };
 
 const searchStart = (state, action, model) => {
@@ -38,14 +64,6 @@ const searchSuccess = (state, action, model) => {
   });
 };
 
-const loadTownSuccess = (state, action) => {
-  return {
-    ...state,
-    loading: false,
-    town: action.townData
-  }
-}
-
 const loadStationsPanelSuccess = (state, action) => {
   return {
     ...state,
@@ -60,8 +78,10 @@ const checkActionType = (action, type) => {
 
 export const adminReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.LOAD_TOWN_DATA_SUCCESS: return loadTownSuccess(state, action);
     case actionTypes.LOAD_STATIONS_PANEL_SUCCESS: return loadStationsPanelSuccess(state, action);
+    case actionTypes.GET_USER_SUCCESS: return getUserSuccess(state, action);
+    case actionTypes.GET_TOWNS_SUCCESS: return getTownsSuccess(state, action);
+    case actionTypes.GET_TOWN_SUCCESS: return getTownSuccess(state, action);
     case actionTypes.SEARCH_LINES_START: return searchStart(state, action, 'lines');
     case actionTypes.SEARCH_LINES_SUCCESS: return searchSuccess(state, action, 'lines');
     case actionTypes.SEARCH_STATIONS_START: return searchStart(state, action, 'stations');

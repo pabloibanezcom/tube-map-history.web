@@ -5,6 +5,7 @@ const initialState = {
   year: null,
   previousYear: null,
   maxYearLoaded: null,
+  countries: null,
   town: null,
   lines: [],
   stations: [],
@@ -74,6 +75,13 @@ const getStationDetailsSuccess = (state, action) => {
     });
 }
 
+const getCountriesSuccess = (state, action) => {
+  return updateObject(stopLoading(state),
+    {
+      countries: action.countries,
+    });
+}
+
 const setMapState = (state, action) => {
   return updateObject(state,
     {
@@ -104,6 +112,9 @@ export const mainReducer = (state = initialState, action) => {
     case actionTypes.GET_STATION_DETAILS_FAIL: return stopLoading(state, action);
     case actionTypes.SET_MAP_STATE: return setMapState(state, action);
     case actionTypes.SET_SIDE_BAR_STATE: return setSideBarState(state, action);
+    case actionTypes.GET_COUNTRIES_START: return startLoading(state, action);
+    case actionTypes.GET_COUNTRIES_SUCCESS: return getCountriesSuccess(state, action);
+    case actionTypes.GET_COUNTRIES_FAIL: return stopLoading(state, action);
     default: return state;
   }
 };

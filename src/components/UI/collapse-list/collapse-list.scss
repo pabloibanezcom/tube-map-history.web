@@ -1,0 +1,121 @@
+@import "./header/header.scss";
+@import "./content/content.scss";
+
+.collapse-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  .collapse-list-element {
+    background-color: white;
+    margin-bottom: 5px;
+    box-shadow: 0 1px 4px 0 hsla(0, 0%, 59.2%, .17);
+    cursor: pointer;
+
+    .collapse-list-header {
+      padding: 6px 20px;
+
+      .collapse-list-header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        >i {
+          transform: rotate(0);
+          transition: all ease .4s;
+        }
+      }
+
+    }
+
+    &.active {
+      .collapse-list-header {
+        .collapse-list-header-container {
+          >i {
+            transform: rotate(90deg);
+          }
+        }
+      }
+
+      .collapse-list-content {
+        max-height: 1000px;
+        transition: max-height 1s ease-in-out;
+      }
+    }
+  }
+
+  .collapse-list-content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+  }
+
+  // CUSTOMIZATION
+
+  &.collapse-list-default {
+
+    .collapse-list-element {
+
+      &.active {
+        .collapse-list-header {
+          background-color: darken($grey-color, 10%);
+          color: $black-color;
+        }
+      }
+
+      .collapse-list-header {
+        background-color: $grey-color;
+        color: $black-color;
+
+        &:hover {
+          background-color: darken($grey-color, 10%);
+          color: $black-color;
+        }
+      }
+    }
+  }
+
+  &.collapse-list-primary {
+    .collapse-list-element {
+
+      &.active {
+        .collapse-list-header {
+          background-color: $secondary-color;
+          color: $white-color;
+        }
+      }
+
+      .collapse-list-header {
+        background-color: $primary-color;
+        color: $secondary-color;
+
+        &:hover {
+          background-color: $secondary-color;
+          color: $white-color;
+        }
+      }
+    }
+  }
+
+  &.collapse-list-secondary {
+    .collapse-list-element {
+
+      &.active {
+        .collapse-list-header {
+          background-color: $primary-color;
+          color: $secondary-color;
+        }
+      }
+
+      .collapse-list-header {
+        background-color: $secondary-color;
+        color: $white-color;
+
+        &:hover {
+          background-color: $primary-color;
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+}

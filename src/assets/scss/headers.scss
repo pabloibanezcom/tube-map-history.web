@@ -1,0 +1,25 @@
+@mixin right-line {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    background-color: $grey-light-color;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+    left: 0.5em;
+    margin-right: -50%;
+  }
+}
+
+.header {
+  &--md {
+    @include right-line();
+    color: $secondary-color;
+    font-size: 1.8rem;
+    margin-bottom: 15px
+  }
+}

@@ -1,3 +1,4 @@
+
 import axios from '../axios';
 
 export default class User {
@@ -7,5 +8,9 @@ export default class User {
 
   static login = (email, password) => {
     return axios.get(`login?email=${email}&password=${password}`);
+  }
+
+  static getUserInfo = () => {
+    return axios.get(`user`);
   }
 }

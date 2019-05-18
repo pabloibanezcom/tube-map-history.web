@@ -22,5 +22,11 @@ const DYNAMIC_COMPONENTS = {
   }),
   DropdownPlaceSuggestion: asyncComponent(() => {
     return import('../UI/custom-selects/dropdown-place-suggestion/dropdown-place-suggestion');
+  }),
+  SelectedCountry: asyncComponent(() => {
+    return import('../UI/custom-selects/selected-country/selected-country');
+  }),
+  DropdownCountry: asyncComponent(() => {
+    return import('../UI/custom-selects/dropdown-country/dropdown-country');
   })
 }

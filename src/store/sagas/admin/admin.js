@@ -1,9 +1,11 @@
 import { takeEvery } from "redux-saga/effects";
 import * as actionTypes from "../../actions/admin/actionTypes";
-import { addConnectionSagaStart, addStationSagaStart, deleteConnectionSagaStart, loadStationsPanelSagaStart, loadTownDataSagaStart, searchLinesSagaStart, searchStationsSagaStart, updateStationSagaStart, uploadTownDataSagaStart } from './workers';
+import { addConnectionSagaStart, addStationSagaStart, deleteConnectionSagaStart, getTownSagaStart, getTownsSagaStart, getUserSagaStart, loadStationsPanelSagaStart, searchLinesSagaStart, searchStationsSagaStart, updateStationSagaStart, uploadTownDataSagaStart } from './workers';
 
 export const adminSagas = [
-  takeEvery(actionTypes.LOAD_TOWN_DATA_START, loadTownDataSagaStart),
+  takeEvery(actionTypes.GET_USER_START, getUserSagaStart),
+  takeEvery(actionTypes.GET_TOWNS_START, getTownsSagaStart),
+  takeEvery(actionTypes.GET_TOWN_START, getTownSagaStart),
   takeEvery(actionTypes.LOAD_STATIONS_PANEL_START, loadStationsPanelSagaStart),
   takeEvery(actionTypes.ADD_STATION_START, addStationSagaStart),
   takeEvery(actionTypes.ADD_CONNECTION_START, addConnectionSagaStart),

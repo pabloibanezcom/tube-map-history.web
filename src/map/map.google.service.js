@@ -1,8 +1,8 @@
 
 import styles from './styles/styles';
-const gmaps = window.google.maps;
 const mapConfig = require('./config/map.config.json');
 const connectionConfig = require('./config/connection.config.json');
+const gmaps = window.google ? window.google.maps : null;
 
 export const initMap = (selector, town, mode) => {
   return new gmaps.Map(document.getElementById(selector),

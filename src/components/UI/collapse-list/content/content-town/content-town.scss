@@ -1,0 +1,16 @@
+.collapse-content-town {
+  padding: 20px;
+
+  .content-element {
+    display: flex;
+
+    &__title {
+      width: 90px;
+      opacity: .8;
+    }
+
+    &__value {
+      font-weight: 500;
+    }
+  }
+}

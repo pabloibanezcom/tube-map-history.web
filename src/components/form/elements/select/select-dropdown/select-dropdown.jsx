@@ -16,6 +16,7 @@ class SelectDropdown extends React.Component {
     this.customDropdown = getDynamicComponent(this.props.config.custom.dropdown);
     this.filter = this.filter.bind(this);
     this.select = this.select.bind(this);
+    this.getDropDownStyle = this.getDropDownStyle.bind(this);
   }
 
   componentDidMount() {
@@ -84,10 +85,10 @@ class SelectDropdown extends React.Component {
 
   filterLocally(value) {
     let filteredOptions;
-    if (value.length < 3) {
+    if (value.length < (this.props.config.minStr || 3)) {
       filteredOptions = [...this.state.options];
     } else {
-      filteredOptions = this.state.options.filter(opt => opt[this.props.config.options.label].toLowerCase().includes(value.toLowerCase()));
+      filteredOptions = this.state.options.filter(opt => opt[this.props.config.options.label].toLowerCase()[this.props.config.onlyStartsWith ? 'startsWith' : 'includes'](value.toLowerCase()));
     }
     this.setState({ filteredOptions: filteredOptions, searchStr: value });
   }
@@ -121,6 +122,10 @@ class SelectDropdown extends React.Component {
     this.filter('');
   }
 
+  getDropDownStyle() {
+    return !this.props.config.dropDownHeight ? null : { maxHeight: this.props.config.dropDownHeight, overflowY: 'auto' };
+  }
+
   render() {
 
     return <div className={`select-dropdown dropdown-menu ${this.props.expanded ? 'show' : ''}`} x-placement="bottom-start" tabIndex="0" >
@@ -131,8 +136,8 @@ class SelectDropdown extends React.Component {
         </div>
         : null}
       <div className="inner show" role="listbox" aria-expanded={this.props.expanded ? true : false} tabIndex="-1">
-        <ul className="dropdown-menu inner show">
-          {this.state.filteredOptions && this.state.filteredOptions.map((opt, index) => {
+        <ul className="dropdown-menu inner show" style={this.getDropDownStyle()}>
+          {this.state.filteredOptions && this.state.filteredOptions.slice(0, this.props.config.maxElements || 10).map((opt, index) => {
             return <li key={index} className="">
               {this.customDropdown ? <this.customDropdown option={opt} activeIndex={this.state.activeIndex} index={index} onSelectOption={(opt) => this.select(opt)} /> :
                 <a role="option" onClick={() => this.select(opt)} className={`dropdown-item ${this.state.activeIndex === index ? 'active' : ''}`} aria-disabled="false" aria-selected="true">

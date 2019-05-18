@@ -1,0 +1,65 @@
+{
+  "email": {
+    "elementType": "input",
+    "propertyType": "string",
+    "elementConfig": {
+      "type": "text",
+      "placeholder": "Email address"
+    },
+    "validation": {
+      "required": true
+    }
+  },
+  "password": {
+    "elementType": "input",
+    "propertyType": "string",
+    "elementConfig": {
+      "type": "password",
+      "placeholder": "Password"
+    },
+    "validation": {
+      "required": true
+    }
+  },
+  "confirmPassword": {
+    "elementType": "input",
+    "propertyType": "string",
+    "elementConfig": {
+      "type": "password",
+      "placeholder": "Confirm password"
+    },
+    "validation": {
+      "required": true
+    }
+  },
+  "name": {
+    "elementType": "input",
+    "propertyType": "string",
+    "elementConfig": {
+      "type": "text",
+      "placeholder": "Name"
+    },
+    "validation": {
+      "required": true
+    }
+  },
+  "country": {
+    "elementType": "input",
+    "propertyType": "string",
+    "elementConfig": {
+      "type": "text",
+      "placeholder": "Country"
+    },
+    "validation": {
+      "required": true
+    }
+  },
+  "signupButton": {
+    "elementType": "button",
+    "elementConfig": {
+      "type": "submit",
+      "style": "primary",
+      "text": "Create your account"
+    }
+  }
+}
