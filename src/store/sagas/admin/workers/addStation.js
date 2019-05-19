@@ -1,7 +1,7 @@
+import * as actions from "actions/admin";
+import Api from 'http/api';
 import { put, select } from "redux-saga/effects";
-import Api from '../../../../http/api';
-import { error, info } from '../../../../shared/notification';
-import * as actions from "../../../actions/admin";
+import { error, info } from 'shared/notification';
 
 export function* addStationSagaStart(action) {
   try {

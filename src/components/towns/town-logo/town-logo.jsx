@@ -1,7 +1,7 @@
+import londonLogo from 'assets/img/towns/london_logo.png';
+import madridLogo from 'assets/img/towns/madrid_logo.png';
+import newYorkLogo from 'assets/img/towns/new-york_logo.png';
 import React from 'react';
-import londonLogo from '../../../assets/img/towns/london_logo.png';
-import madridLogo from '../../../assets/img/towns/madrid_logo.png';
-import newYorkLogo from '../../../assets/img/towns/new-york_logo.png';
 
 const logos = {
   london: londonLogo,

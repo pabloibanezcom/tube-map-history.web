@@ -1,6 +1,6 @@
 import React from 'react';
-// import tubeLogo from '../../../../assets/img/icons/tube_alt.png';
-import { groupBy } from '../../../../shared/utility';
+// import tubeLogo from 'assets/img/icons/tube_alt.png';
+import { groupBy } from 'shared/utility';
 
 const stationConnections = (props) => {
   return <div className="station-connections">

@@ -1,7 +1,7 @@
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
-import { distance } from '../../../shared/filters';
+import { distance } from 'shared/filters';
 
 class LinesInfo extends React.Component {
 

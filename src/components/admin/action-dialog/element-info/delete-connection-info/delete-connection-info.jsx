@@ -1,5 +1,5 @@
+import tubeLogo from 'assets/img/icons/tube_alt.png';
 import React from 'react';
-import tubeLogo from '../../../../../assets/img/icons/tube_alt.png';
 
 const deleteConnectionInfo = (props) => {
   const style = {

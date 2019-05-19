@@ -106,7 +106,7 @@ const convertPointArrayToMapPoint = (coordinates) => {
 }
 
 const getStationMarker = (station) => {
-  // return new gmaps.MarkerImage(require(`../assets/img/markers/${station.markerIcon}.png`),
+  // return new gmaps.MarkerImage(require(`assets/img/markers/${station.markerIcon}.png`),
   //   new gmaps.Size(64, 64),
   //   new gmaps.Point(0, 0),
   //   new gmaps.Point(5, 5),

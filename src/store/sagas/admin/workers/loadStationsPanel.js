@@ -1,6 +1,6 @@
+import * as actions from "actions/admin";
+import Api from 'http/api';
 import { put } from "redux-saga/effects";
-import Api from '../../../../http/api';
-import * as actions from "../../../actions/admin";
 
 export function* loadStationsPanelSagaStart(action) {
   try {

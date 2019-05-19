@@ -1,5 +1,5 @@
-import { updateObject } from '../../shared/utility';
-import * as actionTypes from '../actions/admin/actionTypes';
+import * as actionTypes from 'actions/admin/actionTypes';
+import { updateObject } from 'shared/utility';
 
 const initialState = {
   user: null,

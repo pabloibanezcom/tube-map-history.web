@@ -1,5 +1,5 @@
+import { convertMapPointToPointArray, convertPointArrayToMapPoint, initMapForPlaceSearch, searchPlace } from 'map';
 import React from 'react';
-import { convertMapPointToPointArray, convertPointArrayToMapPoint, initMapForPlaceSearch, searchPlace } from '../../../../map';
 import Select from '../select/select';
 
 class PlaceSearch extends React.Component {

@@ -1,5 +1,5 @@
-import { updateObject } from '../../shared/utility';
-import * as actionTypes from '../actions/main/actionTypes';
+import * as actionTypes from 'actions/main/actionTypes';
+import { updateObject } from 'shared/utility';
 
 const initialState = {
   year: null,

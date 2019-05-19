@@ -1,4 +1,4 @@
-import asyncComponent from '../../hoc/asyncComponent/asyncComponent';
+import asyncComponent from 'hoc/asyncComponent/asyncComponent';
 
 export const getDynamicComponent = (componentName) => {
   return DYNAMIC_COMPONENTS[componentName];

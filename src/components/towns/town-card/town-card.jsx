@@ -7,14 +7,14 @@ const townCard = (props) => {
       <div className="town-card card animated fadeIn animation-delay-5">
         <div className="img-container">
           <div className="zoom-img">
-            <img src={require(`../../../assets/img/towns/${props.town.url}.jpg`)} alt={props.town.name} className="img-fluid city-img" />
-            {/* <img src={require(`../../../assets/img/towns/london.jpg`)} alt="" className="img-fluid city-img" /> */}
+            <img src={require(`assets/img/towns/${props.town.url}.jpg`)} alt={props.town.name} className="img-fluid city-img" />
+            {/* <img src={require(`assets/img/towns/london.jpg`)} alt="" className="img-fluid city-img" /> */}
           </div>
         </div>
 
         <div className="card-body overflow-hidden text-center town-container">
           <div className="town-alias">
-            <img src={require(`../../../assets/img/towns/${props.town.url}_logo.png`)} alt={props.town.name} />
+            <img src={require(`assets/img/towns/${props.town.url}_logo.png`)} alt={props.town.name} />
             <span>{props.town.alias}</span>
           </div>
           <div className="town-header">

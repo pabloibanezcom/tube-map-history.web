@@ -1,5 +1,5 @@
 import React from 'react';
-import { applyTypeToValue, getDefaultValue, updateObject } from '../../shared/utility';
+import { applyTypeToValue, getDefaultValue, updateObject } from 'shared/utility';
 import Button from './elements/button/button';
 import FileUpload from './elements/file-upload/file-upload';
 import Input from './elements/input/input';

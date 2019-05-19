@@ -1,5 +1,5 @@
 import React from 'react';
-import tubeLogo from '../../../assets/img/icons/tube_alt.png';
+import tubeLogo from 'assets/img/icons/tube_alt.png';
 import BooleanSelector from '../../UI/boolean-selector/boolean-selector';
 import LineConnections from './line-connections/line-connections';
 

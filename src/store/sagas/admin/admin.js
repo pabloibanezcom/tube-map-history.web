@@ -1,5 +1,5 @@
+import * as actionTypes from "actions/admin/actionTypes";
 import { takeEvery } from "redux-saga/effects";
-import * as actionTypes from "../../actions/admin/actionTypes";
 import { addConnectionSagaStart, addStationSagaStart, deleteConnectionSagaStart, getTownSagaStart, getTownsSagaStart, getUserSagaStart, loadStationsPanelSagaStart, searchLinesSagaStart, searchStationsSagaStart, updateStationSagaStart, uploadTownDataSagaStart } from './workers';
 
 export const adminSagas = [

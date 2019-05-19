@@ -1,5 +1,5 @@
+import * as actionTypes from "actions/main/actionTypes";
 import { takeEvery } from "redux-saga/effects";
-import * as actionTypes from "../../actions/main/actionTypes";
 import { changeYearSagaStart, getCountriesSagaStart, getLineDetailsSagaStart, getStationDetailsSagaStart, loadInitSagaStart } from './workers';
 
 export const mainSagas = [
