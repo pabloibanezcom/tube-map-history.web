@@ -1,11 +1,11 @@
+import * as actions from "actions/admin";
+import Api from 'http/api';
 import { put } from "redux-saga/effects";
-import { deleteConnection } from "../../../../http/admin";
-import { error, info } from '../../../../shared/notification';
-import * as actions from "../../../actions/admin";
+import { error, info } from 'shared/notification';
 
 export function* deleteConnectionSagaStart(action) {
   try {
-    const response = yield deleteConnection(action.connection);
+    const response = yield Api.connection.removeConnection(action.connection);
     yield put(actions.deleteConnectionSuccess(response.data));
     yield put(actions.searchStationsStart());
     info(`Connection deleted successfully!`);

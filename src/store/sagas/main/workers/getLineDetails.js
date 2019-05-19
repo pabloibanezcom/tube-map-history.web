@@ -1,11 +1,11 @@
+import * as actions from "actions/main";
+import Api from 'http/api';
 import { put } from "redux-saga/effects";
-import { getLine } from "../../../../http/main";
-import * as actions from "../../../actions/main";
 
 export function* getLineDetailsSagaStart(action) {
   if (action.lineId) {
     try {
-      const response = yield getLine(action.lineId);
+      const response = yield Api.line.getFullInfoLine(action.lineId);
       yield put(actions.getLineDetailsSuccess(response.data));
     } catch (error) {
       yield put(actions.getLineDetailsFail(error));

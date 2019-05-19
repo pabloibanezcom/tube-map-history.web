@@ -1,14 +1,14 @@
+import * as actions from "actions/main";
+import Api from 'http/api';
 import { put } from "redux-saga/effects";
-import { getConnections, getStations } from "../../../../http/main";
-import * as actions from "../../../actions/main";
 
 export function* changeYearSagaStart(action) {
   const loadStationYears = checkIfLoadStations(action.year, action.maxYearLoaded);
   try {
     let data = null;
     if (loadStationYears) {
-      const stationsResponse = yield getStations(action.townId, action.year, action.maxYearLoaded);
-      const connectionsResponse = yield getConnections(action.townId, action.year, action.maxYearLoaded);
+      const stationsResponse = yield Api.station.searchStations(action.townId, action.year, action.maxYearLoaded);
+      const connectionsResponse = yield Api.connection.getConnectionsByYearRange(action.townId, action.year, action.maxYearLoaded);
       data = {
         stations: stationsResponse.data,
         connections: connectionsResponse.data
