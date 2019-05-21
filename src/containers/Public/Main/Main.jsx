@@ -1,7 +1,5 @@
 import * as actions from 'actions/main';
-import Header from 'components/UI/header/header';
-import LoadingSpinner from 'components/UI/loading-spinner/loading-spinner';
-import YearSelector from 'components/UI/year-selector/year-selector';
+import { Header, LoadingSpinner, YearSelector } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";

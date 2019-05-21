@@ -1,5 +1,5 @@
 import * as actions from 'actions/auth';
-import Form from 'components/form/form';
+import { Form } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from "react-router-dom";

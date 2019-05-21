@@ -1,5 +1,5 @@
 import * as actions from 'actions/main';
-import Header from 'components/UI/header/header';
+import { Header } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";

@@ -1,5 +1,4 @@
-import Footer from 'components/UI/footer/footer';
-import Header from 'components/UI/header/header';
+import { Footer, Header } from 'components/shared';
 import React from 'react';
 import { withRouter } from "react-router-dom";
 import routes from './routes';

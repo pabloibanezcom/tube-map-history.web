@@ -1,6 +1,5 @@
+import { Form, Modal } from 'components/shared';
 import React from 'react';
-import Form from '../../form/form';
-import Modal from '../../UI/modal/modal';
 import * as actionsConfig from './actions.config.json';
 import elementInfo from './element-info/element-info';
 import formData from './form-data/form-data';

@@ -1,8 +1,5 @@
 import * as actions from 'actions/main';
-import LineInfo from 'components/side-info/line-info/line-info';
-import LinesInfo from 'components/side-info/lines-info/lines-info';
-import StationInfo from 'components/side-info/station-info/station-info';
-import TownInfo from 'components/side-info/town-info/town-info';
+import { LineInfo, LinesInfo, StationInfo, TownInfo } from 'components/public/sidebar';
 import React from 'react';
 import { connect } from 'react-redux';
 import ReactTooltip from 'react-tooltip';

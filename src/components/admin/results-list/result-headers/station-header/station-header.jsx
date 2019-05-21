@@ -1,5 +1,5 @@
+import { TownLogo } from 'components/shared';
 import React from 'react';
-import TownLogo from '../../../../towns/town-logo/town-logo';
 
 const stationPanel = (props) => {
 

@@ -1,5 +1,5 @@
+import { Collapse } from 'components/shared';
 import React from 'react';
-import Collapse from '../../UI/collapse/collapse';
 import LineHeader from './result-headers/line-header/line-header';
 import StationHeader from './result-headers/station-header/station-header';
 import StationPanel from './result-panels/station-panel/station-panel';

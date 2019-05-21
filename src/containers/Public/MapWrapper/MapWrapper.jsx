@@ -1,5 +1,5 @@
 import * as actions from 'actions/main';
-import Overlay from 'components/UI/overlay/overlay';
+import { Overlay } from 'components/shared';
 import { initMap, restoreMapState, updateMap, zoomToPoint } from 'map/map.google.service';
 import React from 'react';
 import { connect } from 'react-redux';

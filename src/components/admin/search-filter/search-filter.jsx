@@ -1,5 +1,5 @@
+import { Form } from 'components/shared';
 import React from 'react';
-import Form from '../../form/form';
 
 const formFilters = {
   stations: require('./form-filters/stations.json'),
