@@ -4,10 +4,11 @@ class Input extends React.Component {
 
   constructor(props) {
     super(props);
+    const { value } = this.props;
     this.state = {
-      value: this.props.value,
+      value,
       isFocused: false,
-      isEmpty: this.props.value && this.props.value !== '' ? false : true
+      isEmpty: !(value && value !== '')
     }
     this.handleOnFocus = this.handleOnFocus.bind(this);
     this.handleOnBlur = this.handleOnBlur.bind(this);
@@ -33,30 +34,37 @@ class Input extends React.Component {
   }
 
   updateValue(value) {
-    const isEmpty = !value || value === '' ? true : false;
-    this.setState({ value: value });
-    if (this.state.isEmpty !== isEmpty) {
-      this.setState({ isEmpty: isEmpty });
+    const { onChange } = this.props;
+    const { isEmpty } = this.state;
+    const _isEmpty = !value || value === '';
+    this.setState({ value });
+    if (isEmpty !== _isEmpty) {
+      this.setState({ isEmpty: _isEmpty });
     }
-    this.props.onChange(value);
+    onChange(value);
   }
 
   render() {
-    return <div className={`form-group ${this.props.config.floating ? 'label-floating' : ''} ${this.state.isEmpty ? 'is-empty' : ''} ${this.state.isFocused ? 'is-focused' : ''}`}>
-      <label className="control-label">{this.props.config.floating ? this.props.config.placeholder : this.props.config.label}</label>
-      <div>
-        <input className="form-control"
-          type={this.props.config.type}
-          value={this.state.value}
-          placeholder={this.props.config.placeholder}
-          disabled={this.props.config.disabled}
-          onFocus={this.handleOnFocus}
-          onBlur={this.handleOnBlur}
-          onChange={this.handleOnChange}
-        />
-        {this.props.config.clearable && this.state.value ? <a onClick={this.clearValue} className="clear-cross"><i className="fa fa-times"></i></a> : null}
+    const { config } = this.props;
+    const { isEmpty, isFocused, value } = this.state;
+    return (
+      <div className={`form-group ${config.floating ? 'label-floating' : ''} ${isEmpty ? 'is-empty' : ''} ${isFocused ? 'is-focused' : ''}`}>
+        <label className="control-label">{config.floating ? config.placeholder : config.label}</label>
+        <div>
+          <input
+            className="form-control"
+            type={config.type}
+            value={value}
+            placeholder={config.placeholder}
+            disabled={config.disabled}
+            onFocus={this.handleOnFocus}
+            onBlur={this.handleOnBlur}
+            onChange={this.handleOnChange}
+          />
+          {config.clearable && value ? <a onClick={this.clearValue} className="clear-cross"><i className="fa fa-times" /></a> : null}
+        </div>
       </div>
-    </div>
+    )
   }
 }
 

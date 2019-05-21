@@ -11,8 +11,9 @@ class FileUpload extends React.Component {
   }
 
   onDrop = (files) => {
+    const { onChange } = this.props;
     this.setState({ files });
-    this.props.onChange(files[0]);
+    onChange(files[0]);
   }
 
   onCancel = () => {
@@ -22,6 +23,7 @@ class FileUpload extends React.Component {
   }
 
   render() {
+    const { files } = this.state;
     return (
       <Dropzone
         onDrop={this.onDrop}
@@ -31,7 +33,7 @@ class FileUpload extends React.Component {
           <div {...getRootProps()}>
             <div className="form-group">
               <input {...getInputProps()} />
-              <input className="form-control" type="text" placeholder="Browse..." value={this.state.files[0] ? this.state.files[0].name : ''} />
+              <input className="form-control" type="text" placeholder="Browse..." value={files[0] ? files[0].name : ''} />
             </div>
           </div>
         )}

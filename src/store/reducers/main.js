@@ -21,11 +21,11 @@ const initialState = {
   loading: false
 };
 
-const startLoading = (state, action) => {
+const startLoading = (state) => {
   return updateObject(state, { loading: true });
 };
 
-const stopLoading = (state, action) => {
+const stopLoading = (state) => {
   return updateObject(state, { loading: false });
 };
 
@@ -61,7 +61,7 @@ const getLineDetailsSuccess = (state, action) => {
   const sideBarState = { ...state.sideBarState, mode: 'line', open: true };
   return updateObject(stopLoading(state),
     {
-      sideBarState: sideBarState,
+      sideBarState,
       selectedLine: action.selectedLine
     });
 };
@@ -70,7 +70,7 @@ const getStationDetailsSuccess = (state, action) => {
   const sideBarState = { ...state.sideBarState, mode: 'station', open: true };
   return updateObject(stopLoading(state),
     {
-      sideBarState: sideBarState,
+      sideBarState,
       selectedStation: action.station
     });
 }

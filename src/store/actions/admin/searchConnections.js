@@ -3,14 +3,14 @@ import * as actionTypes from './actionTypes';
 export const searchConnectionsSuccess = (connections) => {
   return {
     type: actionTypes.SEARCH_CONNECTIONS_SUCCESS,
-    connections: connections
+    connections
   };
 };
 
 export const searchConnectionsFail = (error) => {
   return {
     type: actionTypes.SEARCH_CONNECTIONS_FAIL,
-    error: error
+    error
   };
 };
 

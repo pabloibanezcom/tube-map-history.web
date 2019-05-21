@@ -1,8 +1,8 @@
 import React from 'react';
 
-const checkbox = (props) => {
+const checkbox = () => {
   return (
-    <div className="checkbox"></div>
+    <div className="checkbox" />
   );
 }
 

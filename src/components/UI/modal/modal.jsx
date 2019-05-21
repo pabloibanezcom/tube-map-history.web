@@ -3,18 +3,20 @@ import ModalContent from './modal-content/modal-content';
 
 class Modal extends React.Component {
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
+  shouldComponentUpdate(nextProps) {
+    const { children, show } = this.props;
+    return nextProps.show !== show || nextProps.children !== children;
   }
 
   render() {
+    const { content, header, onClose, show } = this.props;
     return (
-      <div className={`modal ${this.props.show ? 'show' : ''}`} tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div className={`modal ${show ? 'show' : ''}`} tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div className="modal-dialog animated zoomIn animated-3x" role="document">
           <ModalContent
-            onClose={this.props.onClose}
-            header={this.props.header}
-            content={this.props.content}
+            onClose={onClose}
+            header={header}
+            content={content}
           />
         </div>
       </div>

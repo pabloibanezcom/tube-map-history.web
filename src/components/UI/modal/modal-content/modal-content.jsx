@@ -3,25 +3,28 @@ import onClickOutside from "react-onclickoutside";
 
 class ModalContent extends React.Component {
 
-  handleClickOutside(evt) {
-    this.props.onClose();
+  handleClickOutside() {
+    const { onClose } = this.props;
+    onClose();
   }
 
   render() {
-    return <div className="modal-content">
-      <div className="modal-header">
-        <h3 className="modal-title secondary">{this.props.header}</h3>
-        <button type="button" className="close" onClick={this.props.onClose}>
-          <span aria-hidden="true">
-            <i className="zmdi zmdi-close"></i>
-          </span>
-        </button>
+    const { content, header, onClose } = this.props;
+    return (
+      <div className="modal-content">
+        <div className="modal-header">
+          <h3 className="modal-title secondary">{header}</h3>
+          <button type="button" className="close" onClick={onClose}>
+            <span aria-hidden="true">
+              <i className="zmdi zmdi-close" />
+            </span>
+          </button>
+        </div>
+        <div className="modal-body">
+          {content}
+        </div>
       </div>
-      <div className="modal-body">
-        {this.props.content}
-      </div>
-    </div>
-
+    )
   }
 }
 

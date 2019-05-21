@@ -1,7 +1,8 @@
 import React from 'react';
 
 const overlay = (props) => {
-  return <div className={`overlay ${props.show ? 'shown' : ''}`}></div>
+  const { show } = props;
+  return <div className={`overlay ${show ? 'shown' : ''}`} />
 }
 
 export default overlay;

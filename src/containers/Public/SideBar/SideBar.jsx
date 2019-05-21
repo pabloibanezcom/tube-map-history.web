@@ -11,29 +11,30 @@ import { getPrevSideBarMode, getPrevSideBarModeLabel } from './util';
 class SideBar extends React.Component {
 
   renderContent = (mode) => {
+    const { lines, onLineSelected, onStationSelected, selectedLine, selectedStation, sideBarState, town, year } = this.props;
     switch (mode) {
       case 'main':
         return <TownInfo
-          townInfo={this.props.town}
-          sideBarState={this.props.sideBarState}
+          townInfo={town}
+          sideBarState={sideBarState}
           onModeSelected={this.changeMode}
         />
       case 'lines':
         return <LinesInfo
-          lines={this.props.lines}
-          onLineSelected={this.props.onLineSelected}
+          lines={lines}
+          onLineSelected={onLineSelected}
         />
       case 'line':
         return <LineInfo
-          line={this.props.selectedLine}
-          year={this.props.year}
-          onStationSelected={this.props.onStationSelected}
+          line={selectedLine}
+          year={year}
+          onStationSelected={onStationSelected}
         />
       case 'station':
         return <StationInfo
-          station={this.props.selectedStation}
-          town={this.props.town}
-          onStationSelected={this.props.onStationSelected}
+          station={selectedStation}
+          town={town}
+          onStationSelected={onStationSelected}
         />;
       default:
         return null;
@@ -41,40 +42,49 @@ class SideBar extends React.Component {
   }
 
   open = () => {
-    this.props.onSetSideBarState({ ...this.props.sideBarState, open: true });
+    const { onSetSideBarState, sideBarState } = this.props;
+    onSetSideBarState({ ...sideBarState, open: true });
   }
 
   close = () => {
-    this.props.onSetSideBarState({ ...this.props.sideBarState, open: false, initiate: true });
+    const { onSetSideBarState, sideBarState } = this.props;
+    onSetSideBarState({ ...sideBarState, open: false, initiate: true });
   }
 
   goBack = () => {
-    this.props.onSetSideBarState({ ...this.props.sideBarState, mode: getPrevSideBarMode(this.props.sideBarState.mode), initiate: true });
+    const { onSetSideBarState, sideBarState } = this.props;
+    onSetSideBarState({ ...sideBarState, mode: getPrevSideBarMode(sideBarState.mode), initiate: true });
   }
 
   changeMode = (mode) => {
-    this.props.onSetSideBarState({ ...this.props.sideBarState, mode: mode, initiate: true });
+    const { onSetSideBarState, sideBarState } = this.props;
+    onSetSideBarState({ ...sideBarState, mode, initiate: true });
   }
 
   render() {
+    const { sideBarState } = this.props;
     return (
-      <div className={`side-bar ${this.props.sideBarState.open ? 'open' : ''}`}>
-        <a className="side-bar-close" data-tip={this.props.sideBarState.open ? 'Close menu' : 'open menu'} data-for='open-tooltip' onClick={this.props.sideBarState.open ? this.close : this.open}>
-          {this.props.sideBarState.open ? <i className="zmdi zmdi-close"></i> : <i className="zmdi zmdi-menu"></i>}
+      <div className={`side-bar ${sideBarState.open ? 'open' : ''}`}>
+        <a className="side-bar-close" data-tip={sideBarState.open ? 'Close menu' : 'open menu'} data-for='open-tooltip' onClick={sideBarState.open ? this.close : this.open}>
+          {sideBarState.open ? <i className="zmdi zmdi-close" /> : <i className="zmdi zmdi-menu" />}
         </a>
-        <a className={`side-bar-back ${this.props.sideBarState.open && getPrevSideBarMode(this.props.sideBarState.mode) ? 'shown' : ''}`} onClick={this.goBack}
-          data-tip='' data-for='back-tooltip'>
-          <i className="zmdi zmdi-chevron-left"></i>
+        <a
+          className={`side-bar-back ${sideBarState.open && getPrevSideBarMode(sideBarState.mode) ? 'shown' : ''}`}
+          onClick={this.goBack}
+          data-tip=''
+          data-for='back-tooltip'
+        >
+          <i className="zmdi zmdi-chevron-left" />
         </a>
         <div className="side-bar-container">
           <ul className="side-bar-menu shown">
             <li className="side-bar-menu-element">
-              {this.renderContent(this.props.sideBarState.mode)}
+              {this.renderContent(sideBarState.mode)}
             </li>
           </ul>
         </div>
         <ReactTooltip id="open-tooltip" effect="solid" place="left" />
-        <ReactTooltip id="back-tooltip" effect="solid" place="left" getContent={() => { return getPrevSideBarModeLabel(this.props.sideBarState.mode) }} />
+        <ReactTooltip id="back-tooltip" effect="solid" place="left" getContent={() => { return getPrevSideBarModeLabel(sideBarState.mode) }} />
       </div>
     )
   }

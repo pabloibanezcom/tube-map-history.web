@@ -17,6 +17,6 @@ export const loginSuccess = () => {
 export const loginFail = (error) => {
   return {
     type: actionTypes.LOGIN_FAIL,
-    error: error
+    error
   };
 };

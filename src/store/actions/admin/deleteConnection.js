@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 
-export const deleteConnectionSuccess = (connection) => {
+export const deleteConnectionSuccess = () => {
   return {
     type: actionTypes.DELETE_CONNECTION_SUCCESS
   };
@@ -9,13 +9,13 @@ export const deleteConnectionSuccess = (connection) => {
 export const deleteConnectionFail = (error) => {
   return {
     type: actionTypes.DELETE_CONNECTION_FAIL,
-    error: error
+    error
   };
 };
 
 export const deleteConnectionStart = (connection) => {
   return {
     type: actionTypes.DELETE_CONNECTION_START,
-    connection: connection
+    connection
   };
 };

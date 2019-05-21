@@ -17,6 +17,6 @@ export const uploadTownDataSuccess = () => {
 export const uploadTownDataFail = (error) => {
   return {
     type: actionTypes.UPLOAD_TOWN_DATA_FAIL,
-    error: error
+    error
   };
 };

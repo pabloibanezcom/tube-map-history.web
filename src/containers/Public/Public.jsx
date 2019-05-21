@@ -4,9 +4,11 @@ import routes from './routes';
 
 class Public extends React.Component {
   render() {
-    return <div className="public-container">
-      {routes}
-    </div>
+    return (
+      <div className="public-container">
+        {routes}
+      </div>
+    )
   }
 };
 

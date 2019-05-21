@@ -78,17 +78,21 @@ class Towns extends React.Component {
   sortBy = 'year';
 
   render() {
-    return <div>
-      <Header optionsName="towns" />
-      <div className="towns-container">
-        <h1 className="right-line mb-4">Towns</h1>
-        {splitByRows(sortBy(towns, this.sortBy), 4).map((row, i) => {
-          return <div key={i} className="row">
-            {row.map(t => <div key={t._id} className="col-lg-3"><TownCard town={t} /></div>)}
-          </div>
-        })}
+    return (
+      <div>
+        <Header optionsName="towns" />
+        <div className="towns-container">
+          <h1 className="right-line mb-4">Towns</h1>
+          {splitByRows(sortBy(towns, this.sortBy), 4).map((row, i) => {
+            return (
+              <div key={i} className="row">
+                {row.map(t => <div key={t._id} className="col-lg-3"><TownCard town={t} /></div>)}
+              </div>
+            )
+          })}
+        </div>
       </div>
-    </div>
+    )
   }
 }
 

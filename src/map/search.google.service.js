@@ -18,7 +18,7 @@ export const searchPlace = async (searchServicestr) => {
 
 export const getPlaceDetails = async (placeId) => {
   return new Promise((resolve, reject) => {
-    new gmaps.places.PlacesService(document.createElement('div')).getDetails({ placeId: placeId }, (placeResult, placesServiceStatus) => {
+    new gmaps.places.PlacesService(document.createElement('div')).getDetails({ placeId }, (placeResult, placesServiceStatus) => {
       if (placesServiceStatus !== gmaps.places.PlacesServiceStatus.OK) {
         reject(placesServiceStatus);
       }

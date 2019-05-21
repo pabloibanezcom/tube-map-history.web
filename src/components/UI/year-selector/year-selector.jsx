@@ -6,9 +6,11 @@ const Handle = Slider.Handle;
 
 const yearSelector = (props) => {
 
-  const handle = (props) => {
+  const { onYearChange, showYearSelector, year } = props;
+
+  const handle = (_props) => {
     const { value, dragging, index, ...restProps
-    } = props;
+    } = _props;
 
     return (
       <Tooltip
@@ -24,16 +26,16 @@ const yearSelector = (props) => {
   };
 
   const handleChange = (value) => {
-    if (props.year !== value) {
-      props.onYearChange(value);
+    if (year !== value) {
+      onYearChange(value);
     }
   }
 
   return (
-    <div className={`year-selector ${props.showYearSelector ? 'shown' : 'hidden'}`}>
+    <div className={`year-selector ${showYearSelector ? 'shown' : 'hidden'}`}>
       <div className="year-selector-wrapper">
-        <div className="current-year">Year <span className="year">{props.year}</span></div>
-        <Slider min={1853} max={2019} defaultValue={props.year} handle={handle} onAfterChange={(val) => handleChange(val)} />
+        <div className="current-year">Year <span className="year">{year}</span></div>
+        <Slider min={1853} max={2019} defaultValue={year} handle={handle} onAfterChange={(val) => handleChange(val)} />
       </div>
     </div>
   )

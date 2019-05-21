@@ -13,15 +13,11 @@ class ResultsList extends React.Component {
     };
   }
 
-  showResult(resultId) {
-    const activeResult = resultId === this.state.activeResult ? null : resultId;
-    this.setState({ activeResult: activeResult });
-  }
-
   createHeader = (result) => {
-    switch (this.props.currentResulsType) {
+    const { currentResulsType, town } = this.props;
+    switch (currentResulsType) {
       case 'stations':
-        return <StationHeader result={result} town={this.props.town} />
+        return <StationHeader result={result} town={town} />
       case 'lines':
         return <LineHeader result={result} />
       default:
@@ -30,28 +26,45 @@ class ResultsList extends React.Component {
   }
 
   createContent = (result) => {
-    switch (this.props.currentResulsType) {
+    const { currentResulsType, onShowDialog, town } = this.props;
+    switch (currentResulsType) {
       case 'stations':
-        return <StationPanel result={result} town={this.props.town} onShowDialog={this.props.onShowDialog} />
+        return <StationPanel
+          result={result}
+          town={town}
+          onShowDialog={onShowDialog}
+        />
       default:
         return null;
     }
   }
 
+  showResult(resultId) {
+    const { activeResult } = this.state;
+    const _activeResult = resultId === activeResult ? null : resultId;
+    this.setState({ activeResult: _activeResult });
+  }
+
   render() {
-    return <div className="results-list">
-      {this.props.results.map(r => {
-        return <div key={r._id}>
-          <Collapse
-            selectionId={r._id}
-            onSelected={(resultId) => this.showResult(resultId)}
-            active={r._id === this.state.activeResult}
-            header={this.createHeader(r)}
-            content={this.createContent(r)}
-          />
-        </div>
-      })}
-    </div>
+    const { results } = this.props;
+    const { activeResult } = this.state;
+    return (
+      <div className="results-list">
+        {results.map(r => {
+          return (
+            <div key={r._id}>
+              <Collapse
+                selectionId={r._id}
+                onSelected={(resultId) => this.showResult(resultId)}
+                active={r._id === activeResult}
+                header={this.createHeader(r)}
+                content={this.createContent(r)}
+              />
+            </div>
+          )
+        })}
+      </div>
+    )
   }
 }
 

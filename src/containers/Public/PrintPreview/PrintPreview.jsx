@@ -8,30 +8,33 @@ import MapWrapper from '../MapWrapper/MapWrapper';
 class PrintPreview extends React.Component {
 
   componentDidMount() {
-    const town = this.props.match.params.town;
-    const year = parseInt(this.props.match.params.year, 10);
-    this.props.onInit(town, year);
+    const { match, onInit } = this.props;
+    const town = match.params.town;
+    const year = parseInt(match.params.year, 10);
+    onInit(town, year);
   }
 
   render() {
-    return <div className="print-preview">
-      <Header
-        optionsName="print"
-      />
-      <div className="page">
-        <MapWrapper mode="print" />
-        {/* <div className="print-display-info-opacity">
-          <div className="print-display-info-opacity-inner"></div>
-        </div> */}
-        {this.props.town && this.props.year ? <div className="print-display-info-container">
-          <div className="print-display-info">
-            <div className="print-display-info-town">{this.props.town.name}</div>
-            <div className="print-display-info-country">{this.props.town.country}</div>
-            <div className="print-display-info-year">{this.props.year}</div>
-          </div>
-        </div> : null}
+    const { town, year } = this.props;
+    return (
+      <div className="print-preview">
+        <Header
+          optionsName="print"
+        />
+        <div className="page">
+          <MapWrapper mode="print" />
+          {town && year ? (
+            <div className="print-display-info-container">
+              <div className="print-display-info">
+                <div className="print-display-info-town">{town.name}</div>
+                <div className="print-display-info-country">{town.country}</div>
+                <div className="print-display-info-year">{year}</div>
+              </div>
+            </div>
+          ) : null}
+        </div>
       </div>
-    </div>
+    )
   }
 }
 

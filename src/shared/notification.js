@@ -5,13 +5,13 @@ const sharedConfig = {
 }
 
 export const info = (text) => {
-  Snackbar.show({ ...sharedConfig, text: text, customClass: 'secondary' });
+  Snackbar.show({ ...sharedConfig, text, customClass: 'secondary' });
 };
 
 export const warning = (text) => {
-  Snackbar.show({ ...sharedConfig, text: text, customClass: 'warning' });
+  Snackbar.show({ ...sharedConfig, text, customClass: 'warning' });
 };
 
 export const error = (text) => {
-  Snackbar.show({ ...sharedConfig, text: text, customClass: 'error' });
+  Snackbar.show({ ...sharedConfig, text, customClass: 'error' });
 };

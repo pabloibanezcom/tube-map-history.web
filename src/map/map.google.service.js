@@ -1,10 +1,13 @@
 
 import styles from './styles/styles';
+
 const mapConfig = require('./config/map.config.json');
+
 const connectionConfig = require('./config/connection.config.json');
+
 const gmaps = window.google ? window.google.maps : null;
 
-export const initMap = (selector, town, mode) => {
+export const initMap = (selector, town) => {
   return new gmaps.Map(document.getElementById(selector),
     {
       ...mapConfig,
@@ -26,11 +29,11 @@ export const initMapForPlaceSearch = (selector, place, onGeometryChange) => {
     disableDefaultUI: true,
     fullscreenControl: false,
     position: place.geometry.location,
-    map: map,
+    map,
     icon: new gmaps.MarkerImage(require(`assets/img/markers/default_station.png`)),
     title: place.name
   });
-  map.addListener('click', function (event) {
+  map.addListener('click', (event) => {
     marker.setPosition(event.latLng);
     onGeometryChange(event.latLng);
   });
@@ -53,7 +56,6 @@ export const updateMap = (map, town, mode, stations, connections, currentYear, p
   if (currentYear > previousYear) {
     addStations(map, town, stations, onStationClick, currentYear, previousYear);
     addConnections(map, town, connections, currentYear, previousYear);
-    return;
   }
 }
 
@@ -92,7 +94,7 @@ const addStations = (map, town, stations, onStationClick, yearTo = 2019, yearFro
         data: {
           year: s.year
         },
-        map: map,
+        map,
         icon: getStationMarker(town, s),
         title: s.name
       });
@@ -129,7 +131,7 @@ const addConnections = (map, town, connections, yearTo = 2019, yearFrom = 1800) 
         data: {
           year: c.year
         },
-        map: map,
+        map,
         path: c.stations.map(s => convertPointArrayToMapPoint(s.geometry.coordinates)),
         strokeColor: c.line.colour,
         strokeWeight: connectionConfig.strokeWeight * getStrokeRatio(c.connectionNumber)
@@ -183,16 +185,17 @@ const setConnectionNumber = (connections) => {
 const applyYearStyle = (map, year, mode) => {
 
   let setMapTypeId = null;
-  const defaultStyle = mode === 'print' ? styles['default_style'].concat(styles['print']) : styles['default_style'];
+  const defaultStyle = mode === 'print' ? styles.defaultStyle.concat(styles.print) : styles.defaultStyle;
 
-  const getYearStyleForYear = (year) => {
-    for (const key in styles) {
-      if (key.split('_')[1] <= year && key.split('_')[2] >= year) {
+  const getYearStyleForYear = (_year) => {
+    let style;
+    Object.keys(styles).forEach(key => {
+      if (key.split('_')[1] <= year && key.split('_')[2] >= _year) {
         setMapTypeId = key;
-        return new gmaps.StyledMapType(defaultStyle.concat(styles[key]), { name: key });
+        style = new gmaps.StyledMapType(defaultStyle.concat(styles[key]), { name: key });
       }
-    }
-    return null;
+    });
+    return style;
   }
 
   const styledMapType = getYearStyleForYear(year);

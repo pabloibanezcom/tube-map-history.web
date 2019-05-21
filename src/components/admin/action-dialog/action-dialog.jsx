@@ -9,12 +9,13 @@ import transformers from './transformers/transformers';
 const actionDialog = (props) => {
 
   let content;
+  const { action, element, onClose, otherData } = props;
 
-  const handleValidSubmit = (formData) => {
+  const handleValidSubmit = (_formData) => {
     props.onClose();
     props.onSuccess(
       actionsConfig[props.action].action,
-      transformers.fromForm[props.action] ? transformers.fromForm[props.action](formData, props.element, props.otherData) : null
+      transformers.fromForm[props.action] ? transformers.fromForm[props.action](_formData, props.element, props.otherData) : null
     );
   }
 
@@ -27,39 +28,44 @@ const actionDialog = (props) => {
   }
 
   const generateFormContent = () => {
+
     return <Form
-      formElements={formData[props.action]}
-      obj={transformers.toForm[props.action] ? transformers.toForm[props.action](props.element, props.otherData) : props.element}
+      formElements={formData[action]}
+      obj={transformers.toForm[action] ? transformers.toForm[action](element, otherData) : element}
       onValidSubmit={handleValidSubmit}
     />
   }
 
   const generateDeleteContent = () => {
     const ElementInfo = elementInfo.DELETE_STATION;
-    return <div className="delete-content">
-      <div className="delete-question">{formData[props.action].question}</div>
-      <ElementInfo element={props.element} />
-      <div className="delete-buttons">
-        <button type="button" className="btn btn-danger" onClick={handleConfirmation} >Yes</button>
-        <button type="button" className="btn btn-raised btn-secondary" onClick={props.onClose}>No</button>
+    return (
+      <div className="delete-content">
+        <div className="delete-question">{formData[action].question}</div>
+        <ElementInfo element={element} />
+        <div className="delete-buttons">
+          <button type="button" className="btn btn-danger" onClick={handleConfirmation}>Yes</button>
+          <button type="button" className="btn btn-raised btn-secondary" onClick={onClose}>No</button>
+        </div>
       </div>
-    </div>
+    )
   }
 
-  if (actionsConfig[props.action]) {
+  if (actionsConfig[action]) {
     content = actionsConfig[props.action].type === 'DELETE' ? generateDeleteContent() : generateFormContent();
   } else {
     content = null;
   }
 
-  return <div>
-    {actionsConfig[props.action] ? <Modal
-      show={props.action}
-      onClose={props.onClose}
-      header={actionsConfig[props.action].title}
-      content={content}
-    /> : null}
-  </div>
+  return (
+    <div>
+      {actionsConfig[action] ? <Modal
+        show={action}
+        onClose={onClose}
+        header={actionsConfig[action].title}
+        content={content}
+      /> : null}
+    </div>
+  )
 }
 
 export default actionDialog;

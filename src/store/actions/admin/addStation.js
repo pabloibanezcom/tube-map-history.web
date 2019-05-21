@@ -17,6 +17,6 @@ export const addStationSuccess = () => {
 export const addStationFail = (error) => {
   return {
     type: actionTypes.ADD_STATION_FAIL,
-    error: error
+    error
   };
 };

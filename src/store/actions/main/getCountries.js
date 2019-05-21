@@ -9,14 +9,14 @@ export const getCountriesStart = () => {
 export const getCountriesSuccess = (countries) => {
   return {
     type: actionTypes.GET_COUNTRIES_SUCCESS,
-    countries: countries
+    countries
   };
 };
 
 export const getCountriesFail = (error) => {
   return {
     type: actionTypes.GET_COUNTRIES_FAIL,
-    error: error
+    error
   };
 };
 

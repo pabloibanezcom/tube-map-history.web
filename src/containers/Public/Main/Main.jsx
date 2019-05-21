@@ -14,24 +14,21 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showYearSelector: true,
-      printMode: false
+      showYearSelector: true
     };
   }
 
   componentDidMount() {
-    const town = this.props.match.params.town;
-    const year = parseInt(this.props.match.params.year, 10);
-    this.props.onInit(town, year);
+    const { match, onInit } = this.props;
+    const town = match.params.town;
+    const year = parseInt(match.params.year, 10);
+    onInit(town, year);
   }
 
-  yearChange = (year) => {
-    this.props.history.push(`/${this.props.town.url}/${year}`);
-    this.props.onYearChange(this.props.town._id, year, this.props.year, this.props.maxYearLoaded);
-  }
-
-  closeSideBar = () => {
-    this.setState({ sideBarMode: null, sideBarData: null });
+  yearChange = (_year) => {
+    const { history, maxYearLoaded, onYearChange, town, year } = this.props;
+    history.push(`/${town.url}/${_year}`);
+    onYearChange(town._id, _year, year, maxYearLoaded);
   }
 
   toggleYearSelector = () => {
@@ -41,23 +38,27 @@ class Main extends React.Component {
   }
 
   render() {
-    return <div>
-      {this.props.loading ? <LoadingSpinner /> : null}
-      {this.props.year ? <YearSelector
-        year={this.props.year}
-        showYearSelector={this.state.showYearSelector}
-        onYearChange={(year) => { this.yearChange(year) }}
-      /> : null}
-      <Header
-        optionsName="main"
-        onToggleYearSelector={() => { this.toggleYearSelector() }}
-        showYear={!this.state.showYearSelector}
-        town={this.props.town}
-        year={this.props.year}
-      />
-      <Sidebar />
-      <MapWrapper mode="main" />
-    </div>
+    const { loading, town, year } = this.props;
+    const { showYearSelector } = this.state;
+    return (
+      <div>
+        {loading ? <LoadingSpinner /> : null}
+        {year ? <YearSelector
+          year={year}
+          showYearSelector={showYearSelector}
+          onYearChange={(_year) => { this.yearChange(_year) }}
+        /> : null}
+        <Header
+          optionsName="main"
+          onToggleYearSelector={() => { this.toggleYearSelector() }}
+          showYear={!showYearSelector}
+          town={town}
+          year={year}
+        />
+        <Sidebar />
+        <MapWrapper mode="main" />
+      </div>
+    )
   }
 }
 

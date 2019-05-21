@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import onClickOutside from "react-onclickoutside";
 import { getDynamicComponent } from '../../../../dynamic-components/dynamic-components';
@@ -7,13 +6,14 @@ class SelectDropdown extends React.Component {
 
   constructor(props) {
     super(props);
+    const { config } = this.props;
     this.state = {
       options: [],
       filteredOptions: [],
       activeIndex: null,
       searchStr: ''
     }
-    this.customDropdown = getDynamicComponent(this.props.config.custom.dropdown);
+    this.customDropdown = getDynamicComponent(config.custom.dropdown);
     this.filter = this.filter.bind(this);
     this.select = this.select.bind(this);
     this.getDropDownStyle = this.getDropDownStyle.bind(this);
@@ -24,38 +24,40 @@ class SelectDropdown extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.expanded) {
-      this.searchInput && this.searchInput.focus();
+    if (nextProps.expanded && this.searchInput) {
+      this.searchInput.focus();
     }
     if (nextProps.options) {
       const options = this.generateOptions(nextProps.options);
-      this.setState({ options: options, filteredOptions: options });
+      this.setState({ options, filteredOptions: options });
     }
     return true;
   }
 
-  handleClickOutside(evt) {
-    this.props.onClose();
+  getDropDownStyle() {
+    const { config } = this.props;
+    return !config.dropDownHeight ? null : { maxHeight: config.dropDownHeight, overflowY: 'auto' };
   }
 
   handleOnKeyDown = (evt) => {
+    const { activeIndex, filteredOptions } = this.state;
     switch (evt.key) {
       case 'ArrowDown':
-        if (this.state.activeIndex < this.state.filteredOptions.length - 1) {
-          this.setState((prevState, props) => ({
+        if (activeIndex < filteredOptions.length - 1) {
+          this.setState((prevState) => ({
             activeIndex: prevState.activeIndex + 1
           }));
         }
         break;
       case 'ArrowUp':
-        if (this.state.activeIndex > 0) {
-          this.setState((prevState, props) => ({
+        if (activeIndex > 0) {
+          this.setState((prevState) => ({
             activeIndex: prevState.activeIndex - 1
           }));
         }
         break;
       case 'Enter':
-        this.select(this.state.filteredOptions[this.state.activeIndex]);
+        this.select(filteredOptions[activeIndex]);
         evt.preventDefault();
         break;
       default:
@@ -71,12 +73,19 @@ class SelectDropdown extends React.Component {
   }
 
   getNoneOption = () => {
-    return this.props.config.noneLabel ?
-      [{ [this.props.config.options.key]: 'none', [this.props.config.options.label]: this.props.config.noneLabel }] : [];
+    const { config } = this.props;
+    return config.noneLabel ?
+      [{ [config.options.key]: 'none', [config.options.label]: config.noneLabel }] : [];
+  }
+
+  handleClickOutside() {
+    const { onClose } = this.props;
+    onClose();
   }
 
   filter(str) {
-    if (!this.props.config.remote) {
+    const { config } = this.props;
+    if (!config.remote) {
       this.filterLocally(str);
     } else {
       this.filterRemote(str);
@@ -84,16 +93,19 @@ class SelectDropdown extends React.Component {
   }
 
   filterLocally(value) {
+    const { config } = this.props;
+    const { options } = this.state;
     let filteredOptions;
-    if (value.length < (this.props.config.minStr || 3)) {
-      filteredOptions = [...this.state.options];
+    if (value.length < (config.minStr || 3)) {
+      filteredOptions = [...options];
     } else {
-      filteredOptions = this.state.options.filter(opt => opt[this.props.config.options.label].toLowerCase()[this.props.config.onlyStartsWith ? 'startsWith' : 'includes'](value.toLowerCase()));
+      filteredOptions = options.filter(opt => opt[config.options.label].toLowerCase()[config.onlyStartsWith ? 'startsWith' : 'includes'](value.toLowerCase()));
     }
-    this.setState({ filteredOptions: filteredOptions, searchStr: value });
+    this.setState({ filteredOptions, searchStr: value });
   }
 
   filterRemote(value) {
+    const { onInputChange } = this.props;
     // if (value.length >= this.props.config.remote.minChars) {
     //   search(this.props.config.remote.model, { [this.props.config.remote.propertyName]: value })
     //     .then(res => {
@@ -107,56 +119,69 @@ class SelectDropdown extends React.Component {
     // } else {
     //   this.setState({ filteredOptions: [], activeIndex: 0 });
     // }
-    this.props.onInputChange(value);
+    onInputChange(value);
     this.setState({ searchStr: value });
   }
 
   select(opt) {
-    if (this.props.config.enableSearch) {
-      this.setState((prevState, props) => ({
+    const { config, onSelectOption } = this.props;
+    if (config.enableSearch) {
+      this.setState((prevState) => ({
         searchStr: '',
         filteredOptions: prevState.options
       }));
     }
-    this.props.onSelectOption(opt[this.props.config.options.key] === 'none' ? null : opt);
+    onSelectOption(opt[config.options.key] === 'none' ? null : opt);
     this.filter('');
   }
 
-  getDropDownStyle() {
-    return !this.props.config.dropDownHeight ? null : { maxHeight: this.props.config.dropDownHeight, overflowY: 'auto' };
-  }
+
 
   render() {
-
-    return <div className={`select-dropdown dropdown-menu ${this.props.expanded ? 'show' : ''}`} x-placement="bottom-start" tabIndex="0" >
-      {this.props.config.enableSearch ?
-        <div className="bs-searchbox">
-          <input type="text" ref={(input) => { this.searchInput = input; }} className="form-control"
-            value={this.state.searchStr} onChange={(evt) => this.filter(evt.target.value)} onKeyDown={this.handleOnKeyDown} aria-label="Search" />
+    const { config, expanded } = this.props;
+    const { activeIndex, filteredOptions, searchStr } = this.state;
+    return (
+      <div className={`select-dropdown dropdown-menu ${expanded ? 'show' : ''}`} x-placement="bottom-start" tabIndex="0">
+        {config.enableSearch ?
+          <div className="bs-searchbox">
+            <input
+              type="text"
+              ref={(input) => { this.searchInput = input; }}
+              className="form-control"
+              value={searchStr}
+              onChange={(evt) => this.filter(evt.target.value)}
+              onKeyDown={this.handleOnKeyDown}
+              aria-label="Search"
+            />
+          </div>
+          : null}
+        <div className="inner show" role="listbox" aria-expanded={expanded} tabIndex="-1">
+          <ul className="dropdown-menu inner show" style={this.getDropDownStyle()}>
+            {filteredOptions && filteredOptions.slice(0, config.maxElements || 10).map((opt, index) => {
+              return (
+                <li key={index} className="">
+                  {this.customDropdown ?
+                    <this.customDropdown option={opt} activeIndex={activeIndex} index={index} onSelectOption={(o) => this.select(o)} /> :
+                    (
+                      <a
+                        role="option"
+                        onClick={() => this.select(opt)}
+                        className={`dropdown-item ${activeIndex === index ? 'active' : ''}`}
+                        aria-disabled="false"
+                        aria-selected="true"
+                      >
+                        <span className="text">{opt[config.options.label]}</span>
+                      </a>
+                    )
+                  }
+                </li>
+              )
+            })}
+          </ul>
         </div>
-        : null}
-      <div className="inner show" role="listbox" aria-expanded={this.props.expanded ? true : false} tabIndex="-1">
-        <ul className="dropdown-menu inner show" style={this.getDropDownStyle()}>
-          {this.state.filteredOptions && this.state.filteredOptions.slice(0, this.props.config.maxElements || 10).map((opt, index) => {
-            return <li key={index} className="">
-              {this.customDropdown ? <this.customDropdown option={opt} activeIndex={this.state.activeIndex} index={index} onSelectOption={(opt) => this.select(opt)} /> :
-                <a role="option" onClick={() => this.select(opt)} className={`dropdown-item ${this.state.activeIndex === index ? 'active' : ''}`} aria-disabled="false" aria-selected="true">
-                  <span className="text">{opt[this.props.config.options.label]}</span>
-                </a>}
-            </li>
-          })}
-        </ul>
       </div>
-    </div>
+    )
   }
 }
-
-SelectDropdown.propTypes = {
-  options: PropTypes.array
-};
-
-SelectDropdown.defaultProps = {
-  options: []
-};
 
 export default onClickOutside(SelectDropdown);

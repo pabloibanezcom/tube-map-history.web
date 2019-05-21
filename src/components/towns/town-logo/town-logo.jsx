@@ -10,7 +10,8 @@ const logos = {
 }
 
 const townLogo = (props) => {
-  return <img alt="" src={logos[props.town.url]} />
+  const { town } = props;
+  return <img alt="" src={logos[town.url]} />
 }
 
 export default townLogo;

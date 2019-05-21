@@ -32,31 +32,34 @@ const buildTownInfoElements = (townInfo) => {
   ];
 }
 
-const townInfo = (props) => {
-  return <div className="town-info">
-    {props.townInfo && props.sideBarState.open ?
-      <div>
-        <div className="town-header">
-          <div className="town-name">{props.townInfo.name}</div>
-          <div className="town-country">{props.townInfo.country}</div>
-        </div>
-        <hr />
-        <div className="town-basic-info mt-20">
-          <div className="row">
-            {buildTownInfoElements(props.townInfo).map(ciEl =>
-              <div key={ciEl.label} className="col-lg-6 mt-20">
-                <TownInfoCard
-                  infoElement={ciEl}
-                  initiate={props.sideBarState.initiate}
-                  onModeSelected={props.onModeSelected}
-                />
-              </div>
-            )}
+const townInfoComponent = (props) => {
+  const { sideBarState, townInfo } = props;
+  return (
+    <div className="town-info">
+      {townInfo && sideBarState.open ?
+        <div>
+          <div className="town-header">
+            <div className="town-name">{townInfo.name}</div>
+            <div className="town-country">{townInfo.country}</div>
           </div>
-        </div>
-      </div> : null
-    }
-  </div>
+          <hr />
+          <div className="town-basic-info mt-20">
+            <div className="row">
+              {buildTownInfoElements(townInfo).map(ciEl =>
+                <div key={ciEl.label} className="col-lg-6 mt-20">
+                  <TownInfoCard
+                    infoElement={ciEl}
+                    initiate={props.sideBarState.initiate}
+                    onModeSelected={props.onModeSelected}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        </div> : null
+      }
+    </div>
+  )
 }
 
-export default townInfo;
+export default townInfoComponent;

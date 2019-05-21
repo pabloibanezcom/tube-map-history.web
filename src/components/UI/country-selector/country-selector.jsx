@@ -24,9 +24,12 @@ class CountrySelector extends React.Component {
   }
 
   render() {
-    return <div className="country-selector">
-      <Select config={{ ...selectConfig }} options={this.state.countries} onChange={this.handleOnChange} />
-    </div>
+    const { countries } = this.state;
+    return (
+      <div className="country-selector">
+        <Select config={{ ...selectConfig }} options={countries} onChange={this.handleOnChange} />
+      </div>
+    )
   }
 }
 

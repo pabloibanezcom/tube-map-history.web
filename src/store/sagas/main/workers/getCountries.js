@@ -2,7 +2,7 @@ import * as actions from "actions/main";
 import Api from 'http/api';
 import { put } from "redux-saga/effects";
 
-export function* getCountriesSagaStart(action) {
+export function* getCountriesSagaStart() {
   try {
     debugger
     const response = yield Api.country.getCountries();

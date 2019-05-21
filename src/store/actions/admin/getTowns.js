@@ -16,6 +16,6 @@ export const getTownsSuccess = (towns) => {
 export const getTownsFail = (error) => {
   return {
     type: actionTypes.GET_TOWNS_FAIL,
-    error: error
+    error
   };
 };

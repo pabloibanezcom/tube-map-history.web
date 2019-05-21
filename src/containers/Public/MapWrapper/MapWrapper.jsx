@@ -9,29 +9,32 @@ const showMapAnimations = (process.env.REACT_APP_MAP_ANIMATIONS === 'true');
 class MapWrapper extends React.Component {
 
   componentDidUpdate(prevProps) {
-    if (prevProps.town !== this.props.town) {
-      this.map = initMap('map-container', this.props.town, this.props.mode);
-      updateMap(this.map, this.props.town, this.props.mode, this.props.stations, this.props.connections, this.props.year, this.props.previousYear, this.showStation);
+    const { connections, mode, previousYear, stations, town, year } = this.props;
+    if (prevProps.town !== town) {
+      this.map = initMap('map-container', town, mode);
+      updateMap(this.map, town, mode, stations, connections, year, previousYear, this.showStation);
     }
   }
 
   showStation = (station) => {
+    const { onStationSelected } = this.props;
     const mapState = showMapAnimations ? zoomToPoint(this.map, station.geometry.coordinates) : null;
-    this.props.onStationSelected(station, mapState);
+    onStationSelected(station, mapState);
   }
 
   render() {
-    if (!this.props.loading && this.map && this.props.stations && this.props.connections) {
-      updateMap(this.map, this.props.town, this.props.mode, this.props.stations, this.props.connections, this.props.year, this.props.previousYear, this.showStation);
+    const { connections, mapState, mode, loading, onClearMapState, previousYear, sideBarState, stations, town, year } = this.props;
+    if (!loading && this.map && stations && connections) {
+      updateMap(this.map, town, mode, stations, connections, year, previousYear, this.showStation);
     }
-    if (process.env.REACT_APP_MAP_ANIMATIONS && !this.props.sideBarState.open && this.props.mapState) {
-      restoreMapState(this.map, this.props.mapState);
-      this.props.onClearMapState();
+    if (process.env.REACT_APP_MAP_ANIMATIONS && !sideBarState.open && mapState) {
+      restoreMapState(this.map, mapState);
+      onClearMapState();
     }
     return (
       <div className="map-wrapper">
-        <Overlay show={this.props.sideBarState.open} />
-        <div id="map-container" className={this.props.mode}></div>
+        <Overlay show={sideBarState.open} />
+        <div id="map-container" className={mode} />
       </div>
     )
   }

@@ -12,7 +12,6 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import * as adminTownMenu from './adminTownMenu';
 import * as defaultPagination from './defaultPagination';
-import * as defaultSearchParams from './defaultPagination';
 
 class AdminTown extends React.Component {
 
@@ -23,134 +22,153 @@ class AdminTown extends React.Component {
       tabs: adminTownMenu.tabs,
       activeTab: null,
       tabIndicatorStyle: null,
-      tabWidth: null,
       actionDialog: null
     };
   }
 
   componentDidMount() {
-    this.props.getTown(this.props.match.params.town);
+    const { getTown, match } = this.props;
+    getTown(match.params.town);
     this.setActiveTab(adminTownMenu.tabs[0]);
   }
 
   getCurrentTown = () => {
-    return this.props.town ? this.props.town._id : this.props.match.params.town
+    const { match, town } = this.props;
+    return town ? town._id : match.params.town
   }
 
   setActiveTab = (tab) => {
-    const tabIndex = this.state.tabs.findIndex(t => t.id === tab.id);
-    const tabWith = this.tabSet.current.offsetWidth / this.state.tabs.length;
+    const { pagination, searchParams } = this.props;
+    const { tabs } = this.state;
+    const tabIndex = tabs.findIndex(t => t.id === tab.id);
+    const tabWith = this.tabSet.current.offsetWidth / tabs.length;
     this.setState({ activeTab: tab, tabIndicatorStyle: { width: `${tabWith}px`, left: tabIndex * tabWith } });
     this.loadPanel(tab);
-    this.search(tab.id, this.props.searchParams, this.props.pagination)
+    this.search(tab.id, searchParams, pagination)
   }
 
   loadPanel = (panel) => {
+    const { loadStationsPanel } = this.props;
     switch (panel.id) {
       case 'stations':
-        this.props.loadStationsPanel(this.getCurrentTown());
+        loadStationsPanel(this.getCurrentTown());
         break;
       default:
         break;
     }
   }
 
-  search = (tabId, searchParams, pagination) => {
-    const activeTabId = tabId || this.state.activeTab.id;
+  search = (tabId, _searchParams, pagination) => {
+    const { onSearch, searchParams } = this.props;
+    const { activeTab } = this.state;
+    const activeTabId = tabId || activeTab.id;
     const _pagination = pagination || defaultPagination;
-    let _searchParams;
-    if (searchParams) {
-      _searchParams = searchParams;
-    } else if (this.props.searchParams && this.props.searchParams[activeTabId]) {
-      _searchParams = this.props.searchParams[activeTabId];
+    let sParams;
+    if (_searchParams) {
+      sParams = _searchParams;
+    } else if (searchParams && searchParams[activeTabId]) {
+      sParams = searchParams[activeTabId];
     } else {
-      _searchParams = defaultSearchParams[activeTabId];
+      sParams = defaultPagination[activeTabId];
     }
-    this.props.onSearch[activeTabId](this.getCurrentTown(), _searchParams, _pagination);
+    onSearch[activeTabId](this.getCurrentTown(), sParams, _pagination);
   }
 
   changePage = (page) => {
-    this.search(null, null, { ...this.props.pagination, page: page });
+    const { pagination } = this.props;
+    this.search(null, null, { ...pagination, page });
   }
 
   showDialog = (action, element, otherData) => {
-    this.setState({ actionDialog: { action: action, element: element, otherData: otherData } });
+    this.setState({ actionDialog: { action, element, otherData } });
   }
 
   dialogSuccess = (action, element) => {
-    debugger
+    /* eslint-disable-next-line react/destructuring-assignment */
     this.props[action](this.getCurrentTown(), element);
     this.setState({ actionDialog: null });
   }
 
   AddConnection(connection) {
-    this.props.onAddConnection(connection);
+    const { onAddConnection } = this.props;
+    onAddConnection(connection);
   }
 
   render() {
-    return <div className="admin-town-container">
-      {this.props.loading ? <LoadingSpinner /> : null}
-      <div className="container">
-        <h1 className="right-line mb-4">Admin Town</h1>
-        <div className="row">
-          <div className="col-md-12">
-            {this.props.town ? <TownHeader
-              town={this.props.town} onDownloadTownData={this.props.downloadTownData}
-              onShowDialog={this.showDialog}
-            /> : null}
+    const { currentResulsType, downloadTownData, lines, loading, pagination, results, town } = this.props;
+    const { actionDialog, activeTab, tabIndicatorStyle } = this.state;
+    return (
+      <div className="admin-town-container">
+        {loading ? <LoadingSpinner /> : null}
+        <div className="container">
+          <h1 className="right-line mb-4">Admin Town</h1>
+          <div className="row">
+            <div className="col-md-12">
+              {town ? <TownHeader
+                town={town}
+                onDownloadTownData={downloadTownData}
+                onShowDialog={this.showDialog}
+              /> : null}
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-md-9">
-            <div className="horizontal-tab card">
-              <ul ref={this.tabSet} className={`nav nav-tabs nav-tabs-transparent indicator-dark nav-tabs-full nav-tabs-${adminTownMenu.tabs.length}`} role="tablist">
-                {adminTownMenu.tabs.map((t, i) => <li key={t.id} className="nav-item"><a className={`nav-link withoutripple ${this.state.activeTab && this.state.activeTab.id === t.id ? 'active show' : ''}`}
-                  onClick={() => this.setActiveTab(t, i)}><FontAwesomeIcon icon={t.icon} /> <span className="d-none d-sm-inline">{t.label}</span></a></li>)}
-                <span className="ms-tabs-indicator" style={this.state.tabIndicatorStyle}></span>
-              </ul>
-              <div className="card-body results-wrapper">
-                {this.props.pagination ? <ResultsSummary
-                  numberElements={this.props.pagination.total}
-                  label={this.state.activeTab.id}
-                  onShowDialog={this.showDialog}
-                /> : null}
-                <div className="tab-content">
-                  <div role="tabpanel" className="tab-pane fade active show">
-                    {this.props.currentResulsType ? <ResultsList
-                      currentResulsType={this.props.currentResulsType}
-                      town={this.props.town}
-                      results={this.props.results}
-                      onShowDialog={this.showDialog}
-                    /> : null}
-                    {this.props.pagination ? <Pagination
-                      pagination={this.props.pagination}
-                      onPageChange={this.changePage}
-                    /> : null}
+          <div className="row">
+            <div className="col-md-9">
+              <div className="horizontal-tab card">
+                <ul ref={this.tabSet} className={`nav nav-tabs nav-tabs-transparent indicator-dark nav-tabs-full nav-tabs-${adminTownMenu.tabs.length}`} role="tablist">
+                  {adminTownMenu.tabs.map((t, i) => (
+                    <li key={t.id} className="nav-item">
+                      <a className={`nav-link withoutripple ${activeTab && activeTab.id === t.id ? 'active show' : ''}`} onClick={() => this.setActiveTab(t, i)}>
+                        <FontAwesomeIcon icon={t.icon} /> <span className="d-none d-sm-inline">{t.label}</span>
+                      </a>
+                    </li>
+                  ))}
+                  <span className="ms-tabs-indicator" style={tabIndicatorStyle} />
+                </ul>
+                <div className="card-body results-wrapper">
+                  {pagination ? <ResultsSummary
+                    numberElements={pagination.total}
+                    label={activeTab.id}
+                    onShowDialog={this.showDialog}
+                  /> : null}
+                  <div className="tab-content">
+                    <div role="tabpanel" className="tab-pane fade active show">
+                      {currentResulsType ? <ResultsList
+                        currentResulsType={currentResulsType}
+                        town={town}
+                        results={results}
+                        onShowDialog={this.showDialog}
+                      /> : null}
+                      {pagination ? <Pagination
+                        pagination={pagination}
+                        onPageChange={this.changePage}
+                      /> : null}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="col-md-3">
-            {this.state.activeTab ? <SearchFilter
-              activeTab={this.state.activeTab.id}
-              town={this.props.town}
-              lines={this.props.lines}
-              onSearch={this.search}
-            /> : null}
+            <div className="col-md-3">
+              {activeTab ? <SearchFilter
+                activeTab={activeTab.id}
+                town={town}
+                lines={lines}
+                onSearch={this.search}
+              /> : null}
+            </div>
           </div>
         </div>
-      </div>
 
-      {this.state.actionDialog ?
-        <ActionDialog
-          action={this.state.actionDialog.action}
-          element={this.state.actionDialog.element}
-          otherData={this.state.actionDialog.otherData}
-          onSuccess={this.dialogSuccess}
-          onClose={() => this.showDialog(null)} />
-        : null}
-    </div>
+        {actionDialog ?
+          <ActionDialog
+            action={actionDialog.action}
+            element={actionDialog.element}
+            otherData={actionDialog.otherData}
+            onSuccess={this.dialogSuccess}
+            onClose={() => this.showDialog(null)}
+          />
+          : null}
+      </div>
+    )
   }
 }
 

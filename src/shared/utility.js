@@ -41,20 +41,19 @@ export const groupBy = (arr, groupProperty, itemsProperty, sort) => {
       (rv[x[groupProperty]] = rv[x[groupProperty]] || []).push(x);
       return rv;
     }, {});
-  } else {
-    // Array result
-    const result = [];
-    arr.map(e => {
-      const resultElement = result.find(rE => rE[groupProperty] === e[groupProperty]);
-      if (resultElement) {
-        resultElement[itemsProperty].push(e);
-      } else {
-        result.push({ [groupProperty]: e[groupProperty], [itemsProperty]: [e] });
-      }
-      return null;
-    });
-    return sort ? result.sort((a, b) => a[groupProperty] - b[groupProperty]) : result;
   }
+  // Array result
+  const result = [];
+  arr.map(e => {
+    const resultElement = result.find(rE => rE[groupProperty] === e[groupProperty]);
+    if (resultElement) {
+      resultElement[itemsProperty].push(e);
+    } else {
+      result.push({ [groupProperty]: e[groupProperty], [itemsProperty]: [e] });
+    }
+    return null;
+  });
+  return sort ? result.sort((a, b) => a[groupProperty] - b[groupProperty]) : result;
 }
 
 export const sortBy = (arr, property) => {

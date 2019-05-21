@@ -11,14 +11,14 @@ export const searchLinesSuccess = (data) => {
 export const searchLinesFail = (error) => {
   return {
     type: actionTypes.SEARCH_LINES_FAIL,
-    error: error
+    error
   };
 };
 
 export const searchLinesStart = (searchParams, pagination) => {
   return {
     type: actionTypes.SEARCH_LINES_START,
-    searchParams: searchParams,
-    pagination: pagination
+    searchParams,
+    pagination
   };
 };

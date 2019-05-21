@@ -17,31 +17,33 @@ class Signup extends React.Component {
   render() {
     const { signup } = this.props;
 
-    return <div className="auth-container bg-full-page">
-      <div className="container">
-        <div className="row justify-content-md-center">
-          <div className="col-lg-6">
-            <div className="auth-box animated fadeInUp animation-delay-7">
-              <div className="header">
-                <div className="title">
-                  <span className="ms-logo">T</span>
-                  <h2 className="text-center">Tube History Map</h2>
+    return (
+      <div className="auth-container bg-full-page">
+        <div className="container">
+          <div className="row justify-content-md-center">
+            <div className="col-lg-6">
+              <div className="auth-box animated fadeInUp animation-delay-7">
+                <div className="header">
+                  <div className="title">
+                    <span className="ms-logo">T</span>
+                    <h2 className="text-center">Tube History Map</h2>
+                  </div>
+                  <div className="actions">
+                    <span className="active">Signup</span>
+                    <Link to="/login">Login</Link>
+                  </div>
                 </div>
-                <div className="actions">
-                  <span className="active">Signup</span>
-                  <Link to="/login" >Login</Link>
-                </div>
+                <Form
+                  mode="dark"
+                  formElements={formElements}
+                  onValidSubmit={signup}
+                />
               </div>
-              <Form
-                mode="dark"
-                formElements={formElements}
-                onValidSubmit={signup}
-              />
             </div>
           </div>
         </div>
       </div>
-    </div>
+    )
   }
 }
 

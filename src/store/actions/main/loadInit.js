@@ -3,22 +3,22 @@ import * as actionTypes from './actionTypes';
 export const loadInitSuccess = (year, data) => {
   return {
     type: actionTypes.LOAD_INIT_SUCCESS,
-    year: year,
-    data: data
+    year,
+    data
   };
 };
 
 export const loadInitFail = (error) => {
   return {
     type: actionTypes.LOAD_INIT_FAIL,
-    error: error
+    error
   };
 };
 
 export const loadInitStart = (town, year) => {
   return {
     type: actionTypes.LOAD_INIT_START,
-    town: town,
-    year: year
+    town,
+    year
   };
 };

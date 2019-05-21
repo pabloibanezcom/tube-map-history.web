@@ -4,16 +4,6 @@ import Select from '../select/select';
 
 class PlaceSearch extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentStr: '',
-      predictions: [],
-      selectedPlace: null,
-      value: this.props.value
-    };
-  }
-
   selectConfig = {
     label: 'Location',
     placeholder: 'Type a station name...',
@@ -29,39 +19,52 @@ class PlaceSearch extends React.Component {
     }
   };
 
+  constructor(props) {
+    super(props);
+    const { value } = this.props;
+    this.state = {
+      predictions: [],
+      selectedPlace: null,
+      value
+    };
+  }
+
   componentDidMount() {
-    if (this.state.value) {
+    const { value } = this.state;
+    if (value) {
       initMapForPlaceSearch('place-search-map-container', this.generatePlaceFromState(), this.handleOnGeometryChange);
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.selectedPlace !== prevState.selectedPlace) {
-      initMapForPlaceSearch('place-search-map-container', this.state.selectedPlace, this.handleOnGeometryChange);
+    const { selectedPlace } = this.state;
+    if (selectedPlace !== prevState.selectedPlace) {
+      initMapForPlaceSearch('place-search-map-container', selectedPlace, this.handleOnGeometryChange);
     }
   }
 
   handleOnInputChange = (str) => {
-    this.setState({ currentStr: str });
     if (str.length >= 3) {
       searchPlace(str)
         .then(predictions => {
-          this.setState({ predictions: predictions });
+          this.setState({ predictions });
         })
         .catch(err => err !== 'ZERO_RESULTS' ? console.log(err) : null);
     }
   }
 
   handleOnChange = (place) => {
+    const { onChange } = this.props;
     const geometry = this.getGeometryFromLocation(place.geometry.location);
     this.setState({ selectedPlace: place, value: geometry });
-    this.props.onChange(geometry);
+    onChange(geometry);
   }
 
   handleOnGeometryChange = (location) => {
+    const { onChange } = this.props;
     const geometry = this.getGeometryFromLocation(location)
     this.setState({ value: geometry });
-    this.props.onChange(geometry);
+    onChange(geometry);
   }
 
   getGeometryFromLocation = (location) => {
@@ -69,18 +72,27 @@ class PlaceSearch extends React.Component {
   }
 
   generatePlaceFromState = () => {
+    const { value } = this.state;
     return {
       geometry: {
-        location: convertPointArrayToMapPoint(this.state.value.coordinates)
+        location: convertPointArrayToMapPoint(value.coordinates)
       }
     };
   }
 
   render() {
-    return <div className="place-search">
-      <Select config={{ ...this.selectConfig }} options={this.state.predictions} onInputChange={this.handleOnInputChange} onChange={this.handleOnChange} />
-      {this.state.value ? <div id="place-search-map-container"></div> : null}
-    </div>
+    const { predictions, value } = this.state;
+    return (
+      <div className="place-search">
+        <Select
+          config={{ ...this.selectConfig }}
+          options={predictions}
+          onInputChange={this.handleOnInputChange}
+          onChange={this.handleOnChange}
+        />
+        {value ? <div id="place-search-map-container" /> : null}
+      </div>
+    )
   }
 }
 

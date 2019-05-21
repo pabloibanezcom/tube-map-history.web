@@ -6,11 +6,12 @@ class Select extends React.Component {
 
   constructor(props) {
     super(props);
+    const { config } = this.props;
     this.state = {
       selectedOption: null,
       expanded: false
     }
-    this.customSelected = getDynamicComponent(this.props.config.custom.selected);
+    this.customSelected = getDynamicComponent(config.custom.selected);
     this.showDropdown = this.showDropdown.bind(this);
     this.selectOption = this.selectOption.bind(this);
   }
@@ -20,9 +21,10 @@ class Select extends React.Component {
   }
 
   selectOption(option) {
+    const { config, onChange } = this.props;
     this.setState({ selectedOption: option, expanded: false });
-    const selectedOption = option && option[this.props.config.options.key] === 'none' ? null : option;
-    this.props.onChange(this.props.config.options.value && selectedOption ? selectedOption[this.props.config.options.value] : selectedOption);
+    const selectedOption = option && option[config.options.key] === 'none' ? null : option;
+    onChange(config.options.value && selectedOption ? selectedOption[config.options.value] : selectedOption);
   }
 
   close() {
@@ -30,23 +32,33 @@ class Select extends React.Component {
   }
 
   render() {
+    const { config } = this.props;
+    const { expanded, selectedOption } = this.state;
     return (
       <div className="form-group">
-        <label className="control-label">{this.props.config.label}</label>
-        <div className={`dropdown bootstrap-select form-control ${this.state.expanded ? 'show' : ''}`}>
-          <button type="button" className="btn dropdown-toggle btn-light" data-toggle="dropdown" onClick={this.showDropdown}
-            title="Ea nam qui vel consequatur" aria-expanded={this.state.expanded ? false : true}>
-            {this.customSelected ? <this.customSelected selectedOption={this.state.selectedOption} /> :
+        <label className="control-label">{config.label}</label>
+        <div className={`dropdown bootstrap-select form-control ${expanded ? 'show' : ''}`}>
+          <button
+            type="button"
+            className="btn dropdown-toggle btn-light"
+            data-toggle="dropdown"
+            onClick={this.showDropdown}
+            title="Ea nam qui vel consequatur"
+            aria-expanded={!expanded}
+          >
+            {this.customSelected ?
+              <this.customSelected selectedOption={selectedOption} /> :
               <div className="filter-option">
                 <div className="filter-option-inner">
                   <div className="filter-option-inner-inner">
-                    {this.state.selectedOption ? this.state.selectedOption[this.props.config.label] : this.props.config.placeholder}
+                    {selectedOption ? selectedOption[config.label] : config.placeholder}
                   </div>
                 </div>
-              </div>}
+              </div>
+            }
           </button>
           <SelectDropdown
-            expanded={this.state.expanded}
+            expanded={expanded}
             onSelectOption={(opt) => this.selectOption(opt)}
             onClose={() => this.close()}
             {...this.props}

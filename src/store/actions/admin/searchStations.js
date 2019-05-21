@@ -20,6 +20,6 @@ export const searchStationsSuccess = (data) => {
 export const searchStationsFail = (error) => {
   return {
     type: actionTypes.SEARCH_STATIONS_FAIL,
-    error: error
+    error
   };
 };

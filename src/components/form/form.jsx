@@ -18,12 +18,43 @@ class Form extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  onHandleChange(value, formElementName) {
+    const { formData } = this.state;
+    const updatedFormElement = updateObject(formData[formElementName], {
+      value,
+      valid: true,
+      touched: true
+    });
+    const updatedFormData = updateObject(formData, {
+      [formElementName]: updatedFormElement
+    });
+    let formIsValid = true;
+    Object.keys(updatedFormData).forEach(inputIdentifier => {
+      formIsValid = updatedFormData[inputIdentifier].valid && formIsValid;
+    });
+    this.setState({ formData: updatedFormData, formIsValid });
+  }
+
+  onSubmit(e) {
+    const { formElements, onValidSubmit } = this.props;
+    const { formData, formIsValid } = this.state;
+    e.preventDefault();
+    if (formIsValid) {
+      const formValues = {};
+      Object.keys(formData).forEach(fEl => {
+        formValues[fEl] = applyTypeToValue(formData[fEl].value, formElements[fEl].propertyType);
+      });
+      onValidSubmit(formValues);
+    }
+  }
+
   generateFormData() {
-    let formData = {};
-    Object.keys(this.props.formElements).map(fEl => {
-      if (this.props.formElements[fEl].elementType !== 'button') {
+    const { formElements, obj } = this.props;
+    const formData = {};
+    Object.keys(formElements).map(fEl => {
+      if (formElements[fEl].elementType !== 'button') {
         formData[fEl] = {
-          value: this.props.obj && this.props.obj[fEl] ? this.props.obj[fEl] : getDefaultValue(this.props.formElements[fEl].propertyType),
+          value: obj && obj[fEl] ? obj[fEl] : getDefaultValue(formElements[fEl].propertyType),
           valid: true,
           touched: null
         }
@@ -33,85 +64,63 @@ class Form extends React.Component {
     return formData;
   }
 
-  onHandleChange(value, formElementName) {
-    const updatedFormElement = updateObject(this.state.formData[formElementName], {
-      value: value,
-      valid: true,
-      touched: true
-    });
-    const updatedFormData = updateObject(this.state.formData, {
-      [formElementName]: updatedFormElement
-    });
-    let formIsValid = true;
-    for (let inputIdentifier in updatedFormData) {
-      formIsValid = updatedFormData[inputIdentifier].valid && formIsValid;
-    }
-    this.setState({ formData: updatedFormData, formIsValid: formIsValid });
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-    if (this.state.formIsValid) {
-      const formValues = {};
-      Object.keys(this.state.formData).map(fEl => formValues[fEl] =
-        applyTypeToValue(this.state.formData[fEl].value, this.props.formElements[fEl].propertyType));
-      this.props.onValidSubmit(formValues);
-    }
-  }
-
   render() {
     const { formElements, mode } = this.props;
+    const { formData } = this.state;
 
-    return <form className={`form-${mode || 'dark'}`} onSubmit={this.onSubmit}>
-      {Object.keys(formElements).map((fEl, i) => {
-        let formElementHtml;
-        switch (formElements[fEl].elementType) {
-          case 'input':
-            formElementHtml = <Input
-              config={formElements[fEl].elementConfig}
-              value={this.state.formData[fEl].value}
-              onChange={(evt) => this.onHandleChange(evt, fEl)}
-            />;
-            break;
-          case 'select':
-            formElementHtml = <Select
-              options={this.props[this.props.formElements[fEl].options]}
-              config={formElements[fEl].elementConfig}
-              onChange={(evt) => this.onHandleChange(evt, fEl)}
-            />
-            break;
-          case 'range':
-            formElementHtml = <Range
-              config={formElements[fEl].elementConfig}
-              onChange={(evt) => this.onHandleChange(evt, fEl)}
-            />
-            break;
-          case 'file-upload':
-            formElementHtml = <FileUpload
-              config={formElements[fEl].elementConfig}
-              onChange={(evt) => this.onHandleChange(evt, fEl)}
-            />
-            break;
-          case 'place-search':
-            formElementHtml = <PlaceSearch
-              onChange={(val) => this.onHandleChange(val, fEl)}
-              value={this.state.formData[fEl].value}
-            />;
-            break;
-          case 'button':
-            formElementHtml = <Button
-              text={formElements[fEl].elementConfig.text}
-              type={formElements[fEl].elementConfig.style || 'primary'}
-              style={{ marginTop: '50px' }}
-            />;
-            break;
+    return (
+      <form className={`form-${mode || 'dark'}`} onSubmit={this.onSubmit}>
+        {Object.keys(formElements).map((fEl, i) => {
+          let formElementHtml;
+          switch (formElements[fEl].elementType) {
+            case 'input':
+              formElementHtml = <Input
+                config={formElements[fEl].elementConfig}
+                value={formData[fEl].value}
+                onChange={(evt) => this.onHandleChange(evt, fEl)}
+              />;
+              break;
+            case 'select':
+              formElementHtml = <Select
+                /* eslint-disable-next-line react/destructuring-assignment */
+                options={this.props[this.props.formElements[fEl].options]}
+                config={formElements[fEl].elementConfig}
+                onChange={(evt) => this.onHandleChange(evt, fEl)}
+              />
+              break;
+            case 'range':
+              formElementHtml = <Range
+                config={formElements[fEl].elementConfig}
+                onChange={(evt) => this.onHandleChange(evt, fEl)}
+              />
+              break;
+            case 'file-upload':
+              formElementHtml = <FileUpload
+                config={formElements[fEl].elementConfig}
+                onChange={(evt) => this.onHandleChange(evt, fEl)}
+              />
+              break;
+            case 'place-search':
+              formElementHtml = <PlaceSearch
+                onChange={(val) => this.onHandleChange(val, fEl)}
+                value={formData[fEl].value}
+              />;
+              break;
+            case 'button':
+              formElementHtml = <Button
+                text={formElements[fEl].elementConfig.text}
+                type={formElements[fEl].elementConfig.style || 'primary'}
+                style={{ marginTop: '50px' }}
+              />;
+              break;
 
-          default:
-            break;
-        }
-        return <div key={i}>{formElementHtml}</div>
-      })}
-    </form>
+            default:
+              break;
+          }
+          return <div key={i}>{formElementHtml}</div>
+        })}
+      </form>
+    )
   }
 }
 

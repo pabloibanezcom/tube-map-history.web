@@ -1,12 +1,12 @@
-const addStationFromForm = (formData, element, otherData) => {
+const addStationFromForm = (formData) => {
   return { ...formData };
 }
 
-const editStationFromForm = (formData, element, otherData) => {
+const editStationFromForm = (formData, element) => {
   return { _id: element._id, ...formData };
 }
 
-const uploadTownDataFromForm = (formData, element, otherData) => {
+const uploadTownDataFromForm = (formData) => {
   return formData.file;
 }
 

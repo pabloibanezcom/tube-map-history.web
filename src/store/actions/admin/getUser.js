@@ -16,6 +16,6 @@ export const getUserSuccess = (user) => {
 export const getUserFail = (error) => {
   return {
     type: actionTypes.GET_USER_FAIL,
-    error: error
+    error
   };
 };

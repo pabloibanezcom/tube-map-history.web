@@ -11,14 +11,14 @@ export const updateStationStart = (town, station) => {
 export const updateStationSuccess = (station) => {
   return {
     type: actionTypes.UPDATE_STATION_SUCCESS,
-    station: station
+    station
   };
 };
 
 export const updateStationFail = (error) => {
   return {
     type: actionTypes.UPDATE_STATION_FAIL,
-    error: error
+    error
   };
 };
 

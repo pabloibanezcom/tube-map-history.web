@@ -10,13 +10,13 @@ export const getLineDetailsSuccess = (data) => {
 export const getLineDetailsFail = (error) => {
   return {
     type: actionTypes.GET_LINE_DETAILS_FAIL,
-    error: error
+    error
   };
 };
 
 export const getLineDetailsStart = (lineId) => {
   return {
     type: actionTypes.GET_LINE_DETAILS_START,
-    lineId: lineId
+    lineId
   };
 };
