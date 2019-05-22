@@ -1,0 +1,9 @@
+{
+  "placeholder": "Type a place...",
+  "options": {
+    "key": "_id",
+    "label": "name"
+  },
+  "remote": true,
+  "enableSearch": true
+}

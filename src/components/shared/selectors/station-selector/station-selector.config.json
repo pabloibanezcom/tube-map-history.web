@@ -1,0 +1,12 @@
+{
+  "placeholder": "Type a station...",
+  "options": {
+    "key": "_id",
+    "label": "name"
+  },
+  "minStr": 2,
+  "maxElements": 300,
+  "dropDownHeight": 200,
+  "onlyStartsWith": true,
+  "enableSearch": true
+}

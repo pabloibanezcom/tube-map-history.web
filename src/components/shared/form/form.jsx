@@ -1,4 +1,4 @@
-import { Button, FileUpload, Input, PlaceSearch, Range, Select } from 'components/shared';
+import { Button, FileUpload, Input, PlaceSelector, Range, Selector } from 'components/shared';
 import React from 'react';
 import { applyTypeToValue, getDefaultValue, updateObject } from 'shared/utility';
 
@@ -76,7 +76,7 @@ class Form extends React.Component {
               />;
               break;
             case 'select':
-              formElementHtml = <Select
+              formElementHtml = <Selector
                 /* eslint-disable-next-line react/destructuring-assignment */
                 options={this.props[this.props.formElements[fEl].options]}
                 config={formElements[fEl].elementConfig}
@@ -96,7 +96,7 @@ class Form extends React.Component {
               />
               break;
             case 'place-search':
-              formElementHtml = <PlaceSearch
+              formElementHtml = <PlaceSelector
                 onChange={(val) => this.onHandleChange(val, fEl)}
                 value={formData[fEl].value}
               />;

@@ -49,7 +49,7 @@ class AdminUser extends React.Component {
           {user && (
             <div className="row">
               <div className="col-lg-4">
-                <div className="card animated fadeInUp animation-delay-7">
+                <div className="card">
                   <div className="ms-hero-bg-primary ms-hero-img-coffee">
                     <h3 className="color-white index-1 text-center no-m pt-4">{user.firstName} {user.lastName}</h3>
                     <div className="color-medium index-1 text-center np-m">{user.type}</div>
