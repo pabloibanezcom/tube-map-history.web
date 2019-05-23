@@ -52,3 +52,9 @@ body {
 .hidden {
   display: none !important
 }
+
+.container {
+  @media (min-width: 1600px) {
+    max-width: 1615px;
+  }
+}

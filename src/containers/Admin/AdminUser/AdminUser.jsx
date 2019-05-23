@@ -1,6 +1,7 @@
 import * as actions from 'actions/admin';
+import { TownContent, TownHeader } from 'components/admin/custom-collapse';
 import UserPicture from 'components/admin/user/user-picture/user-picture';
-import { CollapseList, CountrySelector } from 'components/shared';
+import { CollapseList } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
@@ -64,19 +65,14 @@ class AdminUser extends React.Component {
                     <a className="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-twitter"><i className="zmdi zmdi-twitter" /></a>
                     <a className="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-instagram"><i className="zmdi zmdi-instagram" /></a>
                   </div>
-                  <div>
-                    <CountrySelector
-                      onChange={this.handleCountryChange}
-                    />
-                  </div>
                 </div>
               </div>
               <div className="col-lg-8">
                 <CollapseList
                   type="secondary"
                   elements={towns.filter(t => townInUser(t, user))}
-                  header="town"
-                  content="town"
+                  header={TownHeader}
+                  content={TownContent}
                   activeElementContent={town}
                   onElementSelected={getTown}
                   externalActiveElementId={activeTownId}
@@ -84,8 +80,8 @@ class AdminUser extends React.Component {
                 />
                 <CollapseList
                   elements={towns.filter(t => !townInUser(t, user))}
-                  header="town"
-                  content="town"
+                  header={TownHeader}
+                  content={TownContent}
                   activeElementContent={town}
                   onElementSelected={getTown}
                   externalActiveElementId={activeTownId}

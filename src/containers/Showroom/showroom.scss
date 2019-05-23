@@ -12,4 +12,15 @@
       margin-top: 10px;
     }
   }
+
+  .showroom-link {
+    a {
+      font-size: 2.4rem;
+      color: $secondary-color;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
 }
