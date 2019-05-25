@@ -213,7 +213,7 @@ body .container-fluid .jumbotron-royal {
   background-color: #9c27b0
 }
 
-.btn,
+/* .btn,
 .input-group-btn .btn {
   border: none;
   border-radius: 2px;
@@ -867,7 +867,7 @@ fieldset[disabled][disabled] .btn-group-vertical.btn-group-raised:focus:not(:act
 .btn-group-vertical[disabled][disabled].btn-group-raised:active,
 .btn-group-vertical[disabled][disabled].btn-group-raised:focus:not(:active) {
   box-shadow: none
-}
+} */
 
 .btn-group,
 .btn-group-vertical {

@@ -1,4 +1,4 @@
-import { Link } from 'components/shared';
+import { Button } from 'components/shared';
 import React from 'react';
 
 const townContent = ({ element }) => {
@@ -30,10 +30,10 @@ const townContent = ({ element }) => {
       </div>
       <div className="row">
         <div className="col-lg-offset-4 col-lg-4">
-          <Link
+          <Button
             to={`/admin/town/${element.url}`}
             text="View town"
-            type="Button"
+            type="btn"
           />
         </div>
       </div>

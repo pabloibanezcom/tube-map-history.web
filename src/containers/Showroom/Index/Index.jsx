@@ -1,4 +1,4 @@
-import { Link } from 'components/shared';
+import { Button } from 'components/shared';
 import React from 'react';
 
 const index = () => {
@@ -6,39 +6,43 @@ const index = () => {
     <div className="showroom-index">
       <h1 className="right-line mb-4">Showroom</h1>
       <div className="row">
-        <div className="col-lg-4">
+        <div className="col">
           <div className="showroom-element showroom-link">
-            <Link
+            <Button
               to="/showroom/buttons"
               text="Buttons and Links"
-              type="Link"
+              type="link"
+              color="secondary"
             />
           </div>
         </div>
-        <div className="col-lg-4">
+        <div className="col">
           <div className="showroom-element showroom-link">
-            <Link
+            <Button
               to="/showroom/data-presentation"
               text="Data presentation"
-              type="Link"
+              type="link"
+              color="secondary"
             />
           </div>
         </div>
-        <div className="col-lg-4">
+        <div className="col">
           <div className="showroom-element showroom-link">
-            <Link
+            <Button
               to="/showroom/inputs"
               text="Inputs"
-              type="Link"
+              type="link"
+              color="secondary"
             />
           </div>
         </div>
-        <div className="col-lg-4">
+        <div className="col">
           <div className="showroom-element showroom-link">
-            <Link
+            <Button
               to="/showroom/layout"
               text="Layout"
-              type="Link"
+              type="link"
+              color="secondary"
             />
           </div>
         </div>

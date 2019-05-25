@@ -52,7 +52,7 @@ class Select extends React.Component {
       <div className={`dropdown bootstrap-select form-control ${expanded ? 'show' : ''}`}>
         <button
           type="button"
-          className="btn dropdown-toggle btn-light"
+          className="btn btn-lg btn-select dropdown-toggle"
           data-toggle="dropdown"
           onClick={this.showDropdown}
           title="Ea nam qui vel consequatur"

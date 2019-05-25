@@ -27,7 +27,7 @@ class Inputs extends React.Component {
       <div className="showroom-selectors">
         <h1 className="right-line mb-4">Inputs</h1>
         <div className="row">
-          <div className="col-lg-3">
+          <div className="col">
             <div className="showroom-element">
               <label>Selector</label>
               <Selector
@@ -39,7 +39,7 @@ class Inputs extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col-lg-3">
+          <div className="col">
             <div className="showroom-element">
               <label>LineSelector</label>
               <LineSelector
@@ -51,7 +51,7 @@ class Inputs extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col-lg-3">
+          <div className="col">
             <div className="showroom-element">
               <label>CountrySelector</label>
               <CountrySelector
@@ -62,7 +62,7 @@ class Inputs extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col-lg-3">
+          <div className="col">
             <div className="showroom-element">
               <label>StationSelector</label>
               <StationSelector
@@ -74,7 +74,9 @@ class Inputs extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col-lg-3">
+        </div>
+        <div className="row">
+          <div className="col-3">
             <div className="showroom-element">
               <label>PlaceSelector</label>
               <PlaceSelector
