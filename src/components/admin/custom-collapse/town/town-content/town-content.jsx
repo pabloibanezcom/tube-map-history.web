@@ -8,7 +8,7 @@ const townContent = ({ element }) => {
       <div className="row">
         <div className="col-lg-6">
           <div className="content-town-info">
-            <div className="header--md">Town info</div>
+            <h4 className="secondary right-line right-line-secondary mb-20">Town info</h4>
             <div className="content-element">
               <div className="content-element__title">Name</div>
               <div className="content-element__value">{element.name}</div>
@@ -34,6 +34,9 @@ const townContent = ({ element }) => {
             to={`/admin/town/${element.url}`}
             text="View town"
             type="btn"
+            inverse
+            color="secondary"
+            extraClass="mt-20"
           />
         </div>
       </div>

@@ -9,6 +9,26 @@ const index = () => {
         <div className="col">
           <div className="showroom-element showroom-link">
             <Button
+              to="/showroom/layout"
+              text="Layout"
+              type="link"
+              color="secondary"
+            />
+          </div>
+        </div>
+        <div className="col">
+          <div className="showroom-element showroom-link">
+            <Button
+              to="/showroom/headers"
+              text="Headers"
+              type="link"
+              color="secondary"
+            />
+          </div>
+        </div>
+        <div className="col">
+          <div className="showroom-element showroom-link">
+            <Button
               to="/showroom/buttons"
               text="Buttons and Links"
               type="link"
@@ -31,16 +51,6 @@ const index = () => {
             <Button
               to="/showroom/inputs"
               text="Inputs"
-              type="link"
-              color="secondary"
-            />
-          </div>
-        </div>
-        <div className="col">
-          <div className="showroom-element showroom-link">
-            <Button
-              to="/showroom/layout"
-              text="Layout"
               type="link"
               color="secondary"
             />

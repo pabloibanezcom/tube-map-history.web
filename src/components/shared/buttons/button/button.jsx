@@ -3,8 +3,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const button = (props) => {
-  const { block, inverse, onClick, outline, size, color, uppercase, text, to, type } = props;
-  const classStr = `${type} ${type}-${size} ${type}-${color} ${uppercase && type === 'btn' ? 'btn-uppercase' : ''}  ${inverse ? 'btn-inverse' : ''} ${outline ? 'btn-outline' : ''} ${block && type === 'btn' ? 'btn-block' : ''}`;
+  const { block, extraClass, inverse, onClick, outline, size, color, uppercase, text, to, type } = props;
+  let buttonClasses = '';
+  if (type === 'btn') {
+    buttonClasses = `${uppercase ? 'btn-uppercase' : ''}  ${inverse ? 'btn-inverse' : ''} ${outline ? 'btn-outline' : ''} ${block ? 'btn-block' : ''}`;
+  }
+  const classStr = `${type} ${type}-${size} ${type}-${color} ${buttonClasses} ${extraClass}`;
   if (to) {
     return (
       <Link
@@ -41,6 +45,7 @@ const button = (props) => {
 
 button.defaultProps = {
   block: true,
+  extraClass: '',
   inverse: false,
   outline: false,
   size: 'sm',
@@ -53,6 +58,7 @@ button.defaultProps = {
 
 button.propTypes = {
   block: PropTypes.bool,
+  extraClass: PropTypes.string,
   inverse: PropTypes.bool,
   outline: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'lg']),
