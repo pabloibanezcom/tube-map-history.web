@@ -1,3 +1,4 @@
+import { Badge } from 'components/shared';
 import React from 'react';
 
 const stationSelected = (props) => {
@@ -8,7 +9,13 @@ const stationSelected = (props) => {
         <div className="filter-option-inner-inner">
           {selectedOption ?
             <div><span className="station-name">{selectedOption.name}</span>
-              {selectedOption.year ? <span className="station-year">{selectedOption.year}</span> : null}
+              {selectedOption.year ? (
+                <Badge
+                  text={selectedOption.year.toString()}
+                  color="primary"
+                  extraClass="ml-15"
+                />
+              ) : null}
             </div>
             : 'Select a station'}
         </div>

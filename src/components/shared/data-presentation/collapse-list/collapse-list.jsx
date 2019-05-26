@@ -12,7 +12,6 @@ class CollapseList extends React.Component {
     this.setActiveElement = this.setActiveElement.bind(this);
   }
 
-
   setActiveElement(element) {
     const { activeElementId } = this.state;
     const { onElementSelected, onActiveElementChanged } = this.props;
@@ -28,13 +27,13 @@ class CollapseList extends React.Component {
   }
 
   render() {
-    const { elements, type, header, content, activeElementContent, externalActiveElementId } = this.props;
+    const { elements, extraClass, type, header, content, activeElementContent, externalActiveElementId } = this.props;
     const { activeElementId } = this.state;
     const Header = header;
     const Content = content;
     const currentActiveElementId = externalActiveElementId || activeElementId;
     return (
-      <ul className={`collapse-list collapse-list-${type || 'default'}`}>
+      <ul className={`collapse-list collapse-list-${type || 'default'} ${extraClass}`}>
         {elements.map((el, i) => (
           <li key={i}>
             <div className={`collapse-list-element ${currentActiveElementId === el._id ? 'active' : ''}`}>

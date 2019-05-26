@@ -19,7 +19,7 @@
 
         >i {
           transform: rotate(0);
-          transition: all ease .4s;
+          transition: all ease .2s;
         }
       }
 
@@ -45,6 +45,10 @@
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+
+    >div {
+      padding: 20px;
+    }
   }
 
   // CUSTOMIZATION
