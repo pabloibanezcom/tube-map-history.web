@@ -1,16 +1,17 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 
 const paginationComponent = (props) => {
 
-  const { pagination } = props;
+  const { background, color, pagination, size } = props;
 
   const handlePageChange = (evt) => {
     props.onPageChange(evt.selected + 1);
   }
 
   return (
-    <div className="custom-pagination">
+    <div className={`pagination-container pagination-container-${background}`}>
       <nav className="navigation" aria-label="Page navigation">
         <ReactPaginate
           pageCount={pagination.pages}
@@ -18,7 +19,7 @@ const paginationComponent = (props) => {
           marginPagesDisplayed={1}
           forcePage={pagination.page - 1}
           onPageChange={handlePageChange}
-          containerClassName="pagination pagination-round pagination-plain"
+          containerClassName={`pagination pagination-round pagination-plain ${background === 'light' ? `pagination-${color}` : ''} pagination-bg-${background} ${size !== 'lg' ? `pagination-${size}` : ''}`}
           pageClassName="page-item"
           previousClassName="page-item"
           nextClassName="page-item"
@@ -32,5 +33,19 @@ const paginationComponent = (props) => {
     </div>
   )
 }
+
+paginationComponent.defaultProps = {
+  background: 'light',
+  color: 'primary',
+  size: 'lg'
+};
+
+paginationComponent.propTypes = {
+  background: PropTypes.oneOf(['light', 'primary', 'secondary']),
+  color: PropTypes.oneOf(['primary', 'secondary']),
+  pagination: PropTypes.object.isRequired,
+  onPageChange: PropTypes.func.isRequired,
+  size: PropTypes.oneOf(['sm', 'lg'])
+};
 
 export default paginationComponent;

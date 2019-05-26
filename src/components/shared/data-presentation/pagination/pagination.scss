@@ -1,28 +1,156 @@
-.custom-pagination {
+.pagination-container {
   text-align: center;
-  background-color: $white-color;
+
+  &.pagination-container-light {
+    background-color: $white-color;
+  }
+
+  &.pagination-container-primary {
+    background-color: $primary-color;
+  }
+
+  &.pagination-container-secondary {
+    background-color: $secondary-color;
+  }
+
   .navigation {
     display: inline-block;
   }
+
   .pagination {
-    .page-item {
-      &.selected {
+
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem;
+    margin: 15px 0;
+
+    &.pagination-sm {
+      margin: 10px 0;
+
+      .page-item {
         .page-link {
-          color: $white-color;
-          background-color: $secondary-color;
-          border-color: $secondary-color;
+          padding: 8px 12px;
+          font-size: 1rem;
+          line-height: 1.25;
         }
       }
+    }
+
+    .page-item {
       .page-link {
-        color: $secondary-color;
-        &:focus {
-          color: $white-color;
-          background-color: $secondary-color;
-          border-color: $secondary-color;
+        background-color: transparent;
+      }
+    }
+
+    &.pagination-primary {
+      .page-item {
+        &.selected {
+          .page-link {
+            color: $primary-alt-color;
+            background-color: $primary-color;
+            border-color: $primary-color;
+          }
         }
-        &:hover {
-          background-color: $primary-color;
-          border-color: $primary-color;
+
+        .page-link {
+          color: $primary-color;
+
+          &:focus {
+            color: $primary-alt-color;
+            background-color: $primary-color;
+            border-color: $primary-color;
+          }
+
+          &:hover {
+            color: $secondary-alt-color;
+            background-color: $secondary-color;
+            border-color: $secondary-color;
+          }
+        }
+      }
+    }
+
+    &.pagination-secondary {
+      .page-item {
+        &.selected {
+          .page-link {
+            color: $secondary-alt-color;
+            background-color: $secondary-color;
+            border-color: $secondary-color;
+          }
+        }
+
+        .page-link {
+          color: $secondary-color;
+
+          &:focus {
+            color: $secondary-alt-color;
+            background-color: $secondary-color;
+            border-color: $secondary-color;
+          }
+
+          &:hover {
+            color: $primary-alt-color;
+            background-color: $primary-color;
+            border-color: $primary-color;
+          }
+        }
+      }
+    }
+
+    &.pagination-bg-primary {
+      .page-item {
+        &.selected {
+          .page-link {
+            color: $secondary-alt-color;
+            background-color: $secondary-color;
+            border-color: $secondary-color;
+          }
+        }
+
+        .page-link {
+          color: $primary-alt-color;
+
+          &:focus {
+            color: $secondary-alt-color;
+            background-color: $secondary-color;
+            border-color: $secondary-color;
+          }
+
+          &:hover {
+            color: $secondary-alt-color;
+            background-color: $secondary-color;
+            border-color: $secondary-color;
+          }
+        }
+      }
+    }
+
+    &.pagination-bg-secondary {
+      .page-item {
+        &.selected {
+          .page-link {
+            color: $primary-alt-color;
+            background-color: $primary-color;
+            border-color: $primary-color;
+          }
+        }
+
+        .page-link {
+          color: $secondary-alt-color;
+
+          &:focus {
+            color: $primary-alt-color;
+            background-color: $primary-color;
+            border-color: $primary-color;
+          }
+
+          &:hover {
+            color: $primary-alt-color;
+            background-color: $primary-color;
+            border-color: $primary-color;
+          }
         }
       }
     }
