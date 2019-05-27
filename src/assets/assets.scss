@@ -6,6 +6,8 @@
 @import "~rc-slider/assets/index.css";
 // fonts
 @import "./assets/fonts/circular/circular.scss";
+// icons
+@import "./assets/icons/style.css";
 // Bootstrap grid
 @import "./scss/bootstrap-grid/bootstrap-grid.scss";
 // Global scss
@@ -13,6 +15,7 @@
 @import "./scss/animations.scss";
 @import "./scss/badges.scss";
 @import "./scss/buttons.scss";
+@import "./scss/icons.scss";
 @import "./scss/colors.scss";
 @import "./scss/common.scss";
 @import "./scss/snackbar.scss";

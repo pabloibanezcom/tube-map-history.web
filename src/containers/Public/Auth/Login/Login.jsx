@@ -1,5 +1,5 @@
 import * as actions from 'actions/auth';
-import { Form } from 'components/shared';
+import { Button, Form, Icon } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from "react-router-dom";
@@ -32,15 +32,19 @@ class Login extends React.Component {
                 </div>
                 <div className="social-login-header">Login with</div>
                 <div className="social-login-buttons">
-                  <div><button type="submit" className="btn btn-sm btn-raised btn-google btn-block"><i className="zmdi zmdi-google" /><span>Google</span></button></div>
-                  <div><button type="submit" className="btn btn-sm btn-raised btn-facebook btn-block"><i className="zmdi zmdi-facebook" /><span>Facebook</span></button></div>
-                  <div><button type="submit" className="btn btn-sm btn-raised btn-twitter btn-block"><i className="zmdi zmdi-twitter" /><span>Twitter</span></button></div>
+                  <div><button type="submit" className="btn btn-sm btn-raised btn-google btn-block"><Icon name="google" /><span>Google</span></button></div>
+                  <div><button type="submit" className="btn btn-sm btn-raised btn-facebook btn-block"><Icon name="facebook" /><span>Facebook</span></button></div>
+                  <div><button type="submit" className="btn btn-sm btn-raised btn-twitter btn-block"><Icon name="twitter" /><span>Twitter</span></button></div>
                 </div>
                 <div className="email-login-header">or</div>
                 <Form
                   mode="dark"
                   formElements={formElements}
                   onValidSubmit={login}
+                />
+                <Button
+                  submit
+                  text="Login"
                 />
                 <div className="forgot-password">Forgot your password?<a className="link">Reset it</a></div>
               </div>

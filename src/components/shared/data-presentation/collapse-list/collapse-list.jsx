@@ -1,3 +1,4 @@
+import { Icon } from 'components/shared';
 import React from 'react';
 
 class CollapseList extends React.Component {
@@ -41,7 +42,7 @@ class CollapseList extends React.Component {
                 <a onClick={() => this.setActiveElement(el)}>
                   <div className="collapse-list-header-container">
                     <Header element={el} />
-                    <i className="fa fa-angle-down" />
+                    <Icon name="angle-down" />
                   </div>
                 </a>
               </div>

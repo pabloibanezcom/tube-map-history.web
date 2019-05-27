@@ -1,5 +1,6 @@
 import * as actions from 'actions/main';
 import { LineInfo, LinesInfo, StationInfo, TownInfo } from 'components/public/sidebar';
+import { Icon } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
 import ReactTooltip from 'react-tooltip';
@@ -63,7 +64,7 @@ class SideBar extends React.Component {
     return (
       <div className={`side-bar ${sideBarState.open ? 'open' : ''}`}>
         <a className="side-bar-close" data-tip={sideBarState.open ? 'Close menu' : 'open menu'} data-for='open-tooltip' onClick={sideBarState.open ? this.close : this.open}>
-          {sideBarState.open ? <i className="zmdi zmdi-close" /> : <i className="zmdi zmdi-menu" />}
+          {sideBarState.open ? <Icon name="close" /> : <Icon name="menu" />}
         </a>
         <a
           className={`side-bar-back ${sideBarState.open && getPrevSideBarMode(sideBarState.mode) ? 'shown' : ''}`}
@@ -71,7 +72,7 @@ class SideBar extends React.Component {
           data-tip=''
           data-for='back-tooltip'
         >
-          <i className="zmdi zmdi-chevron-left" />
+          <Icon name="chevron-left" />
         </a>
         <div className="side-bar-container">
           <ul className="side-bar-menu shown">

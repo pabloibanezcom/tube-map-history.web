@@ -1,3 +1,4 @@
+import { Icon } from 'components/shared';
 import React from 'react';
 
 class Input extends React.Component {
@@ -61,7 +62,7 @@ class Input extends React.Component {
             onBlur={this.handleOnBlur}
             onChange={this.handleOnChange}
           />
-          {config.clearable && value ? <a onClick={this.clearValue} className="clear-cross"><i className="fa fa-times" /></a> : null}
+          {config.clearable && value ? <a onClick={this.clearValue} className="clear-cross"><Icon name="close" /></a> : null}
         </div>
       </div>
     )

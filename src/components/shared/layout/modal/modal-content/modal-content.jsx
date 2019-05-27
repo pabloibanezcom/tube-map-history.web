@@ -1,3 +1,4 @@
+import { Icon } from 'components/shared';
 import React from 'react';
 import onClickOutside from "react-onclickoutside";
 
@@ -16,7 +17,7 @@ class ModalContent extends React.Component {
           <h3 className="modal-title secondary">{header}</h3>
           <button type="button" className="close" onClick={onClose}>
             <span aria-hidden="true">
-              <i className="zmdi zmdi-close" />
+              <Icon name="close" />
             </span>
           </button>
         </div>

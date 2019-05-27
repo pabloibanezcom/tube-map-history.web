@@ -20,13 +20,5 @@
     "validation": {
       "required": true
     }
-  },
-  "loginButton": {
-    "elementType": "button",
-    "elementConfig": {
-      "type": "submit",
-      "style": "primary",
-      "text": "Login"
-    }
   }
 }

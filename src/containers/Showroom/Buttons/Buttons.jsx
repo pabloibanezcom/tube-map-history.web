@@ -106,7 +106,8 @@ const buttons = () => {
             <label>With icon (in progress)</label>
             <div>
               <Button
-                text="Continue"
+                text="Search"
+                icon="search"
               />
             </div>
           </div>

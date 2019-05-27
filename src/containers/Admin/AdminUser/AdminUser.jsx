@@ -1,7 +1,7 @@
 import * as actions from 'actions/admin';
 import { TownContent, TownHeader } from 'components/admin/custom-collapse';
 import UserPicture from 'components/admin/user/user-picture/user-picture';
-import { CollapseList } from 'components/shared';
+import { CollapseList, Icon } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
@@ -61,9 +61,9 @@ class AdminUser extends React.Component {
                   <div className="card-body pt-4 text-center">
                     <h3 className="color-primary">Bio</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur alter adipisicing elit. Facilis, natuse inse voluptates officia repudiandae beatae magni es magnam autem molestias.</p>
-                    <a className="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-facebook"><i className="zmdi zmdi-facebook" /></a>
-                    <a className="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-twitter"><i className="zmdi zmdi-twitter" /></a>
-                    <a className="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-instagram"><i className="zmdi zmdi-instagram" /></a>
+                    <a className="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-facebook"><Icon name="facebook" /></a>
+                    <a className="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-twitter"><Icon name="twitter" /></a>
+                    <a className="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-instagram"><Icon name="instagram" /></a>
                   </div>
                 </div>
               </div>

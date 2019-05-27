@@ -13,14 +13,28 @@
   overflow: visible;
   cursor: pointer;
 
+  .icon {
+    vertical-align: middle;
+  }
+
   &.btn-sm {
     padding: 5px 20px;
     font-size: 1.2rem;
+
+    .icon {
+      font-size: 1.5rem;
+      margin-right: .8rem;
+    }
   }
 
   &.btn-lg {
     padding: 8px 30px;
     font-size: 1.4rem;
+
+    .icon {
+      font-size: 1.8rem;
+      margin-right: 1rem;
+    }
   }
 
   &.btn-block {

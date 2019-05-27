@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import ConnectionInfo from './connection-info/connection-info';
 
@@ -10,12 +9,18 @@ const stationPanel = (props) => {
         <div className="col-lg-6">
           <div className="station-name">{result.name}</div>
           <div className="station-element station-year">
-            <span className="station-element-label"><FontAwesomeIcon icon="calendar-alt" />Year:</span>
+            <span className="station-element-label">
+              {/* <FontAwesomeIcon icon="calendar-alt" /> */}
+              Year:
+            </span>
             <span className="station-element-value">{result.year}</span>
           </div>
           {result.geometry.coordinates ?
             <div className="station-element station-coordenates">
-              <span className="station-element-label"><FontAwesomeIcon icon="map-marker-alt" />Coordenates:</span>
+              <span className="station-element-label">
+                {/* <FontAwesomeIcon icon="map-marker-alt" /> */}
+                Coordenates:
+              </span>
               <span className="station-element-value">
                 {Number.parseFloat(result.geometry.coordinates[0]).toFixed(4)}° N
               | {Number.parseFloat(result.geometry.coordinates[1]).toFixed(4)}° W
@@ -29,7 +34,10 @@ const stationPanel = (props) => {
         </div>
         <div className="col-lg-6">
           <div className="connections">
-            <div className="connections-header"><FontAwesomeIcon icon="exchange-alt" />Connections</div>
+            <div className="connections-header">
+              {/* <FontAwesomeIcon icon="exchange-alt" /> */}
+              Connections
+            </div>
             <div className="connections-list">
               {result.connections && result.connections.map((con, i) => {
                 return <ConnectionInfo

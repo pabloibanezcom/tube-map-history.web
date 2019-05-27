@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as actions from 'actions/admin';
 import ActionDialog from 'components/admin/action-dialog/action-dialog';
 import ResultsList from 'components/admin/results-list/results-list';
@@ -117,7 +116,7 @@ class AdminTown extends React.Component {
                   {adminTownMenu.tabs.map((t, i) => (
                     <li key={t.id} className="nav-item">
                       <a className={`nav-link withoutripple ${activeTab && activeTab.id === t.id ? 'active show' : ''}`} onClick={() => this.setActiveTab(t, i)}>
-                        <FontAwesomeIcon icon={t.icon} /> <span className="d-none d-sm-inline">{t.label}</span>
+                        {/* <FontAwesomeIcon icon={t.icon} /> <span className="d-none d-sm-inline">{t.label}</span> */}
                       </a>
                     </li>
                   ))}

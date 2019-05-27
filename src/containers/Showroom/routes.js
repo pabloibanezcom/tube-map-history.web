@@ -4,6 +4,7 @@ import Buttons from './Buttons/Buttons';
 import Badges from './Data-Presentation/Badges/Badges';
 import Collapses from './Data-Presentation/Collapses/Collapses';
 import DataPresentation from './Data-Presentation/Data-Presentation';
+import Icons from './Data-Presentation/Icons/Icons';
 import LoadingSpinners from './Data-Presentation/Loading-Spinners/Loading-Spinners';
 import Paginations from './Data-Presentation/Paginations/Paginations';
 import Headers from './Headers/Headers';
@@ -19,6 +20,7 @@ const routes = (
     <Route path={`${baseUrl}/data-presentation`} exact component={DataPresentation} />
     <Route path={`${baseUrl}/data-presentation/collapses`} component={Collapses} />
     <Route path={`${baseUrl}/data-presentation/badges`} component={Badges} />
+    <Route path={`${baseUrl}/data-presentation/icons`} component={Icons} />
     <Route path={`${baseUrl}/data-presentation/loading-spinners`} component={LoadingSpinners} />
     <Route path={`${baseUrl}/data-presentation/paginations`} component={Paginations} />
     <Route path={`${baseUrl}/inputs`} component={Inputs} />
