@@ -6,11 +6,11 @@
   }
 
   &.pagination-container-primary {
-    background-color: $primary-color;
+    @include background-color(primary);
   }
 
   &.pagination-container-secondary {
-    background-color: $secondary-color;
+    @include background-color(secondary);
   }
 
   .navigation {
@@ -47,9 +47,7 @@
       .page-item {
         &.selected {
           .page-link {
-            color: $primary-alt-color;
-            background-color: $primary-color;
-            border-color: $primary-color;
+            @include background-color(primary);
           }
         }
 
@@ -57,15 +55,11 @@
           color: $primary-color;
 
           &:focus {
-            color: $primary-alt-color;
-            background-color: $primary-color;
-            border-color: $primary-color;
+            @include background-color(primary);
           }
 
           &:hover {
-            color: $secondary-alt-color;
-            background-color: $secondary-color;
-            border-color: $secondary-color;
+            @include background-color(secondary);
           }
         }
       }
@@ -75,9 +69,7 @@
       .page-item {
         &.selected {
           .page-link {
-            color: $secondary-alt-color;
-            background-color: $secondary-color;
-            border-color: $secondary-color;
+            @include background-color(secondary);
           }
         }
 
@@ -85,15 +77,11 @@
           color: $secondary-color;
 
           &:focus {
-            color: $secondary-alt-color;
-            background-color: $secondary-color;
-            border-color: $secondary-color;
+            @include background-color(secondary);
           }
 
           &:hover {
-            color: $primary-alt-color;
-            background-color: $primary-color;
-            border-color: $primary-color;
+            @include background-color(primary);
           }
         }
       }
@@ -103,9 +91,7 @@
       .page-item {
         &.selected {
           .page-link {
-            color: $secondary-alt-color;
-            background-color: $secondary-color;
-            border-color: $secondary-color;
+            @include background-color(secondary);
           }
         }
 
@@ -113,15 +99,11 @@
           color: $primary-alt-color;
 
           &:focus {
-            color: $secondary-alt-color;
-            background-color: $secondary-color;
-            border-color: $secondary-color;
+            @include background-color(secondary);
           }
 
           &:hover {
-            color: $secondary-alt-color;
-            background-color: $secondary-color;
-            border-color: $secondary-color;
+            @include background-color(secondary);
           }
         }
       }
@@ -131,9 +113,7 @@
       .page-item {
         &.selected {
           .page-link {
-            color: $primary-alt-color;
-            background-color: $primary-color;
-            border-color: $primary-color;
+            @include background-color(primary);
           }
         }
 
@@ -141,15 +121,11 @@
           color: $secondary-alt-color;
 
           &:focus {
-            color: $primary-alt-color;
-            background-color: $primary-color;
-            border-color: $primary-color;
+            @include background-color(primary);
           }
 
           &:hover {
-            color: $primary-alt-color;
-            background-color: $primary-color;
-            border-color: $primary-color;
+            @include background-color(primary);
           }
         }
       }

@@ -51,79 +51,31 @@
   }
 
   &.btn-primary {
-    background-color: $primary-color;
-    border: 1px solid $primary-color !important;
-    color: $primary-alt-color !important;
+    @include background-color(primary, primary, true);
 
-    &:hover,
-    &:active {
-      background-color: darken($primary-color, 5%) !important;
+    &.btn-inverse {
+      @include background-color(primary, secondary, true);
+    }
+
+    &.btn-outline {
+      @include background-color(primary, primary, true, true);
     }
   }
 
   &.btn-secondary {
-    background-color: $secondary-color;
-    border: 1px solid $secondary-color !important;
-    color: $secondary-alt-color !important;
+    @include background-color(secondary, secondary, true);
 
-    &:hover,
-    &:active {
-      background-color: darken($secondary-color, 5%) !important;
+    &.btn-inverse {
+      @include background-color(secondary, primary, true);
+    }
+
+    &.btn-outline {
+      @include background-color(secondary, secondary, true, true);
     }
   }
 
   &.btn-light {
-    background-color: $grey-light-color;
-    border: 1px solid $grey-light-color !important;
-    color: $black-color !important;
-
-    &:hover,
-    &:active {
-      background-color: darken($grey-light-color, 10%) !important;
-    }
-  }
-
-  &.btn-outline {
-    background-color: transparent !important;
-
-    &.btn-primary {
-      color: $primary-outline-color !important;
-
-      &:hover {
-        background-color: $primary-color !important;
-        color: $primary-alt-color !important;
-      }
-    }
-
-    &.btn-secondary {
-      color: $secondary-outline-color !important;
-
-      &:hover {
-        background-color: $secondary-color !important;
-        color: $secondary-alt-color !important;
-      }
-    }
-  }
-
-  &.btn-inverse {
-
-    &.btn-primary {
-
-      &:hover {
-        background-color: $secondary-color !important;
-        color: $secondary-alt-color !important;
-        border-color: $secondary-color !important;
-      }
-    }
-
-    &.btn-secondary {
-
-      &:hover {
-        background-color: $primary-color !important;
-        color: $primary-alt-color !important;
-        border-color: $primary-color !important;
-      }
-    }
+    @include background-color(light, light, true);
   }
 }
 
@@ -138,18 +90,10 @@
   }
 
   &.link-primary {
-    color: $primary-color !important;
-
-    &:hover {
-      color: $secondary-color !important;
-    }
+    @include color(primary, secondary);
   }
 
   &.link-secondary {
-    color: $secondary-color !important;
-
-    &:hover {
-      color: $primary-color !important;
-    }
+    @include color(secondary, primary);
   }
 }

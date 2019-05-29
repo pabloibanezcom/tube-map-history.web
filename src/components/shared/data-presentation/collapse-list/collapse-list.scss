@@ -59,19 +59,12 @@
 
       &.active {
         .collapse-list-header {
-          background-color: darken($grey-color, 10%);
-          color: $black-color;
+          @include background-color(light);
         }
       }
 
       .collapse-list-header {
-        background-color: $grey-color;
-        color: $black-color;
-
-        &:hover {
-          background-color: darken($grey-color, 10%);
-          color: $black-color;
-        }
+        @include background-color(light, light);
       }
     }
   }
@@ -81,19 +74,12 @@
 
       &.active {
         .collapse-list-header {
-          background-color: $secondary-color;
-          color: $white-color;
+          @include background-color(secondary);
         }
       }
 
       .collapse-list-header {
-        background-color: $primary-color;
-        color: $secondary-color;
-
-        &:hover {
-          background-color: $secondary-color;
-          color: $white-color;
-        }
+        @include background-color(primary, secondary);
       }
     }
   }
@@ -103,19 +89,12 @@
 
       &.active {
         .collapse-list-header {
-          background-color: $primary-color;
-          color: $secondary-color;
+          @include background-color(primary);
         }
       }
 
       .collapse-list-header {
-        background-color: $secondary-color;
-        color: $white-color;
-
-        &:hover {
-          background-color: $primary-color;
-          color: $secondary-color;
-        }
+        @include background-color(secondary, primary);
       }
     }
   }

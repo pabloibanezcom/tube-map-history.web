@@ -7,6 +7,7 @@ import DataPresentation from './Data-Presentation/Data-Presentation';
 import Icons from './Data-Presentation/Icons/Icons';
 import LoadingSpinners from './Data-Presentation/Loading-Spinners/Loading-Spinners';
 import Paginations from './Data-Presentation/Paginations/Paginations';
+import Tabs from './Data-Presentation/Tabs/Tabs';
 import Headers from './Headers/Headers';
 import Index from './Index/Index';
 import Inputs from './Inputs/Inputs';
@@ -23,6 +24,7 @@ const routes = (
     <Route path={`${baseUrl}/data-presentation/icons`} component={Icons} />
     <Route path={`${baseUrl}/data-presentation/loading-spinners`} component={LoadingSpinners} />
     <Route path={`${baseUrl}/data-presentation/paginations`} component={Paginations} />
+    <Route path={`${baseUrl}/data-presentation/tabs`} component={Tabs} />
     <Route path={`${baseUrl}/inputs`} component={Inputs} />
     <Route path={`${baseUrl}/headers`} component={Headers} />
     <Route path={`${baseUrl}/layout`} component={Layout} />

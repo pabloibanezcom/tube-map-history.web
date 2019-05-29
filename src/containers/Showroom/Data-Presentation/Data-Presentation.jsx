@@ -56,6 +56,16 @@ const dataPresentation = () => {
             />
           </div>
         </div>
+        <div className="col">
+          <div className="showroom-element showroom-link">
+            <Button
+              to="/showroom/data-presentation/tabs"
+              text="Tabs"
+              type="link"
+              color="secondary"
+            />
+          </div>
+        </div>
       </div>
     </div>
   )

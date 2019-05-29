@@ -13,12 +13,10 @@
   color: $white-color;
 
   &.badge-primary {
-    background-color: $primary-color;
-    color: $primary-alt-color;
+    @include background-color(primary);
   }
 
   &.badge-secondary {
-    background-color: $secondary-color;
-    color: $secondary-alt-color;
+    @include background-color(secondary);
   }
 }

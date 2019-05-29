@@ -10,6 +10,8 @@
 @import "./assets/icons/style.css";
 // Bootstrap grid
 @import "./scss/bootstrap-grid/bootstrap-grid.scss";
+//Mixins
+@import "./scss/mixins/colors.scss";
 // Global scss
 @import "./scss/themes.scss";
 @import "./scss/animations.scss";
@@ -19,6 +21,7 @@
 @import "./scss/colors.scss";
 @import "./scss/common.scss";
 @import "./scss/snackbar.scss";
+@import "./scss/tab-menu.scss";
 @import "./scss/base.scss";
 @import "./scss/headers.scss";
 @import "./scss/horizontal-tabs.scss";
