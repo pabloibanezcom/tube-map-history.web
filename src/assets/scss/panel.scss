@@ -1,0 +1,17 @@
+.panel {
+  padding: 20px;
+  box-shadow: none;
+  border-radius: 0;
+
+  &.panel-white {
+    @include background-color(white);
+  }
+
+  &.panel-primary {
+    @include background-color(primary);
+  }
+
+  &.panel-secondary {
+    @include background-color(secondary);
+  }
+}

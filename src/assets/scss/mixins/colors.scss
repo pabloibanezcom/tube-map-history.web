@@ -37,6 +37,11 @@
   $hover-font-color: null;
   $darken: 5%;
 
+  @if $base==white {
+    $bg-color: $white-color;
+    $font-color: $black-color;
+  }
+
   @if $base==light {
     $bg-color: $grey-light-color;
     $font-color: $black-color;

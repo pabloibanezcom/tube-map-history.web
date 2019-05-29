@@ -72,6 +72,29 @@ const tabs = () => {
           </div>
         </div>
       </div>
+
+      <div className="row">
+        <div className="col-6">
+          <div className="showroom-element">
+            <label>Primary with Secondary panel</label>
+            <TabMenu
+              type="primary"
+              panel="secondary"
+              tabs={mockTabs}
+            />
+          </div>
+        </div>
+        <div className="col-6">
+          <div className="showroom-element">
+            <label>Secondary with primary panel</label>
+            <TabMenu
+              type="secondary"
+              panel="primary"
+              tabs={mockTabs}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

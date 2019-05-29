@@ -59,6 +59,16 @@ const dataPresentation = () => {
         <div className="col">
           <div className="showroom-element showroom-link">
             <Button
+              to="/showroom/data-presentation/panels"
+              text="Panels"
+              type="link"
+              color="secondary"
+            />
+          </div>
+        </div>
+        <div className="col">
+          <div className="showroom-element showroom-link">
+            <Button
               to="/showroom/data-presentation/tabs"
               text="Tabs"
               type="link"

@@ -1,4 +1,4 @@
-import { Icon } from 'components/shared';
+import { Icon, Panel } from 'components/shared';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -41,7 +41,7 @@ class TabMenu extends React.Component {
   }
 
   render() {
-    const { tabs, type } = this.props;
+    const { panel, tabs, type } = this.props;
     const { activeTab, menuHeaderStyle } = this.state;
     const Content = tabs[activeTab - 1].content;
     return (
@@ -57,22 +57,26 @@ class TabMenu extends React.Component {
               </li>
             )
           })}
-          <span className="tab-menu-header-indicator" style={menuHeaderStyle} />
+          <span className={`tab-menu-header-indicator ${panel !== 'white' ? 'tab-menu-header-indicator-white' : ''}`} style={menuHeaderStyle} />
         </ul>
-        <div className="tab-menu-content">
+        <Panel
+          background={panel}
+        >
           <Content />
-        </div>
+        </Panel>
       </div>
     )
   }
 }
 
 TabMenu.defaultProps = {
+  panel: 'white',
   type: 'secondary',
   tabs: []
 };
 
 TabMenu.propTypes = {
+  panel: PropTypes.oneOf(['white', 'primary', 'secondary']),
   type: PropTypes.oneOf(['primary', 'secondary']),
   tabs: PropTypes.arrayOf(PropTypes.object)
 };

@@ -55,11 +55,10 @@
       position: absolute;
       bottom: 0;
       left: 0;
-    }
-  }
 
-  .tab-menu-content {
-    padding: 20px;
-    background-color: $white-color;
+      &.tab-menu-header-indicator-white {
+        @include background-color(white);
+      }
+    }
   }
 }
