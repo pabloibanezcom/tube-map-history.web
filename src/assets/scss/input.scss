@@ -1,0 +1,74 @@
+.custom-input {
+
+  position: relative;
+
+  input {
+    display: block;
+    width: 100%;
+    border: 0;
+    background-image: linear-gradient(#e6c300, #e6c300), linear-gradient(#d2d2d2, #d2d2d2);
+    background-size: 0 2px, 100% 1px;
+    background-repeat: no-repeat;
+    background-position: center bottom, center calc(100% - 1px);
+    background-color: transparent;
+    transition: background 0s ease-out;
+    float: none;
+    box-shadow: none;
+    border-radius: 0;
+
+    &::placeholder {
+      font-size: 16px;
+      line-height: 1.42857;
+      color: $grey-placeholder-color;
+      font-weight: 400;
+    }
+
+    &.input-bg-primary {
+      background-image: linear-gradient($primary-color, $primary-color), linear-gradient($grey-gradient-color, $grey-gradient-color);
+    }
+
+    &.input-bg-secondary {
+      background-image: linear-gradient($secondary-color, $secondary-color), linear-gradient($grey-gradient-color, $grey-gradient-color);
+    }
+
+    &.input-bg-white {
+      background-image: linear-gradient($white-color, $white-color), linear-gradient($grey-gradient-color, $grey-gradient-color);
+    }
+
+    &.input-error {
+      background-image: linear-gradient($danger-color, $danger-color), linear-gradient($grey-gradient-color, $grey-gradient-color);
+    }
+
+    &.input-text-primary {
+      color: $primary-color;
+    }
+
+    &.input-text-secondary {
+      color: $secondary-color;
+    }
+
+    &.input-text-white {
+      color: $white-color;
+    }
+
+  }
+
+  &.is-focused {
+
+    input {
+      background-size: 100% 2px, 100% 1px;
+      box-shadow: none;
+      transition-duration: .3s;
+    }
+
+  }
+
+  .clear-cross {
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+    cursor: pointer;
+    opacity: 0.6;
+    font-size: 12px;
+  }
+}

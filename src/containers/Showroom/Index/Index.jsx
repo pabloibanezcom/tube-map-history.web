@@ -49,6 +49,16 @@ const index = () => {
         <div className="col">
           <div className="showroom-element showroom-link">
             <Button
+              to="/showroom/forms"
+              text="Forms"
+              type="link"
+              color="secondary"
+            />
+          </div>
+        </div>
+        <div className="col">
+          <div className="showroom-element showroom-link">
+            <Button
               to="/showroom/inputs"
               text="Inputs"
               type="link"

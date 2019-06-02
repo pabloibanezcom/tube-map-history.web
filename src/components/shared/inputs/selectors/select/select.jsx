@@ -53,9 +53,7 @@ class Select extends React.Component {
         <button
           type="button"
           className="btn btn-lg btn-select dropdown-toggle"
-          data-toggle="dropdown"
           onClick={this.showDropdown}
-          title="Ea nam qui vel consequatur"
           aria-expanded={!expanded}
         >
           <Selected

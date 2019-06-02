@@ -1,9 +1,7 @@
 import * as actions from 'actions/auth';
-import { Form } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from "react-router-dom";
-import formElements from './form-data/signup';
 
 class Signup extends React.Component {
 
@@ -15,7 +13,6 @@ class Signup extends React.Component {
   }
 
   render() {
-    const { signup } = this.props;
 
     return (
       <div className="auth-container bg-full-page">
@@ -33,11 +30,11 @@ class Signup extends React.Component {
                     <Link to="/login">Login</Link>
                   </div>
                 </div>
-                <Form
+                {/* <Form
                   mode="dark"
                   formElements={formElements}
                   onValidSubmit={signup}
-                />
+                /> */}
               </div>
             </div>
           </div>

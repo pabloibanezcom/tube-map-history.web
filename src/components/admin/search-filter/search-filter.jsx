@@ -1,19 +1,17 @@
-import { Form, Icon } from 'components/shared';
+import { Icon } from 'components/shared';
 import React from 'react';
 
-const formFilters = {
-  stations: require('./form-filters/stations.json'),
-  lines: require('./form-filters/lines.json'),
-  connections: require('./form-filters/connections.json'),
-};
+// const formFilters = {
+//   stations: require('./form-filters/stations.json'),
+//   lines: require('./form-filters/lines.json'),
+//   connections: require('./form-filters/connections.json'),
+// };
 
-const searchFilter = (props) => {
+const searchFilter = () => {
 
-  const { activeTab } = props;
-
-  const handleValidSubmit = (formData) => {
-    props.onSearch(null, formData);
-  }
+  // const handleValidSubmit = (formData) => {
+  //   props.onSearch(null, formData);
+  // }
 
   return (
     <div className="search-filter">
@@ -22,11 +20,11 @@ const searchFilter = (props) => {
           <h3 className="panel-title"><Icon name="search" /> Search panel</h3>
         </div>
         <div className="panel-body">
-          <Form
+          {/* <Form
             formElements={formFilters[activeTab]}
             onValidSubmit={handleValidSubmit}
             {...props}
-          />
+          /> */}
         </div>
       </div>
     </div>

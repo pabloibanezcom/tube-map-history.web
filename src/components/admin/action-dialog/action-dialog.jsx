@@ -1,22 +1,21 @@
-import { Form, Modal } from 'components/shared';
+import { Modal } from 'components/shared';
 import React from 'react';
 import * as actionsConfig from './actions.config.json';
 import elementInfo from './element-info/element-info';
 import formData from './form-data/form-data';
-import transformers from './transformers/transformers';
 
 const actionDialog = (props) => {
 
   let content;
-  const { action, element, onClose, otherData } = props;
+  const { action, element, onClose } = props;
 
-  const handleValidSubmit = (_formData) => {
-    props.onClose();
-    props.onSuccess(
-      actionsConfig[props.action].action,
-      transformers.fromForm[props.action] ? transformers.fromForm[props.action](_formData, props.element, props.otherData) : null
-    );
-  }
+  // const handleValidSubmit = (_formData) => {
+  //   props.onClose();
+  //   props.onSuccess(
+  //     actionsConfig[props.action].action,
+  //     transformers.fromForm[props.action] ? transformers.fromForm[props.action](_formData, props.element, props.otherData) : null
+  //   );
+  // }
 
   const handleConfirmation = () => {
     props.onClose();
@@ -28,11 +27,13 @@ const actionDialog = (props) => {
 
   const generateFormContent = () => {
 
-    return <Form
-      formElements={formData[action]}
-      obj={transformers.toForm[action] ? transformers.toForm[action](element, otherData) : element}
-      onValidSubmit={handleValidSubmit}
-    />
+    return null;
+
+    // return <Form
+    //   formElements={formData[action]}
+    //   obj={transformers.toForm[action] ? transformers.toForm[action](element, otherData) : element}
+    //   onValidSubmit={handleValidSubmit}
+    // />
   }
 
   const generateDeleteContent = () => {

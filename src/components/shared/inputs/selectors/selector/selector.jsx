@@ -13,11 +13,13 @@ class Selector extends React.Component {
 
   handleOnChange(option) {
     const { onChange } = this.props;
-    onChange(option);
+    if (onChange) {
+      onChange(option);
+    }
   }
 
   render() {
-    const { options } = this.props;
+    const { options, setValue } = this.props;
     return (
       <div className="line-selector">
         <Select
@@ -26,6 +28,7 @@ class Selector extends React.Component {
           dropdown={DefaultDropdown}
           selected={DefaultSelected}
           onChange={this.handleOnChange}
+          setValue={setValue}
         />
       </div>
     )

@@ -97,13 +97,13 @@ module.exports = {
       'assets': path.resolve('src/assets'),
       'containers': path.resolve('src/containers'),
       'components': path.resolve('src/components'),
-      'hoc': path.resolve('src/hoc'),
       'http': path.resolve('src/http'),
       'actions': path.resolve('src/store/actions'),
       'reducers': path.resolve('src/store/reducers'),
       'sagas': path.resolve('src/store/sagas'),
       'shared': path.resolve('src/shared'),
-      'map': path.resolve('src/map')
+      'map': path.resolve('src/map'),
+      'util': path.resolve('src/util')
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).

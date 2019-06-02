@@ -48,6 +48,7 @@
     "react-dev-utils": "^5.0.2",
     "react-dom": "^16.8.6",
     "react-dropzone": "^8.0.3",
+    "react-hook-form": "^3.8.8",
     "react-onclickoutside": "^6.7.1",
     "react-paginate": "^5.2.5",
     "react-redux": "^6.0.0",

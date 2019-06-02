@@ -1,21 +1,35 @@
 import { Icon } from 'components/shared';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 class Input extends React.Component {
 
   constructor(props) {
     super(props);
-    const { value } = this.props;
+
+    this.input = null;
+
+    this.setInputRef = element => {
+      this.input = element;
+    };
+
     this.state = {
-      value,
-      isFocused: false,
-      isEmpty: !(value && value !== '')
+      isFocused: false
     }
+    this.getHtmlType = this.getHtmlType.bind(this);
     this.handleOnFocus = this.handleOnFocus.bind(this);
     this.handleOnBlur = this.handleOnBlur.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
     this.clearValue = this.clearValue.bind(this);
-    this.updateValue = this.updateValue.bind(this);
+    this.formRefValidation = this.formRefValidation.bind(this);
+  }
+
+  getHtmlType() {
+    const { type } = this.props;
+    if (type === 'email') {
+      return 'text';
+    }
+    return type;
   }
 
   handleOnFocus() {
@@ -27,46 +41,85 @@ class Input extends React.Component {
   }
 
   handleOnChange(evt) {
-    this.updateValue(evt.target.value);
+    const { onChange } = this.props;
+    evt.persist();
+    if (onChange) {
+      onChange(evt);
+    }
   }
 
   clearValue() {
-    this.updateValue('');
+    this.input.value = '';
+    const { name, onChange } = this.props;
+    onChange({ target: { name, value: '' }, persist: () => { } });
   }
 
-  updateValue(value) {
-    const { onChange } = this.props;
-    const { isEmpty } = this.state;
-    const _isEmpty = !value || value === '';
-    this.setState({ value });
-    if (isEmpty !== _isEmpty) {
-      this.setState({ isEmpty: _isEmpty });
+  formRefValidation() {
+    const { required, type } = this.props;
+    let validation = {
+      required: required && 'You must enter a value'
+    };
+    if (type === 'email') {
+      validation = {
+        ...validation,
+        pattern: {
+          /* eslint-disable-next-line no-useless-escape */
+          value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+          message: `You have entered an invalid e-mail address`
+        }
+      }
     }
-    onChange(value);
+    return validation;
   }
 
   render() {
-    const { config } = this.props;
-    const { isEmpty, isFocused, value } = this.state;
+    const { backgroundColor, color, clearable, formRef, disabled, extraClass, name, placeholder, value } = this.props;
+    const { isFocused } = this.state;
     return (
-      <div className={`form-group ${config.floating ? 'label-floating' : ''} ${isEmpty ? 'is-empty' : ''} ${isFocused ? 'is-focused' : ''}`}>
-        <label className="control-label">{config.floating ? config.placeholder : config.label}</label>
-        <div>
-          <input
-            className="form-control"
-            type={config.type}
-            value={value}
-            placeholder={config.placeholder}
-            disabled={config.disabled}
-            onFocus={this.handleOnFocus}
-            onBlur={this.handleOnBlur}
-            onChange={this.handleOnChange}
-          />
-          {config.clearable && value ? <a onClick={this.clearValue} className="clear-cross"><Icon name="close" /></a> : null}
-        </div>
+      <div className={`custom-input ${isFocused ? 'is-focused' : ''}`}>
+        <input
+          ref={formRef ? formRef(this.formRefValidation()) : null}
+          className={`input-bg-${backgroundColor} ${color ? `input-text-${color}` : ''} ${extraClass}`}
+          type={this.getHtmlType()}
+          name={name}
+          placeholder={placeholder}
+          disabled={disabled}
+          onFocus={this.handleOnFocus}
+          onBlur={this.handleOnBlur}
+          onChange={this.handleOnChange}
+          noValidate
+        />
+        {clearable && value ? <a onClick={this.clearValue} className="clear-cross"><Icon name="close" /></a> : null}
       </div>
     )
   }
 }
+
+Input.defaultProps = {
+  backgroundColor: 'primary',
+  color: 'secondary',
+  clearable: false,
+  formRef: null,
+  disabled: false,
+  extraClass: '',
+  placeholder: null,
+  required: false,
+  type: 'text',
+  onChange: null
+};
+
+Input.propTypes = {
+  backgroundColor: PropTypes.oneOf(['primary', 'secondary', 'white']),
+  color: PropTypes.oneOf(['primary', 'secondary', 'white']),
+  clearable: PropTypes.bool,
+  formRef: PropTypes.func,
+  disabled: PropTypes.bool,
+  extraClass: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  required: PropTypes.bool,
+  type: PropTypes.oneOf(['text', 'number', 'email', 'password']),
+  onChange: PropTypes.func
+};
 
 export default Input;

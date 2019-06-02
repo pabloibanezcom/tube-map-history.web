@@ -1,0 +1,13 @@
+.form {
+  .field {
+    margin-bottom: 20px;
+
+    .error-msg {
+      color: $danger-color;
+    }
+  }
+
+  button[type=submit] {
+    margin-top: 15px;
+  }
+}
