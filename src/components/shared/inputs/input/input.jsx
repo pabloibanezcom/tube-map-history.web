@@ -1,6 +1,7 @@
 import { Icon } from 'components/shared';
 import PropTypes from 'prop-types';
 import React from 'react';
+import regexPatterns from 'util/regex';
 
 class Input extends React.Component {
 
@@ -63,9 +64,17 @@ class Input extends React.Component {
       validation = {
         ...validation,
         pattern: {
-          /* eslint-disable-next-line no-useless-escape */
-          value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+          value: regexPatterns.email,
           message: `You have entered an invalid e-mail address`
+        }
+      }
+    }
+    if (type === 'password') {
+      validation = {
+        ...validation,
+        pattern: {
+          value: regexPatterns.password,
+          message: `Password must contain at least 8 characters`
         }
       }
     }
