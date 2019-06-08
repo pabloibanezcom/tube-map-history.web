@@ -1,4 +1,5 @@
 import { Icon } from 'components/shared';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 class CollapseList extends React.Component {
@@ -28,13 +29,13 @@ class CollapseList extends React.Component {
   }
 
   render() {
-    const { elements, extraClass, type, header, content, activeElementContent, externalActiveElementId } = this.props;
+    const { elements, extraClass, type, header, hoverType, content, activeElementContent, externalActiveElementId } = this.props;
     const { activeElementId } = this.state;
     const Header = header;
     const Content = content;
     const currentActiveElementId = externalActiveElementId || activeElementId;
     return (
-      <ul className={`collapse-list collapse-list-${type || 'default'} ${extraClass}`}>
+      <ul className={`collapse-list collapse-list-${type || 'default'} ${hoverType ? `collapse-list-hover-${hoverType}` : ''} ${extraClass}`}>
         {elements.map((el, i) => (
           <li key={i}>
             <div className={`collapse-list-element ${currentActiveElementId === el._id ? 'active' : ''}`}>
@@ -57,5 +58,13 @@ class CollapseList extends React.Component {
     )
   }
 }
+
+CollapseList.defaultProps = {
+  hoverType: null
+};
+
+CollapseList.propTypes = {
+  hoverType: PropTypes.string
+};
 
 export default CollapseList;

@@ -98,3 +98,24 @@
   }
 
 }
+
+@mixin background-color-hover ($hover) {
+  $hover-bg-color: null;
+  $hover-font-color: null;
+
+  @if $hover==primary {
+    $hover-bg-color: $primary-color;
+    $hover-font-color: $primary-alt-color;
+  }
+
+  @if $hover==secondary {
+    $hover-bg-color: $secondary-color;
+    $hover-font-color: $secondary-alt-color;
+  }
+
+  &:hover {
+    background-color: $hover-bg-color !important;
+    border-color: $hover-bg-color !important;
+    color: $hover-font-color !important;
+  }
+}

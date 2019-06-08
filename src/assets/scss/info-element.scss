@@ -1,0 +1,13 @@
+.info-element {
+  display: flex;
+  margin-bottom: 5px;
+
+  .info-element-name {
+    width: 90px;
+    opacity: .8;
+  }
+
+  .info-element-value {
+    font-weight: 500;
+  }
+}

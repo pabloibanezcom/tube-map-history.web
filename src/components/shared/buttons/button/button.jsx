@@ -4,12 +4,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const button = (props) => {
-  const { block, extraClass, icon, inverse, onClick, outline, size, color, uppercase, submit, text, to, type } = props;
+  const { fontColor, backgroundColor, block, extraClass, icon, inverse, hover, onClick, outline, size, color, uppercase, submit, text, to, type } = props;
   let buttonClasses = '';
   if (type === 'btn') {
     buttonClasses = `${uppercase ? 'btn-uppercase' : ''}  ${inverse ? 'btn-inverse' : ''} ${outline ? 'btn-outline' : ''} ${block ? 'btn-block' : ''}`;
   }
-  const classStr = `${type} ${type}-${size} ${type}-${color} ${buttonClasses} ${extraClass}`;
+  const classStr = `${type} ${type}-${size} ${type}-${color} ${hover ? `btn-hover-${hover}` : ''} ${buttonClasses} ${extraClass}`;
+  const style = { color: fontColor, backgroundColor, borderColor: backgroundColor };
   if (to) {
     return (
       <Link
@@ -26,6 +27,7 @@ const button = (props) => {
       <button
         type={submit ? 'submit' : 'button'}
         className={classStr}
+        style={style}
         onClick={onClick}
       >
         {icon ? <Icon name={icon} /> : null}
@@ -47,6 +49,9 @@ const button = (props) => {
 }
 
 button.defaultProps = {
+  fontColor: null,
+  backgroundColor: null,
+  hover: null,
   block: true,
   extraClass: '',
   icon: '',
@@ -62,6 +67,9 @@ button.defaultProps = {
 };
 
 button.propTypes = {
+  fontColor: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  hover: PropTypes.oneOf(['primary', 'secondary']),
   block: PropTypes.bool,
   extraClass: PropTypes.string,
   inverse: PropTypes.bool,

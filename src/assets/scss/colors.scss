@@ -8,6 +8,14 @@
   color: $secondary-color !important;
 }
 
+.bg-primary {
+  background-color: $primary-color !important;
+}
+
+.bg-secondary {
+  background-color: $secondary-color !important;
+}
+
 .ms-header.ms-header-dark {
   background-color: $background-color;
 }

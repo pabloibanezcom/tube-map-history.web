@@ -74,6 +74,14 @@
     }
   }
 
+  &.btn-hover-primary {
+    @include background-color-hover(primary);
+  }
+
+  &.btn-hover-secondary {
+    @include background-color-hover(secondary);
+  }
+
   &.btn-light {
     @include background-color(light, light, true);
   }

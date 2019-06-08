@@ -1,8 +1,6 @@
 {
-  "stations": {
-    "name": "",
-    "year": null,
-    "numberLines": null,
-    "line": null
-  }
+  "name": "",
+  "year": null,
+  "numberLines": null,
+  "line": null
 }

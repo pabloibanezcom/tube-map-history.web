@@ -45,3 +45,7 @@ export const GET_TOWNS_FAIL = 'GET_TOWNS_FAIL';
 export const GET_TOWN_START = 'GET_TOWN_START';
 export const GET_TOWN_SUCCESS = 'GET_TOWN_SUCCESS';
 export const GET_TOWN_FAIL = 'GET_TOWN_FAIL';
+
+export const GET_LINES_START = 'GET_LINES_START';
+export const GET_LINES_SUCCESS = 'GET_LINES_SUCCESS';
+export const GET_LINES_FAIL = 'GET_LINES_FAIL';

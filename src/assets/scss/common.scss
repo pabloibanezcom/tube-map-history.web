@@ -9,3 +9,29 @@
 .pos-fixed {
   position: fixed;
 }
+
+.flex {
+  display: flex;
+
+  &.flex-center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.flex-horizontal-center {
+    justify-content: center;
+  }
+
+  &.flex-vertical-center {
+    align-items: center;
+  }
+
+}
+
+.full-page {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

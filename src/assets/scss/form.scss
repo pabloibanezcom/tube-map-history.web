@@ -1,13 +1,15 @@
 .form {
   .field {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 
     .error-msg {
       color: $danger-color;
+      font-size: 1.3rem;
+      min-height: 26px;
     }
   }
 
   button[type=submit] {
-    margin-top: 15px;
+    margin-top: 25px;
   }
 }

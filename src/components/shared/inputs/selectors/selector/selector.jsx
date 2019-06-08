@@ -19,11 +19,11 @@ class Selector extends React.Component {
   }
 
   render() {
-    const { options, setValue } = this.props;
+    const { config, options, setValue } = this.props;
     return (
       <div className="line-selector">
         <Select
-          config={{ ...selectConfig }}
+          config={config || selectConfig}
           options={options}
           dropdown={DefaultDropdown}
           selected={DefaultSelected}

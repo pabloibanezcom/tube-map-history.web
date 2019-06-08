@@ -1,6 +1,7 @@
 export * from './addConnection';
 export * from './addStation';
 export * from './deleteConnection';
+export * from './getLines';
 export * from './getTown';
 export * from './getTowns';
 export * from './getUser';

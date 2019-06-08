@@ -1,8 +1,12 @@
 .panel {
-  padding: 20px;
+  padding: 30px;
   margin: 0;
   box-shadow: none;
   border-radius: 0;
+
+  @include media-breakpoint-down(sm) {
+    padding: 15px;
+  }
 
   &.panel-white {
     @include background-color(white);

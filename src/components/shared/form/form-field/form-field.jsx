@@ -9,7 +9,7 @@ const formField = (props) => {
       <div className="control">
         {children}
       </div>
-      {error ? <div className="error-msg">{error}</div> : null}
+      <div className="error-msg">{error}</div>
     </div>
   )
 }

@@ -6,7 +6,7 @@ const initialState = {
   town: null,
   towns: [],
   lines: [],
-  results: [],
+  stations: [],
   currentResulsType: null,
   pagination: null,
   searchParams: null,
@@ -37,6 +37,14 @@ const getTownsSuccess = (state, action) => {
   }
 };
 
+const getLinesSuccess = (state, action) => {
+  return {
+    ...state,
+    loading: false,
+    lines: action.lines
+  }
+};
+
 const getTownSuccess = (state, action) => {
   return {
     ...state,
@@ -57,7 +65,7 @@ const searchStart = (state, action, model) => {
 
 const searchSuccess = (state, action, model) => {
   return updateObject(state, {
-    results: action.results,
+    stations: action.results,
     currentResulsType: model,
     pagination: action.pagination,
     loading: false
@@ -81,6 +89,7 @@ export const adminReducer = (state = initialState, action) => {
     case actionTypes.LOAD_STATIONS_PANEL_SUCCESS: return loadStationsPanelSuccess(state, action);
     case actionTypes.GET_USER_SUCCESS: return getUserSuccess(state, action);
     case actionTypes.GET_TOWNS_SUCCESS: return getTownsSuccess(state, action);
+    case actionTypes.GET_LINES_SUCCESS: return getLinesSuccess(state, action);
     case actionTypes.GET_TOWN_SUCCESS: return getTownSuccess(state, action);
     case actionTypes.SEARCH_LINES_START: return searchStart(state, action, 'lines');
     case actionTypes.SEARCH_LINES_SUCCESS: return searchSuccess(state, action, 'lines');

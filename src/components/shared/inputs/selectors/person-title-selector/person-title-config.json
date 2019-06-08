@@ -1,0 +1,9 @@
+{
+  "placeholder": "Choose title...",
+  "options": {
+    "key": "name",
+    "label": "name"
+  },
+  "minStr": 2,
+  "dropDownHeight": 200
+}

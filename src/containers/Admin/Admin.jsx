@@ -8,8 +8,10 @@ class Admin extends React.Component {
     return (
       <React.Fragment>
         <Header optionsName="admin" />
-        <main className="admin-container">
-          {routes}
+        <main className="admin">
+          <div className="container">
+            {routes}
+          </div>
         </main>
         <Footer />
       </React.Fragment>

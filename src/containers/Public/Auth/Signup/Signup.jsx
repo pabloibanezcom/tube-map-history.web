@@ -1,44 +1,35 @@
 import * as actions from 'actions/auth';
+import SignUpForm from 'components/public/auth/signup/signup-form/signup-form';
+import { Button, Panel } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class Signup extends React.Component {
 
-  handleSubmit(formData) {
-    const { signup } = this.props;
-    if (formData.password === formData.confirmPassword) {
-      signup();
-    }
-  }
-
   render() {
-
+    const { signup } = this.props;
     return (
-      <div className="auth-container bg-full-page">
-        <div className="container">
-          <div className="row justify-content-md-center">
-            <div className="col-lg-6">
-              <div className="auth-box animated fadeInUp animation-delay-7">
-                <div className="header">
-                  <div className="title">
-                    <span className="ms-logo">T</span>
-                    <h2 className="text-center">Tube History Map</h2>
-                  </div>
-                  <div className="actions">
-                    <span className="active">Signup</span>
-                    <Link to="/login">Login</Link>
-                  </div>
-                </div>
-                {/* <Form
-                  mode="dark"
-                  formElements={formElements}
-                  onValidSubmit={signup}
-                /> */}
-              </div>
-            </div>
+      <div className="flex flex-center full-page bg-secondary">
+        <Panel
+          extraClass="animated fadeInUp animation-delay-7"
+          width={650}
+        >
+          <h1 className="secondary mb-40">Signup</h1>
+          <SignUpForm
+            onSubmit={signup}
+          />
+          <div>
+            <span className="secondary">Do you have already an account?</span>
+            <Button
+              type="link"
+              to="/login"
+              color="secondary"
+              text="Login"
+              extraClass="ml-5"
+            />
           </div>
-        </div>
+        </Panel>
       </div>
     )
   }

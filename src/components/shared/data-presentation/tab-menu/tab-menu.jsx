@@ -9,7 +9,7 @@ class TabMenu extends React.Component {
 
     this.state = {
       menuElementWidth: null,
-      activeTab: 1,
+      activeTab: this.getInitialActiveTab(),
       menuHeaderStyle: null
     };
 
@@ -26,9 +26,18 @@ class TabMenu extends React.Component {
     this.updateMenuHeaderStyle(width);
   }
 
+  getInitialActiveTab() {
+    const { activeTab, tabs } = this.props;
+    return activeTab ? tabs.findIndex(t => t.id === activeTab) + 1 : 1;
+  }
+
   setActiveTab(activeTab) {
+    const { onTabChange, tabs } = this.props;
     this.setState({ activeTab });
     this.updateMenuHeaderStyle(null, activeTab);
+    if (onTabChange) {
+      onTabChange(tabs[activeTab - 1].id);
+    }
   }
 
   updateMenuHeaderStyle(_menuElementWidth, _activeTab) {
@@ -41,7 +50,7 @@ class TabMenu extends React.Component {
   }
 
   render() {
-    const { panel, tabs, type } = this.props;
+    const { content, panel, tabs, type } = this.props;
     const { activeTab, menuHeaderStyle } = this.state;
     const Content = tabs[activeTab - 1].content;
     return (
@@ -62,7 +71,7 @@ class TabMenu extends React.Component {
         <Panel
           background={panel}
         >
-          <Content />
+          {content || <Content />}
         </Panel>
       </div>
     )
@@ -70,15 +79,21 @@ class TabMenu extends React.Component {
 }
 
 TabMenu.defaultProps = {
+  activeTab: null,
+  content: null,
   panel: 'white',
   type: 'secondary',
-  tabs: []
+  tabs: [],
+  onTabChange: null
 };
 
 TabMenu.propTypes = {
+  activeTab: PropTypes.string,
+  content: PropTypes.object,
   panel: PropTypes.oneOf(['white', 'primary', 'secondary']),
   type: PropTypes.oneOf(['primary', 'secondary']),
-  tabs: PropTypes.arrayOf(PropTypes.object)
+  tabs: PropTypes.arrayOf(PropTypes.object),
+  onTabChange: PropTypes.func
 };
 
 export default TabMenu;
