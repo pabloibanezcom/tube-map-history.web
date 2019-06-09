@@ -1,6 +1,6 @@
 import { CollapseList } from 'components/shared';
 import React from 'react';
-import * as lines from './data/lines.json';
+import lines from './data/lines.json';
 
 const fakeHeader = ({ element }) => {
   return (

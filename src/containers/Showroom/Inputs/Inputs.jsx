@@ -1,7 +1,7 @@
 import { CountrySelector, Input, LineSelector, PlaceSelector, Selector, StationSelector } from 'components/shared';
 import React from 'react';
-import * as lines from './data/lines.json';
-import * as stations from './data/stations.json';
+import lines from './data/lines.json';
+import stations from './data/stations.json';
 
 class Inputs extends React.Component {
 

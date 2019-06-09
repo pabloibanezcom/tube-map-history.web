@@ -3,7 +3,7 @@ import React from 'react';
 import Select from '../select/select';
 import CountryDropdown from './country-dropdown/country-dropdown';
 import CountrySelected from './country-selected/country-selected';
-import * as selectConfig from './country-selector.config.json';
+import selectConfig from './country-selector.config.json';
 
 class CountrySelector extends React.Component {
 

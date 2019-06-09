@@ -1,8 +1,8 @@
-import * as addConnectionToStationFormData from './add-connection-to-station.json';
-import * as addStationFormData from './add-station.json';
-import * as deleteConfirmFormData from './delete-confirm.json';
-import * as editStationFormData from './edit-station.json';
-import * as uploadTownDataFormData from './upload-town-data.json';
+import addConnectionToStationFormData from './add-connection-to-station.json';
+import addStationFormData from './add-station.json';
+import deleteConfirmFormData from './delete-confirm.json';
+import editStationFormData from './edit-station.json';
+import uploadTownDataFormData from './upload-town-data.json';
 
 const formData = {
   ADD_STATION: addStationFormData,

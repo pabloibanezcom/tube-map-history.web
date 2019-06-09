@@ -1,7 +1,7 @@
 import { Button, FormField, Input, Selector } from 'components/shared';
 import React, { useEffect } from 'react';
 import useForm from 'react-hook-form';
-import * as ageOptions from './age-options.json';
+import ageOptions from './age-options.json';
 
 const BasicFormWithSelector = () => {
   const { register, handleSubmit, errors, setValue, setError } = useForm();

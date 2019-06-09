@@ -3,7 +3,7 @@ import React from 'react';
 import Select from '../select/select';
 import PlaceDropdown from './place-dropdown/place-dropdown';
 import PlaceSelected from './place-selected/place-selected';
-import * as selectConfig from './place-selector.config.json';
+import selectConfig from './place-selector.config.json';
 
 class PlaceSelector extends React.Component {
 

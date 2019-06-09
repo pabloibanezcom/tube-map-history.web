@@ -1,7 +1,7 @@
 import { Icon } from 'components/shared';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import * as headerOptions from './headerOptions.json';
+import headerOptions from './headerOptions.json';
 
 const header = (props) => {
 

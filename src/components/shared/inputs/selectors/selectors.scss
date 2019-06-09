@@ -2,12 +2,18 @@
 @import "./station-selector/station-selected/station-selected.scss";
 @import "./place-selector/place-selector.scss";
 
-.dropdown-menu {
-  ul {
-    li {
-      a {
-        display: flex;
-        align-items: center;
+.dropdown {
+  .filter-option {
+    padding: 8px 0;
+  }
+
+  .dropdown-menu {
+    ul {
+      li {
+        a {
+          display: flex;
+          align-items: center;
+        }
       }
     }
   }

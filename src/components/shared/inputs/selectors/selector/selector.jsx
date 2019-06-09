@@ -2,7 +2,7 @@ import React from 'react';
 import Select from '../select/select';
 import DefaultDropdown from './default-dropdown/default-dropdown';
 import DefaultSelected from './default-selected/default-selected';
-import * as selectConfig from './selector.config.json';
+import selectConfig from './selector.config.json';
 
 class Selector extends React.Component {
 

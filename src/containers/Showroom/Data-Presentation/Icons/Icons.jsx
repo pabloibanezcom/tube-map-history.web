@@ -1,6 +1,6 @@
 import { Icon } from 'components/shared';
 import React from 'react';
-import * as iconsArr from './icons-collection.json';
+import iconsArr from './icons-collection.json';
 
 const icons = () => {
   return (

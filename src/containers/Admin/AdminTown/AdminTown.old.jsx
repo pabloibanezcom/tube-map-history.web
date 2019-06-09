@@ -8,8 +8,8 @@ import { LoadingSpinner, Pagination } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
-import * as adminTownMenu from './adminTownMenu';
-import * as defaultPagination from './defaultPagination';
+import adminTownMenu from './adminTownMenu';
+import defaultPagination from './defaultPagination';
 
 class AdminTown extends React.Component {
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Select from '../select/select';
 import LineDropdown from './line-dropdown/line-dropdown';
 import LineSelected from './line-selected/line-selected';
-import * as selectConfig from './line-selector.config.json';
+import selectConfig from './line-selector.config.json';
 
 class LineSelector extends React.Component {
 

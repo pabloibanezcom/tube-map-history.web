@@ -5,8 +5,8 @@ import { TabMenu } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
-import * as defaultPagination from './defaultPagination.json';
-import * as defaultSearchParams from './defaultSearchParams.json';
+import defaultPagination from './defaultPagination.json';
+import defaultSearchParams from './defaultSearchParams.json';
 
 const emptyComponent = () => {
   return (

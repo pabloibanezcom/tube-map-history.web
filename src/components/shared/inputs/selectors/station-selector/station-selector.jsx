@@ -2,7 +2,7 @@ import React from 'react';
 import Select from '../select/select';
 import StationDropdown from './station-dropdown/station-dropdown';
 import StationSelected from './station-selected/station-selected';
-import * as selectConfig from './station-selector.config.json';
+import selectConfig from './station-selector.config.json';
 
 class StationSelector extends React.Component {
 
