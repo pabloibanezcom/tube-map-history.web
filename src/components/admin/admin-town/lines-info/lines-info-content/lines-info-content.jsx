@@ -1,7 +1,7 @@
 import { Badge, Button, InfoElement } from 'components/shared';
 import React from 'react';
 
-const linesInfoContent = ({ element }) => {
+const linesInfoContent = ({ element, actions }) => {
   return (
     <div className="lines-info-content">
       <div className="row mb-20">
@@ -47,6 +47,7 @@ const linesInfoContent = ({ element }) => {
             backgroundColor={element.colour}
             hover="primary"
             text="View stations"
+            onClick={() => actions.viewLineStations(element)}
           />
         </div>
         <div className="col-md-4 mb-sm-10">

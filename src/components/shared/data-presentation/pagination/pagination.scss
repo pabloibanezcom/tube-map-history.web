@@ -63,6 +63,12 @@
           }
         }
       }
+
+      .break {
+        a {
+          color: $primary-color;
+        }
+      }
     }
 
     &.pagination-secondary {
@@ -83,6 +89,12 @@
           &:hover {
             @include background-color(primary);
           }
+        }
+      }
+
+      .break {
+        a {
+          color: $secondary-color;
         }
       }
     }
@@ -107,6 +119,12 @@
           }
         }
       }
+
+      .break {
+        a {
+          color: $primary-alt-color;
+        }
+      }
     }
 
     &.pagination-bg-secondary {
@@ -127,6 +145,12 @@
           &:hover {
             @include background-color(primary);
           }
+        }
+      }
+
+      .break {
+        a {
+          color: $secondary-alt-color;
         }
       }
     }

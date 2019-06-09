@@ -3,14 +3,21 @@ import React from 'react';
 
 const panel = (props) => {
 
-  const { background, children, extraClass, width } = props;
+  const { background, children, extraClass, header, headerColor, width } = props;
 
   return (
-    <div
-      className={`panel panel-${background} ${extraClass}`}
-      style={width ? { width } : null}
-    >
-      {children}
+    <div className={`panel ${extraClass}`}>
+      {header ? (
+        <div className={`panel-header panel-${headerColor}`}>
+          <h4 className="mb-0 mt-0">{header}</h4>
+        </div>
+      ) : null}
+      <div
+        className={`panel-content panel-${background}`}
+        style={width ? { width } : null}
+      >
+        {children}
+      </div>
     </div>
   )
 }
@@ -18,12 +25,16 @@ const panel = (props) => {
 panel.defaultProps = {
   background: 'white',
   extraClass: null,
+  header: null,
+  headerColor: null,
   width: null
 };
 
 panel.propTypes = {
   background: PropTypes.oneOf(['white', 'primary', 'secondary']),
   extraClass: PropTypes.string,
+  header: PropTypes.string,
+  headerColor: PropTypes.oneOf(['primary', 'secondary']),
   width: PropTypes.number
 };
 

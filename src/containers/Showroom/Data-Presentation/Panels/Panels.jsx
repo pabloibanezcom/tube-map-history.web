@@ -35,6 +35,30 @@ const panels = () => {
           </div>
         </div>
       </div>
+      <div className="row">
+        <div className="col-4">
+          <div className="showroom-element">
+            <label>With primary header</label>
+            <Panel
+              header="Header primary"
+              headerColor="primary"
+            >
+              This is a panel
+            </Panel>
+          </div>
+        </div>
+        <div className="col-4">
+          <div className="showroom-element">
+            <label>With secondary header</label>
+            <Panel
+              header="Header secondary"
+              headerColor="secondary"
+            >
+              This is a panel
+            </Panel>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

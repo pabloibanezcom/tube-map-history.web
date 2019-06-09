@@ -26,7 +26,10 @@ badge.propTypes = {
   backgroundColor: PropTypes.string,
   fontColor: PropTypes.string,
   extraClass: PropTypes.string,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
 };
 
 export default badge;

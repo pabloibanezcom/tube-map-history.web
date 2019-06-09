@@ -1,5 +1,6 @@
 import * as actions from 'actions/admin';
 import LinesInfo from 'components/admin/admin-town/lines-info/lines-info';
+import StationsFilterPanel from 'components/admin/admin-town/stations-filter-panel/stations-filter-panel';
 import StationsInfo from 'components/admin/admin-town/stations-info/stations-info';
 import { TabMenu } from 'components/shared';
 import React from 'react';
@@ -7,6 +8,7 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import defaultPagination from './defaultPagination.json';
 import defaultSearchParams from './defaultSearchParams.json';
+import townTabs from './menuTabs.json';
 
 const emptyComponent = () => {
   return (
@@ -14,35 +16,18 @@ const emptyComponent = () => {
   )
 }
 
-const townTabs = [
-  {
-    id: 'town',
-    name: 'Town',
-    icon: 'town'
-  },
-  {
-    id: 'lines',
-    name: 'Lines',
-    icon: 'lines'
-  },
-  {
-    id: 'stations',
-    name: 'Stations',
-    icon: 'underground'
-  }
-];
-
 class AdminTown extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      currentTab: 'lines',
-      pagination: defaultPagination
+      currentTab: 'lines'
     }
 
-    this.tabChange = this.tabChange.bind(this);
-    this.changeStationPage = this.changeStationPage.bind(this);
+    this.pageChanged = this.pageChanged.bind(this);
+    this.searchParamsChanged = this.searchParamsChanged.bind(this);
+    this.tabChanged = this.tabChanged.bind(this);
+    this.viewLineStations = this.viewLineStations.bind(this);
   }
 
   componentDidMount() {
@@ -58,11 +43,12 @@ class AdminTown extends React.Component {
 
   getCurrentTabInfo() {
     const { currentTab } = this.state;
-    const { lines, stations } = this.props;
+    const { lines, pagination, stations } = this.props;
     if (currentTab === 'lines' && lines) {
       return (
         <LinesInfo
           lines={lines}
+          viewLineStations={this.viewLineStations}
         />
       )
     }
@@ -70,43 +56,54 @@ class AdminTown extends React.Component {
       return (
         <StationsInfo
           stations={stations}
+          pagination={pagination || defaultPagination}
+          onPageChange={this.pageChanged}
         />
       )
     }
     return emptyComponent();
   }
 
-  changePage = (page) => {
-    const { pagination } = this.state;
-
-    this.search(null, null, { ...pagination, page });
+  pageChanged = (page) => {
+    this.refreshData(null, page);
   }
 
-  changeStationPage(page) {
-    this.setState(prevState => {
-      return { pagination: { ...prevState.pagination, page } }
-    })
+  searchParamsChanged = (params) => {
+    this.refreshData(params);
   }
 
-  tabChange(tab) {
-    const { getLines, match, searchStations } = this.props;
-    if (tab === 'lines') {
+  tabChanged(tab) {
+    this.setState({ currentTab: tab }, this.refreshData);
+  }
+
+  viewLineStations(line) {
+    this.setState({ currentTab: 'stations' }, () => this.refreshData({ ...defaultSearchParams, line: line._id }));
+  }
+
+  refreshData(newSearchParams, newPage) {
+    const { getLines, match, pagination, searchParams, searchStations } = this.props;
+    const _pagination = pagination || defaultPagination;
+    let newPagination = !newPage ? _pagination : { ..._pagination, page: newPage };
+    let _searchParams = defaultSearchParams;
+    if (searchParams) {
+      _searchParams = searchParams.stations;
+    }
+    if (newSearchParams) {
+      _searchParams = newSearchParams;
+      newPagination = defaultPagination;
+    }
+    const { currentTab } = this.state;
+    if (currentTab === 'lines') {
       getLines(match.params.town);
     }
-    if (tab === 'stations') {
-      searchStations(match.params.town, defaultSearchParams, defaultPagination);
+    if (currentTab === 'stations') {
+      searchStations(match.params.town, _searchParams, newPagination);
     }
-    this.setState({ currentTab: tab });
-  }
-
-  AddConnection(connection) {
-    const { onAddConnection } = this.props;
-    onAddConnection(connection);
   }
 
   render() {
     const { currentTab } = this.state;
-    const { town } = this.props;
+    const { lines, town } = this.props;
     return (
       <div className="admin-town">
         <h1 className="right-line mb-40">{town && town.name}</h1>
@@ -115,10 +112,18 @@ class AdminTown extends React.Component {
             <TabMenu
               type="secondary"
               tabs={townTabs}
-              onTabChange={this.tabChange}
+              onTabChange={this.tabChanged}
               activeTab={currentTab}
               content={this.getCurrentTabInfo()}
             />
+          </div>
+          <div className="col-lg-3 col-md-12">
+            {currentTab === 'stations' ? (
+              <StationsFilterPanel
+                lines={lines}
+                onChange={this.searchParamsChanged}
+              />
+            ) : null}
           </div>
         </div>
       </div>

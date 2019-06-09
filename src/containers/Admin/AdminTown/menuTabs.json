@@ -1,0 +1,17 @@
+[
+  {
+    "id": "town",
+    "name": "Town",
+    "icon": "town"
+  },
+  {
+    "id": "lines",
+    "name": "Lines",
+    "icon": "lines"
+  },
+  {
+    "id": "stations",
+    "name": "Stations",
+    "icon": "underground"
+  }
+]

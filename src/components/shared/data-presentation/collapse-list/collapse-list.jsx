@@ -29,7 +29,7 @@ class CollapseList extends React.Component {
   }
 
   render() {
-    const { elements, extraClass, type, header, hoverType, content, activeElementContent, externalActiveElementId } = this.props;
+    const { actions, elements, extraClass, type, header, hoverType, content, activeElementContent, externalActiveElementId } = this.props;
     const { activeElementId } = this.state;
     const Header = header;
     const Content = content;
@@ -48,7 +48,10 @@ class CollapseList extends React.Component {
                 </a>
               </div>
               <div className="collapse-list-content">
-                <Content element={activeElementContent || el} />
+                <Content
+                  element={activeElementContent || el}
+                  actions={actions}
+                />
               </div>
             </div>
           </li>

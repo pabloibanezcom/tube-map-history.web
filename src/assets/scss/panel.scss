@@ -1,22 +1,29 @@
 .panel {
-  padding: 30px;
-  margin: 0;
-  box-shadow: none;
-  border-radius: 0;
 
-  @include media-breakpoint-down(sm) {
-    padding: 15px;
+  .panel-header {
+    padding: 10px 30px;
   }
 
-  &.panel-white {
+  .panel-content {
+    padding: 30px;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+
+    @include media-breakpoint-down(sm) {
+      padding: 15px;
+    }
+  }
+
+  .panel-white {
     @include background-color(white);
   }
 
-  &.panel-primary {
+  .panel-primary {
     @include background-color(primary);
   }
 
-  &.panel-secondary {
+  .panel-secondary {
     @include background-color(secondary);
   }
 }
