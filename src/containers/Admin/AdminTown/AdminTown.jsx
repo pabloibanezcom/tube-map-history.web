@@ -37,10 +37,12 @@ class AdminTown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTab: 'lines'
+      currentTab: 'lines',
+      pagination: defaultPagination
     }
 
     this.tabChange = this.tabChange.bind(this);
+    this.changeStationPage = this.changeStationPage.bind(this);
   }
 
   componentDidMount() {
@@ -75,8 +77,15 @@ class AdminTown extends React.Component {
   }
 
   changePage = (page) => {
-    const { pagination } = this.props;
+    const { pagination } = this.state;
+
     this.search(null, null, { ...pagination, page });
+  }
+
+  changeStationPage(page) {
+    this.setState(prevState => {
+      return { pagination: { ...prevState.pagination, page } }
+    })
   }
 
   tabChange(tab) {
