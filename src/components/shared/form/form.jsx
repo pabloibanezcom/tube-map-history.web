@@ -5,7 +5,7 @@ import { hasErrors } from 'util/data';
 import customValidations from './custom-validations';
 
 const Form = (props) => {
-  const { config: { fields, submit }, initialValues, hide, onSubmit } = props;
+  const { i18nPrefix, config: { fields, submit }, initialValues, hide, onSubmit } = props;
   const { register, handleSubmit, errors, setValue, setError } = useForm({
     defaultValues: {
       ...initialValues
@@ -64,7 +64,8 @@ const Form = (props) => {
             {fields.map(f => (
               <div key={f.name} className={f.size}>
                 <FormField
-                  label={f.label}
+                  prefix={i18nPrefix}
+                  id={f.label}
                   error={errors[f.name] && errors[f.name].message}
                 >
                   {getFieldComponent(f)}
@@ -76,7 +77,8 @@ const Form = (props) => {
             submit
             color={submit.color}
             inverse={submit.inverse}
-            text={submit.text}
+            i18nPrefix={i18nPrefix}
+            i18nText={submit.textI18n}
             disabled={hasErrors(errors)}
           />
         </form>

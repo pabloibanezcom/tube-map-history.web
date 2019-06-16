@@ -1,10 +1,11 @@
+import { Translation } from 'components/shared';
 import React from 'react';
 
 const infoElement = (props) => {
-  const { name, value } = props;
+  const { prefix, id, value } = props;
   return (
     <div className="info-element">
-      <div className="info-element-name">{name}</div>
+      <div className="info-element-name"><Translation prefix={prefix} id={id} /></div>
       <div className="info-element-value">{value}</div>
     </div>
   )

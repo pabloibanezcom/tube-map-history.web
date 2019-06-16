@@ -1,27 +1,30 @@
-import { Badge, Button, InfoElement, LineBadge } from 'components/shared';
+import { Badge, Button, InfoElement, LineBadge, Translation } from 'components/shared';
 import React from 'react';
 
 const stationsInfoContent = ({ element }) => {
+  const i18nPrefix = 'ADMIN.TOWN.STATIONS';
   return (
     <div className="lines-info-content">
       <div className="row mb-20">
         <div className="col-lg-6 col-md-6">
-          <h4 className="secondary right-line right-line-secondary mb-20">Station info</h4>
+          <h4 className="secondary right-line right-line-secondary mb-20"><Translation prefix={i18nPrefix} id="STATION_INFO" /></h4>
           <div className="row">
             <div className="col-md-12">
               <InfoElement
-                name="Name"
+                prefix={i18nPrefix}
+                id="NAME"
                 value={element.name}
               />
               <InfoElement
-                name="Year"
+                prefix={i18nPrefix}
+                id="YEAR"
                 value={<Badge text={element.year} />}
               />
             </div>
           </div>
         </div>
         <div className="col-lg-6 col-md-6">
-          <h4 className="secondary right-line right-line-secondary mb-20">Connections</h4>
+          <h4 className="secondary right-line right-line-secondary mb-20"><Translation prefix={i18nPrefix} id="CONNECTIONS" /></h4>
           {element.connections.sort((a, b) => a.year - b.year).map(c => {
             return (
               <div key={c._id}>
@@ -43,14 +46,14 @@ const stationsInfoContent = ({ element }) => {
         <div className="col-md-4 mb-sm-10">
           <Button
             color="secondary"
-            text="Edit station"
+            text={<Translation prefix={i18nPrefix} id="EDIT_STATION" />}
             inverse
           />
         </div>
         <div className="col-md-4 mb-sm-10 offset-md-4">
           <Button
             color="secondary"
-            text="Delete station"
+            text={<Translation prefix={i18nPrefix} id="DELETE_STATION" />}
             outline
             inverse
           />

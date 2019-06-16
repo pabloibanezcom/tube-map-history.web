@@ -1,8 +1,10 @@
-import { Form, FormChanges } from 'components/shared';
+import { Form, FormChanges, Translation } from 'components/shared';
 import React from 'react';
 import config from './edit-line.config.json';
 
 class EditLine extends React.Component {
+
+  i18nPrefix = 'ADMIN.TOWN.LINES';
 
   constructor(props) {
     super(props);
@@ -32,9 +34,10 @@ class EditLine extends React.Component {
     const { formData, submitted } = this.state;
     return (
       <div className="edit-line-modal" style={{ width: '500px' }}>
-        <h3 className="secondary mb-20">Edit line</h3>
+        <h3 className="secondary mb-20"><Translation prefix={this.i18nPrefix} id="EDIT_LINE" /></h3>
         <Form
           hide={submitted}
+          i18nPrefix={this.i18nPrefix}
           config={config}
           initialValues={this.initialValues}
           onSubmit={this.onSubmit}

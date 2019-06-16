@@ -3,7 +3,6 @@ import React from 'react';
 
 const LineBadge = (props) => {
   const { line, extraClass } = props;
-  console.log(line);
   return (
     <Badge
       text={line.shortName}

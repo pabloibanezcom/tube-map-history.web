@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { getContrastColor } from 'util/color';
 
 const badge = (props) => {
   const { block, border, color, backgroundColor, fontColor, extraClass, text } = props;
-  const style = (backgroundColor || fontColor) ? { backgroundColor, color: fontColor } : null;
+  const style = (backgroundColor || fontColor) ? { backgroundColor, color: fontColor || getContrastColor(backgroundColor) } : null;
   if (border && fontColor) {
     style.borderColor = fontColor;
   }

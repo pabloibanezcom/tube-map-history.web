@@ -1,8 +1,29 @@
 {
   "ADMIN": {
     "TOWN": {
-      "LINE": {
-        "LINE_INFO": "Line info"
+      "LINES": {
+        "LINE_INFO": "Line info",
+        "ORDER": "Order",
+        "KEY": "Key",
+        "NAME": "Name",
+        "SHORT_NAME": "Short Name",
+        "YEAR": "Year",
+        "STATIONS": "Stations",
+        "DISTANCE": "Distance",
+        "COLOR": "Color",
+        "FONT_COLOR": "Font color",
+        "VIEW_STATIONS": "View stations",
+        "EDIT_LINE": "Edit line",
+        "DELETE_LINE": "Delete line",
+        "CONFIRM": "Confirm"
+      },
+      "STATIONS": {
+        "STATION_INFO": "Station info",
+        "NAME": "Name",
+        "YEAR": "Year",
+        "CONNECTIONS": "Connections",
+        "EDIT_STATION": "Edit station",
+        "DELETE_STATION": "Delete station"
       }
     }
   }
