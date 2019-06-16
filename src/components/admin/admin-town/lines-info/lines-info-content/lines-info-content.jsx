@@ -1,13 +1,14 @@
-import { Badge, Button, InfoElement } from 'components/shared';
+import { Badge, Button, InfoElement, Translation } from 'components/shared';
 import React from 'react';
 
 const linesInfoContent = (props) => {
   const { element, actions, onDeleteLine, onEditLine } = props;
+  const i18nPrefix = 'ADMIN.TOWN.LINE';
   return (
     <div className="lines-info-content">
       <div className="row mb-20">
         <div className="col-lg-6 col-md-8">
-          <h4 className="secondary right-line right-line-secondary mb-20">Line info</h4>
+          <h4 className="secondary right-line right-line-secondary mb-20"><Translation prefix={i18nPrefix} id="LINE_INFO" /></h4>
           <div className="row">
             <div className="col-md-6">
               <InfoElement
