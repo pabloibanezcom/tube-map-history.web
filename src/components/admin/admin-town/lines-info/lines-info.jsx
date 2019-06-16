@@ -13,6 +13,7 @@ const linesInfo = (props) => {
         header={LinesInfoHeader}
         content={LinesInfoContent}
         actions={{ viewLineStations }}
+        {...props}
       />
     </div>
   )

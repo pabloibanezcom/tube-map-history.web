@@ -4,7 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const button = (props) => {
-  const { fontColor, backgroundColor, block, extraClass, icon, inverse, hover, onClick, outline, size, color, uppercase, submit, text, to, type } = props;
+  const { fontColor, backgroundColor, block, disabled, extraClass, icon, inverse, hover, onClick, outline, size, color, uppercase, submit, text, to, type } = props;
   let buttonClasses = '';
   if (type === 'btn') {
     buttonClasses = `${uppercase ? 'btn-uppercase' : ''}  ${inverse ? 'btn-inverse' : ''} ${outline ? 'btn-outline' : ''} ${block ? 'btn-block' : ''}`;
@@ -16,6 +16,7 @@ const button = (props) => {
       <Link
         to={to}
         className={classStr}
+        disabled={disabled}
       >
         {text}
       </Link>
@@ -27,6 +28,7 @@ const button = (props) => {
       <button
         type={submit ? 'submit' : 'button'}
         className={classStr}
+        disabled={disabled}
         style={style}
         onClick={onClick}
       >
@@ -40,7 +42,9 @@ const button = (props) => {
       <a
         className={classStr}
         onClick={onClick}
+        disabled={disabled}
       >
+        {icon ? <Icon name={icon} /> : null}
         {text}
       </a>
     );
@@ -53,6 +57,7 @@ button.defaultProps = {
   backgroundColor: null,
   hover: null,
   block: true,
+  disabled: false,
   extraClass: '',
   icon: '',
   inverse: false,
@@ -71,6 +76,7 @@ button.propTypes = {
   backgroundColor: PropTypes.string,
   hover: PropTypes.oneOf(['primary', 'secondary']),
   block: PropTypes.bool,
+  disabled: PropTypes.bool,
   extraClass: PropTypes.string,
   inverse: PropTypes.bool,
   icon: PropTypes.string,

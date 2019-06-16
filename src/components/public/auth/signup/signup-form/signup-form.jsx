@@ -2,6 +2,7 @@ import { Button, CountrySelector, FormField, Input } from 'components/shared';
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import useForm from 'react-hook-form';
+import { hasErrors } from 'util/data';
 
 const SignUpForm = (props) => {
   const { onSubmit } = props;
@@ -25,7 +26,7 @@ const SignUpForm = (props) => {
 
   const submit = (formData) => {
     checkRepeatPassword(getValues().repeatPassword, true);
-    if (Object.keys(errors).length === 0 && errors.constructor === Object) {
+    if (!hasErrors(errors)) {
       onSubmit(formData);
       console.log(formData);
     }

@@ -47,7 +47,7 @@ const stationsInfoContent = ({ element }) => {
             inverse
           />
         </div>
-        <div className="col-lg-2 offset-lg-6 offset-md-4 col-md-4 mb-sm-10">
+        <div className="col-md-4 mb-sm-10 offset-md-4">
           <Button
             color="secondary"
             text="Delete station"

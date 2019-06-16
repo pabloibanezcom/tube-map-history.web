@@ -7,3 +7,7 @@ export const getLinesFromStation = (station) => {
   });
   return result;
 }
+
+export const hasErrors = (errors) => {
+  return Object.keys(errors).length > 0 && errors.constructor === Object;
+}

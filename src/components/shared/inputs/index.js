@@ -3,6 +3,7 @@ import Checkbox from './checkbox/checkbox';
 import FileUpload from './file-upload/file-upload';
 import Input from './input/input';
 import Range from './range/range';
+import ColorSelector from './selectors/color-selector/color-selector';
 import CountrySelector from './selectors/country-selector/country-selector';
 import LineSelector from './selectors/line-selector/line-selector';
 import PersonTitleSelector from './selectors/person-title-selector/person-title-selector';
@@ -12,5 +13,5 @@ import StationSelector from './selectors/station-selector/station-selector';
 import Toggle from './toggle/toggle';
 import YearSelector from './year-selector/year-selector';
 
-export { BooleanSelector, Checkbox, FileUpload, Input, Range, CountrySelector, LineSelector, PersonTitleSelector, PlaceSelector, Selector, StationSelector, Toggle, YearSelector };
+export { BooleanSelector, ColorSelector, Checkbox, FileUpload, Input, Range, CountrySelector, LineSelector, PersonTitleSelector, PlaceSelector, Selector, StationSelector, Toggle, YearSelector };
 

@@ -1,4 +1,4 @@
-import { CountrySelector, Input, LineSelector, PlaceSelector, Selector, StationSelector } from 'components/shared';
+import { ColorSelector, CountrySelector, Input, LineSelector, PlaceSelector, Selector, StationSelector } from 'components/shared';
 import React from 'react';
 import lines from './data/lines.json';
 import stations from './data/stations.json';
@@ -12,7 +12,9 @@ class Inputs extends React.Component {
       country: null,
       line: null,
       place: null,
-      station: null
+      station: null,
+      color: null,
+      color2: null
     }
     this.handleSelect = this.handleSelect.bind(this);
   }
@@ -22,7 +24,7 @@ class Inputs extends React.Component {
   }
 
   render() {
-    const { country, line, option, place, station } = this.state;
+    const { country, line, option, place, station, color, color2 } = this.state;
     return (
       <div className="showroom-selectors">
         <h1 className="right-line mb-4">Inputs</h1>
@@ -185,6 +187,40 @@ class Inputs extends React.Component {
               />
               <div className="showroom-result">
                 <span>{place ? `Place selected: ${place.coordinates[0]} - ${place.coordinates[1]}` : ''}</span>
+              </div>
+            </div>
+          </div>
+          <div className="col-3">
+            <div className="showroom-element">
+              <label>ColorSelector</label>
+              <ColorSelector
+                name="color"
+                onChange={(value) => this.handleSelect('color', value)}
+              />
+              <div className="showroom-result">
+                <span>{color ? `Color selected: ${color}` : ''}</span>
+              </div>
+            </div>
+          </div>
+          <div className="col-3">
+            <div className="showroom-element">
+              <label>Text input with initial value</label>
+              <Input
+                name="input4"
+                value="John Johnson"
+              />
+            </div>
+          </div>
+          <div className="col-3">
+            <div className="showroom-element">
+              <label>ColorSelector with initial color</label>
+              <ColorSelector
+                name="color"
+                color="#F78DA7"
+                onChange={(value) => this.handleSelect('color2', value)}
+              />
+              <div className="showroom-result">
+                <span>{color2 ? `Color selected: ${color2}` : ''}</span>
               </div>
             </div>
           </div>

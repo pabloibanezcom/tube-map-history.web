@@ -2,11 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const badge = (props) => {
-  const { color, backgroundColor, fontColor, extraClass, text } = props;
+  const { block, border, color, backgroundColor, fontColor, extraClass, text } = props;
   const style = (backgroundColor || fontColor) ? { backgroundColor, color: fontColor } : null;
+  if (border && fontColor) {
+    style.borderColor = fontColor;
+  }
   return (
     <span
-      className={`badge badge-${color} ${extraClass}`}
+      className={`badge badge-${color} ${block ? 'badge-block' : ''} ${border ? 'badge-border' : ''} ${extraClass}`}
       style={style}
     >
       {text}
@@ -15,6 +18,8 @@ const badge = (props) => {
 }
 
 badge.defaultProps = {
+  block: false,
+  border: false,
   color: 'primary',
   backgroundColor: null,
   fontColor: null,
@@ -22,6 +27,8 @@ badge.defaultProps = {
 };
 
 badge.propTypes = {
+  block: PropTypes.bool,
+  border: PropTypes.bool,
   color: PropTypes.oneOf(['primary', 'secondary']),
   backgroundColor: PropTypes.string,
   fontColor: PropTypes.string,

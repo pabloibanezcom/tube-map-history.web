@@ -13,6 +13,10 @@
   overflow: visible;
   cursor: pointer;
 
+  &:disabled {
+    cursor: inherit;
+  }
+
   .icon {
     vertical-align: middle;
   }

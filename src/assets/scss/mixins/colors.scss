@@ -89,8 +89,8 @@
 
   @if $hover {
 
-    &:hover,
-    &:active {
+    &:hover:enabled,
+    &:active:enabled {
       background-color: $hover-bg-color;
       border-color: $hover-bg-color;
       color: $hover-font-color;
@@ -113,7 +113,7 @@
     $hover-font-color: $secondary-alt-color;
   }
 
-  &:hover {
+  &:hover:enabled {
     background-color: $hover-bg-color !important;
     border-color: $hover-bg-color !important;
     color: $hover-font-color !important;

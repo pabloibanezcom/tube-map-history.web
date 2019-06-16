@@ -1,7 +1,8 @@
 import { Badge, Button, InfoElement } from 'components/shared';
 import React from 'react';
 
-const linesInfoContent = ({ element, actions }) => {
+const linesInfoContent = (props) => {
+  const { element, actions, onDeleteLine, onEditLine } = props;
   return (
     <div className="lines-info-content">
       <div className="row mb-20">
@@ -15,7 +16,7 @@ const linesInfoContent = ({ element, actions }) => {
               />
               <InfoElement
                 name="Year"
-                value={element.year}
+                value={element.year && <Badge text={element.year} />}
               />
               <InfoElement
                 name="Stations"
@@ -55,14 +56,16 @@ const linesInfoContent = ({ element, actions }) => {
             color="secondary"
             text="Edit line"
             inverse
+            onClick={() => onEditLine(element)}
           />
         </div>
-        <div className="col-lg-2 offset-lg-2 col-md-4 mb-sm-10">
+        <div className="col-md-4 mb-sm-10">
           <Button
             color="secondary"
             text="Delete line"
             outline
             inverse
+            onClick={onDeleteLine}
           />
         </div>
       </div>

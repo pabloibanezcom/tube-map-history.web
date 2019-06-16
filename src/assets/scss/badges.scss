@@ -2,6 +2,7 @@
   display: inline-block;
   border-radius: 2px;
   padding: 4px 7px;
+  top: 0 !important;
   vertical-align: middle;
   align-self: center;
   font-size: 75%;
@@ -12,11 +13,28 @@
   background-color: $grey-dark-color;
   color: $white-color;
 
+  &.badge-block {
+    width: 100%;
+  }
+
+  &.badge-border {
+    border: 1px solid $white-color;
+  }
+
   &.badge-primary {
     @include background-color(primary);
+
+    &.badge-border {
+      border-color: $secondary-color;
+    }
   }
 
   &.badge-secondary {
     @include background-color(secondary);
+
+    &.badge-border {
+      border-color: $primary-color;
+    }
   }
+
 }

@@ -51,6 +51,7 @@ class CollapseList extends React.Component {
                 <Content
                   element={activeElementContent || el}
                   actions={actions}
+                  {...this.props}
                 />
               </div>
             </div>

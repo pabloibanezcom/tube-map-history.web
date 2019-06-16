@@ -1,4 +1,4 @@
-import { Badge } from 'components/shared';
+import { LineBadge } from 'components/shared';
 import React from 'react';
 import { getLinesFromStation } from 'util/data';
 
@@ -11,11 +11,9 @@ const stationsInfoHeader = ({ element }) => {
         </div>
         <div>
           {getLinesFromStation(element).map(l => {
-            return <Badge
+            return <LineBadge
               key={l._id}
-              text={l.name}
-              backgroundColor={l.colour}
-              fontColor={l.fontColour}
+              line={l}
               extraClass="ml-10"
             />
           })}

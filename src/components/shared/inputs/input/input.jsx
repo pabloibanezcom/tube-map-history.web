@@ -7,6 +7,7 @@ class Input extends React.Component {
 
   constructor(props) {
     super(props);
+    const { value } = this.props;
 
     this.input = null;
 
@@ -15,12 +16,14 @@ class Input extends React.Component {
     };
 
     this.state = {
-      isFocused: false
+      isFocused: false,
+      value: value || ''
     }
     this.getHtmlType = this.getHtmlType.bind(this);
     this.handleOnFocus = this.handleOnFocus.bind(this);
     this.handleOnBlur = this.handleOnBlur.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleOnClick = this.handleOnClick.bind(this);
     this.clearValue = this.clearValue.bind(this);
     this.formRefValidation = this.formRefValidation.bind(this);
   }
@@ -44,8 +47,17 @@ class Input extends React.Component {
   handleOnChange(evt) {
     const { onChange } = this.props;
     evt.persist();
+    this.setState({ value: evt.target.value });
     if (onChange) {
-      onChange(evt);
+      onChange(evt.target.value);
+    }
+  }
+
+  handleOnClick(evt) {
+    const { onClick } = this.props;
+    evt.persist();
+    if (onClick) {
+      onClick(evt);
     }
   }
 
@@ -56,48 +68,65 @@ class Input extends React.Component {
   }
 
   formRefValidation() {
-    const { required, type } = this.props;
+    const { required, type, customPattern } = this.props;
     let validation = {
       required: required && 'You must enter a value'
     };
     if (type === 'email') {
       validation = {
         ...validation,
-        pattern: {
-          value: regexPatterns.email,
-          message: `You have entered an invalid e-mail address`
-        }
+        pattern: regexPatterns.email
       }
     }
     if (type === 'password') {
       validation = {
         ...validation,
-        pattern: {
-          value: regexPatterns.password,
-          message: `Password must contain at least 8 characters`
-        }
+        pattern: regexPatterns.password
+      }
+    }
+    if (customPattern) {
+      validation = {
+        ...validation,
+        pattern: customPattern
       }
     }
     return validation;
   }
 
   render() {
-    const { backgroundColor, color, clearable, formRef, disabled, extraClass, name, placeholder, value } = this.props;
-    const { isFocused } = this.state;
+    const { backgroundColor, color, clearable, formRef, disabled, extraClass, name, placeholder } = this.props;
+    const { isFocused, value } = this.state;
     return (
       <div className={`custom-input ${isFocused ? 'is-focused' : ''}`}>
-        <input
-          ref={formRef ? formRef(this.formRefValidation()) : null}
-          className={`input-bg-${backgroundColor} ${color ? `input-text-${color}` : ''} ${extraClass}`}
-          type={this.getHtmlType()}
-          name={name}
-          placeholder={placeholder}
-          disabled={disabled}
-          onFocus={this.handleOnFocus}
-          onBlur={this.handleOnBlur}
-          onChange={this.handleOnChange}
-          noValidate
-        />
+        {formRef ? (
+          <input
+            ref={formRef(this.formRefValidation())}
+            className={`input-bg-${backgroundColor} ${color ? `input-text-${color}` : ''} ${extraClass}`}
+            type={this.getHtmlType()}
+            name={name}
+            placeholder={placeholder}
+            disabled={disabled}
+            onFocus={this.handleOnFocus}
+            onBlur={this.handleOnBlur}
+            onChange={this.handleOnChange}
+            onClick={this.handleOnClick}
+            noValidate
+          />
+        ) :
+          <input
+            value={value}
+            className={`input-bg-${backgroundColor} ${color ? `input-text-${color}` : ''} ${extraClass}`}
+            type={this.getHtmlType()}
+            name={name}
+            placeholder={placeholder}
+            disabled={disabled}
+            onFocus={this.handleOnFocus}
+            onBlur={this.handleOnBlur}
+            onChange={this.handleOnChange}
+            onClick={this.handleOnClick}
+            noValidate
+          />
+        }
         {clearable && value ? <a onClick={this.clearValue} className="clear-cross"><Icon name="close" /></a> : null}
       </div>
     )
@@ -113,8 +142,10 @@ Input.defaultProps = {
   extraClass: '',
   placeholder: null,
   required: false,
+  customPattern: null,
   type: 'text',
-  onChange: null
+  onChange: null,
+  onClick: null
 };
 
 Input.propTypes = {
@@ -127,8 +158,10 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   required: PropTypes.bool,
+  customPattern: PropTypes.object,
   type: PropTypes.oneOf(['text', 'number', 'email', 'password']),
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 export default Input;

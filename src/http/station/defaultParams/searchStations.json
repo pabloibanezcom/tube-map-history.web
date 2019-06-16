@@ -10,7 +10,7 @@
         },
         {
           "path": "line",
-          "select": "name colour fontColour"
+          "select": "name shortName colour fontColour"
         }
       ],
       "select": "stations line year"

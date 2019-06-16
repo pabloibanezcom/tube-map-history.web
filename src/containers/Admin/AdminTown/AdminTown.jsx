@@ -1,8 +1,9 @@
 import * as actions from 'actions/admin';
 import LinesInfo from 'components/admin/admin-town/lines-info/lines-info';
+import modalComponents from 'components/admin/admin-town/modals';
 import StationsFilterPanel from 'components/admin/admin-town/stations-filter-panel/stations-filter-panel';
 import StationsInfo from 'components/admin/admin-town/stations-info/stations-info';
-import { TabMenu } from 'components/shared';
+import { Modal, TabMenu } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
@@ -21,13 +22,17 @@ class AdminTown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTab: 'lines'
+      currentTab: 'lines',
+      activeModal: null,
+      modalProps: null
     }
 
     this.pageChanged = this.pageChanged.bind(this);
     this.searchParamsChanged = this.searchParamsChanged.bind(this);
     this.tabChanged = this.tabChanged.bind(this);
     this.viewLineStations = this.viewLineStations.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount() {
@@ -49,6 +54,8 @@ class AdminTown extends React.Component {
         <LinesInfo
           lines={lines}
           viewLineStations={this.viewLineStations}
+          onEditLine={(line) => this.showModal('editLine', { line })}
+          onDeleteLine={() => this.showModal('deleteLine')}
         />
       )
     }
@@ -101,8 +108,16 @@ class AdminTown extends React.Component {
     }
   }
 
+  showModal(activeModal, modalProps) {
+    this.setState({ activeModal, modalProps });
+  }
+
+  closeModal() {
+    this.setState({ activeModal: null });
+  }
+
   render() {
-    const { currentTab } = this.state;
+    const { currentTab, activeModal, modalProps } = this.state;
     const { lines, town } = this.props;
     return (
       <div className="admin-town">
@@ -126,6 +141,11 @@ class AdminTown extends React.Component {
             ) : null}
           </div>
         </div>
+        <Modal
+          modalContent={modalComponents[activeModal]}
+          onClose={this.closeModal}
+          {...modalProps}
+        />
       </div>
     )
   }

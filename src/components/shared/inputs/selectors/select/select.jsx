@@ -29,7 +29,13 @@ class Select extends React.Component {
   }
 
   showDropdown() {
-    this.setState({ expanded: true });
+    const { noDropdown, onDropdownOpen } = this.props;
+    if (!noDropdown) {
+      this.setState({ expanded: true });
+    }
+    if (onDropdownOpen) {
+      onDropdownOpen();
+    }
   }
 
   selectOption(option) {
@@ -44,7 +50,7 @@ class Select extends React.Component {
   }
 
   render() {
-    const { selected } = this.props;
+    const { externalExpanded, noDropdown, selected, selectedElement } = this.props;
     const { expanded, selectedOption } = this.state;
 
     const Selected = selected;
@@ -57,15 +63,18 @@ class Select extends React.Component {
           aria-expanded={!expanded}
         >
           <Selected
-            selectedOption={selectedOption}
+            selectedOption={selectedOption || selectedElement}
           />
         </button>
-        <SelectDropdown
-          expanded={expanded}
-          onSelectOption={(opt) => this.selectOption(opt)}
-          onClose={() => this.close()}
-          {...this.props}
-        />
+        {!noDropdown && (
+          <SelectDropdown
+            expanded={expanded}
+            onSelectOption={(opt) => this.selectOption(opt)}
+            onClose={() => this.close()}
+            {...this.props}
+          />
+        )}
+        {(expanded || externalExpanded) && noDropdown}
       </div>
     )
   }

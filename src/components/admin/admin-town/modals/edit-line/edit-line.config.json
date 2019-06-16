@@ -1,0 +1,70 @@
+{
+  "fields": [
+    {
+      "type": "number",
+      "size": "col-6",
+      "name": "order",
+      "label": "Order",
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "type": "text",
+      "size": "col-6",
+      "name": "key",
+      "label": "Key",
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "type": "text",
+      "size": "col-6",
+      "name": "name",
+      "label": "Name",
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "type": "text",
+      "size": "col-6",
+      "name": "shortName",
+      "label": "Short name",
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "type": "number",
+      "size": "col-4",
+      "name": "year",
+      "label": "Year",
+      "validation": "yearValidation"
+    },
+    {
+      "type": "color",
+      "size": "col-4",
+      "name": "colour",
+      "label": "Colour",
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "type": "color",
+      "size": "col-4",
+      "name": "fontColour",
+      "label": "Font Colour",
+      "validation": {
+        "required": true
+      }
+    }
+  ],
+  "submit": {
+    "color": "secondary",
+    "inverse": true,
+    "text": "Confirm"
+  }
+}

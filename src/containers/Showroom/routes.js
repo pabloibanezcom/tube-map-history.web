@@ -14,6 +14,7 @@ import Headers from './Headers/Headers';
 import Index from './Index/Index';
 import Inputs from './Inputs/Inputs';
 import Layout from './Layout/Layout';
+import Modals from './Layout/Modals/Modals';
 
 const baseUrl = '/showroom';
 
@@ -31,7 +32,8 @@ const routes = (
     <Route path={`${baseUrl}/forms`} component={Forms} />
     <Route path={`${baseUrl}/inputs`} component={Inputs} />
     <Route path={`${baseUrl}/headers`} component={Headers} />
-    <Route path={`${baseUrl}/layout`} component={Layout} />
+    <Route path={`${baseUrl}/layout`} exact component={Layout} />
+    <Route path={`${baseUrl}/layout/modals`} component={Modals} />
     <Route path={`${baseUrl}`} component={Index} />
     <Redirect to={`${baseUrl}`} />
   </Switch>

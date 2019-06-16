@@ -1,27 +1,34 @@
+import { Button } from 'components/shared';
 import React from 'react';
-import ModalContent from './modal-content/modal-content';
+import Modal from 'react-modal';
 
-class Modal extends React.Component {
+const CustomModal = (props) => {
 
-  shouldComponentUpdate(nextProps) {
-    const { children, show } = this.props;
-    return nextProps.show !== show || nextProps.children !== children;
-  }
+  const { modalContent, onClose } = props;
+  const ModalContent = modalContent;
+  // eslint-disable-next-line no-unneeded-ternary
+  const isOpen = modalContent ? true : false;
 
-  render() {
-    const { content, header, onClose, show } = this.props;
-    return (
-      <div className={`modal ${show ? 'show' : ''}`} tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div className="modal-dialog animated zoomIn animated-3x" role="document">
-          <ModalContent
-            onClose={onClose}
-            header={header}
-            content={content}
-          />
-        </div>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <Modal
+        className="m0dal animated zoomIn animated-3x"
+        overlayClassName="m0dal-overlay"
+        isOpen={isOpen}
+        ariaHideApp={false}
+      >
+        {isOpen && <ModalContent {...props} />}
+        <Button
+          type="link"
+          text=""
+          icon="close"
+          color="secondary"
+          extraClass="close-button"
+          onClick={onClose}
+        />
+      </Modal>
+    </div>
+  )
 }
 
-export default Modal;
+export default CustomModal;
