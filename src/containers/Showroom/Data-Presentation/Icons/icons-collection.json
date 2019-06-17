@@ -26,5 +26,9 @@
   "upload",
   "close",
   "download",
-  "town"
+  "town",
+  "long-arrow-down",
+  "long-arrow-up",
+  "long-arrow-left",
+  "long-arrow-right"
 ]

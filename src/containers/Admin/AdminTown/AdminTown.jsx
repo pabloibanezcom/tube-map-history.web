@@ -54,6 +54,7 @@ class AdminTown extends React.Component {
         <LinesInfo
           lines={lines}
           viewLineStations={this.viewLineStations}
+          onAddLine={() => this.showModal('addLine')}
           onEditLine={(line) => this.showModal('editLine', { line })}
           onDeleteLine={() => this.showModal('deleteLine')}
         />

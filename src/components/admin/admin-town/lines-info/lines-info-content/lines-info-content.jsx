@@ -54,6 +54,7 @@ const linesInfoContent = (props) => {
             fontColor={element.fontColour}
             backgroundColor={element.colour}
             hover="primary"
+            block
             text={<Translation prefix={i18nPrefix} id="VIEW_STATIONS" />}
             onClick={() => actions.viewLineStations(element)}
           />
@@ -62,6 +63,7 @@ const linesInfoContent = (props) => {
           <Button
             color="secondary"
             text={<Translation prefix={i18nPrefix} id="EDIT_LINE" />}
+            block
             inverse
             onClick={() => onEditLine(element)}
           />
@@ -70,6 +72,7 @@ const linesInfoContent = (props) => {
           <Button
             color="secondary"
             text={<Translation prefix={i18nPrefix} id="DELETE_LINE" />}
+            block
             outline
             inverse
             onClick={onDeleteLine}

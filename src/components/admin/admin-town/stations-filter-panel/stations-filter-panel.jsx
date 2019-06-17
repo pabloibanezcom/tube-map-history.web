@@ -50,6 +50,7 @@ const StationsFilterPanel = (props) => {
           </FormField>
           <Button
             submit
+            block
             color="secondary"
             text="Search"
           />

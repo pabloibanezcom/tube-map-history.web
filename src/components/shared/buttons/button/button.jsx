@@ -57,7 +57,7 @@ button.defaultProps = {
   fontColor: null,
   backgroundColor: null,
   hover: null,
-  block: true,
+  block: false,
   disabled: false,
   extraClass: '',
   icon: '',

@@ -5,7 +5,7 @@ import { hasErrors } from 'util/data';
 import customValidations from './custom-validations';
 
 const Form = (props) => {
-  const { i18nPrefix, config: { fields, submit }, initialValues, hide, onSubmit } = props;
+  const { i18nPrefix, config: { fields, submit, cancel }, initialValues, hide, onSubmit, onCancel } = props;
   const { register, handleSubmit, errors, setValue, setError } = useForm({
     defaultValues: {
       ...initialValues
@@ -16,7 +16,9 @@ const Form = (props) => {
     if (!hide) {
       fields.filter(f => f.type !== 'text').forEach(f => {
         register({ name: f.name }, typeof f.validation === 'object' ? f.validation : { validate: customValidations[f.validation] });
-        setValue(f.name, initialValues[f.name]);
+        if (initialValues) {
+          setValue(f.name, initialValues[f.name]);
+        }
       })
     }
   });
@@ -40,14 +42,14 @@ const Form = (props) => {
         return <Input
           type="number"
           name={field.name}
-          value={initialValues[field.name]}
+          value={initialValues && initialValues[field.name]}
           onChange={val => handleChange(field.name, parseInt(val, 10))}
           extraClass={errors[field.name] && 'input-error'}
         />
       }
       case 'color': {
         return <ColorSelector
-          color={initialValues[field.name]}
+          color={initialValues && initialValues[field.name]}
           onChange={val => handleChange(field.name, val)}
         />
       }
@@ -73,14 +75,35 @@ const Form = (props) => {
               </div>
             ))}
           </div>
-          <Button
-            submit
-            color={submit.color}
-            inverse={submit.inverse}
-            i18nPrefix={i18nPrefix}
-            i18nText={submit.textI18n}
-            disabled={hasErrors(errors)}
-          />
+          <div className="row">
+            <div className={cancel ? 'col-lg-6' : 'col-lg-12'}>
+              <Button
+                submit
+                color={submit.color}
+                inverse={submit.inverse}
+                block={submit.block}
+                outline={submit.outline}
+                i18nPrefix={i18nPrefix}
+                i18nText={submit.textI18n}
+                disabled={hasErrors(errors)}
+              />
+            </div>
+            {cancel &&
+              <div className="col-lg-6">
+                <Button
+                  color={cancel.color}
+                  inverse={cancel.inverse}
+                  block={cancel.block}
+                  i18nPrefix={i18nPrefix}
+                  i18nText={cancel.textI18n}
+                  onClick={onCancel}
+                />
+              </div>
+            }
+
+          </div>
+
+
         </form>
       )}
     </React.Fragment>

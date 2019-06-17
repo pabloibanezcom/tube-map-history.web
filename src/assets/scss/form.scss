@@ -9,3 +9,20 @@
     }
   }
 }
+
+.form-changes {
+
+  .form-changes-before,
+  .form-changes-after {
+    width: 100%;
+  }
+
+  .form-changes-before {
+    text-decoration: line-through;
+  }
+
+  .form-changes-after {
+    text-align: right;
+    color: $secondary-color;
+  }
+}

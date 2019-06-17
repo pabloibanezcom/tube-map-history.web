@@ -24,10 +24,29 @@ class EditLine extends React.Component {
       submitted: false,
       formData: null
     }
+
+    this.handleCancel = this.handleCancel.bind(this);
+    this.handleGoBack = this.handleGoBack.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
   }
 
-  onSubmit = formData => {
-    this.setState({ submitted: true, formData })
+  handleCancel() {
+    const { onClose } = this.props;
+    onClose();
+  }
+
+  handleGoBack() {
+    this.setState({ submitted: false });
+  }
+
+  handleSubmit(formData) {
+    this.setState({ submitted: true, formData });
+  }
+
+  handleConfirm() {
+    const { formData } = this.state;
+    console.log(formData);
   }
 
   render() {
@@ -40,11 +59,17 @@ class EditLine extends React.Component {
           i18nPrefix={this.i18nPrefix}
           config={config}
           initialValues={this.initialValues}
-          onSubmit={this.onSubmit}
+          onSubmit={this.handleSubmit}
+          onCancel={this.handleCancel}
         />
         {submitted && <FormChanges
           initialValues={this.initialValues}
           formData={formData}
+          title={<Translation prefix={this.i18nPrefix} id="EDIT_LINE_CONFIRMATION" />}
+          nonChangesTitle={<Translation prefix={this.i18nPrefix} id="EDIT_LINE_NO_CHANGES" />}
+          onConfirm={this.handleConfirm}
+          onGoBack={this.handleGoBack}
+          onCancel={this.handleCancel}
         />}
       </div>
     )

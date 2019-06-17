@@ -13,9 +13,14 @@
         "COLOR": "Color",
         "FONT_COLOR": "Font color",
         "VIEW_STATIONS": "View stations",
+        "ADD": "Add",
+        "ADD_LINE": "Add line",
         "EDIT_LINE": "Edit line",
+        "EDIT_LINE_CONFIRMATION": "These are the changes you have made on the line. Are you sure you want to apply them?",
+        "EDIT_LINE_NO_CHANGES": "You haven't made any change in the line. Do you want to go back to line details?",
         "DELETE_LINE": "Delete line",
-        "CONFIRM": "Confirm"
+        "CONFIRM": "Confirm",
+        "CANCEL": "Cancel"
       },
       "STATIONS": {
         "STATION_INFO": "Station info",

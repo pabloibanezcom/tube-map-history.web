@@ -47,6 +47,7 @@ const stationsInfoContent = ({ element }) => {
           <Button
             color="secondary"
             text={<Translation prefix={i18nPrefix} id="EDIT_STATION" />}
+            block
             inverse
           />
         </div>
@@ -54,6 +55,7 @@ const stationsInfoContent = ({ element }) => {
           <Button
             color="secondary"
             text={<Translation prefix={i18nPrefix} id="DELETE_STATION" />}
+            block
             outline
             inverse
           />
