@@ -158,7 +158,7 @@ const removeConnections = (connectionLines, yearTo = 2019, yearFrom = 1800) => {
 }
 
 const getStationMarker = (town, station) => {
-  return new gmaps.MarkerImage(require(`assets/img/markers/${town.name.toLowerCase()}/${station.markerIcon}.png`),
+  return new gmaps.MarkerImage(require(`assets/img/markers/${town.url.toLowerCase()}/${station.markerIcon}.png`),
     new gmaps.Size(64, 64),
     new gmaps.Point(0, 0),
     new gmaps.Point(5, 5),
