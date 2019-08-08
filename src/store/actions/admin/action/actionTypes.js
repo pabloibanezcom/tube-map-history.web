@@ -1,0 +1,2 @@
+export const START_ACTION = 'START_ACTION';
+export const FINISH_ACTION = 'FINISH_ACTION';

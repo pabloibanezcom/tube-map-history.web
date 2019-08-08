@@ -78,6 +78,22 @@
     }
   }
 
+  &.btn-warning {
+    @include background-color(warning, warning, true);
+
+    &.btn-outline {
+      @include background-color(warning, warning, true, true);
+    }
+  }
+
+  &.btn-danger {
+    @include background-color(danger, danger, true);
+
+    &.btn-outline {
+      @include background-color(danger, danger, true, true);
+    }
+  }
+
   &.btn-hover-primary {
     @include background-color-hover(primary);
   }
@@ -89,6 +105,7 @@
   &.btn-light {
     @include background-color(light, light, true);
   }
+
 }
 
 .link {

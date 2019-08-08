@@ -1,6 +1,6 @@
-import * as actions from 'actions/main';
+// import * as actions from 'actions/main';
 import { Overlay } from 'components/shared';
-import { initMap, restoreMapState, updateMap, zoomToPoint } from 'map/map.google.service';
+import { initMapTown, restoreMapState, updateMap, zoomToPoint } from 'map/map.google.service.old';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -11,7 +11,7 @@ class MapWrapper extends React.Component {
   componentDidUpdate(prevProps) {
     const { connections, mode, previousYear, stations, town, year } = this.props;
     if (prevProps.town !== town) {
-      this.map = initMap('map-container', town, mode);
+      this.map = initMapTown('map-container', town, mode);
       updateMap(this.map, town, mode, stations, connections, year, previousYear, this.showStation);
     }
   }
@@ -53,10 +53,10 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = () => {
   return {
-    onStationSelected: (station) => dispatch(actions.getStationDetailsStart(station._id)),
-    onClearMapState: () => dispatch(actions.setMapState(null))
+    onStationSelected: (station) => { console.log(station) },
+    onClearMapState: () => { }
   }
 };
 

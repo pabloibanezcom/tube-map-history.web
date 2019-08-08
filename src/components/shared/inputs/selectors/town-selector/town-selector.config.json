@@ -1,0 +1,12 @@
+{
+  "placeholder": "Type a town...",
+  "options": {
+    "key": "_id",
+    "label": "name"
+  },
+  "minStr": 2,
+  "maxElements": 100,
+  "dropDownHeight": 200,
+  "onlyStartsWith": true,
+  "enableSearch": true
+}

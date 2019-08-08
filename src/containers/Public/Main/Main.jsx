@@ -1,11 +1,10 @@
-import * as actions from 'actions/main';
+// import * as actions from 'actions/main';
 import { Header, LoadingSpinner, YearSelector } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import MapWrapper from '../MapWrapper/MapWrapper';
 import Sidebar from '../SideBar/SideBar';
-
 
 class Main extends React.Component {
 
@@ -75,10 +74,10 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = () => {
   return {
-    onInit: (town, year) => dispatch(actions.loadInitStart(town, year)),
-    onYearChange: (townId, year, previousYear, maxYearLoaded) => dispatch(actions.changeYearStart(townId, year, previousYear, maxYearLoaded))
+    onInit: (town, year) => { console.log(town, year) },
+    onYearChange: (townId, year, previousYear, maxYearLoaded) => { console.log(townId, year, previousYear, maxYearLoaded) }
   }
 };
 

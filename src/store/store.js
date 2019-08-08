@@ -1,5 +1,5 @@
 import { connectRouter, routerMiddleware } from 'connected-react-router';
-import { adminReducer, authReducer, mainReducer } from 'reducers';
+import { adminReducer, authReducer } from 'reducers';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import createSagaMiddleware from "redux-saga";
 import { watchAll } from './sagas';
@@ -13,7 +13,6 @@ export const getStore = (history) => {
   const createRootReducer = (_history) => combineReducers({
     router: connectRouter(_history),
     auth: authReducer,
-    main: mainReducer,
     admin: adminReducer,
   });
 

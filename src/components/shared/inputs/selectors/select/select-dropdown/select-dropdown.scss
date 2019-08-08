@@ -1,6 +1,10 @@
 .select-dropdown {
   .dropdown-menu {
     .dropdown-item {
+      img {
+        margin-top: -2px
+      }
+
       &.active {
         background-color: $secondary-color;
         color: $secondary-alt-color;

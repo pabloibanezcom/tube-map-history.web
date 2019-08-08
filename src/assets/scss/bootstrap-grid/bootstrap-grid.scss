@@ -6,7 +6,11 @@
  */
 
 @at-root {
-  @-ms-viewport { width: device-width; } // stylelint-disable-line at-rule-no-vendor-prefix
+  @-ms-viewport {
+    width: device-width;
+  }
+
+  // stylelint-disable-line at-rule-no-vendor-prefix
 }
 
 html {
@@ -28,5 +32,6 @@ html {
 @import "mixins/grid";
 
 @import "grid";
+@import "custom";
 @import "utilities/display";
 @import "utilities/flex";

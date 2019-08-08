@@ -30,5 +30,9 @@
   "long-arrow-down",
   "long-arrow-up",
   "long-arrow-left",
-  "long-arrow-right"
+  "long-arrow-right",
+  "publish",
+  "map",
+  "delete",
+  "edit"
 ]

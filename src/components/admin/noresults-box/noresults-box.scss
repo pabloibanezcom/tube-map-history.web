@@ -1,0 +1,44 @@
+.noresults-box {
+
+  >div,
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid $grey-dark-color;
+    height: 135px;
+  }
+
+  >div {
+    span {
+      text-align: center;
+    }
+  }
+
+  a {
+    .icon-add {
+      font-size: 3.5rem;
+    }
+
+    span {
+      margin-top: 4px;
+      margin-left: 5px;
+      color: $secondary-color;
+    }
+
+    &:hover {
+      background-color: $secondary-color;
+
+      .icon-add {
+        color: $primary-color;
+      }
+
+      span {
+        color: $secondary-alt-color;
+      }
+
+    }
+  }
+
+
+}

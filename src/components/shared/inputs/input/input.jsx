@@ -94,13 +94,14 @@ class Input extends React.Component {
   }
 
   render() {
-    const { backgroundColor, color, clearable, formRef, disabled, extraClass, name, placeholder } = this.props;
+    const { backgroundColor, color, clearable, defaultValue, formRef, disabled, extraClass, name, placeholder } = this.props;
     const { isFocused, value } = this.state;
     return (
       <div className={`custom-input ${isFocused ? 'is-focused' : ''}`}>
         {formRef ? (
           <input
             ref={formRef(this.formRefValidation())}
+            defaultValue={defaultValue}
             className={`input-bg-${backgroundColor} ${color ? `input-text-${color}` : ''} ${extraClass}`}
             type={this.getHtmlType()}
             name={name}

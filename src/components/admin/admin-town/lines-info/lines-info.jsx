@@ -5,7 +5,6 @@ import LinesInfoHeader from './lines-info-header/lines-info-header';
 
 const linesInfo = (props) => {
   const { lines, viewLineStations, onAddLine } = props;
-  console.log(props);
   return (
     <div className="lines-info">
       <div className="d-flex justify-content-end mb-30">

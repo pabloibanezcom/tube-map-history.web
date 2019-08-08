@@ -1,13 +1,13 @@
 import axios from '../axios';
 
-const defaultPagination = require('./defaultParams/pagination.json');
-const searchStationsParams = require('./defaultParams/searchStations.json');
+const defaultPagination = require('../defaultParams/pagination.json');
+const searchStationsParams = require('../defaultParams/searchStations.json');
 
 export default class Station {
 
   // Search stations
-  static searchStations = (town, searchParams, pagination) => {
-    return axios.post(`${town}/station/search`, {
+  static search = (draftId, searchParams, pagination) => {
+    return axios.post(`${draftId}/station/search`, {
       filter: searchParams,
       sort: { name: 1 },
       populate: searchStationsParams.populate,
@@ -15,23 +15,23 @@ export default class Station {
     });
   }
 
-  // Get stations by year range in town
-  static getStationsByYearRange = (town, yearTo) => {
-    return axios.get(`${town}/station/year/${yearTo}`);
-  }
-
-  // Get station full data
-  static getStation = (stationId) => {
+  // Get full info from station
+  static get = (stationId) => {
     return axios.get(`station/${stationId}`);
   }
 
   // Add station
-  static addStation = (town, station) => {
-    return axios.post(`${town}/station`, station);
+  static add = (draftId, station) => {
+    return axios.post(`${draftId}/station`, station);
   }
 
   // Update station
-  static updateStation = (town, station) => {
-    return axios.put(`${town}/station/${station._id}`, station);
+  static update = (station) => {
+    return axios.put(`station/${station._id}`, station);
+  }
+
+  // Delete station
+  static delete = (stationId) => {
+    return axios.delete(`station/${stationId}`);
   }
 }

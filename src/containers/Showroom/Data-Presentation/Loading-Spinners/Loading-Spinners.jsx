@@ -9,7 +9,8 @@ class LoadingSpinners extends React.Component {
       loading1: null,
       loading2: null,
       loading3: null,
-      loading4: null
+      loading4: null,
+      loading5: null
     };
     this.toggleLoading = this.toggleLoading.bind(this);
   }
@@ -19,12 +20,12 @@ class LoadingSpinners extends React.Component {
   }
 
   render() {
-    const { loading1, loading2, loading3, loading4 } = this.state;
+    const { loading1, loading2, loading3, loading4, loading5 } = this.state;
     return (
       <div className="showroom-loading-spinner">
         <h1 className="right-line mb-4">Loading spinner</h1>
         <div className="row">
-          <div className="col-3">
+          <div className="col">
             <div className="showroom-element">
               <label>Light background</label>
               <div className="pos-relative">
@@ -39,7 +40,7 @@ class LoadingSpinners extends React.Component {
               />
             </div>
           </div>
-          <div className="col-3">
+          <div className="col">
             <div className="showroom-element">
               <label>Dark background</label>
               <div className="pos-relative">
@@ -57,7 +58,7 @@ class LoadingSpinners extends React.Component {
               />
             </div>
           </div>
-          <div className="col-3">
+          <div className="col">
             <div className="showroom-element">
               <label>Secondary spinner</label>
               <div className="pos-relative">
@@ -75,7 +76,7 @@ class LoadingSpinners extends React.Component {
               />
             </div>
           </div>
-          <div className="col-3">
+          <div className="col">
             <div className="showroom-element">
               <label>Inverse spinner</label>
               <div className="pos-relative">
@@ -90,6 +91,25 @@ class LoadingSpinners extends React.Component {
                 color="secondary"
                 extraClass="mt-30"
                 onClick={() => this.toggleLoading('loading4')}
+              />
+            </div>
+          </div>
+          <div className="col">
+            <div className="showroom-element">
+              <label>Shadow without spinner</label>
+              <div className="pos-relative">
+                <LoadingSpinner
+                  inverse
+                  noSpinner
+                  loading={loading5}
+                />
+                <div className="showroom-sample-div" />
+              </div>
+              <Button
+                text={loading4 ? 'Stop spinner' : 'Start spinner'}
+                color="secondary"
+                extraClass="mt-30"
+                onClick={() => this.toggleLoading('loading5')}
               />
             </div>
           </div>

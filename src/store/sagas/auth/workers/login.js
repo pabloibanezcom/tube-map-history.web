@@ -1,4 +1,4 @@
-import * as actions from 'actions/auth';
+import { loginFail, loginSuccess } from 'actions/auth';
 import { push } from 'connected-react-router';
 import Api from 'http/api';
 import { put } from 'redux-saga/effects';
@@ -9,8 +9,8 @@ export function* loginSagaStart(action) {
     Api.setAuthToken(response.data.token);
     localStorage.setItem('auth', response.data.token);
     yield put(push('/admin'));
-    yield put(actions.loginSuccess());
+    yield put(loginSuccess());
   } catch (err) {
-    yield put(actions.loginFail(err));
+    yield put(loginFail(err));
   }
 }

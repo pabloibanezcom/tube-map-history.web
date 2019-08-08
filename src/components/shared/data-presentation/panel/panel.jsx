@@ -3,10 +3,10 @@ import React from 'react';
 
 const panel = (props) => {
 
-  const { background, children, extraClass, header, headerColor, width } = props;
+  const { background, children, className, header, headerColor, width } = props;
 
   return (
-    <div className={`panel ${extraClass}`}>
+    <div className={`panel ${className}`}>
       {header ? (
         <div className={`panel-header panel-${headerColor}`}>
           <h4 className="mb-0 mt-0">{header}</h4>
@@ -24,7 +24,7 @@ const panel = (props) => {
 
 panel.defaultProps = {
   background: 'white',
-  extraClass: null,
+  className: null,
   header: null,
   headerColor: null,
   width: null
@@ -32,7 +32,7 @@ panel.defaultProps = {
 
 panel.propTypes = {
   background: PropTypes.oneOf(['white', 'primary', 'secondary']),
-  extraClass: PropTypes.string,
+  className: PropTypes.string,
   header: PropTypes.string,
   headerColor: PropTypes.oneOf(['primary', 'secondary']),
   width: PropTypes.number

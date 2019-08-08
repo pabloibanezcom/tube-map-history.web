@@ -12,5 +12,3 @@ const userPicture = (props) => {
 }
 
 export default userPicture;
-
-

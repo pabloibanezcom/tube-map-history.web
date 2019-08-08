@@ -1,35 +1,53 @@
 @import "./variables.scss";
+
 .snackbar-container {
+
+  bottom: 50px;
+  right: -100px;
+
+  &.snackbar-pos.bottom-right {
+    bottom: 50px;
+  }
+
   &.primary {
     background-color: $primary-color !important;
+
     p,
     button {
       color: $secondary-color !important;
     }
   }
+
   &.secondary {
     background-color: $secondary-color !important;
+
     p {
       color: $white-color !important;
     }
+
     button {
       color: $primary-color !important;
     }
   }
+
   &.warning {
     background-color: $warning-color !important;
+
     p,
     button {
       color: $white-color !important;
     }
   }
+
   &.error {
     background-color: $danger-color !important;
+
     p,
     button {
       color: $white-color !important;
     }
   }
+
   p {
     font-weight: 500 !important;
     font-size: 16px !important;

@@ -13,15 +13,14 @@ export default class User {
     return axios.post(`signup?email=${email}&password=${password}&name=${name}`);
   }
 
-  // Get user info (A)
-  static getUserInfo = () => {
+  // Get own user info
+  static getOwn = () => {
     return axios.get(`user`);
   }
 
-  // Assign town role to user (A)
-  static assignTownRoleToUser = (userId, town, role) => {
-    return axios.put(`user/town/role/${userId}/${town}`, { role });
+  // Get user info
+  static getUser = (userId) => {
+    return axios.get(`user/${userId}`);
   }
-
 
 }

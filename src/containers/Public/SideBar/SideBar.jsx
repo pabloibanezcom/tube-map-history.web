@@ -1,4 +1,4 @@
-import * as actions from 'actions/main';
+// import * as actions from 'actions/main';
 import { LineInfo, LinesInfo, StationInfo, TownInfo } from 'components/public/sidebar';
 import { Icon } from 'components/shared';
 import React from 'react';
@@ -99,11 +99,11 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = () => {
   return {
-    onStationSelected: (station) => dispatch(actions.getStationDetailsStart(station._id)),
-    onLineSelected: (line) => dispatch(actions.getLineDetailsStart(line._id)),
-    onSetSideBarState: (sideBarState) => dispatch(actions.setSideBarState(sideBarState))
+    onStationSelected: (station) => { console.log(station) },
+    onLineSelected: (line) => { console.log(line) },
+    onSetSideBarState: (sideBarState) => { console.log(sideBarState) }
   }
 };
 

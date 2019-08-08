@@ -10,8 +10,9 @@ import PersonTitleSelector from './selectors/person-title-selector/person-title-
 import PlaceSelector from './selectors/place-selector/place-selector';
 import Selector from './selectors/selector/selector';
 import StationSelector from './selectors/station-selector/station-selector';
+import TownSelector from './selectors/town-selector/town-selector';
 import Toggle from './toggle/toggle';
 import YearSelector from './year-selector/year-selector';
 
-export { BooleanSelector, ColorSelector, Checkbox, FileUpload, Input, Range, CountrySelector, LineSelector, PersonTitleSelector, PlaceSelector, Selector, StationSelector, Toggle, YearSelector };
+export { BooleanSelector, ColorSelector, Checkbox, FileUpload, Input, Range, CountrySelector, LineSelector, PersonTitleSelector, PlaceSelector, Selector, StationSelector, Toggle, TownSelector, YearSelector };
 

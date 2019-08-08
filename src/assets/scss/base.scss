@@ -6,6 +6,8 @@ html {
 body {
   height: 100%;
   font-family: $font-primary !important;
+  font-weight: 200;
+  color: $body-color;
 }
 
 #root {
@@ -36,6 +38,14 @@ body {
 
 .right {
   float: right !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
 }
 
 .clearfix {
