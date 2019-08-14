@@ -1,8 +1,7 @@
 import { Badge, Button, InfoElement, Translation } from 'components/shared';
 import React from 'react';
 
-const linesInfoContent = (props) => {
-  const { element, actions } = props;
+const linesInfoContent = ({ element, actions }) => {
   const i18nPrefix = 'ADMIN.TOWN.LINES';
   return (
     <div className="lines-info-content">

@@ -1,7 +1,7 @@
 import { Badge, Button, InfoElement, LineBadge, Translation } from 'components/shared';
 import React from 'react';
 
-const stationsInfoContent = ({ element }) => {
+const stationsInfoContent = ({ element, actions }) => {
   const i18nPrefix = 'ADMIN.TOWN.STATIONS';
   return (
     <div className="lines-info-content">
@@ -48,16 +48,17 @@ const stationsInfoContent = ({ element }) => {
             color="secondary"
             text={<Translation prefix={i18nPrefix} id="EDIT_STATION" />}
             block
-            inverse
+            outline
+            onClick={() => actions.onEditStation(element)}
           />
         </div>
         <div className="col-md-4 mb-sm-10 offset-md-4">
           <Button
-            color="secondary"
+            color="danger"
             text={<Translation prefix={i18nPrefix} id="DELETE_STATION" />}
             block
             outline
-            inverse
+            onClick={() => actions.onDeleteStation(element)}
           />
         </div>
       </div>

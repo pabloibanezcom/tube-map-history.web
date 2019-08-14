@@ -59,8 +59,7 @@ class AdminDraft extends React.Component {
   }
 
   render() {
-    const { action, actionObj, actionPanelInitiated, draft, loading } = this.props;
-
+    const { match: { params }, action, actionObj, actionPanelInitiated, draft, loading } = this.props;
     return (
       <div className="admin-user-container">
         <div className="container">
@@ -130,9 +129,10 @@ class AdminDraft extends React.Component {
                   <TabMenu
                     type="secondary"
                     tabs={tabHeaders}
+                    activeTab={params.tab || 'lines'}
                   >
                     <AdminLinesPanel />
-                    <AdminStationsPanel stations={draft.stations} />
+                    <AdminStationsPanel />
                     <AdminConnectionsPanel connections={draft.connections} />
                   </TabMenu>
                 </div>

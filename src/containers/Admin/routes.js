@@ -11,6 +11,7 @@ const routes = (
   <Switch>
     <Route path={`${baseUrl}`} exact component={AdminHome} />
     <Route path={`${baseUrl}/draft/:draftId`} exact component={AdminDraft} />
+    <Route path={`${baseUrl}/draft/:draftId/:tab`} exact component={AdminDraft} />
     <Route path={`${baseUrl}/create-draft`} exact component={AddDraft} />
     {/* <Route path={`${baseUrl}/town/:town`} exact component={AdminTown} /> */}
     <Redirect to={`${baseUrl}`} />

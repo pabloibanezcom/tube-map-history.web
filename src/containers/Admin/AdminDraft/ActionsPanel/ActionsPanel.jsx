@@ -1,5 +1,5 @@
-import { addLineStart, deleteDraftStart, deleteLineStart, updateDraftStart, updateLineStart } from 'actions/admin';
-import { AddLineForm, DeleteDraftForm, DeleteLineForm, EditDraftForm, EditLineForm } from 'components/admin/forms';
+import { addLineStart, addStationStart, deleteDraftStart, deleteLineStart, deleteStationStart, updateDraftStart, updateLineStart, updateStationStart } from 'actions/admin';
+import { AddLineForm, AddStationForm, DeleteDraftForm, DeleteLineForm, DeleteStationForm, EditDraftForm, EditLineForm, EditStationForm } from 'components/admin/forms';
 import { Panel } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -25,6 +25,19 @@ const actions = {
     header: 'Delete line',
     form: DeleteLineForm
   }
+  ,
+  addStation: {
+    header: 'Add station',
+    form: AddStationForm
+  },
+  editStation: {
+    header: 'Edit station',
+    form: EditStationForm
+  },
+  deleteStation: {
+    header: 'Delete station',
+    form: DeleteStationForm
+  }
 }
 
 class ActionsPanel extends React.Component {
@@ -35,7 +48,7 @@ class ActionsPanel extends React.Component {
   }
 
   handleSubmit(formData) {
-    const { action, updateDraft, deleteDraft, addLine, updateLine, deleteLine } = this.props;
+    const { action, updateDraft, deleteDraft, addLine, updateLine, deleteLine, addStation, updateStation, deleteStation } = this.props;
     if (action === 'editDraft') {
       updateDraft(formData);
     }
@@ -50,6 +63,15 @@ class ActionsPanel extends React.Component {
     }
     if (action === 'deleteLine') {
       deleteLine(formData);
+    }
+    if (action === 'addStation') {
+      addStation(formData);
+    }
+    if (action === 'editStation') {
+      updateStation(formData);
+    }
+    if (action === 'deleteStation') {
+      deleteStation(formData);
     }
   }
 
@@ -74,7 +96,10 @@ const mapDispatchToProps = dispatch => {
     deleteDraft: (draftId) => dispatch(deleteDraftStart(draftId)),
     addLine: (line) => dispatch(addLineStart(line)),
     updateLine: (line) => dispatch(updateLineStart(line)),
-    deleteLine: (lineId) => dispatch(deleteLineStart(lineId))
+    deleteLine: (lineId) => dispatch(deleteLineStart(lineId)),
+    addStation: (station) => dispatch(addStationStart(station)),
+    updateStation: (station) => dispatch(updateStationStart(station)),
+    deleteStation: (stationId) => dispatch(deleteStationStart(stationId))
   }
 };
 

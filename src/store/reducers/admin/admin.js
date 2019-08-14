@@ -1,12 +1,14 @@
 import * as actionActions from 'actions/admin/action/actionTypes';
 import * as draftActions from 'actions/admin/draft/actionTypes';
 import * as lineActions from 'actions/admin/line/actionTypes';
+import * as stationActions from 'actions/admin/station/actionTypes';
 import * as townActions from 'actions/admin/town/actionTypes';
 import * as userActions from 'actions/admin/user/actionTypes';
 import { updateObject } from 'shared/utility';
 import * as actionReducers from './action/action';
 import * as draftReducers from './draft/draft';
 import * as lineReducers from './line/line';
+import * as stationReducers from './station/station';
 import * as townReducers from './town/town';
 import * as userReducers from './user/user';
 
@@ -20,7 +22,10 @@ const initialState = {
   draft: null,
   lines: [],
   lineSearchParams: null,
-  linePagination: null
+  linePagination: null,
+  stations: [],
+  stationSearchParams: null,
+  stationPagination: null
 };
 
 const defaultStart = (state) => {
@@ -82,6 +87,23 @@ export const adminReducer = (state = initialState, action) => {
     case lineActions.DELETE_LINE_START: return defaultStart(state);
     case lineActions.DELETE_LINE_SUCCESS: return defaultSuccess(state);
     case lineActions.DELETE_LINE_FAIL: return defaultFail(state);
+
+    // Station
+    case stationActions.SEARCH_STATIONS_START: return stationReducers.searchStationsStart(state, action);
+    case stationActions.SEARCH_STATIONS_SUCCESS: return stationReducers.searchStationsSuccess(state, action);
+    case stationActions.SEARCH_STATIONS_FAIL: return defaultFail(state);
+
+    case stationActions.ADD_STATION_START: return defaultStart(state);
+    case stationActions.ADD_STATION_SUCCESS: return defaultSuccess(state);
+    case stationActions.ADD_STATION_FAIL: return defaultFail(state);
+
+    case stationActions.UPDATE_STATION_START: return defaultStart(state);
+    case stationActions.UPDATE_STATION_SUCCESS: return defaultSuccess(state);
+    case stationActions.UPDATE_STATION_FAIL: return defaultFail(state);
+
+    case stationActions.DELETE_STATION_START: return defaultStart(state);
+    case stationActions.DELETE_STATION_SUCCESS: return defaultSuccess(state);
+    case stationActions.DELETE_STATION_FAIL: return defaultFail(state);
 
 
     default: return state;
