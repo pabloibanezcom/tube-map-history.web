@@ -1,5 +1,5 @@
-import { getOwnUserStart, getTownsStart } from 'actions/admin';
-import { NoResultsBox, TownCard, UserPicture } from 'components/admin';
+import { clearDraft, getOwnUserStart, getTownsStart } from 'actions/admin';
+import { DraftCard, NoResultsBox, TownCard, UserPicture } from 'components/admin';
 import { Button, CountryLabel, Slider } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -9,7 +9,8 @@ import { showDate } from 'util/date';
 class AdminHome extends React.Component {
 
   componentDidMount() {
-    const { getUser, getTowns } = this.props;
+    const { _clearDraft, getUser, getTowns } = this.props;
+    _clearDraft();
     getUser();
     getTowns();
   }
@@ -48,7 +49,18 @@ class AdminHome extends React.Component {
                   <div className="mb-20">
                     <h3 className="mb-10">Your published drafts ({user.drafts.filter(d => d.isPublished).length})</h3>
                     <Slider items={3}>
-                      {user.drafts.filter(d => d.isPublished).map(draft => <div className="pr-15" key={draft._id}><a href={`/admin/draft/${draft._id}`}><TownCard town={draft.town} type="published" /></a></div>)}
+                      {user.drafts.filter(d => d.isPublished).map(draft => (
+                        <div className="pr-15" key={draft._id}>
+                          <Link to={`/admin/draft/${draft._id}`}>
+                            <DraftCard
+                              lines={draft.linesAmount}
+                              stations={draft.stationsAmount}
+                              town={draft.town}
+                              type="published"
+                            />
+                          </Link>
+                        </div>)
+                      )}
                       {!user.drafts.length && <NoResultsBox className="ml-15" noDrafts={!user.drafts.legnth} />}
                     </Slider>
                   </div>
@@ -67,7 +79,18 @@ class AdminHome extends React.Component {
                       />
                     </div>
                     <Slider items={4}>
-                      {user.drafts.filter(d => !d.isPublished).map(draft => <div className="pr-15" key={draft._id}><Link to={`/admin/draft/${draft._id}`}><TownCard town={draft.town} type="draft" /></Link></div>)}
+                      {user.drafts.filter(d => !d.isPublished).map(draft => (
+                        <div className="pr-15" key={draft._id}>
+                          <Link to={`/admin/draft/${draft._id}`}>
+                            <DraftCard
+                              lines={draft.linesAmount}
+                              stations={draft.stationsAmount}
+                              town={draft.town}
+                              type="draft"
+                            />
+                          </Link>
+                        </div>)
+                      )}
                       {!user.drafts.length && <NoResultsBox className="ml-15" />}
                     </Slider>
                   </div>
@@ -99,6 +122,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    _clearDraft: () => dispatch(clearDraft()),
     getUser: () => dispatch(getOwnUserStart()),
     getTowns: () => dispatch(getTownsStart()),
   }

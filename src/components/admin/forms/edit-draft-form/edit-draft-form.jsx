@@ -31,7 +31,7 @@ const EditDraftForm = ({ actionObj, onSubmit, onCancel }) => {
           name="description"
           formRef={register}
           defaultValue={actionObj.description}
-          extraClass={errors.password && 'input-error'}
+          extraClass={errors.description && 'input-error'}
           required
         />
       </FormField>

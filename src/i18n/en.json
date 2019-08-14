@@ -11,6 +11,7 @@
         "STATIONS": "Stations",
         "DISTANCE": "Distance",
         "COLOR": "Color",
+        "FONT": "Font",
         "FONT_COLOR": "Font color",
         "VIEW_STATIONS": "View stations",
         "ADD": "Add",

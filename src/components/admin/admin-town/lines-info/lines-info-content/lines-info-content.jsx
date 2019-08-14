@@ -2,7 +2,7 @@ import { Badge, Button, InfoElement, Translation } from 'components/shared';
 import React from 'react';
 
 const linesInfoContent = (props) => {
-  const { element, actions, onDeleteLine, onEditLine } = props;
+  const { element, actions } = props;
   const i18nPrefix = 'ADMIN.TOWN.LINES';
   return (
     <div className="lines-info-content">
@@ -10,7 +10,7 @@ const linesInfoContent = (props) => {
         <div className="col-lg-8 col-md-8">
           <h4 className="secondary right-line right-line-secondary mb-20"><Translation prefix={i18nPrefix} id="LINE_INFO" /></h4>
           <div className="row">
-            <div className="col-lg-6">
+            <div className="col-lg-8">
               <InfoElement
                 prefix={i18nPrefix}
                 id="NAME"
@@ -32,7 +32,7 @@ const linesInfoContent = (props) => {
                 value={element.distance}
               />
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-4">
               <InfoElement
                 prefix={i18nPrefix}
                 id="COLOR"
@@ -40,7 +40,7 @@ const linesInfoContent = (props) => {
               />
               <InfoElement
                 prefix={i18nPrefix}
-                id="FONT_COLOR"
+                id="FONT"
                 value={<Badge backgroundColor={element.fontColour} text={element.fontColour} border />}
               />
             </div>
@@ -64,18 +64,17 @@ const linesInfoContent = (props) => {
             color="secondary"
             text={<Translation prefix={i18nPrefix} id="EDIT_LINE" />}
             block
-            inverse
-            onClick={() => onEditLine(element)}
+            outline
+            onClick={() => actions.onEditLine(element)}
           />
         </div>
         <div className="col-md-4 mb-sm-10">
           <Button
-            color="secondary"
+            color="danger"
             text={<Translation prefix={i18nPrefix} id="DELETE_LINE" />}
             block
             outline
-            inverse
-            onClick={onDeleteLine}
+            onClick={() => actions.onDeleteLine(element)}
           />
         </div>
       </div>

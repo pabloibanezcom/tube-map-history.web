@@ -77,8 +77,8 @@ class AdminDraft extends React.Component {
                       className="pr-30"
                     />
                     <DraftCard
-                      lines={draft.lines.length}
-                      stations={draft.stations.length}
+                      lines={draft.linesAmount}
+                      stations={draft.stationsAmount}
                       town={draft.town}
                       type={draft.isPublished ? 'published' : 'draft'}
                     />
@@ -131,7 +131,7 @@ class AdminDraft extends React.Component {
                     type="secondary"
                     tabs={tabHeaders}
                   >
-                    <AdminLinesPanel lines={draft.lines} />
+                    <AdminLinesPanel />
                     <AdminStationsPanel stations={draft.stations} />
                     <AdminConnectionsPanel connections={draft.connections} />
                   </TabMenu>

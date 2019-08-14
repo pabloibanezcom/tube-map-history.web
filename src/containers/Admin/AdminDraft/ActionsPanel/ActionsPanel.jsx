@@ -1,5 +1,5 @@
-import { deleteDraftStart, updateDraftStart } from 'actions/admin';
-import { DeleteDraftForm, EditDraftForm } from 'components/admin/forms';
+import { addLineStart, deleteDraftStart, deleteLineStart, updateDraftStart, updateLineStart } from 'actions/admin';
+import { AddLineForm, DeleteDraftForm, DeleteLineForm, EditDraftForm, EditLineForm } from 'components/admin/forms';
 import { Panel } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -12,6 +12,18 @@ const actions = {
   deleteDraft: {
     header: 'Delete draft',
     form: DeleteDraftForm
+  },
+  addLine: {
+    header: 'Add line',
+    form: AddLineForm
+  },
+  editLine: {
+    header: 'Edit line',
+    form: EditLineForm
+  },
+  deleteLine: {
+    header: 'Delete line',
+    form: DeleteLineForm
   }
 }
 
@@ -23,12 +35,21 @@ class ActionsPanel extends React.Component {
   }
 
   handleSubmit(formData) {
-    const { action, updateDraft, deleteDraft } = this.props;
+    const { action, updateDraft, deleteDraft, addLine, updateLine, deleteLine } = this.props;
     if (action === 'editDraft') {
       updateDraft(formData);
     }
     if (action === 'deleteDraft') {
       deleteDraft(formData);
+    }
+    if (action === 'addLine') {
+      addLine(formData);
+    }
+    if (action === 'editLine') {
+      updateLine(formData);
+    }
+    if (action === 'deleteLine') {
+      deleteLine(formData);
     }
   }
 
@@ -50,7 +71,10 @@ class ActionsPanel extends React.Component {
 const mapDispatchToProps = dispatch => {
   return {
     updateDraft: (draft) => dispatch(updateDraftStart(draft)),
-    deleteDraft: (draftId) => dispatch(deleteDraftStart(draftId))
+    deleteDraft: (draftId) => dispatch(deleteDraftStart(draftId)),
+    addLine: (line) => dispatch(addLineStart(line)),
+    updateLine: (line) => dispatch(updateLineStart(line)),
+    deleteLine: (lineId) => dispatch(deleteLineStart(lineId))
   }
 };
 

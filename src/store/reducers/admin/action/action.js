@@ -14,3 +14,16 @@ export const finishAction = (state) => {
     actionObj: null
   }
 }
+
+export const clearDraft = (state) => {
+  return {
+    ...state,
+    actionPanelInitiated: false,
+    action: null,
+    actionObj: null,
+    draft: null,
+    lines: [],
+    lineSearchParams: null,
+    linePagination: null
+  }
+}

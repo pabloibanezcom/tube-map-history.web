@@ -1,5 +1,6 @@
 
-const gmaps = window.google.maps;
+// const gmaps = window.google.maps;
+const gmaps = {};
 
 export const searchPlace = async (searchServicestr) => {
   return new Promise((resolve, reject) => {
