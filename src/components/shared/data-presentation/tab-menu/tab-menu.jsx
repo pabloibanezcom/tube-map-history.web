@@ -50,9 +50,8 @@ class TabMenu extends React.Component {
   }
 
   render() {
-    const { content, panel, tabs, type } = this.props;
+    const { children, panel, tabs, type } = this.props;
     const { activeTab, menuHeaderStyle } = this.state;
-    const Content = tabs[activeTab - 1].content;
     return (
       <div className="tab-menu">
         <ul className={`tab-menu-header tab-menu-header-${type}`} ref={this.menuHeader}>
@@ -71,7 +70,7 @@ class TabMenu extends React.Component {
         <Panel
           background={panel}
         >
-          {content || <Content />}
+          {children[activeTab - 1]}
         </Panel>
       </div>
     )
@@ -80,7 +79,6 @@ class TabMenu extends React.Component {
 
 TabMenu.defaultProps = {
   activeTab: null,
-  content: null,
   panel: 'white',
   type: 'secondary',
   tabs: [],
@@ -89,7 +87,6 @@ TabMenu.defaultProps = {
 
 TabMenu.propTypes = {
   activeTab: PropTypes.string,
-  content: PropTypes.object,
   panel: PropTypes.oneOf(['white', 'primary', 'secondary']),
   type: PropTypes.oneOf(['primary', 'secondary']),
   tabs: PropTypes.arrayOf(PropTypes.object),

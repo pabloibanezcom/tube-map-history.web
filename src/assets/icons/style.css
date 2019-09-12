@@ -1,11 +1,12 @@
 @font-face {
   font-family: 'icomoon';
   src:
-    url('fonts/icomoon.ttf?8xnmwu') format('truetype'),
-    url('fonts/icomoon.woff?8xnmwu') format('woff'),
-    url('fonts/icomoon.svg?8xnmwu#icomoon') format('svg');
+    url('fonts/icomoon.ttf?9wzo5e') format('truetype'),
+    url('fonts/icomoon.woff?9wzo5e') format('woff'),
+    url('fonts/icomoon.svg?9wzo5e#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
+  font-display: block;
 }
 
 [class^="icon-"], [class*=" icon-"] {
@@ -33,6 +34,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-station:before {
+  content: "\e903";
+}
+.icon-map:before {
+  content: "\e902";
+}
+.icon-publish:before {
+  content: "\e901";
+}
 .icon-city:before {
   content: "\e900";
 }
@@ -41,12 +51,6 @@
 }
 .icon-facebook:before {
   content: "\e90e";
-}
-.icon-google:before {
-  content: "\e90b";
-}
-.icon-twitter:before {
-  content: "\e90c";
 }
 .icon-tube-logo:before {
   content: "\e90d";
@@ -57,6 +61,12 @@
 .icon-lines:before {
   content: "\e909";
 }
+.icon-trash-o:before {
+  content: "\f014";
+}
+.icon-delete:before {
+  content: "\f014";
+}
 .icon-image:before {
   content: "\f03e";
 }
@@ -65,6 +75,9 @@
 }
 .icon-picture-o:before {
   content: "\f03e";
+}
+.icon-edit:before {
+  content: "\f040";
 }
 .icon-chevron-left:before {
   content: "\f053";

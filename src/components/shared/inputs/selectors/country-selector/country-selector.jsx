@@ -1,4 +1,4 @@
-import Api from 'http/api';
+import Api from 'http/admin';
 import React from 'react';
 import Select from '../select/select';
 import CountryDropdown from './country-dropdown/country-dropdown';

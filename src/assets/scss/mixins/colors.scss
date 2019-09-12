@@ -48,6 +48,16 @@
     $darken: 10%;
   }
 
+  @if $base==warning {
+    $bg-color: $warning-color;
+    $font-color: $white-color;
+  }
+
+  @if $base==danger {
+    $bg-color: $danger-color;
+    $font-color: $white-color;
+  }
+
   @if $base==primary {
     $bg-color: $primary-color;
     $font-color: $primary-alt-color;

@@ -11,6 +11,7 @@
         "STATIONS": "Stations",
         "DISTANCE": "Distance",
         "COLOR": "Color",
+        "FONT": "Font",
         "FONT_COLOR": "Font color",
         "VIEW_STATIONS": "View stations",
         "ADD": "Add",
@@ -29,6 +30,17 @@
         "CONNECTIONS": "Connections",
         "EDIT_STATION": "Edit station",
         "DELETE_STATION": "Delete station"
+      },
+      "CONNECTIONS": {
+        "CONNECTION_INFO": "Connection info",
+        "NAME": "Name",
+        "YEAR": "Year",
+        "LINE": "Line",
+        "FROM": "From",
+        "TO": "To",
+        "DISTANCE": "Distance",
+        "EDIT_CONNECTION": "Edit connection",
+        "DELETE_CONNECTION": "Delete connection"
       }
     }
   }

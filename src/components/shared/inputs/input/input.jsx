@@ -17,7 +17,7 @@ class Input extends React.Component {
 
     this.state = {
       isFocused: false,
-      value: value || ''
+      currentValue: value || ''
     }
     this.getHtmlType = this.getHtmlType.bind(this);
     this.handleOnFocus = this.handleOnFocus.bind(this);
@@ -25,6 +25,7 @@ class Input extends React.Component {
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnClick = this.handleOnClick.bind(this);
     this.clearValue = this.clearValue.bind(this);
+    this.setValue = this.setValue.bind(this);
     this.formRefValidation = this.formRefValidation.bind(this);
   }
 
@@ -34,6 +35,10 @@ class Input extends React.Component {
       return 'text';
     }
     return type;
+  }
+
+  setValue(value) {
+    this.setState({ currentValue: value });
   }
 
   handleOnFocus() {
@@ -47,7 +52,7 @@ class Input extends React.Component {
   handleOnChange(evt) {
     const { onChange } = this.props;
     evt.persist();
-    this.setState({ value: evt.target.value });
+    this.setValue(evt.target.value);
     if (onChange) {
       onChange(evt.target.value);
     }
@@ -62,9 +67,9 @@ class Input extends React.Component {
   }
 
   clearValue() {
-    this.input.value = '';
-    const { name, onChange } = this.props;
-    onChange({ target: { name, value: '' }, persist: () => { } });
+    const { onChange } = this.props;
+    this.setValue('');
+    onChange('');
   }
 
   formRefValidation() {
@@ -94,18 +99,20 @@ class Input extends React.Component {
   }
 
   render() {
-    const { backgroundColor, color, clearable, formRef, disabled, extraClass, name, placeholder } = this.props;
-    const { isFocused, value } = this.state;
+    const { backgroundColor, color, clearable, defaultValue, formRef, disabled, readOnly, extraClass, name, placeholder, value } = this.props;
+    const { isFocused, currentValue } = this.state;
     return (
       <div className={`custom-input ${isFocused ? 'is-focused' : ''}`}>
         {formRef ? (
           <input
             ref={formRef(this.formRefValidation())}
+            defaultValue={defaultValue}
             className={`input-bg-${backgroundColor} ${color ? `input-text-${color}` : ''} ${extraClass}`}
             type={this.getHtmlType()}
             name={name}
             placeholder={placeholder}
             disabled={disabled}
+            readOnly={readOnly}
             onFocus={this.handleOnFocus}
             onBlur={this.handleOnBlur}
             onChange={this.handleOnChange}
@@ -114,12 +121,13 @@ class Input extends React.Component {
           />
         ) :
           <input
-            value={value}
+            value={value || currentValue}
             className={`input-bg-${backgroundColor} ${color ? `input-text-${color}` : ''} ${extraClass}`}
             type={this.getHtmlType()}
             name={name}
             placeholder={placeholder}
             disabled={disabled}
+            readOnly={readOnly}
             onFocus={this.handleOnFocus}
             onBlur={this.handleOnBlur}
             onChange={this.handleOnChange}
@@ -127,7 +135,7 @@ class Input extends React.Component {
             noValidate
           />
         }
-        {clearable && value ? <a onClick={this.clearValue} className="clear-cross"><Icon name="close" /></a> : null}
+        {clearable && (value || currentValue) ? <a onClick={this.clearValue} className="clear-cross"><Icon name="close" /></a> : null}
       </div>
     )
   }
@@ -139,6 +147,7 @@ Input.defaultProps = {
   clearable: false,
   formRef: null,
   disabled: false,
+  readOnly: false,
   extraClass: '',
   placeholder: null,
   required: false,
@@ -154,12 +163,13 @@ Input.propTypes = {
   clearable: PropTypes.bool,
   formRef: PropTypes.func,
   disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
   extraClass: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   customPattern: PropTypes.object,
-  type: PropTypes.oneOf(['text', 'number', 'email', 'password']),
+  type: PropTypes.oneOf(['text', 'number', 'email', 'password', 'file']),
   onChange: PropTypes.func,
   onClick: PropTypes.func,
 };

@@ -1,0 +1,40 @@
+.slick-slider {
+
+  .slick-track {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .slick-arrow {
+    top: 40%;
+    z-index: 9999;
+    background-color: $white-color;
+    border-radius: 50%;
+
+    &::before {
+      color: $secondary-color;
+      opacity: 1;
+      font-size: 23px;
+    }
+
+    &.slick-disabled {
+      display: none !important;
+    }
+
+    &.slick-prev {
+      left: -10px;
+
+      &::before {
+        margin-left: -1px;
+      }
+    }
+
+    &.slick-next {
+      right: 0px;
+
+      &::before {
+        margin-left: -2px;
+      }
+    }
+  }
+}

@@ -88,11 +88,11 @@ h6 {
   font-weight: 400
 }
 
-a,
+/* a,
 a:hover,
 a:focus {
   color: #333
-}
+} */
 
 a .material-icons,
 a:hover .material-icons,
@@ -5092,7 +5092,7 @@ a.hover-light:focus {
   color: #fff
 }
 
-.color-dark a {
+/* .color-dark a {
   color: #03a9f4
 }
 
@@ -5108,7 +5108,7 @@ a.hover-light:focus {
 .color-dark li a:hover,
 .color-dark li a:focus {
   color: #03a9f4
-}
+} */
 
 .ms-site-title {
   vertical-align: middle;
@@ -5285,7 +5285,7 @@ h6 {
 }
 
 a {
-  color: #03a9f4;
+  /* color: #03a9f4; */
   transition: all ease .1s
 }
 

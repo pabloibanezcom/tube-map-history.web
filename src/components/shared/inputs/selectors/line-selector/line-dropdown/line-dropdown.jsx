@@ -16,7 +16,7 @@ const lineDropdown = (props) => {
       aria-disabled="false"
       aria-selected="true"
     >
-      <span>{option.name}</span>
+      <span>{option.shortName}</span>
     </a>
   )
 }

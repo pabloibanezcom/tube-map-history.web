@@ -1,3 +1,4 @@
+import { Button } from 'components/shared';
 import { convertMapPointToPointArray, convertPointArrayToMapPoint, initMapForPlaceSearch, searchPlace } from 'map';
 import React from 'react';
 import Select from '../select/select';
@@ -9,12 +10,14 @@ class PlaceSelector extends React.Component {
 
   constructor(props) {
     super(props);
-    const { value } = this.props;
+    const { defaultValue } = this.props;
     this.state = {
       predictions: [],
       selectedPlace: null,
-      value
+      mapHidden: !!defaultValue,
+      value: defaultValue
     };
+    this.toggleMap = this.toggleMap.bind(this);
   }
 
   componentDidMount() {
@@ -68,8 +71,15 @@ class PlaceSelector extends React.Component {
     };
   }
 
+  toggleMap() {
+    this.setState((prevState) => {
+      return { mapHidden: !prevState.mapHidden };
+    })
+  }
+
   render() {
-    const { predictions, value } = this.state;
+    const { predictions, value, mapHidden } = this.state;
+    const { defaultName } = this.props;
     return (
       <div className="place-search">
         <Select
@@ -79,8 +89,22 @@ class PlaceSelector extends React.Component {
           selected={PlaceSelected}
           onInputChange={this.handleOnInputChange}
           onChange={this.handleOnChange}
+          value={defaultName}
         />
-        {value ? <div id="place-search-map-container" /> : null}
+        {value ? (
+          <React.Fragment>
+            <div id="place-search-map-container" className={mapHidden ? 'map-hidden' : ''} />
+            <div className="flex flex-horizontal-end">
+              <Button
+                type="link"
+                text={mapHidden ? 'Show map' : 'Hide map'}
+                color="secondary"
+                onClick={this.toggleMap}
+              />
+            </div>
+
+          </React.Fragment>
+        ) : null}
       </div>
     )
   }

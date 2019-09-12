@@ -1,7 +1,8 @@
-import { ColorSelector, CountrySelector, Input, LineSelector, PlaceSelector, Selector, StationSelector } from 'components/shared';
+import { ColorSelector, CountrySelector, Input, LineSelector, PlaceSelector, Selector, StationSelector, TownSelector } from 'components/shared';
 import React from 'react';
 import lines from './data/lines.json';
 import stations from './data/stations.json';
+import towns from './data/towns.json';
 
 class Inputs extends React.Component {
 
@@ -10,6 +11,7 @@ class Inputs extends React.Component {
     this.state = {
       option: null,
       country: null,
+      town: null,
       line: null,
       place: null,
       station: null,
@@ -24,7 +26,7 @@ class Inputs extends React.Component {
   }
 
   render() {
-    const { country, line, option, place, station, color, color2 } = this.state;
+    const { country, line, option, place, station, town, color, color2 } = this.state;
     return (
       <div className="showroom-selectors">
         <h1 className="right-line mb-4">Inputs</h1>
@@ -162,6 +164,18 @@ class Inputs extends React.Component {
               />
               <div className="showroom-result">
                 <span>{country ? `Country selected: ${country.name}` : ''}</span>
+              </div>
+            </div>
+          </div>
+          <div className="col">
+            <div className="showroom-element">
+              <label>TownSelector</label>
+              <TownSelector
+                towns={towns}
+                onChange={(value) => this.handleSelect('town', value)}
+              />
+              <div className="showroom-result">
+                <span>{town ? `Town selected: ${town.name}` : ''}</span>
               </div>
             </div>
           </div>

@@ -15,7 +15,7 @@ const store = getStore(history);
 const app = (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <App />
+      <App history={history} />
     </ConnectedRouter>
   </Provider>
 );

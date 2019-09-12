@@ -1,8 +1,15 @@
 import { connectRouter, routerMiddleware } from 'connected-react-router';
-import { adminReducer, authReducer, mainReducer } from 'reducers';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import createSagaMiddleware from "redux-saga";
-import { watchAll } from './sagas';
+// Admin
+import { adminReducer } from 'store/admin/reducers';
+import { watchAdmin } from 'store/admin/sagas';
+// Auth
+import { authReducer } from 'store/auth/reducers';
+import { watchAuth } from 'store/auth/sagas';
+// Public
+import { publicReducer } from 'store/public/reducers';
+import { watchPublic } from 'store/public/sagas';
 
 export const getStore = (history) => {
   /* eslint-disable no-underscore-dangle */
@@ -13,8 +20,8 @@ export const getStore = (history) => {
   const createRootReducer = (_history) => combineReducers({
     router: connectRouter(_history),
     auth: authReducer,
-    main: mainReducer,
     admin: adminReducer,
+    public: publicReducer
   });
 
   const store = createStore(
@@ -27,7 +34,9 @@ export const getStore = (history) => {
     )
   );
 
-  sagaMiddleware.run(watchAll);
+  sagaMiddleware.run(watchAdmin);
+  sagaMiddleware.run(watchAuth);
+  sagaMiddleware.run(watchPublic);
 
   return store;
 }

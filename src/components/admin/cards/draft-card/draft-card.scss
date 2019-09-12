@@ -1,0 +1,84 @@
+.draft-card {
+  // background-color: $white-color;
+  color: $body-color;
+
+  .town-img {
+    width: 100%;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  .town-name {
+    font-size: 18px;
+    font-weight: 400;
+    color: $secondary-color;
+  }
+
+  .town-year {
+    color: $primary-color;
+  }
+
+  .country-flag {
+    width: 16px;
+    height: 16px;
+    margin-top: 4px;
+    margin-right: 5px;
+  }
+
+  .country-name {
+    font-size: 12px;
+    font-weight: 200;
+  }
+
+  .draft-counters,
+  .town-counters {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1px;
+
+    .counter-number {
+      font-size: 14px;
+      margin-right: 2px;
+      margin-left: 8px;
+      font-weight: 400;
+    }
+
+    .icon {
+      margin-top: 5px;
+    }
+  }
+
+  &.town-card-published {
+    .info-panel {
+      background-color: $primary-color;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      color: $primary-alt-color;
+
+      .town-name {
+        color: $primary-alt-color;
+      }
+    }
+  }
+
+  &.town-card-draft {
+    .info-panel {
+      background-color: $secondary-color;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      color: $secondary-alt-color;
+
+      .town-name {
+        color: $secondary-alt-color;
+      }
+    }
+  }
+
+  &.town-card-town {
+    .town-img {
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+  }
+
+}

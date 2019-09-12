@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import Buttons from './Buttons/Buttons';
 import Badges from './Data-Presentation/Badges/Badges';
 import Collapses from './Data-Presentation/Collapses/Collapses';
+import CountryLabels from './Data-Presentation/Country-Labels/Country-Labels';
 import DataPresentation from './Data-Presentation/Data-Presentation';
 import Icons from './Data-Presentation/Icons/Icons';
 import LoadingSpinners from './Data-Presentation/Loading-Spinners/Loading-Spinners';
@@ -23,6 +24,7 @@ const routes = (
     <Route path={`${baseUrl}/buttons`} component={Buttons} />
     <Route path={`${baseUrl}/data-presentation`} exact component={DataPresentation} />
     <Route path={`${baseUrl}/data-presentation/collapses`} component={Collapses} />
+    <Route path={`${baseUrl}/data-presentation/country-labels`} component={CountryLabels} />
     <Route path={`${baseUrl}/data-presentation/badges`} component={Badges} />
     <Route path={`${baseUrl}/data-presentation/icons`} component={Icons} />
     <Route path={`${baseUrl}/data-presentation/loading-spinners`} component={LoadingSpinners} />

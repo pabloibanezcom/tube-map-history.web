@@ -29,6 +29,16 @@ const dataPresentation = () => {
         <div className="col">
           <div className="showroom-element showroom-link">
             <Button
+              to="/showroom/data-presentation/country-labels"
+              text="Country labels"
+              type="link"
+              color="secondary"
+            />
+          </div>
+        </div>
+        <div className="col">
+          <div className="showroom-element showroom-link">
+            <Button
               to="/showroom/data-presentation/icons"
               text="Icons"
               type="link"

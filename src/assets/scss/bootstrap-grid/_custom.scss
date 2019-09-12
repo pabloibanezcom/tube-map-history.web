@@ -1,0 +1,7 @@
+@media (min-width: map-get($grid-breakpoints, xl)) {
+  .container {
+    max-width: none;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}

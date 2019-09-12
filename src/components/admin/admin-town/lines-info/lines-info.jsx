@@ -4,8 +4,7 @@ import LinesInfoContent from './lines-info-content/lines-info-content';
 import LinesInfoHeader from './lines-info-header/lines-info-header';
 
 const linesInfo = (props) => {
-  const { lines, viewLineStations, onAddLine } = props;
-  console.log(props);
+  const { lines, viewLineStations, onAddLine, onEditLine, onDeleteLine } = props;
   return (
     <div className="lines-info">
       <div className="d-flex justify-content-end mb-30">
@@ -21,7 +20,7 @@ const linesInfo = (props) => {
         hoverType="secondary"
         header={LinesInfoHeader}
         content={LinesInfoContent}
-        actions={{ viewLineStations }}
+        actions={{ viewLineStations, onEditLine, onDeleteLine }}
         {...props}
       />
     </div>
