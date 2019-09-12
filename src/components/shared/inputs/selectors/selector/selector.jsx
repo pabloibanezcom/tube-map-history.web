@@ -19,7 +19,7 @@ class Selector extends React.Component {
   }
 
   render() {
-    const { config, options, setValue } = this.props;
+    const { config, options, defaultValue } = this.props;
     return (
       <div className="line-selector">
         <Select
@@ -28,7 +28,7 @@ class Selector extends React.Component {
           dropdown={DefaultDropdown}
           selected={DefaultSelected}
           onChange={this.handleOnChange}
-          setValue={setValue}
+          defaultValue={defaultValue}
         />
       </div>
     )

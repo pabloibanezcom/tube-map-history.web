@@ -1,10 +1,8 @@
-import { finishAction, searchStationsStart, startAction } from 'actions/admin';
 import StationsInfo from 'components/admin/admin-town/stations-info/stations-info';
 import { Pagination } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
-import defaultPagination from './defaultPagination.json';
-import defaultSearchParams from './defaultSearchParams.json';
+import { finishAction, searchParamsChangeStart, startAction } from 'store/admin/actions';
 
 class AdminStationsPanel extends React.Component {
 
@@ -12,6 +10,7 @@ class AdminStationsPanel extends React.Component {
     super(props);
     this.search = this.search.bind(this);
     this.changePage = this.changePage.bind(this);
+    this.changeSearchParams = this.changeSearchParams.bind(this);
     this.addStationStart = this.addStationStart.bind(this);
     this.editStationStart = this.editStationStart.bind(this);
     this.deleteStationStart = this.deleteStationStart.bind(this);
@@ -21,22 +20,19 @@ class AdminStationsPanel extends React.Component {
     this.search();
   }
 
-  search(page) {
-    const { stationSearchParams, stationPagination, searchStations } = this.props;
-    let pagination;
-    if (page) {
-      pagination = {
-        ...stationPagination,
-        page
-      }
-    } else {
-      pagination = stationPagination || defaultPagination;
-    }
-    searchStations(stationSearchParams || defaultSearchParams, pagination);
+  search(params, page) {
+    const { searchParams, pagination, searchStations } = this.props;
+    const _pagination = page ? { ...pagination, page } : pagination;
+    const _searchParams = params ? Object.assign({}, searchParams, params) : searchParams;
+    searchStations(_searchParams, _pagination);
   }
 
   changePage(page) {
-    this.search(page);
+    this.search(null, page);
+  }
+
+  changeSearchParams(searchParams) {
+    this.search(searchParams);
   }
 
   addStationStart() {
@@ -55,19 +51,23 @@ class AdminStationsPanel extends React.Component {
   }
 
   render() {
-    const { stations, stationPagination } = this.props;
+    const { draft, elementsType, stations, pagination } = this.props;
     return (
       <div className="admin-stations-panel">
-        <StationsInfo
-          stations={stations}
-          onAddStation={this.addStationStart}
-          onEditStation={this.editStationStart}
-          onDeleteStation={this.deleteStationStart}
-        />
+        {elementsType === 'station' ? (
+          <StationsInfo
+            draftId={draft._id}
+            stations={stations}
+            onAddStation={this.addStationStart}
+            onEditStation={this.editStationStart}
+            onDeleteStation={this.deleteStationStart}
+            onChangeParams={this.changeSearchParams}
+          />
+        ) : null}
         {stations.length ? (
           <Pagination
             color="secondary"
-            pagination={stationPagination}
+            pagination={pagination}
             onPageChange={this.changePage}
           />
         ) : null}
@@ -78,9 +78,11 @@ class AdminStationsPanel extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    stations: state.admin.stations,
-    stationSearchParams: state.admin.stationSearchParams,
-    stationPagination: state.admin.stationPagination
+    draft: state.admin.draft,
+    elementsType: state.admin.elementsType,
+    stations: state.admin.elements,
+    searchParams: state.admin.searchParams,
+    pagination: state.admin.pagination
   };
 };
 
@@ -88,7 +90,7 @@ const mapDispatchToProps = dispatch => {
   return {
     _startAction: (actionName, actionObj) => dispatch(startAction(actionName, actionObj)),
     _finishAction: () => dispatch(finishAction()),
-    searchStations: (searchParams, pagination) => dispatch(searchStationsStart(searchParams, pagination))
+    searchStations: (searchParams, pagination) => dispatch(searchParamsChangeStart(searchParams, pagination, 'station'))
   }
 };
 

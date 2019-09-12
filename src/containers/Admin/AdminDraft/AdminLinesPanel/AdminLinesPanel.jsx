@@ -1,10 +1,8 @@
-import { finishAction, searchLinesStart, startAction } from 'actions/admin';
 import LinesInfo from 'components/admin/admin-town/lines-info/lines-info';
 import { Pagination } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
-import defaultPagination from './defaultPagination.json';
-import defaultSearchParams from './defaultSearchParams.json';
+import { finishAction, searchParamsChangeStart, startAction } from 'store/admin/actions';
 
 class AdminLinesPanel extends React.Component {
 
@@ -22,17 +20,9 @@ class AdminLinesPanel extends React.Component {
   }
 
   search(page) {
-    const { lineSearchParams, linePagination, searchLines } = this.props;
-    let pagination;
-    if (page) {
-      pagination = {
-        ...linePagination,
-        page
-      }
-    } else {
-      pagination = linePagination || defaultPagination;
-    }
-    searchLines(lineSearchParams || defaultSearchParams, pagination);
+    const { searchParams, pagination, searchLines } = this.props;
+    const _pagination = page ? { ...pagination, page } : pagination;
+    searchLines(searchParams, _pagination);
   }
 
   changePage(page) {
@@ -55,19 +45,21 @@ class AdminLinesPanel extends React.Component {
   }
 
   render() {
-    const { lines, linePagination } = this.props;
+    const { elementsType, lines, pagination } = this.props;
     return (
       <div className="admin-lines-panel">
-        <LinesInfo
-          lines={lines}
-          onAddLine={this.addLineStart}
-          onEditLine={this.editLineStart}
-          onDeleteLine={this.deleteLineStart}
-        />
+        {elementsType === 'line' ? (
+          <LinesInfo
+            lines={lines}
+            onAddLine={this.addLineStart}
+            onEditLine={this.editLineStart}
+            onDeleteLine={this.deleteLineStart}
+          />
+        ) : null}
         {lines.length ? (
           <Pagination
             color="secondary"
-            pagination={linePagination}
+            pagination={pagination}
             onPageChange={this.changePage}
           />
         ) : null}
@@ -78,9 +70,10 @@ class AdminLinesPanel extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    lines: state.admin.lines,
-    lineSearchParams: state.admin.lineSearchParams,
-    linePagination: state.admin.linePagination
+    elementsType: state.admin.elementsType,
+    lines: state.admin.elements,
+    searchParams: state.admin.searchParams,
+    pagination: state.admin.pagination
   };
 };
 
@@ -88,7 +81,7 @@ const mapDispatchToProps = dispatch => {
   return {
     _startAction: (actionName, actionObj) => dispatch(startAction(actionName, actionObj)),
     _finishAction: () => dispatch(finishAction()),
-    searchLines: (searchParams, pagination) => dispatch(searchLinesStart(searchParams, pagination))
+    searchLines: (searchParams, pagination) => dispatch(searchParamsChangeStart(searchParams, pagination, 'line'))
   }
 };
 

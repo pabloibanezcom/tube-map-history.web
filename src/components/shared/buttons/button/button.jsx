@@ -4,7 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const button = (props) => {
-  const { fontColor, backgroundColor, block, disabled, className, icon, inverse, hover, onClick, outline, size, color, uppercase, submit, text, i18nPrefix, i18nText, to, type } = props;
+  const { fontColor, backgroundColor, block, disabled, className, icon, inverse, hover, onClick, href, newPage, outline, size, color, uppercase, submit, text, i18nPrefix, i18nText, to, type } = props;
   let buttonClasses = '';
   if (type === 'btn') {
     buttonClasses = `${uppercase ? 'btn-uppercase' : ''}  ${inverse ? 'btn-inverse' : ''} ${outline ? 'btn-outline' : ''} ${block ? 'btn-block' : ''}`;
@@ -24,7 +24,7 @@ const button = (props) => {
       </Link>
     );
   }
-  if (type === 'btn') {
+  if (type === 'btn' && !href) {
     return (
       /* eslint-disable-next-line react/button-has-type */
       <button
@@ -39,7 +39,23 @@ const button = (props) => {
       </button>
     );
   }
-  if (type === 'link') {
+  if (type === 'btn' && href) {
+    return (
+      /* eslint-disable-next-line react/button-has-type */
+      <a
+        type={submit ? 'submit' : 'button'}
+        className={classStr}
+        disabled={disabled}
+        style={style}
+        href={href}
+        target={newPage ? '_blank' : null}
+      >
+        {icon ? <Icon name={icon} /> : null}
+        {renderedText}
+      </a>
+    );
+  }
+  if (type === 'link' && !href) {
     return (
       <a
         className={classStr}
@@ -68,6 +84,8 @@ button.defaultProps = {
   color: 'primary',
   uppercase: true,
   onClick: () => { },
+  href: null,
+  newPage: false,
   submit: false,
   text: null,
   i18nPrefix: null,
@@ -96,6 +114,8 @@ button.propTypes = {
   i18nPrefix: PropTypes.string,
   i18nText: PropTypes.string,
   onClick: PropTypes.func,
+  href: PropTypes.string,
+  newPage: PropTypes.bool,
   submit: PropTypes.bool,
   to: PropTypes.string,
   type: PropTypes.oneOf(['link', 'btn'])

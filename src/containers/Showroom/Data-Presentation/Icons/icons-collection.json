@@ -34,5 +34,6 @@
   "publish",
   "map",
   "delete",
-  "edit"
+  "edit",
+  "station"
 ]

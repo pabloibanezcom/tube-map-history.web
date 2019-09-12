@@ -61,7 +61,7 @@
     "react-custom-scrollbars": "^4.2.1",
     "react-dev-utils": "^9.0.1",
     "react-dom": "^16.8.6",
-    "react-dropzone": "^10.1.5",
+    "react-dropzone": "^10.1.7",
     "react-hook-form": "^3.10.3",
     "react-intl": "^2.9.0",
     "react-modal": "^3.8.1",

@@ -28,11 +28,12 @@ class App extends Component {
   }
 
   render() {
+    const { history } = this.props;
     const { locale, messages } = this.state;
     return (
       <IntlProvider key={locale} locale={locale} messages={messages}>
         <div className="ms-site-container">
-          {routes}
+          {routes(history)}
         </div>
       </IntlProvider>
     );

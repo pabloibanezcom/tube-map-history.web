@@ -36,6 +36,7 @@ const DeleteStationForm = ({ actionObj, onSubmit, onCancel }) => {
               submit
               color="danger"
               text="Confirm"
+              outline
               block
             />
           </div>
@@ -43,7 +44,7 @@ const DeleteStationForm = ({ actionObj, onSubmit, onCancel }) => {
             <Button
               color="secondary"
               text="Cancel"
-              outstation
+              outline
               block
               onClick={onCancel}
             />

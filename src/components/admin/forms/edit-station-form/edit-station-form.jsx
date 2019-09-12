@@ -1,13 +1,24 @@
-import { Button, FormField, Input } from 'components/shared';
-import React from 'react';
+import { Button, FormField, Input, PlaceSelector } from 'components/shared';
+import React, { useEffect } from 'react';
 import useForm from 'react-hook-form';
 
 const EditStationForm = ({ actionObj, onSubmit, onCancel }) => {
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, setValue, setError } = useForm();
+
+  useEffect(() => {
+    register({ name: 'geometry' }, { required: 'You must enter a position' });
+  }, [register]);
+
+  const handleSelectorChange = (name, selectedOption) => {
+    setValue(name, selectedOption);
+    setError(name, null);
+  }
 
   const processSubmit = (formData) => {
     onSubmit({ ...formData, _id: actionObj._id });
   }
+
+  setValue('geometry', actionObj.geometry);
 
   return (
     <form className="form" onSubmit={handleSubmit(processSubmit)}>
@@ -46,6 +57,16 @@ const EditStationForm = ({ actionObj, onSubmit, onCancel }) => {
           formRef={register}
           defaultValue={actionObj.yearEnd}
           extraClass={errors.yearEnd && 'input-error'}
+        />
+      </FormField>
+      <FormField
+        label="Position"
+        error={errors.geometry && errors.geometry.message}
+      >
+        <PlaceSelector
+          defaultValue={actionObj.geometry}
+          defaultName={actionObj.name}
+          onChange={(value) => handleSelectorChange('geometry', value)}
         />
       </FormField>
       <div className="row">

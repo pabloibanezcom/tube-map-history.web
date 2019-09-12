@@ -11,9 +11,8 @@ const stationDropdown = (props) => {
       aria-disabled="false"
       aria-selected="true"
     >
-      {option.town ? <TownLogo town={option.town} /> : null}
+      {option.draft && option.draft.town ? <TownLogo townUrl={option.draft.town.url} /> : null}
       <span className="station-name">{option.name}</span>
-      <span className="station-year">{option.year}</span>
     </a>
   )
 }

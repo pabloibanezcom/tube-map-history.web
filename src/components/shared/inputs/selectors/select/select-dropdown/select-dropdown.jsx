@@ -103,19 +103,6 @@ class SelectDropdown extends React.Component {
 
   filterRemote(value) {
     const { onInputChange } = this.props;
-    // if (value.length >= this.props.config.remote.minChars) {
-    //   search(this.props.config.remote.model, { [this.props.config.remote.propertyName]: value })
-    //     .then(res => {
-    //       const filteredOptions = [
-    //         ...this.getNoneOption(),
-    //         ...res.data
-    //       ];
-    //       this.setState({ filteredOptions: filteredOptions, activeIndex: 0 })
-    //     })
-    //     .catch(err => console.log(err));
-    // } else {
-    //   this.setState({ filteredOptions: [], activeIndex: 0 });
-    // }
     onInputChange(value);
     this.setState({ searchStr: value });
   }

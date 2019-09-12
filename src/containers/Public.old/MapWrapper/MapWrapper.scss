@@ -1,0 +1,17 @@
+.map-wrapper {
+  width: 100%;
+  #map-container {
+    &.main {
+      position: absolute;
+      top: 70px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    &.print {
+      position: relative;
+      height: 400px;
+      width: 600px;
+    }
+  }
+}

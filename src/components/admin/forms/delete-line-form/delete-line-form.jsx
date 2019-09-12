@@ -36,6 +36,7 @@ const DeleteLineForm = ({ actionObj, onSubmit, onCancel }) => {
               submit
               color="danger"
               text="Confirm"
+              outline
               block
             />
           </div>

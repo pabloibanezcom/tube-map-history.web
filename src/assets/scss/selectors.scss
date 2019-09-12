@@ -1,5 +1,6 @@
 .dropdown {
-  margin-top: 0;
+  margin-top: -4px;
+  height: 36px;
 
   .dropdown-menu {
     top: -2px;
@@ -17,6 +18,11 @@
 
   .btn {
     text-transform: none;
+  }
+
+  .filter-option {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
 }

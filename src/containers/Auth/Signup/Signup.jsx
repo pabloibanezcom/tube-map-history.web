@@ -1,9 +1,9 @@
-import * as actions from 'actions/auth';
 import SignUpForm from 'components/public/auth/signup/signup-form/signup-form';
 import { Button, Panel } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
+import * as actions from 'store/auth/actions';
 
 class Signup extends React.Component {
 

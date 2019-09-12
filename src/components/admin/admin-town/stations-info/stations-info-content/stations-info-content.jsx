@@ -43,6 +43,7 @@ const stationsInfoContent = ({ element, actions }) => {
         </div>
       </div>
       <div className="row">
+        <div className="col-md-4 mb-sm-10" />
         <div className="col-md-4 mb-sm-10">
           <Button
             color="secondary"
@@ -52,7 +53,7 @@ const stationsInfoContent = ({ element, actions }) => {
             onClick={() => actions.onEditStation(element)}
           />
         </div>
-        <div className="col-md-4 mb-sm-10 offset-md-4">
+        <div className="col-md-4 mb-sm-10">
           <Button
             color="danger"
             text={<Translation prefix={i18nPrefix} id="DELETE_STATION" />}

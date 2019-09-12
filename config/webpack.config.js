@@ -279,10 +279,8 @@ module.exports = function (webpackEnv) {
         'containers': path.resolve('src/containers'),
         'components': path.resolve('src/components'),
         'http': path.resolve('src/http'),
-        'actions': path.resolve('src/store/actions'),
-        'reducers': path.resolve('src/store/reducers'),
-        'sagas': path.resolve('src/store/sagas'),
         'shared': path.resolve('src/shared'),
+        'store': path.resolve('src/store'),
         'map': path.resolve('src/map'),
         'util': path.resolve('src/util')
       },

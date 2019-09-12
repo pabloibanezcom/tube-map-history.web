@@ -1,17 +1,16 @@
-import { clearDraft, getOwnUserStart, getTownsStart } from 'actions/admin';
 import { DraftCard, NoResultsBox, TownCard, UserPicture } from 'components/admin';
 import { Button, CountryLabel, Slider } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from "react-router-dom";
+import { clearDraft, getTownsStart } from 'store/admin/actions';
 import { showDate } from 'util/date';
 
 class AdminHome extends React.Component {
 
   componentDidMount() {
-    const { _clearDraft, getUser, getTowns } = this.props;
+    const { _clearDraft, getTowns } = this.props;
     _clearDraft();
-    getUser();
     getTowns();
   }
 
@@ -123,7 +122,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     _clearDraft: () => dispatch(clearDraft()),
-    getUser: () => dispatch(getOwnUserStart()),
     getTowns: () => dispatch(getTownsStart()),
   }
 };

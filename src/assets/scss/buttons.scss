@@ -12,6 +12,7 @@
   vertical-align: middle;
   overflow: visible;
   cursor: pointer;
+  appearance: none !important;
 
   &:disabled {
     cursor: inherit;

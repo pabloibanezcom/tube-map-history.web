@@ -6,7 +6,7 @@ const linesInfoContent = ({ element, actions }) => {
   return (
     <div className="lines-info-content">
       <div className="row mb-20">
-        <div className="col-lg-8 col-md-8">
+        <div className="col-lg-12 col-md-12">
           <h4 className="secondary right-line right-line-secondary mb-20"><Translation prefix={i18nPrefix} id="LINE_INFO" /></h4>
           <div className="row">
             <div className="col-lg-8">

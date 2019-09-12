@@ -4,9 +4,10 @@ import SelectDropdown from './select-dropdown/select-dropdown';
 class Select extends React.Component {
 
   constructor(props) {
+    const { defaultValue } = props;
     super(props);
     this.state = {
-      selectedOption: null,
+      selectedOption: defaultValue || null,
       expanded: false
     }
     this.showDropdown = this.showDropdown.bind(this);

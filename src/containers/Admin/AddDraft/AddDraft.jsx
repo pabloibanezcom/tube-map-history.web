@@ -1,8 +1,8 @@
-import { addDraftStart, getTownsStart } from 'actions/admin';
 import { AddDraftForm } from 'components/admin/forms';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
+import { addDraftStart, getTownsStart } from 'store/admin/actions';
 
 class AddDraft extends React.Component {
 

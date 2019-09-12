@@ -2,14 +2,19 @@ import React from 'react';
 
 const lineSelected = (props) => {
   const { selectedOption } = props;
-  const style = selectedOption ? {
-    borderLeft: `5px solid ${selectedOption.colour}`
+  const borderStyle = selectedOption ? {
+    borderLeft: `5px solid ${selectedOption.colour}`,
+
   } : null;
+  const innerStyle = selectedOption ? {
+    paddingLeft: 8,
+  } : null;
+
   return (
-    <div className="filter-option" style={style}>
-      <div className="filter-option-inner">
-        <div className="filter-option-inner-inner">
-          {selectedOption ? selectedOption.name : 'Select a line'}
+    <div className="filter-option">
+      <div className="filter-option-inner" style={borderStyle}>
+        <div className="filter-option-inner-inner" style={innerStyle}>
+          {selectedOption ? selectedOption.shortName : 'Select a line'}
         </div>
       </div>
     </div>
