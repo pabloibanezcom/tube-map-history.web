@@ -8,17 +8,12 @@ const layout = () => {
       <div className="row">
         <div className="col">
           <div className="showroom-element showroom-link">
-            <Button
-              to="/showroom/layout/modals"
-              text="Modals"
-              type="link"
-              color="secondary"
-            />
+            <Button to="/showroom/layout/modals" text="Modals" type="link" color="secondary" />
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default layout;

@@ -7,24 +7,19 @@ const connectionsInfoContent = ({ element, actions }) => {
     <div className="lines-info-content">
       <div className="row mb-20">
         <div className="col-lg-12 col-md-12">
-          <h4 className="secondary right-line right-line-secondary mb-20"><Translation prefix={i18nPrefix} id="CONNECTION_INFO" /></h4>
+          <h4 className="secondary right-line right-line-secondary mb-20">
+            <Translation prefix={i18nPrefix} id="CONNECTION_INFO" />
+          </h4>
           <div className="row">
             <div className="col-lg-5">
               <InfoElement
                 prefix={i18nPrefix}
                 id="LINE"
-                value={<LineBadge
-                  key={element.line._id}
-                  line={element.line}
-                />}
+                value={<LineBadge key={element.line._id} line={element.line} />}
               />
             </div>
             <div className="col-lg-3">
-              <InfoElement
-                prefix={i18nPrefix}
-                id="YEAR"
-                value={<Badge text={element.year} />}
-              />
+              <InfoElement prefix={i18nPrefix} id="YEAR" value={<Badge text={element.year} />} />
             </div>
             <div className="col-lg-4">
               <InfoElement
@@ -36,18 +31,10 @@ const connectionsInfoContent = ({ element, actions }) => {
           </div>
           <div className="row">
             <div className="col-lg-5">
-              <InfoElement
-                prefix={i18nPrefix}
-                id="FROM"
-                value={element.stations[0].name}
-              />
+              <InfoElement prefix={i18nPrefix} id="FROM" value={element.stations[0].name} />
             </div>
             <div className="col-lg-5">
-              <InfoElement
-                prefix={i18nPrefix}
-                id="TO"
-                value={element.stations[1].name}
-              />
+              <InfoElement prefix={i18nPrefix} id="TO" value={element.stations[1].name} />
             </div>
           </div>
         </div>
@@ -74,7 +61,7 @@ const connectionsInfoContent = ({ element, actions }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default connectionsInfoContent;

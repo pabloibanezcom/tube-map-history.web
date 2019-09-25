@@ -19,7 +19,7 @@ export const searchParamsChangeSuccess = (elementsType, { elements, pagination }
   };
 };
 
-export const searchParamsChangeFail = (error) => {
+export const searchParamsChangeFail = error => {
   return {
     type: actionTypes.SEARCH_PARAMS_CHANGE_FAIL,
     error

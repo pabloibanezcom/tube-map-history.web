@@ -4,10 +4,9 @@ import React, { useEffect } from 'react';
 import useForm from 'react-hook-form';
 import { hasErrors } from 'util/data';
 
-const SignUpForm = (props) => {
+const SignUpForm = props => {
   const { onSubmit } = props;
   const { register, formState, handleSubmit, errors, getValues, setError, setValue } = useForm();
-
 
   useEffect(() => {
     register({ name: 'country' }, { required: true });
@@ -16,30 +15,27 @@ const SignUpForm = (props) => {
   const handleSelectorChange = (name, selectedOption) => {
     setValue(name, selectedOption);
     setError(name, null);
-  }
+  };
 
   const checkRepeatPassword = (repeatPassword, isSubmitted) => {
     if ((isSubmitted || formState.isSubmitted) && repeatPassword !== getValues().password) {
-      setError('repeatPassword', 'notMatch', 'Passwords must match')
+      setError('repeatPassword', 'notMatch', 'Passwords must match');
     }
-  }
+  };
 
-  const submit = (formData) => {
+  const submit = formData => {
     checkRepeatPassword(getValues().repeatPassword, true);
     if (!hasErrors(errors)) {
       onSubmit(formData);
       console.log(formData);
     }
-  }
+  };
 
   return (
     <form className="form" onSubmit={handleSubmit(submit)}>
       <div className="row">
         <div className="col-6">
-          <FormField
-            label="Email Address"
-            error={errors.email && errors.email.message}
-          >
+          <FormField label="Email Address" error={errors.email && errors.email.message}>
             <Input
               type="email"
               name="email"
@@ -49,10 +45,7 @@ const SignUpForm = (props) => {
               required
             />
           </FormField>
-          <FormField
-            label="Password"
-            error={errors.password && errors.password.message}
-          >
+          <FormField label="Password" error={errors.password && errors.password.message}>
             <Input
               type="password"
               name="password"
@@ -76,10 +69,7 @@ const SignUpForm = (props) => {
           </FormField>
         </div>
         <div className="col-6">
-          <FormField
-            label="First name"
-            error={errors.firstName && errors.firstName.message}
-          >
+          <FormField label="First name" error={errors.firstName && errors.firstName.message}>
             <Input
               type="text"
               name="firstName"
@@ -88,10 +78,7 @@ const SignUpForm = (props) => {
               required
             />
           </FormField>
-          <FormField
-            label="Last name"
-            error={errors.lastName && errors.lastName.message}
-          >
+          <FormField label="Last name" error={errors.lastName && errors.lastName.message}>
             <Input
               type="text"
               name="lastName"
@@ -100,23 +87,15 @@ const SignUpForm = (props) => {
               required
             />
           </FormField>
-          <FormField
-            label="Country"
-            error={errors.country && 'You must select a country'}
-          >
+          <FormField label="Country" error={errors.country && 'You must select a country'}>
             <CountrySelector
               name="country"
-              onChange={(selectedOptions) => handleSelectorChange('country', selectedOptions)}
+              onChange={selectedOptions => handleSelectorChange('country', selectedOptions)}
             />
           </FormField>
         </div>
       </div>
-      <Button
-        submit
-        color="primary"
-        text="Sign Up"
-        extraClass="mb-20"
-      />
+      <Button submit color="primary" text="Sign Up" extraClass="mb-20" />
     </form>
   );
 };

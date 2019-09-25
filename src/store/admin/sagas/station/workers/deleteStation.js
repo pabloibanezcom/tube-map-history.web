@@ -1,6 +1,10 @@
 import Api from 'http/admin';
 import { put } from 'redux-saga/effects';
-import { deleteStationFail, deleteStationSuccess, searchParamsChangeStart } from 'store/admin/actions';
+import {
+  deleteStationFail,
+  deleteStationSuccess,
+  searchParamsChangeStart
+} from 'store/admin/actions';
 import { error, info } from 'util/notification';
 
 export function* deleteStationSagaStart(action) {

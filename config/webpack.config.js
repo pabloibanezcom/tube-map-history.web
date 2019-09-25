@@ -282,7 +282,8 @@ module.exports = function (webpackEnv) {
         'shared': path.resolve('src/shared'),
         'store': path.resolve('src/store'),
         'map': path.resolve('src/map'),
-        'util': path.resolve('src/util')
+        'util': path.resolve('src/util'),
+        'ui-kit': path.resolve('src/ui-kit')
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding

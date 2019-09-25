@@ -1,9 +1,8 @@
 import { Icon } from 'components/shared';
 import React from 'react';
-import onClickOutside from "react-onclickoutside";
+import onClickOutside from 'react-onclickoutside';
 
 class ModalContent extends React.Component {
-
   handleClickOutside() {
     const { onClose } = this.props;
     onClose();
@@ -21,11 +20,9 @@ class ModalContent extends React.Component {
             </span>
           </button>
         </div>
-        <div className="modal-body">
-          {content}
-        </div>
+        <div className="modal-body">{content}</div>
       </div>
-    )
+    );
   }
 }
 

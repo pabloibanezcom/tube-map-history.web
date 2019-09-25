@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 
-export const deleteLineStart = (lineId) => {
+export const deleteLineStart = lineId => {
   return {
     type: actionTypes.DELETE_LINE_START,
     lineId
@@ -13,7 +13,7 @@ export const deleteLineSuccess = () => {
   };
 };
 
-export const deleteLineFail = (error) => {
+export const deleteLineFail = error => {
   return {
     type: actionTypes.DELETE_LINE_FAIL,
     error

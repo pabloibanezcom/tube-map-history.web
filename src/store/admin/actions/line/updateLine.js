@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 
-export const updateLineStart = (line) => {
+export const updateLineStart = line => {
   return {
     type: actionTypes.UPDATE_LINE_START,
     line
@@ -13,7 +13,7 @@ export const updateLineSuccess = () => {
   };
 };
 
-export const updateLineFail = (error) => {
+export const updateLineFail = error => {
   return {
     type: actionTypes.UPDATE_LINE_FAIL,
     error

@@ -5,14 +5,14 @@ import stockholmLogo from 'assets/img/towns/stockholm_logo.png';
 import React from 'react';
 
 const logos = {
-  'london': londonLogo,
-  'madrid': madridLogo,
+  london: londonLogo,
+  madrid: madridLogo,
   'new-york': newYorkLogo,
-  'stockholm': stockholmLogo
-}
+  stockholm: stockholmLogo
+};
 
 const townLogo = ({ townUrl }) => {
-  return <img alt="" src={logos[townUrl]} />
-}
+  return <img alt="" src={logos[townUrl]} />;
+};
 
 export default townLogo;

@@ -10,20 +10,20 @@
   }
   &.primary {
     label {
-      input[type=checkbox]:checked+.toggle {
-        background-color: rgba($primary-color, .5);
+      input[type='checkbox']:checked + .toggle {
+        background-color: rgba($primary-color, 0.5);
       }
-      input[type=checkbox]:checked+.toggle:after {
+      input[type='checkbox']:checked + .toggle:after {
         background-color: $primary-color;
       }
     }
   }
   &.secondary {
     label {
-      input[type=checkbox]:checked+.toggle {
-        background-color: rgba($secondary-color, .5);
+      input[type='checkbox']:checked + .toggle {
+        background-color: rgba($secondary-color, 0.5);
       }
-      input[type=checkbox]:checked+.toggle:after {
+      input[type='checkbox']:checked + .toggle:after {
         background-color: $secondary-color;
       }
     }

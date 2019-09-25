@@ -16,7 +16,7 @@ class MapCard extends React.Component {
       <div className={`map-card ${className}`}>
         <div id="map-container" />
       </div>
-    )
+    );
   }
 }
 

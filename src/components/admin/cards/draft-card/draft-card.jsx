@@ -2,7 +2,13 @@ import { Badge, CountryLabel, Icon } from 'components/shared';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const DraftCard = ({ lines, stations, town: { name, imgCard, country, year }, type, className }) => {
+const DraftCard = ({
+  lines,
+  stations,
+  town: { name, imgCard, country, year },
+  type,
+  className
+}) => {
   return (
     <div className={`draft-card town-card-${type} ${className}`}>
       <div>
@@ -11,30 +17,23 @@ const DraftCard = ({ lines, stations, town: { name, imgCard, country, year }, ty
       <div className="info-panel flex flex-space-between p-10">
         <div>
           <div className="town-name">{name}</div>
-          <div><CountryLabel country={country} /></div>
+          <div>
+            <CountryLabel country={country} />
+          </div>
         </div>
         <div className="text-right">
-          <Badge
-            text={year}
-            color={type === 'published' ? 'secondary' : 'primary'}
-          />
+          <Badge text={year} color={type === 'published' ? 'secondary' : 'primary'} />
           <div className="draft-counters">
             <span className="counter-number">{lines}</span>
-            <Icon
-              name="lines"
-              size="sm"
-            />
+            <Icon name="lines" size="sm" />
             <span className="counter-number">{stations}</span>
-            <Icon
-              name="tube-logo"
-              size="sm"
-            />
+            <Icon name="tube-logo" size="sm" />
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 DraftCard.defaultProps = {
   lines: 0,

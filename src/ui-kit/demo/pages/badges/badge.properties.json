@@ -1,0 +1,45 @@
+{
+  "options": {
+    "backgroundColor": {
+      "type": "string",
+      "default": "null",
+      "description": ""
+    },
+    "block": {
+      "type": "bool",
+      "default": "false",
+      "description": ""
+    },
+    "border": {
+      "type": "bool",
+      "default": "false",
+      "description": ""
+    },
+    "color": {
+      "type": [
+        "primary",
+        "secondary"
+      ],
+      "default": "primary",
+      "description": ""
+    },
+    "extraClass": {
+      "type": "string",
+      "default": "''",
+      "description": ""
+    },
+    "fontColor": {
+      "type": "string",
+      "default": "null",
+      "description": ""
+    },
+    "text": {
+      "type": [
+        "string",
+        "number"
+      ],
+      "isRequired": true,
+      "description": ""
+    }
+  }
+}

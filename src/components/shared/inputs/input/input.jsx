@@ -4,7 +4,6 @@ import React from 'react';
 import regexPatterns from 'util/regex';
 
 class Input extends React.Component {
-
   constructor(props) {
     super(props);
     const { value } = this.props;
@@ -18,7 +17,7 @@ class Input extends React.Component {
     this.state = {
       isFocused: false,
       currentValue: value || ''
-    }
+    };
     this.getHtmlType = this.getHtmlType.bind(this);
     this.handleOnFocus = this.handleOnFocus.bind(this);
     this.handleOnBlur = this.handleOnBlur.bind(this);
@@ -81,25 +80,37 @@ class Input extends React.Component {
       validation = {
         ...validation,
         pattern: regexPatterns.email
-      }
+      };
     }
     if (type === 'password') {
       validation = {
         ...validation,
         pattern: regexPatterns.password
-      }
+      };
     }
     if (customPattern) {
       validation = {
         ...validation,
         pattern: customPattern
-      }
+      };
     }
     return validation;
   }
 
   render() {
-    const { backgroundColor, color, clearable, defaultValue, formRef, disabled, readOnly, extraClass, name, placeholder, value } = this.props;
+    const {
+      backgroundColor,
+      color,
+      clearable,
+      defaultValue,
+      formRef,
+      disabled,
+      readOnly,
+      extraClass,
+      name,
+      placeholder,
+      value
+    } = this.props;
     const { isFocused, currentValue } = this.state;
     return (
       <div className={`custom-input ${isFocused ? 'is-focused' : ''}`}>
@@ -107,7 +118,9 @@ class Input extends React.Component {
           <input
             ref={formRef(this.formRefValidation())}
             defaultValue={defaultValue}
-            className={`input-bg-${backgroundColor} ${color ? `input-text-${color}` : ''} ${extraClass}`}
+            className={`input-bg-${backgroundColor} ${
+              color ? `input-text-${color}` : ''
+            } ${extraClass}`}
             type={this.getHtmlType()}
             name={name}
             placeholder={placeholder}
@@ -119,10 +132,12 @@ class Input extends React.Component {
             onClick={this.handleOnClick}
             noValidate
           />
-        ) :
+        ) : (
           <input
             value={value || currentValue}
-            className={`input-bg-${backgroundColor} ${color ? `input-text-${color}` : ''} ${extraClass}`}
+            className={`input-bg-${backgroundColor} ${
+              color ? `input-text-${color}` : ''
+            } ${extraClass}`}
             type={this.getHtmlType()}
             name={name}
             placeholder={placeholder}
@@ -134,10 +149,14 @@ class Input extends React.Component {
             onClick={this.handleOnClick}
             noValidate
           />
-        }
-        {clearable && (value || currentValue) ? <a onClick={this.clearValue} className="clear-cross"><Icon name="close" /></a> : null}
+        )}
+        {clearable && (value || currentValue) ? (
+          <a onClick={this.clearValue} className="clear-cross">
+            <Icon name="close" />
+          </a>
+        ) : null}
       </div>
-    )
+    );
   }
 }
 
@@ -171,7 +190,7 @@ Input.propTypes = {
   customPattern: PropTypes.object,
   type: PropTypes.oneOf(['text', 'number', 'email', 'password', 'file']),
   onChange: PropTypes.func,
-  onClick: PropTypes.func,
+  onClick: PropTypes.func
 };
 
 export default Input;

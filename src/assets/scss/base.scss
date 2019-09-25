@@ -10,6 +10,11 @@ body {
   color: $body-color;
 }
 
+.base-container {
+  display: flex;
+  flex: 1;
+}
+
 #root {
   height: 100%;
 }
@@ -51,7 +56,7 @@ body {
 .clearfix {
   &::after {
     display: block;
-    content: "";
+    content: '';
     clear: both;
   }
 }
@@ -61,7 +66,7 @@ body {
 }
 
 .hidden {
-  display: none !important
+  display: none !important;
 }
 
 .container {

@@ -1,0 +1,112 @@
+{
+  "options": {
+    "active": {
+      "type": "bool",
+      "default": "false",
+      "description": ""
+    },
+    "content": {
+      "type": "element",
+      "default": "null",
+      "description": ""
+    },
+    "header": {
+      "type": "element",
+      "default": "null",
+      "description": ""
+    },
+    "color": {
+      "type": [
+        "plain",
+        "primary",
+        "secondary"
+      ],
+      "default": "plain",
+      "description": ""
+    },
+    "disabled": {
+      "type": "bool",
+      "default": "false",
+      "description": ""
+    },
+    "fontColor": {
+      "type": "string",
+      "default": "null",
+      "description": ""
+    },
+    "hover": {
+      "type": [
+        "primary",
+        "secondary"
+      ],
+      "default": "null",
+      "description": ""
+    },
+    "i18nPrefix": {
+      "type": "string",
+      "default": "null",
+      "description": ""
+    },
+    "i18nText": {
+      "type": "string",
+      "default": "null",
+      "description": ""
+    },
+    "icon": {
+      "type": "string",
+      "default": "''",
+      "description": ""
+    },
+    "inverse": {
+      "type": "bool",
+      "default": "false",
+      "description": ""
+    },
+    "href": {
+      "type": "string",
+      "default": "null",
+      "description": ""
+    },
+    "outline": {
+      "type": "bool",
+      "default": "false",
+      "description": ""
+    },
+    "newPage": {
+      "type": "bool",
+      "default": "false",
+      "description": ""
+    },
+    "size": {
+      "type": [
+        "sm",
+        "lg"
+      ],
+      "default": "sm",
+      "description": ""
+    },
+    "submit": {
+      "type": "bool",
+      "default": "false",
+      "description": ""
+    },
+    "to": {
+      "type": "string",
+      "default": "null",
+      "description": ""
+    },
+    "type": {
+      "type": [
+        "link",
+        "btn"
+      ],
+      "default": "btn",
+      "description": ""
+    }
+  },
+  "methods": {
+    "onClick()": {
+      "description": "It is executed when button is clicked"
+    }
+  }
+}

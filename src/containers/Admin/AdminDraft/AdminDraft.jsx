@@ -2,7 +2,7 @@ import { DraftCard, MapCard } from 'components/admin';
 import { Button, LoadingSpinner, TabMenu } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 import { finishAction, getDraftStart, startAction } from 'store/admin/actions';
 import ActionsPanel from './ActionsPanel/ActionsPanel';
 import AdminConnectionsPanel from './AdminConnectionsPanel/AdminConnectionsPanel';
@@ -28,7 +28,6 @@ const tabHeaders = [
 ];
 
 class AdminDraft extends React.Component {
-
   constructor(props) {
     super(props);
     this.closeActionPanel = this.closeActionPanel.bind(this);
@@ -38,7 +37,10 @@ class AdminDraft extends React.Component {
   }
 
   componentDidMount() {
-    const { match: { params }, getDraft } = this.props;
+    const {
+      match: { params },
+      getDraft
+    } = this.props;
     if (params.draftId) {
       getDraft(params.draftId);
     }
@@ -65,7 +67,15 @@ class AdminDraft extends React.Component {
   }
 
   render() {
-    const { match: { params }, action, actionObj, actionPanelInitiated, draft, loading, loadingElements } = this.props;
+    const {
+      match: { params },
+      action,
+      actionObj,
+      actionPanelInitiated,
+      draft,
+      loading,
+      loadingElements
+    } = this.props;
     return (
       <div className="admin-user-container">
         <div className="container">
@@ -76,11 +86,7 @@ class AdminDraft extends React.Component {
               <div className="row">
                 <div className="col-lg-3">
                   <div>
-                    <LoadingSpinner
-                      noSpinner
-                      loading={action && !loading}
-                      className="pr-30"
-                    />
+                    <LoadingSpinner noSpinner loading={action && !loading} className="pr-30" />
                     <DraftCard
                       lines={draft.linesAmount}
                       stations={draft.stationsAmount}
@@ -153,26 +159,29 @@ class AdminDraft extends React.Component {
                     loading={(action && !loading) || loadingElements}
                     className="pr-30"
                   />
-                  <TabMenu
-                    type="secondary"
-                    tabs={tabHeaders}
-                    activeTab={params.tab || 'lines'}
-                  >
+                  <TabMenu type="secondary" tabs={tabHeaders} activeTab={params.tab || 'lines'}>
                     <AdminLinesPanel />
                     <AdminStationsPanel />
                     <AdminConnectionsPanel connections={draft.connections} />
                   </TabMenu>
                 </div>
                 <div className="col-lg-3">
-                  {actionPanelInitiated && <ActionsPanel action={action} actionObj={actionObj} onCancel={this.closeActionPanel} />}
+                  {actionPanelInitiated && (
+                    <ActionsPanel
+                      action={action}
+                      actionObj={actionObj}
+                      onCancel={this.closeActionPanel}
+                    />
+                  )}
                 </div>
               </div>
-            </React.Fragment>)}
+            </React.Fragment>
+          )}
         </div>
       </div>
-    )
+    );
   }
-};
+}
 
 const mapStateToProps = state => {
   return {
@@ -189,8 +198,11 @@ const mapDispatchToProps = dispatch => {
   return {
     _startAction: (actionName, actionObj) => dispatch(startAction(actionName, actionObj)),
     _finishAction: () => dispatch(finishAction()),
-    getDraft: (draftId) => dispatch(getDraftStart(draftId))
-  }
+    getDraft: draftId => dispatch(getDraftStart(draftId))
+  };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AdminDraft));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(AdminDraft));

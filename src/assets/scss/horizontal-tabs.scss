@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import './variables.scss';
 .horizontal-tab {
   .nav-tabs {
     background-color: $secondary-color;
@@ -13,7 +13,7 @@
         color: $white-color;
       }
       svg {
-        transition: transform cubic-bezier(0, 0, .2, 1) .5s;
+        transition: transform cubic-bezier(0, 0, 0.2, 1) 0.5s;
       }
     }
   }

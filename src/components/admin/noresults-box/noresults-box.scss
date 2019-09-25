@@ -1,6 +1,5 @@
 .noresults-box {
-
-  >div,
+  > div,
   a {
     display: flex;
     align-items: center;
@@ -9,7 +8,7 @@
     height: 135px;
   }
 
-  >div {
+  > div {
     span {
       text-align: center;
     }
@@ -36,9 +35,6 @@
       span {
         color: $secondary-alt-color;
       }
-
     }
   }
-
-
 }

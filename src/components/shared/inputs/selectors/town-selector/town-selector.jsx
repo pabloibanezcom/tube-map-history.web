@@ -17,7 +17,7 @@ const TownSelector = ({ towns, onChange }) => {
         />
       ) : null}
     </div>
-  )
-}
+  );
+};
 
 export default TownSelector;

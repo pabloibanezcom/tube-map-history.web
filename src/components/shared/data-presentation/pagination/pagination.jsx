@@ -2,13 +2,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 
-const paginationComponent = (props) => {
-
+const paginationComponent = props => {
   const { background, color, pagination, size } = props;
 
-  const handlePageChange = (evt) => {
+  const handlePageChange = evt => {
     props.onPageChange(evt.selected + 1);
-  }
+  };
 
   return (
     <div className={`pagination-container pagination-container-${background}`}>
@@ -19,7 +18,9 @@ const paginationComponent = (props) => {
           marginPagesDisplayed={1}
           forcePage={pagination.page - 1}
           onPageChange={handlePageChange}
-          containerClassName={`pagination pagination-round pagination-plain ${background === 'light' ? `pagination-${color}` : ''} pagination-bg-${background} ${size !== 'lg' ? `pagination-${size}` : ''}`}
+          containerClassName={`pagination pagination-round pagination-plain ${
+            background === 'light' ? `pagination-${color}` : ''
+          } pagination-bg-${background} ${size !== 'lg' ? `pagination-${size}` : ''}`}
           pageClassName="page-item"
           previousClassName="page-item"
           nextClassName="page-item"
@@ -31,8 +32,8 @@ const paginationComponent = (props) => {
         />
       </nav>
     </div>
-  )
-}
+  );
+};
 
 paginationComponent.defaultProps = {
   background: 'light',

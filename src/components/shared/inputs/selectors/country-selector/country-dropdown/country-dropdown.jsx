@@ -1,7 +1,7 @@
 import React from 'react';
 import { getImage } from 'shared/image';
 
-const countryDropdown = (props) => {
+const countryDropdown = props => {
   const { activeIndex, index, option } = props;
   return (
     <a
@@ -15,9 +15,10 @@ const countryDropdown = (props) => {
         className="country-flag"
         alt={option.code}
         src={getImage(`countries/${option.code.toLowerCase()}.png`, 'countries/default.png')}
-      /><span className="country-name">{option.name}</span>
+      />
+      <span className="country-name">{option.name}</span>
     </a>
-  )
-}
+  );
+};
 
 export default countryDropdown;

@@ -22,7 +22,7 @@ class Forms extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

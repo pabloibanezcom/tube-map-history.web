@@ -13,19 +13,15 @@ const icons = () => {
               <div className="showroom-element">
                 <label>{icon}</label>
                 <div>
-                  <Icon
-                    name={icon}
-                    color="secondary"
-                    size="lg"
-                  />
+                  <Icon name={icon} color="secondary" size="lg" />
                 </div>
               </div>
             </div>
-          )
+          );
         })}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default icons;

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Slider from "react-slick";
+import Slider from 'react-slick';
 
 const slider = ({ items, children }) => {
   const settings = {
@@ -30,13 +30,8 @@ const slider = ({ items, children }) => {
     ]
   };
 
-
-  return (
-    <Slider {...settings}>
-      {children}
-    </Slider>
-  )
-}
+  return <Slider {...settings}>{children}</Slider>;
+};
 
 slider.defaultProps = {
   items: 4

@@ -1,0 +1,21 @@
+.ui-kit-sections-menu {
+  position: fixed;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      padding: 5px 10px;
+
+      a {
+        color: $grey-dark-color !important;
+        font-weight: 400;
+
+        &:hover {
+          color: $secondary-color !important;
+        }
+      }
+    }
+  }
+}

@@ -14,21 +14,18 @@ const EditLineForm = ({ actionObj, onSubmit, onCancel }) => {
     console.log(name, selectedOption);
     setValue(name, selectedOption);
     setError(name, null);
-  }
+  };
 
-  const processSubmit = (formData) => {
+  const processSubmit = formData => {
     onSubmit({ ...formData, _id: actionObj._id });
-  }
+  };
 
   setValue('colour', actionObj.colour);
   setValue('fontColour', actionObj.fontColour);
 
   return (
     <form className="form" onSubmit={handleSubmit(processSubmit)}>
-      <FormField
-        label="Key"
-        error={errors.key && errors.key.message}
-      >
+      <FormField label="Key" error={errors.key && errors.key.message}>
         <Input
           name="key"
           formRef={register}
@@ -37,10 +34,7 @@ const EditLineForm = ({ actionObj, onSubmit, onCancel }) => {
           required
         />
       </FormField>
-      <FormField
-        label="Name"
-        error={errors.name && errors.name.message}
-      >
+      <FormField label="Name" error={errors.name && errors.name.message}>
         <Input
           name="name"
           formRef={register}
@@ -49,10 +43,7 @@ const EditLineForm = ({ actionObj, onSubmit, onCancel }) => {
           required
         />
       </FormField>
-      <FormField
-        label="Short name"
-        error={errors.shortName && errors.shortName.message}
-      >
+      <FormField label="Short name" error={errors.shortName && errors.shortName.message}>
         <Input
           name="shortName"
           formRef={register}
@@ -61,10 +52,7 @@ const EditLineForm = ({ actionObj, onSubmit, onCancel }) => {
           required
         />
       </FormField>
-      <FormField
-        label="Year"
-        error={errors.year && errors.year.message}
-      >
+      <FormField label="Year" error={errors.year && errors.year.message}>
         <Input
           name="year"
           type="number"
@@ -74,44 +62,26 @@ const EditLineForm = ({ actionObj, onSubmit, onCancel }) => {
           required
         />
       </FormField>
-      <FormField
-        label="Color"
-        error={errors.colour && errors.colour.message}
-      >
+      <FormField label="Color" error={errors.colour && errors.colour.message}>
         <ColorSelector
           name="colour"
           color={actionObj.colour}
-          onChange={(value) => handleSelectorChange('colour', value)}
+          onChange={value => handleSelectorChange('colour', value)}
         />
       </FormField>
-      <FormField
-        label="Font Color"
-        error={errors.fontColour && errors.fontColour.message}
-      >
+      <FormField label="Font Color" error={errors.fontColour && errors.fontColour.message}>
         <ColorSelector
           name="fontColour"
           color={actionObj.fontColour}
-          onChange={(value) => handleSelectorChange('fontColour', value)}
+          onChange={value => handleSelectorChange('fontColour', value)}
         />
       </FormField>
       <div className="row">
         <div className="col-lg-6">
-          <Button
-            submit
-            color="secondary"
-            inverse
-            text="Edit line"
-            block
-          />
+          <Button submit color="secondary" inverse text="Edit line" block />
         </div>
         <div className="col-lg-6">
-          <Button
-            color="secondary"
-            text="Cancel"
-            outline
-            block
-            onClick={onCancel}
-          />
+          <Button color="secondary" text="Cancel" outline block onClick={onCancel} />
         </div>
       </div>
     </form>

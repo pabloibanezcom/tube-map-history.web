@@ -2,28 +2,20 @@ import { TabMenu } from 'components/shared';
 import React from 'react';
 
 const mockComponentA = () => {
-  return (
-    <div>This is tab A</div>
-  )
-}
+  return <div>This is tab A</div>;
+};
 
 const mockComponentB = () => {
-  return (
-    <div>This is tab B</div>
-  )
-}
+  return <div>This is tab B</div>;
+};
 
 const mockComponentC = () => {
-  return (
-    <div>This is tab C</div>
-  )
-}
+  return <div>This is tab C</div>;
+};
 
 const mockComponentD = () => {
-  return (
-    <div>This is tab D</div>
-  )
-}
+  return <div>This is tab D</div>;
+};
 
 const mockTabs = [
   {
@@ -53,13 +45,12 @@ const mockTabs = [
 ];
 
 class Tabs extends React.Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
       currentTab: null
-    }
+    };
 
     this.setActiveTab = this.setActiveTab.bind(this);
   }
@@ -77,19 +68,13 @@ class Tabs extends React.Component {
           <div className="col-6">
             <div className="showroom-element">
               <label>Primary</label>
-              <TabMenu
-                type="primary"
-                tabs={mockTabs}
-              />
+              <TabMenu type="primary" tabs={mockTabs} />
             </div>
           </div>
           <div className="col-6">
             <div className="showroom-element">
               <label>Secondary</label>
-              <TabMenu
-                type="secondary"
-                tabs={mockTabs}
-              />
+              <TabMenu type="secondary" tabs={mockTabs} />
             </div>
           </div>
         </div>
@@ -98,21 +83,13 @@ class Tabs extends React.Component {
           <div className="col-6">
             <div className="showroom-element">
               <label>Primary with Secondary panel</label>
-              <TabMenu
-                type="primary"
-                panel="secondary"
-                tabs={mockTabs}
-              />
+              <TabMenu type="primary" panel="secondary" tabs={mockTabs} />
             </div>
           </div>
           <div className="col-6">
             <div className="showroom-element">
               <label>Secondary with primary panel</label>
-              <TabMenu
-                type="secondary"
-                panel="primary"
-                tabs={mockTabs}
-              />
+              <TabMenu type="secondary" panel="primary" tabs={mockTabs} />
             </div>
           </div>
         </div>
@@ -121,11 +98,7 @@ class Tabs extends React.Component {
           <div className="col-6">
             <div className="showroom-element">
               <label>Using onTabChange</label>
-              <TabMenu
-                type="primary"
-                tabs={mockTabs}
-                onTabChange={this.setActiveTab}
-              />
+              <TabMenu type="primary" tabs={mockTabs} onTabChange={this.setActiveTab} />
               <div className="showroom-result">
                 <span>{currentTab ? `Tab selected: ${currentTab}` : ''}</span>
               </div>
@@ -134,11 +107,7 @@ class Tabs extends React.Component {
           <div className="col-6">
             <div className="showroom-element">
               <label>Setting initial active tab</label>
-              <TabMenu
-                type="primary"
-                tabs={mockTabs}
-                activeTab={mockTabs[2].id}
-              />
+              <TabMenu type="primary" tabs={mockTabs} activeTab={mockTabs[2].id} />
               <div className="showroom-result">
                 <span>{currentTab ? `Tab selected: ${currentTab}` : ''}</span>
               </div>
@@ -146,7 +115,7 @@ class Tabs extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

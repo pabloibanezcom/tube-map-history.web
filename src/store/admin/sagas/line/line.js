@@ -1,5 +1,5 @@
-import { takeEvery } from "redux-saga/effects";
-import * as actionTypes from "store/admin/actions/line/actionTypes";
+import { takeEvery } from 'redux-saga/effects';
+import * as actionTypes from 'store/admin/actions/line/actionTypes';
 import { addLineSagaStart, deleteLineSagaStart, updateLineSagaStart } from './workers';
 
 export const lineSagas = [

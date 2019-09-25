@@ -6,9 +6,8 @@ import { connect } from 'react-redux';
 import { filterStationsAndConnectionsByYear } from 'util/data';
 
 class MapWrapper extends React.Component {
-
   componentDidUpdate(prevProps) {
-    const { year, town, stations, } = this.props;
+    const { year, town, stations } = this.props;
     if (prevProps.town !== town) {
       this.map = initMap('map-container', town.center, town.zoom, year);
     }
@@ -25,7 +24,7 @@ class MapWrapper extends React.Component {
         <Overlay show={false} />
         <div id="map-container" className={mode} />
       </div>
-    )
+    );
   }
 }
 
@@ -40,8 +39,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = () => {
   return {
-    onClearMapState: () => { }
-  }
+    onClearMapState: () => {}
+  };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MapWrapper);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MapWrapper);

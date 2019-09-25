@@ -7,7 +7,7 @@ const DeleteConnectionForm = ({ actionObj, onSubmit, onCancel }) => {
 
   const processSubmit = () => {
     onSubmit(actionObj._id);
-  }
+  };
 
   return (
     <div>
@@ -15,22 +15,10 @@ const DeleteConnectionForm = ({ actionObj, onSubmit, onCancel }) => {
       <form className="form mt-40" onSubmit={handleSubmit(processSubmit)}>
         <div className="row">
           <div className="col-lg-6">
-            <Button
-              submit
-              color="danger"
-              text="Confirm"
-              outline
-              block
-            />
+            <Button submit color="danger" text="Confirm" outline block />
           </div>
           <div className="col-lg-6">
-            <Button
-              color="secondary"
-              text="Cancel"
-              outline
-              block
-              onClick={onCancel}
-            />
+            <Button color="secondary" text="Cancel" outline block onClick={onCancel} />
           </div>
         </div>
       </form>

@@ -1,7 +1,7 @@
 #place-search-map-container {
   height: 150px;
   max-height: 150px;
-  transition: max-height .3s ease-in-out;
+  transition: max-height 0.3s ease-in-out;
 
   &.map-hidden {
     max-height: 0;

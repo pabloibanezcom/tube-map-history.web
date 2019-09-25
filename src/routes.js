@@ -6,6 +6,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 const Admin = React.lazy(() => import('containers/Admin/Admin'));
 const Showroom = React.lazy(() => import('containers/Showroom/Showroom'));
+const UIKitDemo = React.lazy(() => import('ui-kit/demo/ui-kit-demo'));
 
 const lazyComponent = (Component, history) => {
   return props => (
@@ -13,14 +14,15 @@ const lazyComponent = (Component, history) => {
       <Component history={history} {...props} />
     </React.Suspense>
   );
-}
+};
 
-const routes = (history) => (
+const routes = history => (
   <Switch>
     <Route path="/login" exact component={Login} />
     <Route path="/signup" exact component={Signup} />
     <Route path="/admin" component={lazyComponent(Admin, history)} />
     <Route path="/showroom" component={lazyComponent(Showroom, history)} />
+    <Route path="/ui-kit" component={lazyComponent(UIKitDemo, history)} />
     <Route path="/" component={lazyComponent(Public)} />
     <Redirect to="/admin" />
   </Switch>

@@ -7,7 +7,7 @@ const footer = () => {
         <p>Development & Design by Pablo Ibanez - 2019</p>
       </div>
     </footer>
-  )
-}
+  );
+};
 
 export default footer;

@@ -6,26 +6,23 @@ import StationsInfo from 'components/admin/admin-town/stations-info/stations-inf
 import { Modal, TabMenu } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 import defaultPagination from './defaultPagination.json';
 import defaultSearchParams from './defaultSearchParams.json';
 import townTabs from './menuTabs.json';
 
 const emptyComponent = () => {
-  return (
-    <div>This is tab D</div>
-  )
-}
+  return <div>This is tab D</div>;
+};
 
 class AdminTown extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
       currentTab: 'lines',
       activeModal: null,
       modalProps: null
-    }
+    };
 
     this.pageChanged = this.pageChanged.bind(this);
     this.searchParamsChanged = this.searchParamsChanged.bind(this);
@@ -43,8 +40,8 @@ class AdminTown extends React.Component {
 
   getCurrentTown = () => {
     const { match, town } = this.props;
-    return town ? town._id : match.params.town
-  }
+    return town ? town._id : match.params.town;
+  };
 
   getCurrentTabInfo() {
     const { currentTab } = this.state;
@@ -55,10 +52,10 @@ class AdminTown extends React.Component {
           lines={lines}
           viewLineStations={this.viewLineStations}
           onAddLine={() => this.showModal('addLine')}
-          onEditLine={(line) => this.showModal('editLine', { line })}
+          onEditLine={line => this.showModal('editLine', { line })}
           onDeleteLine={() => this.showModal('deleteLine')}
         />
-      )
+      );
     }
     if (currentTab === 'stations' && stations) {
       return (
@@ -67,25 +64,27 @@ class AdminTown extends React.Component {
           pagination={pagination || defaultPagination}
           onPageChange={this.pageChanged}
         />
-      )
+      );
     }
     return emptyComponent();
   }
 
-  pageChanged = (page) => {
+  pageChanged = page => {
     this.refreshData(null, page);
-  }
+  };
 
-  searchParamsChanged = (params) => {
+  searchParamsChanged = params => {
     this.refreshData(params);
-  }
+  };
 
   tabChanged(tab) {
     this.setState({ currentTab: tab }, this.refreshData);
   }
 
   viewLineStations(line) {
-    this.setState({ currentTab: 'stations' }, () => this.refreshData({ ...defaultSearchParams, line: line._id }));
+    this.setState({ currentTab: 'stations' }, () =>
+      this.refreshData({ ...defaultSearchParams, line: line._id })
+    );
   }
 
   refreshData(newSearchParams, newPage) {
@@ -135,10 +134,7 @@ class AdminTown extends React.Component {
           </div>
           <div className="col-lg-3 col-md-12">
             {currentTab === 'stations' ? (
-              <StationsFilterPanel
-                lines={lines}
-                onChange={this.searchParamsChanged}
-              />
+              <StationsFilterPanel lines={lines} onChange={this.searchParamsChanged} />
             ) : null}
           </div>
         </div>
@@ -148,7 +144,7 @@ class AdminTown extends React.Component {
           {...modalProps}
         />
       </div>
-    )
+    );
   }
 }
 
@@ -165,10 +161,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getTown: (town) => dispatch(actions.getTownStart(town)),
-    getLines: (town) => dispatch(actions.getLinesStart(town)),
-    searchStations: (town, searchParams, pagination) => dispatch(actions.searchStationsStart(town, searchParams, pagination))
-  }
+    getTown: town => dispatch(actions.getTownStart(town)),
+    getLines: town => dispatch(actions.getLinesStart(town)),
+    searchStations: (town, searchParams, pagination) =>
+      dispatch(actions.searchStationsStart(town, searchParams, pagination))
+  };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AdminTown));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(AdminTown));

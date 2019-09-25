@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Badges",
+    "url": "badges"
+  },
+  {
+    "name": "Buttons & Links",
+    "url": "buttons"
+  },
+  {
+    "name": "Collapses",
+    "url": "collapses"
+  },
+  {
+    "name": "Country labels",
+    "url": "country-labels"
+  },
+  {
+    "name": "Forms",
+    "url": "forms"
+  },
+  {
+    "name": "Headers",
+    "url": "headers"
+  },
+  {
+    "name": "Icons",
+    "url": "icons"
+  },
+  {
+    "name": "Inputs",
+    "url": "inputs"
+  },
+  {
+    "name": "Loading spinners",
+    "url": "loading-spinners"
+  },
+  {
+    "name": "Modals",
+    "url": "modals"
+  },
+  {
+    "name": "Paginations",
+    "url": "paginations"
+  },
+  {
+    "name": "Panels",
+    "url": "panels"
+  },
+  {
+    "name": "Selectors",
+    "url": "selectors"
+  },
+  {
+    "name": "Tabs",
+    "url": "tabs"
+  }
+]

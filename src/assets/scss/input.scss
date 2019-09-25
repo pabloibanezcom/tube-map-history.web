@@ -1,5 +1,4 @@
 .custom-input {
-
   position: relative;
 
   input {
@@ -26,19 +25,23 @@
     }
 
     &.input-bg-primary {
-      background-image: linear-gradient($primary-color, $primary-color), linear-gradient($grey-gradient-color, $grey-gradient-color);
+      background-image: linear-gradient($primary-color, $primary-color),
+        linear-gradient($grey-gradient-color, $grey-gradient-color);
     }
 
     &.input-bg-secondary {
-      background-image: linear-gradient($secondary-color, $secondary-color), linear-gradient($grey-gradient-color, $grey-gradient-color);
+      background-image: linear-gradient($secondary-color, $secondary-color),
+        linear-gradient($grey-gradient-color, $grey-gradient-color);
     }
 
     &.input-bg-white {
-      background-image: linear-gradient($white-color, $white-color), linear-gradient($grey-gradient-color, $grey-gradient-color);
+      background-image: linear-gradient($white-color, $white-color),
+        linear-gradient($grey-gradient-color, $grey-gradient-color);
     }
 
     &.input-error {
-      background-image: linear-gradient($danger-color, $danger-color), linear-gradient($grey-gradient-color, $grey-gradient-color);
+      background-image: linear-gradient($danger-color, $danger-color),
+        linear-gradient($grey-gradient-color, $grey-gradient-color);
     }
 
     &.input-text-primary {
@@ -52,17 +55,14 @@
     &.input-text-white {
       color: $white-color;
     }
-
   }
 
   &.is-focused {
-
     input {
       background-size: 100% 2px, 100% 1px;
       box-shadow: none;
-      transition-duration: .3s;
+      transition-duration: 0.3s;
     }
-
   }
 
   .clear-cross {
@@ -75,7 +75,7 @@
   }
 }
 
-input[type="file"] {
+input[type='file'] {
   :host(input) {
     width: 0 !important;
     padding: 0 !important;

@@ -12,17 +12,15 @@ const countryLabels = () => {
             <div className="col-2" key={country.code}>
               <div className="showroom-element">
                 <div>
-                  <CountryLabel
-                    country={country}
-                  />
+                  <CountryLabel country={country} />
                 </div>
               </div>
             </div>
-          )
+          );
         })}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default countryLabels;

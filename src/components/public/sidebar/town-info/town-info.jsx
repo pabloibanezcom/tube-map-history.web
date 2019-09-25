@@ -1,7 +1,7 @@
 import React from 'react';
 import TownInfoCard from './town-info-card/town-info-card';
 
-const buildTownInfoElements = (townInfo) => {
+const buildTownInfoElements = townInfo => {
   return [
     {
       label: 'Open year',
@@ -21,7 +21,6 @@ const buildTownInfoElements = (townInfo) => {
       value: townInfo.stationsAmount,
       icon: 'subway',
       mode: 'stations'
-
     },
     {
       label: 'Connections',
@@ -30,13 +29,13 @@ const buildTownInfoElements = (townInfo) => {
       mode: 'connections'
     }
   ];
-}
+};
 
-const townInfo = (props) => {
+const townInfo = props => {
   const { sideBarState, info } = props;
   return (
     <div className="town-info">
-      {info && sideBarState.open ?
+      {info && sideBarState.open ? (
         <div>
           <div className="town-header">
             <div className="town-name">{info.name}</div>
@@ -45,7 +44,7 @@ const townInfo = (props) => {
           <hr />
           <div className="town-basic-info mt-20">
             <div className="row">
-              {buildTownInfoElements(info).map(ciEl =>
+              {buildTownInfoElements(info).map(ciEl => (
                 <div key={ciEl.label} className="col-lg-6 mt-20">
                   <TownInfoCard
                     infoElement={ciEl}
@@ -53,13 +52,13 @@ const townInfo = (props) => {
                     onModeSelected={props.onModeSelected}
                   />
                 </div>
-              )}
+              ))}
             </div>
           </div>
-        </div> : null
-      }
+        </div>
+      ) : null}
     </div>
-  )
-}
+  );
+};
 
 export default townInfo;

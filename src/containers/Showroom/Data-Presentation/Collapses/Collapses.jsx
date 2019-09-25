@@ -7,19 +7,14 @@ const fakeHeader = ({ element }) => {
     <div>
       <span>{element.name}</span>
     </div>
-  )
-}
+  );
+};
 
 const fakeContent = () => {
-  return (
-    <div>
-      This is fake content
-    </div>
-  )
-}
+  return <div>This is fake content</div>;
+};
 
 class Collapses extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -29,7 +24,11 @@ class Collapses extends React.Component {
   }
 
   handleCombinedChanged(combinedSelected) {
-    this.setState((prevState) => { return { combinedSelected: prevState.combinedSelected === combinedSelected ? null : combinedSelected } });
+    this.setState(prevState => {
+      return {
+        combinedSelected: prevState.combinedSelected === combinedSelected ? null : combinedSelected
+      };
+    });
   }
 
   render() {
@@ -52,7 +51,7 @@ class Collapses extends React.Component {
             <div className="showroom-element">
               <label>Primary</label>
               <CollapseList
-                type="primary"
+                color="primary"
                 elements={lines.slice(0, 9)}
                 header={fakeHeader}
                 content={fakeContent}
@@ -63,7 +62,7 @@ class Collapses extends React.Component {
             <div className="showroom-element">
               <label>Secondary</label>
               <CollapseList
-                type="secondary"
+                color="secondary"
                 elements={lines.slice(0, 9)}
                 header={fakeHeader}
                 content={fakeContent}
@@ -74,7 +73,7 @@ class Collapses extends React.Component {
             <div className="showroom-element">
               <label>Combined</label>
               <CollapseList
-                type="primary"
+                color="primary"
                 extraClass="mb-40"
                 elements={lines.slice(0, 4)}
                 header={fakeHeader}
@@ -83,7 +82,7 @@ class Collapses extends React.Component {
                 onActiveElementChanged={this.handleCombinedChanged}
               />
               <CollapseList
-                type="secondary"
+                color="secondary"
                 extraClass="mb-40"
                 elements={lines.slice(4, 9)}
                 header={fakeHeader}
@@ -102,9 +101,8 @@ class Collapses extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
-
 }
 
 export default Collapses;

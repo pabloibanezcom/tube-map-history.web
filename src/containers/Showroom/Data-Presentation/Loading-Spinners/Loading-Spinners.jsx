@@ -2,7 +2,6 @@ import { Button, LoadingSpinner } from 'components/shared';
 import React from 'react';
 
 class LoadingSpinners extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -16,7 +15,9 @@ class LoadingSpinners extends React.Component {
   }
 
   toggleLoading(loadingId) {
-    this.setState(prevState => { return { [loadingId]: !prevState[loadingId] } });
+    this.setState(prevState => {
+      return { [loadingId]: !prevState[loadingId] };
+    });
   }
 
   render() {
@@ -44,10 +45,7 @@ class LoadingSpinners extends React.Component {
             <div className="showroom-element">
               <label>Dark background</label>
               <div className="pos-relative">
-                <LoadingSpinner
-                  background="dark"
-                  loading={loading2}
-                />
+                <LoadingSpinner background="dark" loading={loading2} />
                 <div className="showroom-sample-div" />
               </div>
               <Button
@@ -62,10 +60,7 @@ class LoadingSpinners extends React.Component {
             <div className="showroom-element">
               <label>Secondary spinner</label>
               <div className="pos-relative">
-                <LoadingSpinner
-                  color="secondary"
-                  loading={loading3}
-                />
+                <LoadingSpinner color="secondary" loading={loading3} />
                 <div className="showroom-sample-div" />
               </div>
               <Button
@@ -80,10 +75,7 @@ class LoadingSpinners extends React.Component {
             <div className="showroom-element">
               <label>Inverse spinner</label>
               <div className="pos-relative">
-                <LoadingSpinner
-                  inverse
-                  loading={loading4}
-                />
+                <LoadingSpinner inverse loading={loading4} />
                 <div className="showroom-sample-div" />
               </div>
               <Button
@@ -98,11 +90,7 @@ class LoadingSpinners extends React.Component {
             <div className="showroom-element">
               <label>Shadow without spinner</label>
               <div className="pos-relative">
-                <LoadingSpinner
-                  inverse
-                  noSpinner
-                  loading={loading5}
-                />
+                <LoadingSpinner inverse noSpinner loading={loading5} />
                 <div className="showroom-sample-div" />
               </div>
               <Button
@@ -115,7 +103,7 @@ class LoadingSpinners extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

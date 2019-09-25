@@ -4,10 +4,9 @@ import React from 'react';
 const mockPagination = {
   page: 1,
   pages: 10
-}
+};
 
 class Paginations extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -16,7 +15,7 @@ class Paginations extends React.Component {
       page3: null,
       page4: null,
       page5: null
-    }
+    };
   }
 
   handlePaginationChange(paginationId, newPagination) {
@@ -34,7 +33,7 @@ class Paginations extends React.Component {
               <label>Primary</label>
               <Pagination
                 pagination={mockPagination}
-                onPageChange={(page) => this.handlePaginationChange('page1', page)}
+                onPageChange={page => this.handlePaginationChange('page1', page)}
               />
               <div className="showroom-result">
                 <span>{page1 ? `Page selected: ${page1}` : ''}</span>
@@ -47,7 +46,7 @@ class Paginations extends React.Component {
               <Pagination
                 color="secondary"
                 pagination={mockPagination}
-                onPageChange={(page) => this.handlePaginationChange('page2', page)}
+                onPageChange={page => this.handlePaginationChange('page2', page)}
               />
               <div className="showroom-result">
                 <span>{page2 ? `Page selected: ${page2}` : ''}</span>
@@ -62,7 +61,7 @@ class Paginations extends React.Component {
               <Pagination
                 background="primary"
                 pagination={mockPagination}
-                onPageChange={(page) => this.handlePaginationChange('page3', page)}
+                onPageChange={page => this.handlePaginationChange('page3', page)}
               />
               <div className="showroom-result">
                 <span>{page3 ? `Page selected: ${page3}` : ''}</span>
@@ -75,7 +74,7 @@ class Paginations extends React.Component {
               <Pagination
                 background="secondary"
                 pagination={mockPagination}
-                onPageChange={(page) => this.handlePaginationChange('page4', page)}
+                onPageChange={page => this.handlePaginationChange('page4', page)}
               />
               <div className="showroom-result">
                 <span>{page4 ? `Page selected: ${page4}` : ''}</span>
@@ -91,7 +90,7 @@ class Paginations extends React.Component {
                 size="sm"
                 color="secondary"
                 pagination={mockPagination}
-                onPageChange={(page) => this.handlePaginationChange('page5', page)}
+                onPageChange={page => this.handlePaginationChange('page5', page)}
               />
               <div className="showroom-result">
                 <span>{page5 ? `Page selected: ${page5}` : ''}</span>
@@ -100,7 +99,7 @@ class Paginations extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

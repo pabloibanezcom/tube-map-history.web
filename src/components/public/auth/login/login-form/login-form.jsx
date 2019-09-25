@@ -3,16 +3,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import useForm from 'react-hook-form';
 
-const LoginForm = (props) => {
+const LoginForm = props => {
   const { onSubmit } = props;
   const { register, handleSubmit, errors } = useForm();
 
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
-      <FormField
-        label="Email Address"
-        error={errors.email && errors.email.message}
-      >
+      <FormField label="Email Address" error={errors.email && errors.email.message}>
         <Input
           type="email"
           name="email"
@@ -22,10 +19,7 @@ const LoginForm = (props) => {
           required
         />
       </FormField>
-      <FormField
-        label="Password"
-        error={errors.password && errors.password.message}
-      >
+      <FormField label="Password" error={errors.password && errors.password.message}>
         <Input
           type="password"
           name="password"
@@ -34,12 +28,7 @@ const LoginForm = (props) => {
           required
         />
       </FormField>
-      <Button
-        submit
-        color="primary"
-        text="Login"
-        extraClass="mb-20"
-      />
+      <Button submit color="primary" text="Login" extraClass="mb-20" />
     </form>
   );
 };

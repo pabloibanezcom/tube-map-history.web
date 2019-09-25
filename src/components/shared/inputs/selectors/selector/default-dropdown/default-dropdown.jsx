@@ -1,7 +1,6 @@
 import React from 'react';
 
-const defaultDropdown = (props) => {
-
+const defaultDropdown = props => {
   const { activeIndex, index, option } = props;
 
   return (
@@ -14,7 +13,7 @@ const defaultDropdown = (props) => {
     >
       <span>{option.name}</span>
     </a>
-  )
-}
+  );
+};
 
 export default defaultDropdown;

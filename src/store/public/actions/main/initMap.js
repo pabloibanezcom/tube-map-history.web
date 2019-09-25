@@ -18,7 +18,7 @@ export const initMapSuccess = (town, year, draft, stations) => {
   };
 };
 
-export const initMapFail = (error) => {
+export const initMapFail = error => {
   return {
     type: actionTypes.INIT_MAP_FAIL,
     error

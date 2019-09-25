@@ -1,5 +1,4 @@
 @mixin color($base, $hover: null) {
-
   $font-color: null;
   $hover-font-color: null;
 
@@ -26,11 +25,9 @@
       color: $hover-font-color !important;
     }
   }
-
 }
 
-@mixin background-color ($base, $hover: null, $border: null, $outline: null) {
-
+@mixin background-color($base, $hover: null, $border: null, $outline: null) {
   $bg-color: null;
   $font-color: null;
   $hover-bg-color: null;
@@ -71,9 +68,7 @@
   @if $hover==$base {
     $hover-bg-color: darken($bg-color, $darken);
     $hover-font-color: $font-color;
-  }
-
-  @else {
+  } @else {
     @if $hover==primary {
       $hover-bg-color: $primary-color;
       $hover-font-color: $primary-alt-color;
@@ -98,7 +93,6 @@
   color: $font-color;
 
   @if $hover {
-
     &:hover:enabled,
     &:active:enabled {
       background-color: $hover-bg-color;
@@ -106,10 +100,9 @@
       color: $hover-font-color;
     }
   }
-
 }
 
-@mixin background-color-hover ($hover) {
+@mixin background-color-hover($hover) {
   $hover-bg-color: null;
   $hover-font-color: null;
 

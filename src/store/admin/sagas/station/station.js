@@ -1,5 +1,5 @@
-import { takeEvery } from "redux-saga/effects";
-import * as actionTypes from "store/admin/actions/station/actionTypes";
+import { takeEvery } from 'redux-saga/effects';
+import * as actionTypes from 'store/admin/actions/station/actionTypes';
 import { addStationSagaStart, deleteStationSagaStart, updateStationSagaStart } from './workers';
 
 export const stationSagas = [

@@ -1,7 +1,7 @@
 import { Badge } from 'components/shared';
 import React from 'react';
 
-const LineBadge = (props) => {
+const LineBadge = props => {
   const { line, extraClass } = props;
   return (
     <Badge
@@ -10,7 +10,7 @@ const LineBadge = (props) => {
       fontColor={line.fontColour}
       extraClass={extraClass}
     />
-  )
-}
+  );
+};
 
 export default LineBadge;

@@ -1,0 +1,15 @@
+@import './components/ui-kit-menu/ui-kit-menu.scss';
+@import './components/ui-kit-demo-element/ui-kit-demo-element.scss';
+@import './components/ui-kit-props-table/ui-kit-props-table.scss';
+@import './components/ui-kit-sections-menu/ui-kit-sections-menu.scss';
+@import '~codemirror/lib/codemirror.css';
+@import '~codemirror/theme/material.css';
+
+.ui-kit {
+  .ui-kit-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 35px 70px;
+  }
+}

@@ -2,8 +2,7 @@ import { Button } from 'components/shared';
 import React from 'react';
 import Modal from 'react-modal';
 
-const CustomModal = (props) => {
-
+const CustomModal = props => {
   const { modalContent, onClose } = props;
   const ModalContent = modalContent;
   // eslint-disable-next-line no-unneeded-ternary
@@ -28,7 +27,7 @@ const CustomModal = (props) => {
         />
       </Modal>
     </div>
-  )
-}
+  );
+};
 
 export default CustomModal;

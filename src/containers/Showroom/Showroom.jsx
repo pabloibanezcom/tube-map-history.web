@@ -1,6 +1,6 @@
 import { Footer, Header } from 'components/shared';
 import React from 'react';
-import { withRouter } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 import routes from './routes';
 
 class Showroom extends React.Component {
@@ -9,9 +9,7 @@ class Showroom extends React.Component {
       <React.Fragment>
         <Header optionsName="admin" />
         <main className="showroom">
-          <div className="container">
-            {routes}
-          </div>
+          <div className="container">{routes}</div>
         </main>
         <Footer />
       </React.Fragment>

@@ -1,0 +1,130 @@
+[
+  {
+    "_id": "5c3f98b09c69260e1cd0645e",
+    "order": 1,
+    "name": "Central Line",
+    "shortName": "central",
+    "colour": "#dc241f",
+    "fontColour": "#ffffff"
+  },
+  {
+    "_id": "5c3f98be9c69260e1cd064f2",
+    "order": 2,
+    "name": "Jubilee Line",
+    "shortName": "jubilee",
+    "colour": "#6a7278",
+    "fontColour": "#ffffff"
+  },
+  {
+    "_id": "5c3f98c59c69260e1cd06541",
+    "order": 3,
+    "name": "Piccadilly Line",
+    "shortName": "piccadilly",
+    "colour": "#0019a8",
+    "fontColour": "#ffffff"
+  },
+  {
+    "_id": "5c3f98cb9c69260e1cd0658d",
+    "order": 4,
+    "name": "Victoria Line",
+    "shortName": "victoria",
+    "colour": "#00a0e2",
+    "fontColour": "#000000"
+  },
+  {
+    "_id": "5c3f98cf9c69260e1cd065bb",
+    "order": 5,
+    "name": "Bakerloo Line",
+    "shortName": "bakerloo",
+    "colour": "#894e24",
+    "fontColour": "#ffffff"
+  },
+  {
+    "_id": "5c3f98d59c69260e1cd06604",
+    "order": 6,
+    "name": "Northern Line",
+    "shortName": "northern",
+    "colour": "#000",
+    "fontColour": "#ffffff"
+  },
+  {
+    "_id": "5c3f98d69c69260e1cd0660b",
+    "order": 7,
+    "name": "District Line",
+    "shortName": "district",
+    "colour": "#007229",
+    "fontColour": "#ffffff"
+  },
+  {
+    "_id": "5c3f98d69c69260e1cd0660f",
+    "order": 8,
+    "name": "Metropolitan Line",
+    "shortName": "metropolitan",
+    "colour": "#751056",
+    "fontColour": "#ffffff"
+  },
+  {
+    "_id": "5c3f98d99c69260e1cd0662b",
+    "order": 9,
+    "name": "Circle Line",
+    "shortName": "circle",
+    "colour": "#ffce00",
+    "fontColour": "#000000"
+  },
+  {
+    "_id": "5c3f98dd9c69260e1cd06650",
+    "order": 10,
+    "name": "Hammersmith & City Line",
+    "shortName": "hammersmith_and_city",
+    "colour": "#d799af",
+    "fontColour": "#000000"
+  },
+  {
+    "_id": "5c3f98e09c69260e1cd06675",
+    "order": 11,
+    "name": "Waterloo & City Line",
+    "shortName": "waterloo_and_city",
+    "colour": "#76d0bd",
+    "fontColour": "#000000"
+  },
+  {
+    "_id": "5c3f98e19c69260e1cd06679",
+    "order": 12,
+    "name": "DLR",
+    "shortName": "dlr",
+    "colour": "#00afad",
+    "fontColour": "#000000"
+  },
+  {
+    "_id": "5c3f98ed9c69260e1cd066fe",
+    "order": 13,
+    "name": "London Overground",
+    "shortName": "overground",
+    "colour": "#e86a10",
+    "fontColour": "#000000"
+  },
+  {
+    "_id": "5c3f98ed9c69260e1cd066ff",
+    "order": 14,
+    "name": "Elizabeth Line",
+    "shortName": "elizabeth",
+    "colour": "#5a429a",
+    "fontColour": "#ffffff"
+  },
+  {
+    "_id": "5c3f98ed9c69260e1cd06700",
+    "order": 15,
+    "name": "Tram",
+    "shortName": "tram",
+    "colour": "#6c0",
+    "fontColour": "#ffffff"
+  },
+  {
+    "_id": "5c3f98ed9c69260e1cd06701",
+    "order": 16,
+    "name": "TfL Rail",
+    "shortName": "tfl_rail",
+    "colour": "#0019a8",
+    "fontColour": "#ffffff"
+  }
+]

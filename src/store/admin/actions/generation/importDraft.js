@@ -14,7 +14,7 @@ export const importDraftSuccess = () => {
   };
 };
 
-export const importDraftFail = (error) => {
+export const importDraftFail = error => {
   return {
     type: actionTypes.IMPORT_DRAFT_FAIL,
     error

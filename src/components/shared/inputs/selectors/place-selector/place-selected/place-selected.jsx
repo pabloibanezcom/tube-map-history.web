@@ -1,6 +1,6 @@
 import React from 'react';
 
-const placeSelected = (props) => {
+const placeSelected = props => {
   const { selectedOption } = props;
   return (
     <div className="filter-option">
@@ -10,7 +10,7 @@ const placeSelected = (props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default placeSelected;

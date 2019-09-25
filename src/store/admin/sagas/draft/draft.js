@@ -1,6 +1,11 @@
-import { takeEvery } from "redux-saga/effects";
-import * as actionTypes from "store/admin/actions/draft/actionTypes";
-import { addDraftSagaStart, deleteDraftSagaStart, getDraftSagaStart, updateDraftSagaStart } from './workers';
+import { takeEvery } from 'redux-saga/effects';
+import * as actionTypes from 'store/admin/actions/draft/actionTypes';
+import {
+  addDraftSagaStart,
+  deleteDraftSagaStart,
+  getDraftSagaStart,
+  updateDraftSagaStart
+} from './workers';
 
 export const draftSagas = [
   takeEvery(actionTypes.ADD_DRAFT_START, addDraftSagaStart),

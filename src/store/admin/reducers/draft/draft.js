@@ -8,5 +8,5 @@ export const getDraftSuccess = (state, action) => {
       stations: [],
       connections: []
     }
-  }
-}
+  };
+};

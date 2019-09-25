@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { BarLoader } from 'react-spinners';
 
-const loadingSpinner = (props) => {
+const loadingSpinner = props => {
   const { background, className, color, inverse, loading, noSpinner } = props;
   return (
     <React.Fragment>
@@ -10,15 +10,17 @@ const loadingSpinner = (props) => {
         <div className={`loading-spinner ${className}`}>
           <div className={`ls-background ls-background-${background}`} />
           {!noSpinner && (
-            <div className={`ls-spinner ls-spinner-${color} ${inverse ? 'ls-spinner-inverse' : ''}`}>
+            <div
+              className={`ls-spinner ls-spinner-${color} ${inverse ? 'ls-spinner-inverse' : ''}`}
+            >
               <BarLoader loading={loading} />
             </div>
           )}
         </div>
       ) : null}
     </React.Fragment>
-  )
-}
+  );
+};
 
 loadingSpinner.defaultProps = {
   background: 'light',
@@ -26,7 +28,7 @@ loadingSpinner.defaultProps = {
   color: 'primary',
   inverse: false,
   loading: false,
-  noSpinner: false,
+  noSpinner: false
 };
 
 loadingSpinner.propTypes = {
@@ -34,11 +36,7 @@ loadingSpinner.propTypes = {
   className: PropTypes.string,
   color: PropTypes.oneOf(['primary', 'secondary']),
   inverse: PropTypes.bool,
-  loading: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-    PropTypes.number
-  ]),
+  loading: PropTypes.oneOfType([PropTypes.bool, PropTypes.string, PropTypes.number]),
   noSpinner: PropTypes.bool
 };
 

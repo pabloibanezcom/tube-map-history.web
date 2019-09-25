@@ -1,7 +1,6 @@
 import React from 'react';
 
-const lineDropdown = (props) => {
-
+const lineDropdown = props => {
   const { activeIndex, index, option } = props;
 
   const style = {
@@ -18,7 +17,7 @@ const lineDropdown = (props) => {
     >
       <span>{option.shortName}</span>
     </a>
-  )
-}
+  );
+};
 
 export default lineDropdown;

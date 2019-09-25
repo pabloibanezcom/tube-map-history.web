@@ -1,6 +1,6 @@
 import React from 'react';
 
-const defaultSelected = (props) => {
+const defaultSelected = props => {
   const { selectedOption } = props;
   return (
     <div className="filter-option">
@@ -10,7 +10,7 @@ const defaultSelected = (props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default defaultSelected;

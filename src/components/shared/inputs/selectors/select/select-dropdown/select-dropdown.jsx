@@ -1,8 +1,7 @@
 import React from 'react';
-import onClickOutside from "react-onclickoutside";
+import onClickOutside from 'react-onclickoutside';
 
 class SelectDropdown extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -10,7 +9,7 @@ class SelectDropdown extends React.Component {
       filteredOptions: [],
       activeIndex: null,
       searchStr: ''
-    }
+    };
     this.filter = this.filter.bind(this);
     this.select = this.select.bind(this);
     this.getDropDownStyle = this.getDropDownStyle.bind(this);
@@ -36,19 +35,19 @@ class SelectDropdown extends React.Component {
     return !config.dropDownHeight ? null : { maxHeight: config.dropDownHeight, overflowY: 'auto' };
   }
 
-  handleOnKeyDown = (evt) => {
+  handleOnKeyDown = evt => {
     const { activeIndex, filteredOptions } = this.state;
     switch (evt.key) {
       case 'ArrowDown':
         if (activeIndex < filteredOptions.length - 1) {
-          this.setState((prevState) => ({
+          this.setState(prevState => ({
             activeIndex: prevState.activeIndex + 1
           }));
         }
         break;
       case 'ArrowUp':
         if (activeIndex > 0) {
-          this.setState((prevState) => ({
+          this.setState(prevState => ({
             activeIndex: prevState.activeIndex - 1
           }));
         }
@@ -60,20 +59,18 @@ class SelectDropdown extends React.Component {
       default:
         break;
     }
-  }
+  };
 
-  generateOptions = (options) => {
-    return [
-      ...this.getNoneOption(),
-      ...options
-    ];
-  }
+  generateOptions = options => {
+    return [...this.getNoneOption(), ...options];
+  };
 
   getNoneOption = () => {
     const { config } = this.props;
-    return config.noneLabel ?
-      [{ [config.options.key]: 'none', [config.options.label]: config.noneLabel }] : [];
-  }
+    return config.noneLabel
+      ? [{ [config.options.key]: 'none', [config.options.label]: config.noneLabel }]
+      : [];
+  };
 
   handleClickOutside() {
     const { onClose } = this.props;
@@ -96,7 +93,11 @@ class SelectDropdown extends React.Component {
     if (value.length < (config.minStr || 3)) {
       filteredOptions = [...options];
     } else {
-      filteredOptions = options.filter(opt => opt[config.options.label].toLowerCase()[config.onlyStartsWith ? 'startsWith' : 'includes'](value.toLowerCase()));
+      filteredOptions = options.filter(opt =>
+        opt[config.options.label]
+          .toLowerCase()
+          [config.onlyStartsWith ? 'startsWith' : 'includes'](value.toLowerCase())
+      );
     }
     this.setState({ filteredOptions, searchStr: value });
   }
@@ -110,7 +111,7 @@ class SelectDropdown extends React.Component {
   select(opt) {
     const { config, onSelectOption } = this.props;
     if (config.enableSearch) {
-      this.setState((prevState) => ({
+      this.setState(prevState => ({
         searchStr: '',
         filteredOptions: prevState.options
       }));
@@ -119,46 +120,51 @@ class SelectDropdown extends React.Component {
     this.filter('');
   }
 
-
-
   render() {
     const { config, dropdown, expanded } = this.props;
     const { activeIndex, filteredOptions, searchStr } = this.state;
 
     const Dropdown = dropdown;
     return (
-      <div className={`select-dropdown dropdown-menu ${expanded ? 'show' : ''}`} x-placement="bottom-start" tabIndex="0">
-        {config.enableSearch ?
+      <div
+        className={`select-dropdown dropdown-menu ${expanded ? 'show' : ''}`}
+        x-placement="bottom-start"
+        tabIndex="0"
+      >
+        {config.enableSearch ? (
           <div className="bs-searchbox">
             <input
               type="text"
-              ref={(input) => { this.searchInput = input; }}
+              ref={input => {
+                this.searchInput = input;
+              }}
               className="form-control"
               value={searchStr}
-              onChange={(evt) => this.filter(evt.target.value)}
+              onChange={evt => this.filter(evt.target.value)}
               onKeyDown={this.handleOnKeyDown}
               aria-label="Search"
             />
           </div>
-          : null}
+        ) : null}
         <div className="inner show" role="listbox" aria-expanded={expanded} tabIndex="-1">
           <ul className="dropdown-menu inner show" style={this.getDropDownStyle()}>
-            {filteredOptions && filteredOptions.slice(0, config.maxElements || 10).map((opt, index) => {
-              return (
-                <li key={index} className="">
-                  <Dropdown
-                    option={opt}
-                    activeIndex={activeIndex}
-                    index={index}
-                    onSelectOption={(o) => this.select(o)}
-                  />
-                </li>
-              )
-            })}
+            {filteredOptions &&
+              filteredOptions.slice(0, config.maxElements || 10).map((opt, index) => {
+                return (
+                  <li key={index} className="">
+                    <Dropdown
+                      option={opt}
+                      activeIndex={activeIndex}
+                      index={index}
+                      onSelectOption={o => this.select(o)}
+                    />
+                  </li>
+                );
+              })}
           </ul>
         </div>
       </div>
-    )
+    );
   }
 }
 

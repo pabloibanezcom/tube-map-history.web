@@ -3,22 +3,44 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const button = (props) => {
-  const { fontColor, backgroundColor, block, disabled, className, icon, inverse, hover, onClick, href, newPage, outline, size, color, uppercase, submit, text, i18nPrefix, i18nText, to, type } = props;
+const button = props => {
+  const {
+    fontColor,
+    backgroundColor,
+    block,
+    disabled,
+    className,
+    icon,
+    inverse,
+    hover,
+    onClick,
+    href,
+    newPage,
+    outline,
+    size,
+    color,
+    uppercase,
+    submit,
+    text,
+    i18nPrefix,
+    i18nText,
+    to,
+    type
+  } = props;
   let buttonClasses = '';
   if (type === 'btn') {
-    buttonClasses = `${uppercase ? 'btn-uppercase' : ''}  ${inverse ? 'btn-inverse' : ''} ${outline ? 'btn-outline' : ''} ${block ? 'btn-block' : ''}`;
+    buttonClasses = `${uppercase ? 'btn-uppercase' : ''}  ${inverse ? 'btn-inverse' : ''} ${
+      outline ? 'btn-outline' : ''
+    } ${block ? 'btn-block' : ''}`;
   }
-  const classStr = `${type} ${type}-${size} ${type}-${color} ${hover ? `btn-hover-${hover}` : ''} ${buttonClasses} ${className}`;
+  const classStr = `${type} ${type}-${size} ${type}-${color} ${
+    hover ? `btn-hover-${hover}` : ''
+  } ${buttonClasses} ${className}`;
   const style = { color: fontColor, backgroundColor, borderColor: backgroundColor };
   const renderedText = i18nText ? <Translation prefix={i18nPrefix} id={i18nText} /> : text;
   if (to) {
     return (
-      <Link
-        to={to}
-        className={classStr}
-        disabled={disabled}
-      >
+      <Link to={to} className={classStr} disabled={disabled}>
         {icon ? <Icon name={icon} /> : null}
         {renderedText}
       </Link>
@@ -57,18 +79,14 @@ const button = (props) => {
   }
   if (type === 'link' && !href) {
     return (
-      <a
-        className={classStr}
-        onClick={onClick}
-        disabled={disabled}
-      >
+      <a className={classStr} onClick={onClick} disabled={disabled}>
         {icon ? <Icon name={icon} /> : null}
         {renderedText}
       </a>
     );
   }
   return null;
-}
+};
 
 button.defaultProps = {
   fontColor: null,
@@ -83,7 +101,6 @@ button.defaultProps = {
   size: 'sm',
   color: 'primary',
   uppercase: true,
-  onClick: () => { },
   href: null,
   newPage: false,
   submit: false,
@@ -91,7 +108,8 @@ button.defaultProps = {
   i18nPrefix: null,
   i18nText: null,
   to: null,
-  type: 'btn'
+  type: 'btn',
+  onClick: () => {}
 };
 
 button.propTypes = {
@@ -107,18 +125,15 @@ button.propTypes = {
   size: PropTypes.oneOf(['sm', 'lg']),
   color: PropTypes.oneOf(['primary', 'secondary', 'light', 'warning', 'danger']),
   uppercase: PropTypes.bool,
-  text: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]),
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   i18nPrefix: PropTypes.string,
   i18nText: PropTypes.string,
-  onClick: PropTypes.func,
   href: PropTypes.string,
   newPage: PropTypes.bool,
   submit: PropTypes.bool,
   to: PropTypes.string,
-  type: PropTypes.oneOf(['link', 'btn'])
+  type: PropTypes.oneOf(['link', 'btn']),
+  onClick: PropTypes.func
 };
 
-export default button
+export default button;

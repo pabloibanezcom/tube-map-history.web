@@ -44,13 +44,12 @@
           margin-right: 1rem;
         }
       }
-
     }
 
     .tab-menu-header-indicator {
-      transition: left ease .3s, width ease .4s;
+      transition: left ease 0.3s, width ease 0.4s;
       display: block;
-      content: "";
+      content: '';
       width: 0;
       height: 3px;
       position: absolute;

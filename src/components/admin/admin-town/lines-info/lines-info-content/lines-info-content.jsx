@@ -7,29 +7,19 @@ const linesInfoContent = ({ element, actions }) => {
     <div className="lines-info-content">
       <div className="row mb-20">
         <div className="col-lg-12 col-md-12">
-          <h4 className="secondary right-line right-line-secondary mb-20"><Translation prefix={i18nPrefix} id="LINE_INFO" /></h4>
+          <h4 className="secondary right-line right-line-secondary mb-20">
+            <Translation prefix={i18nPrefix} id="LINE_INFO" />
+          </h4>
           <div className="row">
             <div className="col-lg-8">
-              <InfoElement
-                prefix={i18nPrefix}
-                id="NAME"
-                value={element.name}
-              />
+              <InfoElement prefix={i18nPrefix} id="NAME" value={element.name} />
               <InfoElement
                 prefix={i18nPrefix}
                 id="YEAR"
                 value={element.year && <Badge text={element.year} />}
               />
-              <InfoElement
-                prefix={i18nPrefix}
-                id="STATIONS"
-                value={element.stationsAmount}
-              />
-              <InfoElement
-                prefix={i18nPrefix}
-                id="DISTANCE"
-                value={element.distance}
-              />
+              <InfoElement prefix={i18nPrefix} id="STATIONS" value={element.stationsAmount} />
+              <InfoElement prefix={i18nPrefix} id="DISTANCE" value={element.distance} />
             </div>
             <div className="col-lg-4">
               <InfoElement
@@ -40,11 +30,12 @@ const linesInfoContent = ({ element, actions }) => {
               <InfoElement
                 prefix={i18nPrefix}
                 id="FONT"
-                value={<Badge backgroundColor={element.fontColour} text={element.fontColour} border />}
+                value={
+                  <Badge backgroundColor={element.fontColour} text={element.fontColour} border />
+                }
               />
             </div>
           </div>
-
         </div>
       </div>
       <div className="row">
@@ -78,7 +69,7 @@ const linesInfoContent = ({ element, actions }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default linesInfoContent;

@@ -4,8 +4,15 @@ import useForm from 'react-hook-form';
 import { hasErrors } from 'util/data';
 import customValidations from './custom-validations';
 
-const Form = (props) => {
-  const { i18nPrefix, config: { fields, submit, cancel }, initialValues, hide, onSubmit, onCancel } = props;
+const Form = props => {
+  const {
+    i18nPrefix,
+    config: { fields, submit, cancel },
+    initialValues,
+    hide,
+    onSubmit,
+    onCancel
+  } = props;
   const { register, handleSubmit, errors, setValue, setError } = useForm({
     defaultValues: {
       ...initialValues
@@ -14,49 +21,62 @@ const Form = (props) => {
 
   React.useEffect(() => {
     if (!hide) {
-      fields.filter(f => f.type !== 'text').forEach(f => {
-        register({ name: f.name }, typeof f.validation === 'object' ? f.validation : { validate: customValidations[f.validation] });
-        if (initialValues) {
-          setValue(f.name, initialValues[f.name]);
-        }
-      })
+      fields
+        .filter(f => f.type !== 'text')
+        .forEach(f => {
+          register(
+            { name: f.name },
+            typeof f.validation === 'object'
+              ? f.validation
+              : { validate: customValidations[f.validation] }
+          );
+          if (initialValues) {
+            setValue(f.name, initialValues[f.name]);
+          }
+        });
     }
   });
 
   const handleChange = (name, val) => {
-    setError(name, null)
+    setError(name, null);
     setValue(name, val);
-  }
+  };
 
-  const getFieldComponent = (field) => {
+  const getFieldComponent = field => {
     switch (field.type) {
       case 'text':
-        return <Input
-          type="text"
-          name={field.name}
-          formRef={register}
-          extraClass={errors[field.name] && 'input-error'}
-          required={field.validation.required}
-        />
+        return (
+          <Input
+            type="text"
+            name={field.name}
+            formRef={register}
+            extraClass={errors[field.name] && 'input-error'}
+            required={field.validation.required}
+          />
+        );
       case 'number': {
-        return <Input
-          type="number"
-          name={field.name}
-          value={initialValues && initialValues[field.name]}
-          onChange={val => handleChange(field.name, parseInt(val, 10))}
-          extraClass={errors[field.name] && 'input-error'}
-        />
+        return (
+          <Input
+            type="number"
+            name={field.name}
+            value={initialValues && initialValues[field.name]}
+            onChange={val => handleChange(field.name, parseInt(val, 10))}
+            extraClass={errors[field.name] && 'input-error'}
+          />
+        );
       }
       case 'color': {
-        return <ColorSelector
-          color={initialValues && initialValues[field.name]}
-          onChange={val => handleChange(field.name, val)}
-        />
+        return (
+          <ColorSelector
+            color={initialValues && initialValues[field.name]}
+            onChange={val => handleChange(field.name, val)}
+          />
+        );
       }
       default:
         return null;
     }
-  }
+  };
 
   return (
     <React.Fragment>
@@ -88,7 +108,7 @@ const Form = (props) => {
                 disabled={hasErrors(errors)}
               />
             </div>
-            {cancel &&
+            {cancel && (
               <div className="col-lg-6">
                 <Button
                   color={cancel.color}
@@ -99,16 +119,12 @@ const Form = (props) => {
                   onClick={onCancel}
                 />
               </div>
-            }
-
+            )}
           </div>
-
-
         </form>
       )}
     </React.Fragment>
-
-  )
-}
+  );
+};
 
 export default Form;

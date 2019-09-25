@@ -8,4 +8,4 @@ export default {
     value: /^.{8,26}$/,
     message: 'Password must contain at least 8 characters'
   }
-}
+};

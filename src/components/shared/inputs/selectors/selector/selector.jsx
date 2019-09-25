@@ -5,7 +5,6 @@ import DefaultSelected from './default-selected/default-selected';
 import selectConfig from './selector.config.json';
 
 class Selector extends React.Component {
-
   constructor(props) {
     super(props);
     this.handleOnChange = this.handleOnChange.bind(this);
@@ -31,7 +30,7 @@ class Selector extends React.Component {
           defaultValue={defaultValue}
         />
       </div>
-    )
+    );
   }
 }
 

@@ -1,12 +1,11 @@
 import { YearSelector } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 import { initMapDraftStart, initMapStart } from 'store/public/actions';
 import MapWrapper from '../MapWrapper/MapWrapper';
 
 class Main extends React.Component {
-
   componentDidMount() {
     const { match, onInit, onInitDraft } = this.props;
     if (match.params.draftId) {
@@ -19,14 +18,10 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        <YearSelector
-          year="2019"
-          showYearSelector
-          onYearChange={(year) => console.log(year)}
-        />
+        <YearSelector year="2019" showYearSelector onYearChange={year => console.log(year)} />
         <MapWrapper mode="main" />
       </div>
-    )
+    );
   }
 }
 
@@ -40,7 +35,10 @@ const mapDispatchToProps = dispatch => {
   return {
     onInit: (townUrl, year) => dispatch(initMapStart(townUrl, year)),
     onInitDraft: (dratfId, year) => dispatch(initMapDraftStart(dratfId, year))
-  }
+  };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Main));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Main));

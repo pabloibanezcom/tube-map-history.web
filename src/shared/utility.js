@@ -5,7 +5,7 @@ export const updateObject = (oldObject, updatedProperties) => {
   };
 };
 
-export const getDefaultValue = (type) => {
+export const getDefaultValue = type => {
   switch (type) {
     case 'string':
       return '';
@@ -14,7 +14,7 @@ export const getDefaultValue = (type) => {
     default:
       return null;
   }
-}
+};
 
 export const applyTypeToValue = (value, type) => {
   if (value === null || value === undefined) {
@@ -28,11 +28,11 @@ export const applyTypeToValue = (value, type) => {
     default:
       return value;
   }
-}
+};
 
-export const transformDistance = (value) => {
+export const transformDistance = value => {
   return value ? `${value.toLocaleString()} m` : '';
-}
+};
 
 export const groupBy = (arr, groupProperty, itemsProperty, sort) => {
   if (!itemsProperty) {
@@ -54,12 +54,15 @@ export const groupBy = (arr, groupProperty, itemsProperty, sort) => {
     return null;
   });
   return sort ? result.sort((a, b) => a[groupProperty] - b[groupProperty]) : result;
-}
+};
 
 export const sortBy = (arr, property) => {
   return !property ? arr.sort((a, b) => a[property] - b[property]) : arr;
-}
+};
 
-export const splitByRows = (arr, size) => arr.reduce((chunks, el, i) => (i % size
-  ? chunks[chunks.length - 1].push(el)
-  : chunks.push([el])) && chunks, [])
+export const splitByRows = (arr, size) =>
+  arr.reduce(
+    (chunks, el, i) =>
+      (i % size ? chunks[chunks.length - 1].push(el) : chunks.push([el])) && chunks,
+    []
+  );

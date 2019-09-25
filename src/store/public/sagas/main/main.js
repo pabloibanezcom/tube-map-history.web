@@ -1,5 +1,5 @@
-import { takeEvery } from "redux-saga/effects";
-import * as actionTypes from "store/public/actions/main/actionTypes";
+import { takeEvery } from 'redux-saga/effects';
+import * as actionTypes from 'store/public/actions/main/actionTypes';
 import { initMapDraftSagaStart, initMapSagaStart } from './workers';
 
 export const mainSagas = [

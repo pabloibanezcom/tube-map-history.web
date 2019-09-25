@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 
-export const addStationStart = (station) => {
+export const addStationStart = station => {
   return {
     type: actionTypes.ADD_STATION_START,
     station
@@ -13,7 +13,7 @@ export const addStationSuccess = () => {
   };
 };
 
-export const addStationFail = (error) => {
+export const addStationFail = error => {
   return {
     type: actionTypes.ADD_STATION_FAIL,
     error

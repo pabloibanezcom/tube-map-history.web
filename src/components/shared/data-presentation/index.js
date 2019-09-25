@@ -12,5 +12,18 @@ import Slider from './slider/slider';
 import TabMenu from './tab-menu/tab-menu';
 import TownLogo from './town-logo/town-logo';
 
-export { Badge, CollapseList, Collapse, CountryLabel, Icon, InfoElement, LineBadge, LoadingSpinner, Pagination, Panel, Slider, TabMenu, TownLogo, };
-
+export {
+  Badge,
+  CollapseList,
+  Collapse,
+  CountryLabel,
+  Icon,
+  InfoElement,
+  LineBadge,
+  LoadingSpinner,
+  Pagination,
+  Panel,
+  Slider,
+  TabMenu,
+  TownLogo
+};

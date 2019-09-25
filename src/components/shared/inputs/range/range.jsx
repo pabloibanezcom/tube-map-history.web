@@ -6,22 +6,16 @@ import Toggle from '../toggle/toggle';
 const SliderRange = Slider.Range;
 const Handle = Slider.Handle;
 
-const handle = (props) => {
+const handle = props => {
   const { value, dragging, index, ...restProps } = props;
   return (
-    <Tooltip
-      prefixCls="rc-slider-tooltip"
-      overlay={value}
-      placement="bottom"
-      key={index}
-    >
+    <Tooltip prefixCls="rc-slider-tooltip" overlay={value} placement="bottom" key={index}>
       <Handle value={value} {...restProps} />
     </Tooltip>
   );
 };
 
 class Range extends React.Component {
-
   constructor(props) {
     super(props);
     const { config } = this.props;
@@ -33,14 +27,14 @@ class Range extends React.Component {
     };
   }
 
-  handleChange = (value) => {
+  handleChange = value => {
     const { onChange } = this.props;
     this.setState({ value });
     const externalValue = value ? { min: value[0], max: value[1] } : null;
     onChange(externalValue);
-  }
+  };
 
-  handleToggle = (value) => {
+  handleToggle = value => {
     const { config } = this.props;
     if (!value) {
       this.handleChange(null);
@@ -48,16 +42,23 @@ class Range extends React.Component {
       this.handleChange(config.value);
     }
     this.setState({ show: value });
-  }
+  };
 
   render() {
     const { config } = this.props;
     const { max, min, show, value } = this.state;
     return (
       <div className="range form-group">
-        {config.enabled === undefined ?
-          <label>{config.label}</label> :
-          <Toggle label={config.label} value={config.enabled} onToggle={this.handleToggle} styleType={config.toggleType} />}
+        {config.enabled === undefined ? (
+          <label>{config.label}</label>
+        ) : (
+          <Toggle
+            label={config.label}
+            value={config.enabled}
+            onToggle={this.handleToggle}
+            styleType={config.toggleType}
+          />
+        )}
         {show ? (
           <div>
             <div className="current-values">
@@ -71,7 +72,7 @@ class Range extends React.Component {
                 max={max}
                 defaultValue={value}
                 handle={handle}
-                onAfterChange={(val) => this.handleChange(val)}
+                onAfterChange={val => this.handleChange(val)}
               />
             </div>
           </div>

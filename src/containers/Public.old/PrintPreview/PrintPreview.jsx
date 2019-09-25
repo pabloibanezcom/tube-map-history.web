@@ -2,11 +2,10 @@ import * as actions from 'actions/main';
 import { Header } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 import MapWrapper from '../MapWrapper/MapWrapper';
 
 class PrintPreview extends React.Component {
-
   componentDidMount() {
     const { match, onInit } = this.props;
     const town = match.params.town;
@@ -18,9 +17,7 @@ class PrintPreview extends React.Component {
     const { town, year } = this.props;
     return (
       <div className="print-preview">
-        <Header
-          optionsName="print"
-        />
+        <Header optionsName="print" />
         <div className="page">
           <MapWrapper mode="print" />
           {town && year ? (
@@ -34,7 +31,7 @@ class PrintPreview extends React.Component {
           ) : null}
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -56,8 +53,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onInit: (town, year) => dispatch(actions.loadInitStart(town, year)),
-    onYearChange: (townId, year, previousYear, maxYearLoaded) => dispatch(actions.changeYearStart(townId, year, previousYear, maxYearLoaded))
-  }
+    onYearChange: (townId, year, previousYear, maxYearLoaded) =>
+      dispatch(actions.changeYearStart(townId, year, previousYear, maxYearLoaded))
+  };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(PrintPreview));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(PrintPreview));

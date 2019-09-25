@@ -10,10 +10,7 @@ const badges = () => {
           <div className="showroom-element">
             <label>Primary</label>
             <div>
-              <Badge
-                text="Some info"
-                color="primary"
-              />
+              <Badge text="Some info" color="primary" />
             </div>
           </div>
         </div>
@@ -21,10 +18,7 @@ const badges = () => {
           <div className="showroom-element">
             <label>Secondary</label>
             <div>
-              <Badge
-                text="Some info"
-                color="secondary"
-              />
+              <Badge text="Some info" color="secondary" />
             </div>
           </div>
         </div>
@@ -32,17 +26,13 @@ const badges = () => {
           <div className="showroom-element">
             <label>Custom</label>
             <div>
-              <Badge
-                text="Some info"
-                backgroundColor="#8a1717"
-                fontColor="#ffffff"
-              />
+              <Badge text="Some info" backgroundColor="#8a1717" fontColor="#ffffff" />
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default badges;

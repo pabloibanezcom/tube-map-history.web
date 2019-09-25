@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { finishAction, searchParamsChangeStart, startAction } from 'store/admin/actions';
 
 class AdminLinesPanel extends React.Component {
-
   constructor(props) {
     super(props);
     this.search = this.search.bind(this);
@@ -57,14 +56,10 @@ class AdminLinesPanel extends React.Component {
           />
         ) : null}
         {lines.length ? (
-          <Pagination
-            color="secondary"
-            pagination={pagination}
-            onPageChange={this.changePage}
-          />
+          <Pagination color="secondary" pagination={pagination} onPageChange={this.changePage} />
         ) : null}
       </div>
-    )
+    );
   }
 }
 
@@ -81,8 +76,12 @@ const mapDispatchToProps = dispatch => {
   return {
     _startAction: (actionName, actionObj) => dispatch(startAction(actionName, actionObj)),
     _finishAction: () => dispatch(finishAction()),
-    searchLines: (searchParams, pagination) => dispatch(searchParamsChangeStart(searchParams, pagination, 'line'))
-  }
+    searchLines: (searchParams, pagination) =>
+      dispatch(searchParamsChangeStart(searchParams, pagination, 'line'))
+  };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminLinesPanel);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AdminLinesPanel);

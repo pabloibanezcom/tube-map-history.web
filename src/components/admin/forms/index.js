@@ -12,5 +12,18 @@ import EditLineForm from './edit-line-form/edit-line-form';
 import EditStationForm from './edit-station-form/edit-station-form';
 import ImportDraftForm from './import-draft-form/import-draft-form';
 
-export { AddDraftForm, AddLineForm, AddStationForm, DeleteDraftForm, DeleteStationForm, EditDraftForm, EditLineForm, EditStationForm, DeleteLineForm, AddConnectionForm, EditConnectionForm, DeleteConnectionForm, ImportDraftForm };
-
+export {
+  AddDraftForm,
+  AddLineForm,
+  AddStationForm,
+  DeleteDraftForm,
+  DeleteStationForm,
+  EditDraftForm,
+  EditLineForm,
+  EditStationForm,
+  DeleteLineForm,
+  AddConnectionForm,
+  EditConnectionForm,
+  DeleteConnectionForm,
+  ImportDraftForm
+};

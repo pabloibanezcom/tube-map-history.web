@@ -4,4 +4,3 @@ import StationInfo from './station-info/station-info';
 import TownInfo from './town-info/town-info';
 
 export { LineInfo, LinesInfo, StationInfo, TownInfo };
-

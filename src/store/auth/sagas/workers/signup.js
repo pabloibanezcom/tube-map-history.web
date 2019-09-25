@@ -1,6 +1,6 @@
 import Api from 'http/admin';
-import { put } from "redux-saga/effects";
-import * as actions from "store/auth/actions";
+import { put } from 'redux-saga/effects';
+import * as actions from 'store/auth/actions';
 
 export function* signUpSagaStart(action) {
   try {

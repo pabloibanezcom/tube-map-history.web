@@ -4,18 +4,20 @@ import ConnectionsFilter from './connections-filter/connections-filter';
 import ConnectionsInfoContent from './connections-info-content/connections-info-content';
 import ConnectionsInfoHeader from './connections-info-header/connections-info-header';
 
-const connectionsInfo = (props) => {
-  const { draftId, connections, onAddConnection, onEditConnection, onDeleteConnection, onChangeParams } = props;
+const connectionsInfo = props => {
+  const {
+    draftId,
+    connections,
+    onAddConnection,
+    onEditConnection,
+    onDeleteConnection,
+    onChangeParams
+  } = props;
   return (
     <div className="connections-info">
       <div className="flex flex-row flex-space-between mb-30">
         <ConnectionsFilter draftId={draftId} onChangeParams={onChangeParams} />
-        <Button
-          text="Add connection"
-          icon="add"
-          outline
-          onClick={onAddConnection}
-        />
+        <Button text="Add connection" icon="add" outline onClick={onAddConnection} />
       </div>
       <CollapseList
         elements={connections}
@@ -26,7 +28,7 @@ const connectionsInfo = (props) => {
         {...props}
       />
     </div>
-  )
-}
+  );
+};
 
 export default connectionsInfo;

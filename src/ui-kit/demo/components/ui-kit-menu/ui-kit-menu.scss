@@ -1,0 +1,44 @@
+.ui-kit-menu {
+  background-color: $secondary-color;
+  color: $secondary-alt-color;
+  width: 230px;
+
+  ul {
+    padding-left: 0;
+    margin-top: 24px;
+
+    li {
+      list-style: none;
+      padding: 6px 16px 6px;
+
+      &.group-title {
+        font-weight: 600;
+      }
+
+      &.link-element {
+        padding-left: 20px;
+      }
+
+      &.active {
+        border-right: 5px solid $primary-color;
+        font-weight: 400;
+
+        a {
+          color: $primary-color;
+        }
+      }
+
+      a {
+        color: $secondary-alt-color;
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        a {
+          color: $primary-color !important;
+        }
+      }
+    }
+  }
+}

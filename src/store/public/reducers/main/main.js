@@ -6,12 +6,12 @@ export const initMapSuccess = (state, action) => {
     year: action.year,
     draft: action.draft,
     stations: action.stations
-  }
-}
+  };
+};
 
 export const setYear = (state, action) => {
   return {
     ...state,
     year: action.year
-  }
-}
+  };
+};

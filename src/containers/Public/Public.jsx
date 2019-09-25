@@ -1,7 +1,7 @@
 import { Header, LoadingSpinner } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 import routes from './routes';
 
 class Public extends React.Component {
@@ -10,20 +10,14 @@ class Public extends React.Component {
     return (
       <React.Fragment>
         <Header optionsName="admin" />
-        <LoadingSpinner
-          background="dark"
-          inverse
-          loading={loading}
-        />
+        <LoadingSpinner background="dark" inverse loading={loading} />
         <main className="public-container">
-          <div className="container">
-            {routes}
-          </div>
+          <div className="container">{routes}</div>
         </main>
       </React.Fragment>
     );
   }
-};
+}
 
 const mapStateToProps = state => {
   return {
@@ -31,4 +25,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, null)(withRouter(Public));
+export default connect(
+  mapStateToProps,
+  null
+)(withRouter(Public));

@@ -8,14 +8,13 @@ import LineSelected from './line-selected/line-selected';
 import selectConfig from './line-selector.config.json';
 
 const searchParams = {
-  select: "shortName colour",
-  populate: ""
-}
+  select: 'shortName colour',
+  populate: ''
+};
 
 const allLinesOption = { _id: null, shortName: 'All lines', colour: '#ffffff' };
 
 class LineSelector extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -34,9 +33,12 @@ class LineSelector extends React.Component {
       const res = await Api.line.search(draftId, { ...searchParams, filter: {} }, pagination);
       const lines = res.data.elements;
       if (allLinesOpt) {
-        lines.unshift(allLinesOption)
+        lines.unshift(allLinesOption);
       }
-      this.setState({ lines: res.data.elements, initialLine: lines.find(l => l._id === defaultValue) })
+      this.setState({
+        lines: res.data.elements,
+        initialLine: lines.find(l => l._id === defaultValue)
+      });
     } else {
       await this.getInitialLine(defaultValue);
     }
@@ -44,8 +46,12 @@ class LineSelector extends React.Component {
 
   async getInitialLine(lineId) {
     const { draftId } = this.props;
-    const res = await Api.line.search(draftId, { ...searchParams, filter: { _id: lineId } }, pagination);
-    this.setState({ initialLine: res.data.elements[0] })
+    const res = await Api.line.search(
+      draftId,
+      { ...searchParams, filter: { _id: lineId } },
+      pagination
+    );
+    this.setState({ initialLine: res.data.elements[0] });
   }
 
   handleOnChange(line) {
@@ -56,18 +62,22 @@ class LineSelector extends React.Component {
   handleInputChange(str) {
     const { remoteSearch } = this.props;
     if (remoteSearch) {
-      this.remoteSearch(str)
+      this.remoteSearch(str);
     }
   }
 
   async remoteSearch(str) {
     if (!str || str.length < 2) {
-      this.setState({ lines: [] })
+      this.setState({ lines: [] });
       return;
     }
     const { draftId } = this.props;
-    const res = await Api.line.search(draftId, { ...searchParams, filter: { name: str } }, pagination);
-    this.setState({ lines: res.data.elements })
+    const res = await Api.line.search(
+      draftId,
+      { ...searchParams, filter: { name: str } },
+      pagination
+    );
+    this.setState({ lines: res.data.elements });
   }
 
   render() {
@@ -82,7 +92,7 @@ class LineSelector extends React.Component {
         return allLinesOpt;
       }
       return null;
-    }
+    };
     return (
       <div className={`line-selector ${className}`}>
         <Select
@@ -95,7 +105,7 @@ class LineSelector extends React.Component {
           onInputChange={this.handleInputChange}
         />
       </div>
-    )
+    );
   }
 }
 
@@ -104,7 +114,7 @@ LineSelector.defaultProps = {
   remoteSearch: false,
   defaultValue: null,
   className: '',
-  onChange: () => { }
+  onChange: () => {}
 };
 
 LineSelector.propTypes = {

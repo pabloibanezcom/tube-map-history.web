@@ -3,29 +3,28 @@ import { BooleanSelector } from 'components/shared';
 import React from 'react';
 import LineConnections from './line-connections/line-connections';
 
-const lineInfo = (props) => {
-
+const lineInfo = props => {
   const { line, onStationSelected, year } = props;
 
-  const handleAction = () => {
-  }
+  const handleAction = () => {};
 
   return (
     <div className="line-info">
       <div className="line-name" style={{ backgroundColor: line.colour, color: line.fontColour }}>
-        <img className="line-logo" alt="" src={tubeLogo} />{line.name}
+        <img className="line-logo" alt="" src={tubeLogo} />
+        {line.name}
       </div>
       <div className="line-info-year">
         <BooleanSelector
-          options={[{ label: year, action: handleAction, active: false }, { label: 'Now', action: handleAction, active: true }]}
+          options={[
+            { label: year, action: handleAction, active: false },
+            { label: 'Now', action: handleAction, active: true }
+          ]}
         />
       </div>
-      <LineConnections
-        line={line}
-        onStationSelected={onStationSelected}
-      />
+      <LineConnections line={line} onStationSelected={onStationSelected} />
     </div>
-  )
-}
+  );
+};
 
 export default lineInfo;

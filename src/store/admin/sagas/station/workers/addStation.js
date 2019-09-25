@@ -1,6 +1,11 @@
 import Api from 'http/admin';
 import { put, select } from 'redux-saga/effects';
-import { addStationFail, addStationSuccess, getDraftStart, searchParamsChangeStart } from 'store/admin/actions';
+import {
+  addStationFail,
+  addStationSuccess,
+  getDraftStart,
+  searchParamsChangeStart
+} from 'store/admin/actions';
 import { error, info } from 'util/notification';
 
 export function* addStationSagaStart(action) {

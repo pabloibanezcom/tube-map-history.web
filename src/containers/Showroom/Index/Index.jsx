@@ -8,32 +8,17 @@ const index = () => {
       <div className="row">
         <div className="col">
           <div className="showroom-element showroom-link">
-            <Button
-              to="/showroom/layout"
-              text="Layout"
-              type="link"
-              color="secondary"
-            />
+            <Button to="/showroom/layout" text="Layout" type="link" color="secondary" />
           </div>
         </div>
         <div className="col">
           <div className="showroom-element showroom-link">
-            <Button
-              to="/showroom/headers"
-              text="Headers"
-              type="link"
-              color="secondary"
-            />
+            <Button to="/showroom/headers" text="Headers" type="link" color="secondary" />
           </div>
         </div>
         <div className="col">
           <div className="showroom-element showroom-link">
-            <Button
-              to="/showroom/buttons"
-              text="Buttons and Links"
-              type="link"
-              color="secondary"
-            />
+            <Button to="/showroom/buttons" text="Buttons and Links" type="link" color="secondary" />
           </div>
         </div>
         <div className="col">
@@ -48,27 +33,17 @@ const index = () => {
         </div>
         <div className="col">
           <div className="showroom-element showroom-link">
-            <Button
-              to="/showroom/forms"
-              text="Forms"
-              type="link"
-              color="secondary"
-            />
+            <Button to="/showroom/forms" text="Forms" type="link" color="secondary" />
           </div>
         </div>
         <div className="col">
           <div className="showroom-element showroom-link">
-            <Button
-              to="/showroom/inputs"
-              text="Inputs"
-              type="link"
-              color="secondary"
-            />
+            <Button to="/showroom/inputs" text="Inputs" type="link" color="secondary" />
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default index;

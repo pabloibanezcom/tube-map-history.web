@@ -1,6 +1,6 @@
 import React from 'react';
 
-const placeDropdown = (props) => {
+const placeDropdown = props => {
   const { activeIndex, index, option } = props;
   return (
     <a
@@ -12,7 +12,7 @@ const placeDropdown = (props) => {
     >
       <span>{option.name}</span>
     </a>
-  )
-}
+  );
+};
 
 export default placeDropdown;

@@ -9,46 +9,31 @@ const buttons = () => {
         <div className="col-lg-2 col-md-4">
           <div className="showroom-element">
             <label>Primary button</label>
-            <Button
-              text="Continue"
-            />
+            <Button text="Continue" />
           </div>
         </div>
         <div className="col-lg-2 col-md-4">
           <div className="showroom-element">
             <label>Secondary button</label>
-            <Button
-              color="secondary"
-              text="Continue"
-            />
+            <Button color="secondary" text="Continue" />
           </div>
         </div>
         <div className="col-lg-2 col-md-4">
           <div className="showroom-element">
             <label>Light button</label>
-            <Button
-              color="light"
-              text="Continue"
-            />
+            <Button color="light" text="Continue" />
           </div>
         </div>
         <div className="col-lg-2 col-md-4">
           <div className="showroom-element">
             <label>Outline primary button</label>
-            <Button
-              text="Continue"
-              outline
-            />
+            <Button text="Continue" outline />
           </div>
         </div>
         <div className="col-lg-2 col-md-4">
           <div className="showroom-element">
             <label>Outline secondary button</label>
-            <Button
-              color="secondary"
-              text="Continue"
-              outline
-            />
+            <Button color="secondary" text="Continue" outline />
           </div>
         </div>
       </div>
@@ -56,48 +41,32 @@ const buttons = () => {
         <div className="col-lg-2 col-md-4">
           <div className="showroom-element">
             <label>Primary inverse button</label>
-            <Button
-              text="Continue"
-              inverse
-            />
+            <Button text="Continue" inverse />
           </div>
         </div>
         <div className="col-lg-2 col-md-4">
           <div className="showroom-element">
             <label>Secondary inverse button</label>
-            <Button
-              color="secondary"
-              text="Continue"
-              inverse
-            />
+            <Button color="secondary" text="Continue" inverse />
           </div>
         </div>
         <div className="col-lg-2 col-md-4">
           <div className="showroom-element">
             <label>Large button</label>
-            <Button
-              text="Continue"
-              size="lg"
-            />
+            <Button text="Continue" size="lg" />
           </div>
         </div>
         <div className="col-lg-2 col-md-4">
           <div className="showroom-element">
             <label>No text transformation button</label>
-            <Button
-              text="Continue"
-              uppercase={false}
-            />
+            <Button text="Continue" uppercase={false} />
           </div>
         </div>
         <div className="col-lg-2 col-md-4">
           <div className="showroom-element">
             <label>No block button</label>
             <div>
-              <Button
-                text="Continue"
-                block={false}
-              />
+              <Button text="Continue" block={false} />
             </div>
           </div>
         </div>
@@ -105,10 +74,7 @@ const buttons = () => {
           <div className="showroom-element">
             <label>With icon (in progress)</label>
             <div>
-              <Button
-                text="Search"
-                icon="search"
-              />
+              <Button text="Search" icon="search" />
             </div>
           </div>
         </div>
@@ -118,10 +84,7 @@ const buttons = () => {
           <div className="showroom-element">
             <label>Primary link</label>
             <div>
-              <Button
-                type="link"
-                text="Check this link"
-              />
+              <Button type="link" text="Check this link" />
             </div>
           </div>
         </div>
@@ -129,11 +92,7 @@ const buttons = () => {
           <div className="showroom-element">
             <label>Secondary link</label>
             <div>
-              <Button
-                type="link"
-                text="Check this link"
-                color="secondary"
-              />
+              <Button type="link" text="Check this link" color="secondary" />
             </div>
           </div>
         </div>
@@ -141,17 +100,13 @@ const buttons = () => {
           <div className="showroom-element">
             <label>Large link</label>
             <div>
-              <Button
-                type="link"
-                text="Check this link"
-                size="lg"
-              />
+              <Button type="link" text="Check this link" size="lg" />
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default buttons;

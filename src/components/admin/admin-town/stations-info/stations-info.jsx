@@ -4,19 +4,22 @@ import StationsFilter from './stations-filter/stations-filter';
 import StationsInfoContent from './stations-info-content/stations-info-content';
 import StationsInfoHeader from './stations-info-header/stations-info-header';
 
-const stationsInfo = (props) => {
-  const { draftId, stations, viewStationStations, onChangeParams, onAddStation, onEditStation, onDeleteStation } = props;
+const stationsInfo = props => {
+  const {
+    draftId,
+    stations,
+    viewStationStations,
+    onChangeParams,
+    onAddStation,
+    onEditStation,
+    onDeleteStation
+  } = props;
   return (
     <div className="stations-info">
       <div className="flex flex-row flex-space-between mb-30">
         <StationsFilter draftId={draftId} onChangeParams={onChangeParams} />
         <div>
-          <Button
-            text="Add station"
-            icon="add"
-            outline
-            onClick={onAddStation}
-          />
+          <Button text="Add station" icon="add" outline onClick={onAddStation} />
         </div>
       </div>
       <CollapseList
@@ -28,7 +31,7 @@ const stationsInfo = (props) => {
         {...props}
       />
     </div>
-  )
-}
+  );
+};
 
 export default stationsInfo;

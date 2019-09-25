@@ -1,8 +1,34 @@
-import { AddConnectionForm, AddLineForm, AddStationForm, DeleteConnectionForm, DeleteDraftForm, DeleteLineForm, DeleteStationForm, EditConnectionForm, EditDraftForm, EditLineForm, EditStationForm, ImportDraftForm } from 'components/admin/forms';
+import {
+  AddConnectionForm,
+  AddLineForm,
+  AddStationForm,
+  DeleteConnectionForm,
+  DeleteDraftForm,
+  DeleteLineForm,
+  DeleteStationForm,
+  EditConnectionForm,
+  EditDraftForm,
+  EditLineForm,
+  EditStationForm,
+  ImportDraftForm
+} from 'components/admin/forms';
 import { Panel } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
-import { addConnectionStart, addLineStart, addStationStart, deleteConnectionStart, deleteDraftStart, deleteLineStart, deleteStationStart, importDraftStart, updateConnectionStart, updateDraftStart, updateLineStart, updateStationStart } from 'store/admin/actions';
+import {
+  addConnectionStart,
+  addLineStart,
+  addStationStart,
+  deleteConnectionStart,
+  deleteDraftStart,
+  deleteLineStart,
+  deleteStationStart,
+  importDraftStart,
+  updateConnectionStart,
+  updateDraftStart,
+  updateLineStart,
+  updateStationStart
+} from 'store/admin/actions';
 
 const actions = {
   editDraft: {
@@ -53,17 +79,30 @@ const actions = {
     header: 'Import draft',
     form: ImportDraftForm
   }
-}
+};
 
 class ActionsPanel extends React.Component {
-
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(formData) {
-    const { action, updateDraft, deleteDraft, addLine, updateLine, deleteLine, addStation, updateStation, deleteStation, addConnection, updateConnection, deleteConnection, importDraft } = this.props;
+    const {
+      action,
+      updateDraft,
+      deleteDraft,
+      addLine,
+      updateLine,
+      deleteLine,
+      addStation,
+      updateStation,
+      deleteStation,
+      addConnection,
+      updateConnection,
+      deleteConnection,
+      importDraft
+    } = this.props;
     if (action === 'editDraft') {
       updateDraft(formData);
     }
@@ -111,9 +150,16 @@ class ActionsPanel extends React.Component {
         headerColor="secondary"
         className={`animated ${action ? 'zoomIn' : 'zoomOut'} animated-3x`}
       >
-        {action && <ActionForm draftId={draft._id} actionObj={actionObj} onSubmit={this.handleSubmit} onCancel={onCancel} />}
+        {action && (
+          <ActionForm
+            draftId={draft._id}
+            actionObj={actionObj}
+            onSubmit={this.handleSubmit}
+            onCancel={onCancel}
+          />
+        )}
       </Panel>
-    )
+    );
   }
 }
 
@@ -125,19 +171,22 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateDraft: (draft) => dispatch(updateDraftStart(draft)),
-    deleteDraft: (draftId) => dispatch(deleteDraftStart(draftId)),
-    addLine: (line) => dispatch(addLineStart(line)),
-    updateLine: (line) => dispatch(updateLineStart(line)),
-    deleteLine: (lineId) => dispatch(deleteLineStart(lineId)),
-    addStation: (station) => dispatch(addStationStart(station)),
-    updateStation: (station) => dispatch(updateStationStart(station)),
-    deleteStation: (stationId) => dispatch(deleteStationStart(stationId)),
-    addConnection: (connection) => dispatch(addConnectionStart(connection)),
-    updateConnection: (connection) => dispatch(updateConnectionStart(connection)),
-    deleteConnection: (connectionId) => dispatch(deleteConnectionStart(connectionId)),
+    updateDraft: draft => dispatch(updateDraftStart(draft)),
+    deleteDraft: draftId => dispatch(deleteDraftStart(draftId)),
+    addLine: line => dispatch(addLineStart(line)),
+    updateLine: line => dispatch(updateLineStart(line)),
+    deleteLine: lineId => dispatch(deleteLineStart(lineId)),
+    addStation: station => dispatch(addStationStart(station)),
+    updateStation: station => dispatch(updateStationStart(station)),
+    deleteStation: stationId => dispatch(deleteStationStart(stationId)),
+    addConnection: connection => dispatch(addConnectionStart(connection)),
+    updateConnection: connection => dispatch(updateConnectionStart(connection)),
+    deleteConnection: connectionId => dispatch(deleteConnectionStart(connectionId)),
     importDraft: (draftId, file) => dispatch(importDraftStart(draftId, file))
-  }
+  };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ActionsPanel);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ActionsPanel);

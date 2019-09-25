@@ -1,6 +1,10 @@
 import Api from 'http/admin';
 import { put } from 'redux-saga/effects';
-import { searchParamsChangeStart, updateStationFail, updateStationSuccess } from 'store/admin/actions';
+import {
+  searchParamsChangeStart,
+  updateStationFail,
+  updateStationSuccess
+} from 'store/admin/actions';
 import { info } from 'util/notification';
 
 export function* updateStationSagaStart(action) {

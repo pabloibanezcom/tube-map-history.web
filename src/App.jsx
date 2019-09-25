@@ -9,7 +9,6 @@ import routes from './routes';
 addLocaleData([...intlEN, ...intlES]);
 
 class App extends Component {
-
   constructor(props) {
     let lang = localStorage.getItem('lang');
     if (!lang) {
@@ -20,7 +19,7 @@ class App extends Component {
     this.state = {
       locale: lang,
       messages: flattenMessages(require(`./i18n/${lang}.json`))
-    }
+    };
   }
 
   changeLanguage(lang) {
@@ -32,9 +31,7 @@ class App extends Component {
     const { locale, messages } = this.state;
     return (
       <IntlProvider key={locale} locale={locale} messages={messages}>
-        <div className="ms-site-container">
-          {routes(history)}
-        </div>
+        <div className="ms-site-container">{routes(history)}</div>
       </IntlProvider>
     );
   }

@@ -1,8 +1,6 @@
-import { all } from "redux-saga/effects";
+import { all } from 'redux-saga/effects';
 import { mainSagas } from './main';
 
 export function* watchPublic() {
-  yield all([
-    ...mainSagas
-  ])
+  yield all([...mainSagas]);
 }

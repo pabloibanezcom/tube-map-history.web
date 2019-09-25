@@ -7,14 +7,11 @@ const BasicForm = () => {
 
   const onSubmit = data => {
     console.log(data);
-  }
+  };
 
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
-      <FormField
-        label="Email Address"
-        error={errors.email && errors.email.message}
-      >
+      <FormField label="Email Address" error={errors.email && errors.email.message}>
         <Input
           type="email"
           name="email"
@@ -24,10 +21,7 @@ const BasicForm = () => {
           required
         />
       </FormField>
-      <FormField
-        label="Password"
-        error={errors.password && errors.password.message}
-      >
+      <FormField label="Password" error={errors.password && errors.password.message}>
         <Input
           type="password"
           name="password"
@@ -36,11 +30,7 @@ const BasicForm = () => {
           required
         />
       </FormField>
-      <Button
-        submit
-        color="secondary"
-        text="Login"
-      />
+      <Button submit color="secondary" text="Login" />
     </form>
   );
 };

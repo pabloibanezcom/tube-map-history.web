@@ -1,11 +1,19 @@
-import { ColorSelector, CountrySelector, Input, LineSelector, PlaceSelector, Selector, StationSelector, TownSelector } from 'components/shared';
+import {
+  ColorSelector,
+  CountrySelector,
+  Input,
+  LineSelector,
+  PlaceSelector,
+  Selector,
+  StationSelector,
+  TownSelector
+} from 'components/shared';
 import React from 'react';
 import lines from './data/lines.json';
 import stations from './data/stations.json';
 import towns from './data/towns.json';
 
 class Inputs extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +25,7 @@ class Inputs extends React.Component {
       station: null,
       color: null,
       color2: null
-    }
+    };
     this.handleSelect = this.handleSelect.bind(this);
   }
 
@@ -34,45 +42,31 @@ class Inputs extends React.Component {
           <div className="col-2">
             <div className="showroom-element">
               <label>Text input</label>
-              <Input
-                name="input1"
-              />
+              <Input name="input1" />
             </div>
           </div>
           <div className="col-2">
             <div className="showroom-element">
               <label>Text input with placeholder</label>
-              <Input
-                name="input2"
-                placeholder="Type something"
-              />
+              <Input name="input2" placeholder="Type something" />
             </div>
           </div>
           <div className="col-2">
             <div className="showroom-element">
               <label>Text input clearable</label>
-              <Input
-                name="input3"
-                clearable
-              />
+              <Input name="input3" clearable />
             </div>
           </div>
           <div className="col-2">
             <div className="showroom-element">
               <label>Text input with initial value</label>
-              <Input
-                name="input4"
-                value="John Johnson"
-              />
+              <Input name="input4" value="John Johnson" />
             </div>
           </div>
           <div className="col-2">
             <div className="showroom-element">
               <label>Text input disabled</label>
-              <Input
-                name="input5"
-                disabled
-              />
+              <Input name="input5" disabled />
             </div>
           </div>
         </div>
@@ -80,54 +74,37 @@ class Inputs extends React.Component {
           <div className="col-2">
             <div className="showroom-element">
               <label>Primary input</label>
-              <Input
-                name="input6"
-              />
+              <Input name="input6" />
             </div>
           </div>
           <div className="col-2">
             <div className="showroom-element">
               <label>Secondary input</label>
-              <Input
-                name="input7"
-                backgroundColor="secondary"
-              />
+              <Input name="input7" backgroundColor="secondary" />
             </div>
           </div>
           <div className="col-2">
             <div className="showroom-element">
               <label>White input</label>
-              <Input
-                name="input8"
-                backgroundColor="white"
-              />
+              <Input name="input8" backgroundColor="white" />
             </div>
           </div>
           <div className="col-2">
             <div className="showroom-element">
               <label>Primary text color</label>
-              <Input
-                name="input9"
-                color="primary"
-              />
+              <Input name="input9" color="primary" />
             </div>
           </div>
           <div className="col-2">
             <div className="showroom-element">
               <label>Secondary text color</label>
-              <Input
-                name="input10"
-                color="secondary"
-              />
+              <Input name="input10" color="secondary" />
             </div>
           </div>
           <div className="col-2">
             <div className="showroom-element">
               <label>White text color</label>
-              <Input
-                name="input11"
-                color="white"
-              />
+              <Input name="input11" color="white" />
             </div>
           </div>
         </div>
@@ -135,10 +112,7 @@ class Inputs extends React.Component {
           <div className="col">
             <div className="showroom-element">
               <label>Selector</label>
-              <Selector
-                options={lines}
-                onChange={(value) => this.handleSelect('option', value)}
-              />
+              <Selector options={lines} onChange={value => this.handleSelect('option', value)} />
               <div className="showroom-result">
                 <span>{option ? `Option selected: ${option.name}` : ''}</span>
               </div>
@@ -147,10 +121,7 @@ class Inputs extends React.Component {
           <div className="col">
             <div className="showroom-element">
               <label>LineSelector</label>
-              <LineSelector
-                lines={lines}
-                onChange={(value) => this.handleSelect('line', value)}
-              />
+              <LineSelector lines={lines} onChange={value => this.handleSelect('line', value)} />
               <div className="showroom-result">
                 <span>{line ? `Line selected: ${line.name}` : ''}</span>
               </div>
@@ -159,9 +130,7 @@ class Inputs extends React.Component {
           <div className="col">
             <div className="showroom-element">
               <label>CountrySelector</label>
-              <CountrySelector
-                onChange={(value) => this.handleSelect('country', value)}
-              />
+              <CountrySelector onChange={value => this.handleSelect('country', value)} />
               <div className="showroom-result">
                 <span>{country ? `Country selected: ${country.name}` : ''}</span>
               </div>
@@ -170,10 +139,7 @@ class Inputs extends React.Component {
           <div className="col">
             <div className="showroom-element">
               <label>TownSelector</label>
-              <TownSelector
-                towns={towns}
-                onChange={(value) => this.handleSelect('town', value)}
-              />
+              <TownSelector towns={towns} onChange={value => this.handleSelect('town', value)} />
               <div className="showroom-result">
                 <span>{town ? `Town selected: ${town.name}` : ''}</span>
               </div>
@@ -183,8 +149,10 @@ class Inputs extends React.Component {
             <div className="showroom-element">
               <label>StationSelector</label>
               <StationSelector
-                stations={stations.map(st => { return { ...st, town: { url: 'london' } } })}
-                onChange={(value) => this.handleSelect('station', value)}
+                stations={stations.map(st => {
+                  return { ...st, town: { url: 'london' } };
+                })}
+                onChange={value => this.handleSelect('station', value)}
               />
               <div className="showroom-result">
                 <span>{station ? `Station selected: ${station.name}` : ''}</span>
@@ -196,21 +164,18 @@ class Inputs extends React.Component {
           <div className="col-3">
             <div className="showroom-element">
               <label>PlaceSelector</label>
-              <PlaceSelector
-                onChange={(value) => this.handleSelect('place', value)}
-              />
+              <PlaceSelector onChange={value => this.handleSelect('place', value)} />
               <div className="showroom-result">
-                <span>{place ? `Place selected: ${place.coordinates[0]} - ${place.coordinates[1]}` : ''}</span>
+                <span>
+                  {place ? `Place selected: ${place.coordinates[0]} - ${place.coordinates[1]}` : ''}
+                </span>
               </div>
             </div>
           </div>
           <div className="col-3">
             <div className="showroom-element">
               <label>ColorSelector</label>
-              <ColorSelector
-                name="color"
-                onChange={(value) => this.handleSelect('color', value)}
-              />
+              <ColorSelector name="color" onChange={value => this.handleSelect('color', value)} />
               <div className="showroom-result">
                 <span>{color ? `Color selected: ${color}` : ''}</span>
               </div>
@@ -219,10 +184,7 @@ class Inputs extends React.Component {
           <div className="col-3">
             <div className="showroom-element">
               <label>Text input with initial value</label>
-              <Input
-                name="input4"
-                value="John Johnson"
-              />
+              <Input name="input4" value="John Johnson" />
             </div>
           </div>
           <div className="col-3">
@@ -231,7 +193,7 @@ class Inputs extends React.Component {
               <ColorSelector
                 name="color"
                 color="#F78DA7"
-                onChange={(value) => this.handleSelect('color2', value)}
+                onChange={value => this.handleSelect('color2', value)}
               />
               <div className="showroom-result">
                 <span>{color2 ? `Color selected: ${color2}` : ''}</span>

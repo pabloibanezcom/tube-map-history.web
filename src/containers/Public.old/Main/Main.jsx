@@ -2,12 +2,11 @@
 import { Header, LoadingSpinner, YearSelector } from 'components/shared';
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 import MapWrapper from '../MapWrapper/MapWrapper';
 import Sidebar from '../SideBar/SideBar';
 
 class Main extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -22,17 +21,17 @@ class Main extends React.Component {
     onInit(town, year);
   }
 
-  yearChange = (_year) => {
+  yearChange = _year => {
     const { history, maxYearLoaded, onYearChange, town, year } = this.props;
     history.push(`/${town.url}/${_year}`);
     onYearChange(town._id, _year, year, maxYearLoaded);
-  }
+  };
 
   toggleYearSelector = () => {
     this.setState(prevState => ({
       showYearSelector: !prevState.showYearSelector
     }));
-  }
+  };
 
   render() {
     const { loading, town, year } = this.props;
@@ -40,14 +39,20 @@ class Main extends React.Component {
     return (
       <div>
         {loading ? <LoadingSpinner /> : null}
-        {year ? <YearSelector
-          year={year}
-          showYearSelector={showYearSelector}
-          onYearChange={(_year) => { this.yearChange(_year) }}
-        /> : null}
+        {year ? (
+          <YearSelector
+            year={year}
+            showYearSelector={showYearSelector}
+            onYearChange={_year => {
+              this.yearChange(_year);
+            }}
+          />
+        ) : null}
         <Header
           optionsName="main"
-          onToggleYearSelector={() => { this.toggleYearSelector() }}
+          onToggleYearSelector={() => {
+            this.toggleYearSelector();
+          }}
           showYear={!showYearSelector}
           town={town}
           year={year}
@@ -55,7 +60,7 @@ class Main extends React.Component {
         <Sidebar />
         <MapWrapper mode="main" />
       </div>
-    )
+    );
   }
 }
 
@@ -76,9 +81,16 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = () => {
   return {
-    onInit: (town, year) => { console.log(town, year) },
-    onYearChange: (townId, year, previousYear, maxYearLoaded) => { console.log(townId, year, previousYear, maxYearLoaded) }
-  }
+    onInit: (town, year) => {
+      console.log(town, year);
+    },
+    onYearChange: (townId, year, previousYear, maxYearLoaded) => {
+      console.log(townId, year, previousYear, maxYearLoaded);
+    }
+  };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Main));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Main));

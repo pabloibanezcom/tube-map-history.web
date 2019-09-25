@@ -6,4 +6,4 @@ export const townInUser = (town, user) => {
     }
   });
   return result;
-}
+};

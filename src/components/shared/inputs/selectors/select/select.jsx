@@ -2,14 +2,13 @@ import React from 'react';
 import SelectDropdown from './select-dropdown/select-dropdown';
 
 class Select extends React.Component {
-
   constructor(props) {
     const { defaultValue } = props;
     super(props);
     this.state = {
       selectedOption: defaultValue || null,
       expanded: false
-    }
+    };
     this.showDropdown = this.showDropdown.bind(this);
     this.selectOption = this.selectOption.bind(this);
   }
@@ -43,7 +42,9 @@ class Select extends React.Component {
     const { config, onChange } = this.props;
     this.setState({ selectedOption: option, expanded: false });
     const selectedOption = option && option[config.options.key] === 'none' ? null : option;
-    onChange(config.options.value && selectedOption ? selectedOption[config.options.value] : selectedOption);
+    onChange(
+      config.options.value && selectedOption ? selectedOption[config.options.value] : selectedOption
+    );
   }
 
   close() {
@@ -63,21 +64,19 @@ class Select extends React.Component {
           onClick={this.showDropdown}
           aria-expanded={!expanded}
         >
-          <Selected
-            selectedOption={selectedOption || selectedElement}
-          />
+          <Selected selectedOption={selectedOption || selectedElement} />
         </button>
         {!noDropdown && (
           <SelectDropdown
             expanded={expanded}
-            onSelectOption={(opt) => this.selectOption(opt)}
+            onSelectOption={opt => this.selectOption(opt)}
             onClose={() => this.close()}
             {...this.props}
           />
         )}
         {(expanded || externalExpanded) && noDropdown}
       </div>
-    )
+    );
   }
 }
 

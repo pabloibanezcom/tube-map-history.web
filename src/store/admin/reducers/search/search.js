@@ -1,9 +1,9 @@
-export const searchParamsChangeStart = (state) => {
+export const searchParamsChangeStart = state => {
   return {
     ...state,
     loadingElements: true
-  }
-}
+  };
+};
 
 export const searchParamsChangeSuccess = (state, action) => {
   return {
@@ -13,13 +13,13 @@ export const searchParamsChangeSuccess = (state, action) => {
     pagination: action.pagination,
     elementsType: action.elementsType,
     searchParams: action.searchParams
-  }
-}
+  };
+};
 
-export const searchParamsChangeFail = (state) => {
+export const searchParamsChangeFail = state => {
   return {
     ...state,
     loadingElements: false,
     elements: []
-  }
-}
+  };
+};

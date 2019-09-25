@@ -3,14 +3,14 @@ import defaultSearchParamsConnection from './searchDefaults/defaultSearchParams_
 import defaultSearchParamsLine from './searchDefaults/defaultSearchParams_line.json';
 import defaultSearchParamsStation from './searchDefaults/defaultSearchParams_station.json';
 
-export const getDefaultPagination = (elementsType) => {
+export const getDefaultPagination = elementsType => {
   if (elementsType === 'line' || elementsType === 'station' || elementsType === 'connection') {
     return defaultPagination;
   }
   return null;
-}
+};
 
-export const getDefaultSearchParams = (elementsType) => {
+export const getDefaultSearchParams = elementsType => {
   switch (elementsType) {
     case 'line':
       return defaultSearchParamsLine;
@@ -21,4 +21,4 @@ export const getDefaultSearchParams = (elementsType) => {
     default:
       return null;
   }
-}
+};

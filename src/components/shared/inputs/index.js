@@ -14,5 +14,20 @@ import TownSelector from './selectors/town-selector/town-selector';
 import Toggle from './toggle/toggle';
 import YearSelector from './year-selector/year-selector';
 
-export { BooleanSelector, ColorSelector, Checkbox, FileUpload, Input, Range, CountrySelector, LineSelector, PersonTitleSelector, PlaceSelector, Selector, StationSelector, Toggle, TownSelector, YearSelector };
-
+export {
+  BooleanSelector,
+  ColorSelector,
+  Checkbox,
+  FileUpload,
+  Input,
+  Range,
+  CountrySelector,
+  LineSelector,
+  PersonTitleSelector,
+  PlaceSelector,
+  Selector,
+  StationSelector,
+  Toggle,
+  TownSelector,
+  YearSelector
+};

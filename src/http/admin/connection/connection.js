@@ -1,11 +1,9 @@
-
 import axios from '../axios';
 
 const defaultPagination = require('../defaultParams/pagination.json');
 const searchConnectionsParams = require('../defaultParams/searchConnections.json');
 
 export default class Connection {
-
   // Search connections
   static search = (draftId, searchParams, pagination) => {
     return axios.post(`${draftId}/connection/search`, {
@@ -14,26 +12,25 @@ export default class Connection {
       populate: searchConnectionsParams.populate,
       pagination: pagination || defaultPagination
     });
-  }
+  };
 
   // Get full info from connection
-  static get = (connectionId) => {
+  static get = connectionId => {
     return axios.get(`connection/${connectionId}`);
-  }
+  };
 
   // Add connection
   static add = (draftId, connection) => {
     return axios.post(`${draftId}/connection`, connection);
-  }
+  };
 
   // Update connection
-  static update = (connection) => {
+  static update = connection => {
     return axios.put(`connection/${connection._id}`, connection);
-  }
+  };
 
   // Delete connection
-  static delete = (connectionId) => {
+  static delete = connectionId => {
     return axios.delete(`connection/${connectionId}`);
-  }
-
+  };
 }

@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 
-export const updateStationStart = (station) => {
+export const updateStationStart = station => {
   return {
     type: actionTypes.UPDATE_STATION_START,
     station
@@ -13,7 +13,7 @@ export const updateStationSuccess = () => {
   };
 };
 
-export const updateStationFail = (error) => {
+export const updateStationFail = error => {
   return {
     type: actionTypes.UPDATE_STATION_FAIL,
     error

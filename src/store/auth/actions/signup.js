@@ -15,7 +15,7 @@ export const signUpSuccess = () => {
   };
 };
 
-export const signUpFail = (error) => {
+export const signUpFail = error => {
   return {
     type: actionTypes.SIGNUP_FAIL,
     error

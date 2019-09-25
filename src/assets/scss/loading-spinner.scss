@@ -31,40 +31,38 @@
     background-clip: padding-box;
     overflow: hidden;
 
-    >div {
+    > div {
       width: $spinner-width + px;
       height: $spinner-height + px;
 
-      >div {
+      > div {
         height: $spinner-height + px;
       }
     }
 
     &.ls-spinner-primary {
-      background-color: rgba($secondary-color, .2);
+      background-color: rgba($secondary-color, 0.2);
 
       &.ls-spinner-inverse {
         background-color: rgba($secondary-color, 1);
       }
 
-      >div {
-
-        >div {
+      > div {
+        > div {
           background-color: $primary-color;
         }
       }
     }
 
     &.ls-spinner-secondary {
-      background-color: rgba($primary-color, .2);
+      background-color: rgba($primary-color, 0.2);
 
       &.ls-spinner-inverse {
         background-color: rgba($primary-color, 1);
       }
 
-      >div {
-
-        >div {
+      > div {
+        > div {
           background-color: $secondary-color;
         }
       }

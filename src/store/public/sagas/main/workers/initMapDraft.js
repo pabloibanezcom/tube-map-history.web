@@ -7,8 +7,14 @@ import { handleError } from 'store/util/errorHandling';
 export function* initMapDraftSagaStart(action) {
   try {
     const draftRes = yield Api.draft.getDraftWithTown(action.draftId);
-    const stationsRes = yield Api.station.getStationsWithAuth(draftRes.data._id, action.year, draftRes.data.town.year);
-    yield put(initMapDraftSuccess(draftRes.data.town, action.year, draftRes.data, stationsRes.data));
+    const stationsRes = yield Api.station.getStationsWithAuth(
+      draftRes.data._id,
+      action.year,
+      draftRes.data.town.year
+    );
+    yield put(
+      initMapDraftSuccess(draftRes.data.town, action.year, draftRes.data, stationsRes.data)
+    );
     yield put(setYear(action.year));
   } catch (err) {
     const redirectTo = handleError(err);

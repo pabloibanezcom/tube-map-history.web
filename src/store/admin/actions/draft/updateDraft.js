@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 
-export const updateDraftStart = (draft) => {
+export const updateDraftStart = draft => {
   return {
     type: actionTypes.UPDATE_DRAFT_START,
     draft
@@ -13,7 +13,7 @@ export const updateDraftSuccess = () => {
   };
 };
 
-export const updateDraftFail = (error) => {
+export const updateDraftFail = error => {
   return {
     type: actionTypes.UPDATE_DRAFT_FAIL,
     error

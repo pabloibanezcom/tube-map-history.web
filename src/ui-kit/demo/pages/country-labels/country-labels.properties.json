@@ -1,0 +1,14 @@
+{
+  "options": {
+    "className": {
+      "type": "string",
+      "default": "''",
+      "description": ""
+    },
+    "country": {
+      "type": "Country",
+      "isRequired": true,
+      "description": "{ code: string, name: string }"
+    }
+  }
+}

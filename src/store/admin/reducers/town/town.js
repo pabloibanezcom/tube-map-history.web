@@ -3,5 +3,5 @@ export const getTownsSuccess = (state, action) => {
     ...state,
     loading: false,
     towns: action.towns
-  }
-}
+  };
+};

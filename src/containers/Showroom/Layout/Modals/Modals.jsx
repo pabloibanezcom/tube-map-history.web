@@ -5,19 +5,18 @@ import BasicModal2 from './example-modals/basic-modal-2';
 import ModalWithProps from './example-modals/modal-with-props';
 
 class Modals extends React.Component {
-
   modalComponents = {
     basicModal1: BasicModal1,
     basicModal2: BasicModal2,
     modalWithProps: ModalWithProps
-  }
+  };
 
   constructor(props) {
     super(props);
     this.state = {
       activeModal: null,
       modalProps: null
-    }
+    };
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -45,19 +44,13 @@ class Modals extends React.Component {
           <div className="col-lg-2 col-md-4">
             <div className="showroom-element">
               <label>Basic modal 1</label>
-              <Button
-                text="Open modal"
-                onClick={() => this.openModal('basicModal1')}
-              />
+              <Button text="Open modal" onClick={() => this.openModal('basicModal1')} />
             </div>
           </div>
           <div className="col-lg-2 col-md-4">
             <div className="showroom-element">
               <label>Basic modal 2</label>
-              <Button
-                text="Open modal"
-                onClick={() => this.openModal('basicModal2')}
-              />
+              <Button text="Open modal" onClick={() => this.openModal('basicModal2')} />
             </div>
           </div>
           <div className="col-lg-2 col-md-4">
@@ -65,15 +58,19 @@ class Modals extends React.Component {
               <label>Modal with props</label>
               <Button
                 text="Open modal"
-                onClick={() => this.openModal('modalWithProps', { name: 'John', onClick: () => console.log('Printing from modal with props') })}
+                onClick={() =>
+                  this.openModal('modalWithProps', {
+                    name: 'John',
+                    onClick: () => console.log('Printing from modal with props')
+                  })
+                }
               />
             </div>
           </div>
         </div>
       </div>
-    )
+    );
   }
-
 }
 
 export default Modals;

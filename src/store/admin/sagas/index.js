@@ -1,4 +1,4 @@
-import { all } from "redux-saga/effects";
+import { all } from 'redux-saga/effects';
 import { connectionSagas } from './connection';
 import { draftSagas } from './draft';
 import { generationSagas } from './generation';
@@ -18,5 +18,5 @@ export function* watchAdmin() {
     ...connectionSagas,
     ...generationSagas,
     ...searchSagas
-  ])
+  ]);
 }

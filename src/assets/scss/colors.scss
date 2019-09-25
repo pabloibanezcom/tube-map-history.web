@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import './variables.scss';
 
 .primary {
   color: $primary-color !important;
@@ -52,10 +52,12 @@
 }
 
 .form-group.is-focused .form-control {
-  background-image: linear-gradient($primary-color, $primary-color), linear-gradient($grey-gradient-color, $grey-gradient-color);
+  background-image: linear-gradient($primary-color, $primary-color),
+    linear-gradient($grey-gradient-color, $grey-gradient-color);
 }
 
 .form-control,
 .form-group .form-control {
-  background-image: linear-gradient($primary-color, $primary-color), linear-gradient($grey-gradient-color, $grey-gradient-color);
+  background-image: linear-gradient($primary-color, $primary-color),
+    linear-gradient($grey-gradient-color, $grey-gradient-color);
 }

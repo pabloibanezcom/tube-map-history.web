@@ -4,10 +4,9 @@ import { initMapTown, restoreMapState, updateMap, zoomToPoint } from 'map/map.go
 import React from 'react';
 import { connect } from 'react-redux';
 
-const showMapAnimations = (process.env.REACT_APP_MAP_ANIMATIONS === 'true');
+const showMapAnimations = process.env.REACT_APP_MAP_ANIMATIONS === 'true';
 
 class MapWrapper extends React.Component {
-
   componentDidUpdate(prevProps) {
     const { connections, mode, previousYear, stations, town, year } = this.props;
     if (prevProps.town !== town) {
@@ -16,14 +15,25 @@ class MapWrapper extends React.Component {
     }
   }
 
-  showStation = (station) => {
+  showStation = station => {
     const { onStationSelected } = this.props;
     const mapState = showMapAnimations ? zoomToPoint(this.map, station.geometry.coordinates) : null;
     onStationSelected(station, mapState);
-  }
+  };
 
   render() {
-    const { connections, mapState, mode, loading, onClearMapState, previousYear, sideBarState, stations, town, year } = this.props;
+    const {
+      connections,
+      mapState,
+      mode,
+      loading,
+      onClearMapState,
+      previousYear,
+      sideBarState,
+      stations,
+      town,
+      year
+    } = this.props;
     if (!loading && this.map && stations && connections) {
       updateMap(this.map, town, mode, stations, connections, year, previousYear, this.showStation);
     }
@@ -36,7 +46,7 @@ class MapWrapper extends React.Component {
         <Overlay show={sideBarState.open} />
         <div id="map-container" className={mode} />
       </div>
-    )
+    );
   }
 }
 
@@ -55,9 +65,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = () => {
   return {
-    onStationSelected: (station) => { console.log(station) },
-    onClearMapState: () => { }
-  }
+    onStationSelected: station => {
+      console.log(station);
+    },
+    onClearMapState: () => {}
+  };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MapWrapper);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MapWrapper);

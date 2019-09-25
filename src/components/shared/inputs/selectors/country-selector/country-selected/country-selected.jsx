@@ -1,15 +1,20 @@
 import React from 'react';
 import { getImage } from 'shared/image';
 
-const selectedCountryLabel = (option) => {
+const selectedCountryLabel = option => {
   return (
     <React.Fragment>
-      <img className="country-flag" alt={option.code} src={getImage(`countries/${option.code.toLowerCase()}.png`, 'countries/default.png')} /> <span className="country-name">{option.name}</span>
+      <img
+        className="country-flag"
+        alt={option.code}
+        src={getImage(`countries/${option.code.toLowerCase()}.png`, 'countries/default.png')}
+      />{' '}
+      <span className="country-name">{option.name}</span>
     </React.Fragment>
-  )
-}
+  );
+};
 
-const countrySelected = (props) => {
+const countrySelected = props => {
   const { selectedOption } = props;
   return (
     <div className="selected-country filter-option">
@@ -19,7 +24,7 @@ const countrySelected = (props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default countrySelected;

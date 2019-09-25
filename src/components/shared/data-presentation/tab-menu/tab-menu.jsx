@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 class TabMenu extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -21,7 +20,7 @@ class TabMenu extends React.Component {
 
   componentDidMount() {
     const { tabs } = this.props;
-    const width = this.menuHeader.current.clientWidth / tabs.length
+    const width = this.menuHeader.current.clientWidth / tabs.length;
     this.setState({ menuElementWidth: width });
     this.updateMenuHeaderStyle(width);
   }
@@ -63,17 +62,18 @@ class TabMenu extends React.Component {
                   <span>{tab.name}</span>
                 </a>
               </li>
-            )
+            );
           })}
-          <span className={`tab-menu-header-indicator ${panel !== 'white' ? 'tab-menu-header-indicator-white' : ''}`} style={menuHeaderStyle} />
+          <span
+            className={`tab-menu-header-indicator ${
+              panel !== 'white' ? 'tab-menu-header-indicator-white' : ''
+            }`}
+            style={menuHeaderStyle}
+          />
         </ul>
-        <Panel
-          background={panel}
-        >
-          {children[activeTab - 1]}
-        </Panel>
+        <Panel background={panel}>{children[activeTab - 1]}</Panel>
       </div>
-    )
+    );
   }
 }
 

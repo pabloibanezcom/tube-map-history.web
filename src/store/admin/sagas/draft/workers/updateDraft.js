@@ -1,6 +1,11 @@
 import Api from 'http/admin';
 import { put } from 'redux-saga/effects';
-import { finishAction, getDraftStart, updateDraftFail, updateDraftSuccess } from 'store/admin/actions';
+import {
+  finishAction,
+  getDraftStart,
+  updateDraftFail,
+  updateDraftSuccess
+} from 'store/admin/actions';
 import { info } from 'util/notification';
 
 export function* updateDraftSagaStart(action) {

@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const panel = (props) => {
-
+const panel = props => {
   const { background, children, className, header, headerColor, width } = props;
 
   return (
@@ -12,15 +11,12 @@ const panel = (props) => {
           <h4 className="mb-0 mt-0">{header}</h4>
         </div>
       ) : null}
-      <div
-        className={`panel-content panel-${background}`}
-        style={width ? { width } : null}
-      >
+      <div className={`panel-content panel-${background}`} style={width ? { width } : null}>
         {children}
       </div>
     </div>
-  )
-}
+  );
+};
 
 panel.defaultProps = {
   background: 'white',

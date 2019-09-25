@@ -1,0 +1,114 @@
+.ui-kit-demo-element {
+  margin-bottom: 40px;
+
+  .ui-kit-demo-element-container {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    .ui-kit-demo-element-show {
+      padding: 20px 20px;
+
+      &.fullWidth {
+        .jsx-parser {
+          > div {
+            width: 100%;
+          }
+        }
+      }
+
+      &.multi {
+        .jsx-parser {
+          > div {
+            :not(:first-child) {
+              margin-top: 20px;
+            }
+          }
+        }
+      }
+
+      .jsx-parser {
+        display: flex;
+
+        > div {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+
+    .ui-kit-demo-element-code {
+      position: relative;
+
+      .ui-kit-demo-show-code-btn {
+        position: absolute;
+        z-index: 100;
+        right: 10px;
+        top: -15px;
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        font-weight: 200;
+
+        &:hover {
+          background-color: $primary-color;
+          color: $primary-alt-color;
+        }
+      }
+
+      .ui-kit-demo-element-codemirror {
+        .CodeMirror {
+          max-height: 0;
+          height: auto;
+          padding: 0 15px;
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+
+          .cm-tag {
+            color: #5ed663;
+          }
+
+          .cm-error {
+            background-color: initial;
+          }
+
+          .cm-bracket {
+            color: grey;
+          }
+
+          .cm-attribute {
+            color: #6cf3f3;
+          }
+
+          .cm-string {
+            color: #f5a021;
+          }
+        }
+
+        &.shown {
+          .CodeMirror {
+            max-height: 1000px;
+            transition: max-height 0.5s ease-in-out;
+          }
+
+          .ui-kit-demo-element-copy {
+            opacity: 1;
+          }
+        }
+      }
+
+      .ui-kit-demo-element-copy {
+        position: absolute;
+        opacity: 0;
+        z-index: 999;
+        font-size: 14px;
+        bottom: 5px;
+        right: 25px;
+        color: #fff;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}

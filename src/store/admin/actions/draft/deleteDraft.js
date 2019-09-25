@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 
-export const deleteDraftStart = (draftId) => {
+export const deleteDraftStart = draftId => {
   return {
     type: actionTypes.DELETE_DRAFT_START,
     draftId
@@ -13,7 +13,7 @@ export const deleteDraftSuccess = () => {
   };
 };
 
-export const deleteDraftFail = (error) => {
+export const deleteDraftFail = error => {
   return {
     type: actionTypes.DELETE_DRAFT_FAIL,
     error

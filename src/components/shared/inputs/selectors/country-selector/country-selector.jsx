@@ -6,7 +6,6 @@ import CountrySelected from './country-selected/country-selected';
 import selectConfig from './country-selector.config.json';
 
 class CountrySelector extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -40,7 +39,7 @@ class CountrySelector extends React.Component {
           />
         ) : null}
       </div>
-    )
+    );
   }
 }
 

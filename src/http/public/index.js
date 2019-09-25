@@ -13,4 +13,4 @@ export default {
   user: User,
   setAuthToken,
   removeAuthToken
-}
+};

@@ -88,7 +88,7 @@ const dataPresentation = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default dataPresentation;

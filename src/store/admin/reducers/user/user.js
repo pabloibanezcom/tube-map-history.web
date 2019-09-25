@@ -3,5 +3,5 @@ export const getOwnSuccess = (state, action) => {
     ...state,
     loading: false,
     user: action.user
-  }
-}
+  };
+};

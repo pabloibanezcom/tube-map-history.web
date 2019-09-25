@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 
-export const updateConnectionStart = (connection) => {
+export const updateConnectionStart = connection => {
   return {
     type: actionTypes.UPDATE_CONNECTION_START,
     connection
@@ -13,7 +13,7 @@ export const updateConnectionSuccess = () => {
   };
 };
 
-export const updateConnectionFail = (error) => {
+export const updateConnectionFail = error => {
   return {
     type: actionTypes.UPDATE_CONNECTION_FAIL,
     error

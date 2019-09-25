@@ -4,18 +4,18 @@ export const startAction = (state, action) => {
     actionPanelInitiated: true,
     action: action.actionName,
     actionObj: action.actionObj
-  }
-}
+  };
+};
 
-export const finishAction = (state) => {
+export const finishAction = state => {
   return {
     ...state,
     action: null,
     actionObj: null
-  }
-}
+  };
+};
 
-export const clearDraft = (state) => {
+export const clearDraft = state => {
   return {
     ...state,
     actionPanelInitiated: false,
@@ -25,5 +25,5 @@ export const clearDraft = (state) => {
     elements: [],
     searchParams: null,
     pagination: null
-  }
-}
+  };
+};

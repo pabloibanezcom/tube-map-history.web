@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 class CollapseList extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -29,16 +28,34 @@ class CollapseList extends React.Component {
   }
 
   render() {
-    const { actions, elements, extraClass, type, header, hoverType, content, activeElementContent, externalActiveElementId } = this.props;
+    const {
+      actions,
+      elements,
+      extraClass,
+      color,
+      header,
+      hoverType,
+      content,
+      activeElementContent,
+      externalActiveElementId
+    } = this.props;
     const { activeElementId } = this.state;
     const Header = header;
     const Content = content;
     const currentActiveElementId = externalActiveElementId || activeElementId;
     return (
-      <ul className={`collapse-list collapse-list-${type || 'default'} ${hoverType ? `collapse-list-hover-${hoverType}` : ''} ${extraClass}`}>
+      <ul
+        className={`collapse-list collapse-list-${color || 'default'} ${
+          hoverType ? `collapse-list-hover-${hoverType}` : ''
+        } ${extraClass}`}
+      >
         {elements.map((el, i) => (
           <li key={i}>
-            <div className={`collapse-list-element ${currentActiveElementId === el._id ? 'active' : ''}`}>
+            <div
+              className={`collapse-list-element ${
+                currentActiveElementId === el._id ? 'active' : ''
+              }`}
+            >
               <div className="collapse-list-header">
                 <a onClick={() => this.setActiveElement(el)}>
                   <div className="collapse-list-header-container">
@@ -48,18 +65,13 @@ class CollapseList extends React.Component {
                 </a>
               </div>
               <div className="collapse-list-content">
-                <Content
-                  element={activeElementContent || el}
-                  actions={actions}
-                  {...this.props}
-                />
+                <Content element={activeElementContent || el} actions={actions} {...this.props} />
               </div>
             </div>
           </li>
-        )
-        )}
+        ))}
       </ul>
-    )
+    );
   }
 }
 

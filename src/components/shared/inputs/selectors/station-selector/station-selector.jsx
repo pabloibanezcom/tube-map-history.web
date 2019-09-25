@@ -7,12 +7,11 @@ import StationSelected from './station-selected/station-selected';
 import selectConfig from './station-selector.config.json';
 
 const searchParams = {
-  select: "name",
+  select: 'name',
   populate: { path: 'draft', select: 'town', populate: { path: 'town', select: 'url' } }
-}
+};
 
 class StationSelector extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -33,8 +32,12 @@ class StationSelector extends React.Component {
 
   async getInitialStation(stationId) {
     const { draftId } = this.props;
-    const res = await Api.station.search(draftId, { ...searchParams, filter: { _id: stationId } }, pagination);
-    this.setState({ initialStation: res.data.elements[0] })
+    const res = await Api.station.search(
+      draftId,
+      { ...searchParams, filter: { _id: stationId } },
+      pagination
+    );
+    this.setState({ initialStation: res.data.elements[0] });
   }
 
   handleOnChange(station) {
@@ -44,12 +47,16 @@ class StationSelector extends React.Component {
 
   async search(str) {
     if (!str || str.length < 2) {
-      this.setState({ stations: [] })
+      this.setState({ stations: [] });
       return;
     }
     const { draftId } = this.props;
-    const res = await Api.station.search(draftId, { ...searchParams, filter: { name: str } }, pagination);
-    this.setState({ stations: res.data.elements })
+    const res = await Api.station.search(
+      draftId,
+      { ...searchParams, filter: { name: str } },
+      pagination
+    );
+    this.setState({ stations: res.data.elements });
   }
 
   render() {
@@ -67,7 +74,7 @@ class StationSelector extends React.Component {
           onInputChange={this.search}
         />
       </div>
-    )
+    );
   }
 }
 
